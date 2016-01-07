@@ -14,8 +14,10 @@
 static const CGFloat CalloutYOffset = 10.0f;
 
 @interface mapVC ()
+
 @property (strong, nonatomic) SMCalloutView *calloutView;
 @property (strong, nonatomic) UIView *emptyCalloutView;
+
 @end
 
 @implementation mapVC
