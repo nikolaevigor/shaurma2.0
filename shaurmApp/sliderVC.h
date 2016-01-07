@@ -7,9 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "sliderCell.h"
-#import "templeSingleton.h"
-//@import Parse;
 
 @interface sliderVC : UIViewController <UITableViewDataSource, UITableViewDelegate>
 

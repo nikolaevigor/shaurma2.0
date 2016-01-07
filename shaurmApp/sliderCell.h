@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface sliderCell : UITableViewCell
+
 @property (weak, nonatomic) IBOutlet UIImageView *templePic;
 @property (weak, nonatomic) IBOutlet UILabel *templeTitle;
-@property (weak, nonatomic) IBOutlet UIImageView *ratePic;
 @property (weak, nonatomic) IBOutlet UILabel *price;
+@property (weak, nonatomic) IBOutlet UILabel *ratingLabel;
 
 @end

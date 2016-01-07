@@ -7,30 +7,26 @@
 //
 
 #import "sliderVC.h"
+#import "sliderCell.h"
 
 @interface sliderVC ()
-{
-    CGRect screenRect;
-    templeSingleton *singleton;
-}
 
 @end
 
 @implementation sliderVC
 
 - (void)viewDidLoad {
-    screenRect = [[UIScreen mainScreen] bounds];
-    singleton = [[templeSingleton alloc]init];
-    
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
     self.view.backgroundColor = [UIColor whiteColor];
+    
     UILabel *welcomeLabel = [[UILabel alloc] initWithFrame:CGRectMake(screenRect.size.width/2 - 60, 0, 150, 50)];
     welcomeLabel.text = @"Рядом со мной";
     [self.view addSubview:welcomeLabel];
     
     UITableView *table = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, screenRect.size.width, 500)];
-    table.scrollEnabled = NO;
     table.delegate = self;
     table.dataSource = self;
+    table.scrollEnabled = NO;
     [table registerNib:[UINib nibWithNibName:@"sliderCell" bundle:nil] forCellReuseIdentifier:@"cellID"];
     [self.view addSubview:table];
     
@@ -47,12 +43,15 @@
         cell = [[sliderCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     
-    cell.templePic.image = [UIImage imageNamed:@"shawermag.jpg"];
-    cell.templeTitle.text = [singleton.allTemples objectAtIndex:indexPath.row][@"title"];
-    cell.price.text = [[singleton.allTemples objectAtIndex:indexPath.row][@"price"] stringValue];
-    cell.ratePic.image = [UIImage imageNamed:@"r7.png"];
-    
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [(sliderCell *)cell templeTitle].text = @"Title Test";
+    [(sliderCell *)cell price].text = @"Price Test";
+    [(sliderCell *)cell ratingLabel].text = @"3";
+    //[(sliderCell *)cell templePic]
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

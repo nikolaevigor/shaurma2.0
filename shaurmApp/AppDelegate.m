@@ -29,25 +29,6 @@
     // [Optional] Track statistics around application opens.
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
-    templeSingleton *singleton = [[templeSingleton alloc] init];
-    
-    PFQuery *query = [PFQuery queryWithClassName:@"Temple"];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
-     {
-         if (!error)
-         {
-             singleton.allTemples = [NSMutableArray arrayWithArray:objects];
-             NSLog(@"PARSE DATABASE DOWNLOADED");
-             
-         }
-         else
-         {
-             NSLog(@"Error: %@ %@", error, [error userInfo]);
-         }
-     }
-     ];
-    
-    
     return YES;
 }
 

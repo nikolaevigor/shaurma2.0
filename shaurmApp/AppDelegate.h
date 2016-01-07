@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 @import GoogleMaps;
-#import "templeSingleton.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

@@ -9,11 +9,10 @@
 #import "mapContainer.h"
 
 @interface mapContainer ()
-{
-    PPRevealSideViewController *container;
-    mapVC *map;
-    sliderVC *slider;
-}
+
+@property (strong, nonatomic) PPRevealSideViewController *container;
+@property (strong, nonatomic) mapVC *map;
+@property (strong, nonatomic) sliderVC *slider;
 
 @end
 
@@ -21,25 +20,26 @@
 
 - (void)viewDidLoad
 {
-    map = [[mapVC alloc] init];
-    slider = [[sliderVC alloc] init];
-    container = [[PPRevealSideViewController alloc] initWithRootViewController:slider];
-    [container setOption:PPRevealSideOptionsiOS7StatusBarMoving];
+    self.map = [[mapVC alloc] init];
+    self.slider = [[sliderVC alloc] init];
+    self.container = [[PPRevealSideViewController alloc] initWithRootViewController:self.slider];
+    
+    [self.container setOption:PPRevealSideOptionsiOS7StatusBarMoving];
+    [self.container pushViewController:self.map onDirection:PPRevealSideDirectionTop withOffset:80 animated:NO];
     //container.options = PPRevealSideOptionsShowShadows << 1;
-    [container pushViewController:map onDirection:PPRevealSideDirectionTop withOffset:80 animated:NO];
     
     UISwipeGestureRecognizer *swipeDown = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(sliderSwiped:)];
     swipeDown.direction = UISwipeGestureRecognizerDirectionDown;
-    [slider.view addGestureRecognizer:swipeDown];
+    [self.slider.view addGestureRecognizer:swipeDown];
     
-    [self.view addSubview:container.view];
+    [self.view addSubview:self.container.view];
     
     [super viewDidLoad];
 }
 
 - (void)sliderSwiped:(UISwipeGestureRecognizer *)swipe
 {
-    [container pushViewController:map onDirection:PPRevealSideDirectionTop withOffset:80 animated:YES];
+    [self.container pushViewController:self.map onDirection:PPRevealSideDirectionTop withOffset:80 animated:YES];
 }
 
 /*/snippet to make navBar invisible in map and visible in templeVC

@@ -44,23 +44,6 @@ static const CGFloat CalloutYOffset = 10.0f;
         
     });
     
-    templeSingleton *singleton = [[templeSingleton alloc] init];
-    UIImage *customIcon = [UIImage imageNamed:@"pin2.png"];
-    for (int i; i < singleton.allTemples.count; i++)
-    {
-        GMSMarker *mrk = [[GMSMarker alloc] init];
-        PFGeoPoint *gPoint = singleton.allTemples[i][@"location"];
-        mrk.position = CLLocationCoordinate2DMake(gPoint.latitude, gPoint.longitude);
-        mrk.map = mapView_;
-        mrk.title = singleton.allTemples[i][@"title"];
-        mrk.snippet = singleton.allTemples[i][@"rate"];
-        mrk.icon = customIcon;
-        mrk.icon = [self image:mrk.icon scaledToSize:CGSizeMake(20.0f, 40.0f)];
-        mrk.userData = [singleton.allTemples[i] objectId];
-    }
-    
-    singleton.loc = mapView_.myLocation;
-    
     self.calloutView = [[SMCalloutView alloc] init];
     self.calloutView.hidden = YES;
     
@@ -74,29 +57,6 @@ static const CGFloat CalloutYOffset = 10.0f;
     
     [super viewDidLoad];
 };
-
-//method for resizing image
-- (UIImage *)image:(UIImage*)originalImage scaledToSize:(CGSize)size
-{
-    //avoid redundant drawing
-    if (CGSizeEqualToSize(originalImage.size, size))
-    {
-        return originalImage;
-    }
-    
-    //create drawing context
-    UIGraphicsBeginImageContextWithOptions(size, NO, 0.0f);
-    
-    //draw
-    [originalImage drawInRect:CGRectMake(0.0f, 0.0f, size.width, size.height)];
-    
-    //capture resultant image
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    //return image
-    return image;
-}
 
 #pragma mark - KVO update methods
 
@@ -205,11 +165,29 @@ static const CGFloat CalloutYOffset = 10.0f;
     }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
+#pragma mark - Nice snippets
+
+//method for resizing image
+- (UIImage *)image:(UIImage*)originalImage scaledToSize:(CGSize)size
+{
+    //avoid redundant drawing
+    if (CGSizeEqualToSize(originalImage.size, size))
+    {
+        return originalImage;
+    }
+    
+    //create drawing context
+    UIGraphicsBeginImageContextWithOptions(size, NO, 0.0f);
+    
+    //draw
+    [originalImage drawInRect:CGRectMake(0.0f, 0.0f, size.width, size.height)];
+    
+    //capture resultant image
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    //return image
+    return image;
 }
-
-
-
 
 @end
