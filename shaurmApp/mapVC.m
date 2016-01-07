@@ -60,7 +60,7 @@ static const CGFloat CalloutYOffset = 10.0f;
     
     [SHMDownloader getTemplesInBackgroundWithBlock:^void (NSArray * temples_) {
             self.temples = temples_;
-            UIImage *customIcon = [UIImage imageNamed:@"pin2.png"];
+            UIImage *customIcon = [UIImage imageNamed:@"pin3"];
             for (int i = 0; i < self.temples.count; i++)
                 {
                     GMSMarker *mrk = [[GMSMarker alloc] init];
@@ -69,8 +69,7 @@ static const CGFloat CalloutYOffset = 10.0f;
                     mrk.map = mapView_;
                     mrk.title = self.temples[i][@"title"];
                     mrk.snippet = self.temples[i][@"rate"];
-                    mrk.icon = customIcon;
-                    mrk.icon = [self image:mrk.icon scaledToSize:CGSizeMake(20.0f, 40.0f)];
+                    mrk.icon = [self image:customIcon scaledToSize:CGSizeMake(30.0f, 60.0f)];
                     mrk.userData = [self.temples[i] objectId];
                 }
     }];
