@@ -8,7 +8,7 @@
         <!--Map-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController id="8rJ-Kc-sve" userLabel="Map" customClass="mapContainer" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mapContainer" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8rJ-Kc-sve" userLabel="Map" customClass="mapContainer" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
@@ -308,7 +308,7 @@
         <!--New TempleVC-->
         <scene sceneID="gfQ-wy-WH6">
             <objects>
-                <viewController id="nRi-pR-1BF" customClass="newTempleVC" customModule="shaurmApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="newTempleVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nRi-pR-1BF" customClass="newTempleVC" customModule="shaurmApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ePw-Rd-z5O"/>
                         <viewControllerLayoutGuide type="bottom" id="AvM-NG-8Dh"/>
@@ -527,6 +527,6 @@
         <image name="yellow-star.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="suH-da-vH3"/>
+        <segue reference="6CV-hJ-qoj"/>
     </inferredMetricsTieBreakers>
 </document>

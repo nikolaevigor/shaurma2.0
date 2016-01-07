@@ -21,6 +21,7 @@
 		4248AFE41B9E316F006FEE7E /* sliderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4248AFE31B9E316F006FEE7E /* sliderVC.m */; };
 		42664CA11B90C5AE0098CA5A /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 42664CA01B90C5AE0098CA5A /* pin.png */; };
 		42664CA31B9101800098CA5A /* pin2.png in Resources */ = {isa = PBXBuildFile; fileRef = 42664CA21B9101800098CA5A /* pin2.png */; };
+		426675CA1C3F0BAD00135FFD /* SHMDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 426675C91C3F0BAD00135FFD /* SHMDownloader.m */; };
 		426CC3571C0DE8A80002EC4B /* libPPHelpMe.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 426CC3531C0DE8A80002EC4B /* libPPHelpMe.a */; };
 		426CC3581C0DE8A80002EC4B /* libPPRevealSideViewController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 426CC3541C0DE8A80002EC4B /* libPPRevealSideViewController.a */; };
 		426E611A1B9F8307003336D1 /* sliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 426E61181B9F8307003336D1 /* sliderCell.m */; };
@@ -105,6 +106,8 @@
 		4248AFE31B9E316F006FEE7E /* sliderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = sliderVC.m; sourceTree = "<group>"; };
 		42664CA01B90C5AE0098CA5A /* pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin.png; sourceTree = "<group>"; };
 		42664CA21B9101800098CA5A /* pin2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin2.png; sourceTree = "<group>"; };
+		426675C81C3F0BAD00135FFD /* SHMDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHMDownloader.h; sourceTree = "<group>"; };
+		426675C91C3F0BAD00135FFD /* SHMDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHMDownloader.m; sourceTree = "<group>"; };
 		426CC3511C0DE8A80002EC4B /* libBolts.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libBolts.a; path = "Pods/../build/Debug-iphoneos/libBolts.a"; sourceTree = "<group>"; };
 		426CC3521C0DE8A80002EC4B /* libParse.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libParse.a; path = "Pods/../build/Debug-iphoneos/libParse.a"; sourceTree = "<group>"; };
 		426CC3531C0DE8A80002EC4B /* libPPHelpMe.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPPHelpMe.a; path = "Pods/../build/Debug-iphoneos/libPPHelpMe.a"; sourceTree = "<group>"; };
@@ -329,6 +332,15 @@
 			path = shaurmApp;
 			sourceTree = "<group>";
 		};
+		426675CB1C3F0BB500135FFD /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				426675C81C3F0BAD00135FFD /* SHMDownloader.h */,
+				426675C91C3F0BAD00135FFD /* SHMDownloader.m */,
+			);
+			name = Infrastructure;
+			sourceTree = "<group>";
+		};
 		428B40C71B8F96AE00A8EF74 /* Map */ = {
 			isa = PBXGroup;
 			children = (
@@ -341,6 +353,7 @@
 				426E61171B9F8307003336D1 /* sliderCell.h */,
 				426E61181B9F8307003336D1 /* sliderCell.m */,
 				426E61191B9F8307003336D1 /* sliderCell.xib */,
+				426675CB1C3F0BB500135FFD /* Infrastructure */,
 				42077CA81BAB486800880246 /* SMCalloutView */,
 			);
 			name = Map;
@@ -536,6 +549,7 @@
 				428B40D31B8FA6C200A8EF74 /* SMCalloutView.m in Sources */,
 				E72A9CCB1B8F775A0013275F /* reviewVC.swift in Sources */,
 				E72A9CD11B8FC0210013275F /* categoryVC.swift in Sources */,
+				426675CA1C3F0BAD00135FFD /* SHMDownloader.m in Sources */,
 				E76179401B97281700674739 /* commentCell.swift in Sources */,
 				E7245EAF1BA1BA6A00F7D035 /* menuCell.swift in Sources */,
 				422F5A811B8F26AB005421C8 /* mapVC.m in Sources */,

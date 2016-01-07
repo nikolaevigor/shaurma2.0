@@ -8,8 +8,8 @@
 
 #import "mapVC.h"
 #import "shaurmApp-Swift.h"
-#import "PFObject.h"
-#import "PFGeoPoint.h"
+#import "Parse.h"
+#import "SHMDownloader.h"
 
 static const CGFloat CalloutYOffset = 10.0f;
 
@@ -17,6 +17,8 @@ static const CGFloat CalloutYOffset = 10.0f;
 
 @property (strong, nonatomic) SMCalloutView *calloutView;
 @property (strong, nonatomic) UIView *emptyCalloutView;
+
+@property (strong, nonatomic) NSArray *temples;
 
 @end
 
@@ -43,7 +45,6 @@ static const CGFloat CalloutYOffset = 10.0f;
     
     dispatch_async(dispatch_get_main_queue(), ^{
         mapView_.myLocationEnabled = YES;
-        
     });
     
     self.calloutView = [[SMCalloutView alloc] init];
@@ -56,6 +57,23 @@ static const CGFloat CalloutYOffset = 10.0f;
     self.calloutView.rightAccessoryView = button;
     
     self.emptyCalloutView = [[UIView alloc] initWithFrame:CGRectZero];
+    
+    [SHMDownloader getTemplesInBackgroundWithBlock:^void (NSArray * temples_) {
+            self.temples = temples_;
+            UIImage *customIcon = [UIImage imageNamed:@"pin2.png"];
+            for (int i = 0; i < self.temples.count; i++)
+                {
+                    GMSMarker *mrk = [[GMSMarker alloc] init];
+                    PFGeoPoint *gPoint = self.temples[i][@"location"];
+                    mrk.position = CLLocationCoordinate2DMake(gPoint.latitude, gPoint.longitude);
+                    mrk.map = mapView_;
+                    mrk.title = self.temples[i][@"title"];
+                    mrk.snippet = self.temples[i][@"rate"];
+                    mrk.icon = customIcon;
+                    mrk.icon = [self image:mrk.icon scaledToSize:CGSizeMake(20.0f, 40.0f)];
+                    mrk.userData = [self.temples[i] objectId];
+                }
+    }];
     
     [super viewDidLoad];
 };
@@ -141,30 +159,18 @@ static const CGFloat CalloutYOffset = 10.0f;
 - (void)calloutAccessoryButtonTapped:(id)sender {
     if (mapView_.selectedMarker)
     {
-        newTempleVC *wnd = [self.storyboard instantiateViewControllerWithIdentifier:@"templeWindow"];
-        [self prepareForSegue:[UIStoryboardSegue segueWithIdentifier:@"mapToTemple"
-                                                              source:self
-                                                         destination:wnd
-                                                      performHandler:^{wnd.id = (NSString *)mapView_.selectedMarker.userData;}]
-                       sender:sender];
-        [self performSegueWithIdentifier:@"mapToTemple" sender:sender];
+        
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+        
+        newTempleVC *wnd = (newTempleVC *)[mainStoryboard instantiateViewControllerWithIdentifier: @"newTempleVC"];
+        
+        [self presentViewController:wnd animated:YES completion:^{wnd.id = (NSString *)mapView_.selectedMarker.userData;}];
     }
 }
 
 - (void)closePopUpWindow
 {
     [popUpWindow removeFromSuperview];
-}
-
-//overriding prepare segue to make him work with our storyboard id
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.identifier isEqual: @"mapToTemple"])
-    {
-        newTempleVC *wnd = (newTempleVC *)segue.destinationViewController;
-        wnd.id = (NSString *)mapView_.selectedMarker.userData;
-    }
 }
 
 #pragma mark - Nice snippets

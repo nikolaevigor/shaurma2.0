@@ -42,6 +42,8 @@
     [self.container pushViewController:self.map onDirection:PPRevealSideDirectionTop withOffset:80 animated:YES];
 }
 
+
+
 /*/snippet to make navBar invisible in map and visible in templeVC
 - (void)viewWillAppear:(BOOL)animated
 {
