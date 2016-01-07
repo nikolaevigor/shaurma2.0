@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>565ACB2D-6F71-4A06-834B-CAD5198858F6</string>
+	<key>IDESourceControlProjectName</key>
+	<string>shaurmApp</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>71E3297689F63EE52C29FB213D9D6E7C5EB53492</key>
+		<string>https://github.com/nikolaevigor/shaurma.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>shaurmApp.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>71E3297689F63EE52C29FB213D9D6E7C5EB53492</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/nikolaevigor/shaurma.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>71E3297689F63EE52C29FB213D9D6E7C5EB53492</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>71E3297689F63EE52C29FB213D9D6E7C5EB53492</string>
+			<key>IDESourceControlWCCName</key>
+			<string>shaurma</string>
+		</dict>
+	</array>
+</dict>
+</plist>
