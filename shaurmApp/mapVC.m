@@ -81,7 +81,7 @@ static const CGFloat CalloutYOffset = 10.0f;
                     mrk.map = mapView_;
                     mrk.title = self.temples[i][@"title"];
                     mrk.snippet = self.temples[i][@"rate"];
-                    NSInteger g = [[mrk.snippet substringToIndex:1] integerValue];
+                    NSInteger g = [self.temples[i][@"rating"] integerValue];
                     mrk.icon = [self image:customIconsArray[g] scaledToSize:CGSizeMake(30.0f, 60.0f)];
                     mrk.userData = [self.temples[i] objectId];
                 }
