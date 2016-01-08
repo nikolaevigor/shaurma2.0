@@ -55,15 +55,9 @@
 		E745D2831B946E9B00CB5138 /* reviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72A9CCE1B8FB7350013275F /* reviewCell.swift */; };
 		E745D2861B95A5BC00CB5138 /* HCSStarRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = E745D2851B95A5BC00CB5138 /* HCSStarRatingView.m */; };
 		E745D2881B95AC4F00CB5138 /* shawarma.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E745D2871B95AC4F00CB5138 /* shawarma.jpg */; };
-		E75E14E51BF63EA9001C73CB /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E75E14E41BF63EA9001C73CB /* menu@2x.png */; };
 		E75E14E71BFACEE4001C73CB /* addCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75E14E61BFACEE4001C73CB /* addCommentCell.swift */; };
 		E76179401B97281700674739 /* commentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E761793F1B97281700674739 /* commentCell.swift */; };
-		E76333591B9CA221007D2520 /* sstar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E76333581B9CA221007D2520 /* sstar@2x.png */; };
-		E763335B1B9CA231007D2520 /* sstar-filled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E763335A1B9CA231007D2520 /* sstar-filled@2x.png */; };
-		E763335D1B9CA44B007D2520 /* yellow-star-filled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E763335C1B9CA44B007D2520 /* yellow-star-filled@2x.png */; };
-		E763335F1B9CA46B007D2520 /* yellow-star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E763335E1B9CA46B007D2520 /* yellow-star@2x.png */; };
 		E76333631B9CC442007D2520 /* ShawarmaSpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76333621B9CC442007D2520 /* ShawarmaSpinnerView.swift */; };
-		E76333651B9CCA27007D2520 /* wrap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E76333641B9CCA27007D2520 /* wrap@2x.png */; };
 		E77FC3031C3A8619002FD36D /* commentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77FC3021C3A8619002FD36D /* commentsVC.swift */; };
 		E7ECE2AF1BECE97900DA2202 /* featuresCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7ECE2AE1BECE97900DA2202 /* featuresCellTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -148,15 +142,9 @@
 		E745D2841B95A5BC00CB5138 /* HCSStarRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCSStarRatingView.h; sourceTree = "<group>"; };
 		E745D2851B95A5BC00CB5138 /* HCSStarRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCSStarRatingView.m; sourceTree = "<group>"; };
 		E745D2871B95AC4F00CB5138 /* shawarma.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = shawarma.jpg; sourceTree = "<group>"; };
-		E75E14E41BF63EA9001C73CB /* menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu@2x.png"; sourceTree = "<group>"; };
 		E75E14E61BFACEE4001C73CB /* addCommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addCommentCell.swift; sourceTree = "<group>"; };
 		E761793F1B97281700674739 /* commentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = commentCell.swift; sourceTree = "<group>"; };
-		E76333581B9CA221007D2520 /* sstar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sstar@2x.png"; sourceTree = "<group>"; };
-		E763335A1B9CA231007D2520 /* sstar-filled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sstar-filled@2x.png"; sourceTree = "<group>"; };
-		E763335C1B9CA44B007D2520 /* yellow-star-filled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yellow-star-filled@2x.png"; sourceTree = "<group>"; };
-		E763335E1B9CA46B007D2520 /* yellow-star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yellow-star@2x.png"; sourceTree = "<group>"; };
 		E76333621B9CC442007D2520 /* ShawarmaSpinnerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShawarmaSpinnerView.swift; sourceTree = "<group>"; };
-		E76333641B9CCA27007D2520 /* wrap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wrap@2x.png"; sourceTree = "<group>"; };
 		E77FC3021C3A8619002FD36D /* commentsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = commentsVC.swift; sourceTree = "<group>"; };
 		E7ECE2AE1BECE97900DA2202 /* featuresCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = featuresCellTableViewCell.swift; sourceTree = "<group>"; };
 		E91F6AC7BAB03505670FD7A0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -228,7 +216,6 @@
 			children = (
 				422F5A741B8F26AB005421C8 /* shaurmApp */,
 				422F5A911B8F26AB005421C8 /* shaurmAppTests */,
-				42664C931B90BBB20098CA5A /* icons */,
 				422F5A731B8F26AB005421C8 /* Products */,
 				E72A9CC81B8F72120013275F /* Frameworks */,
 				32B2B0FD318B47D46154C7EB /* Pods */,
@@ -310,20 +297,6 @@
 				422F5A9F1B8F297E005421C8 /* addSpotVC.m */,
 			);
 			name = AddSpot;
-			sourceTree = "<group>";
-		};
-		42664C931B90BBB20098CA5A /* icons */ = {
-			isa = PBXGroup;
-			children = (
-				E76333641B9CCA27007D2520 /* wrap@2x.png */,
-				E75E14E41BF63EA9001C73CB /* menu@2x.png */,
-				E763335C1B9CA44B007D2520 /* yellow-star-filled@2x.png */,
-				E763335E1B9CA46B007D2520 /* yellow-star@2x.png */,
-				E76333581B9CA221007D2520 /* sstar@2x.png */,
-				E763335A1B9CA231007D2520 /* sstar-filled@2x.png */,
-			);
-			name = icons;
-			path = shaurmApp;
 			sourceTree = "<group>";
 		};
 		426675CB1C3F0BB500135FFD /* Infrastructure */ = {
@@ -493,13 +466,7 @@
 			files = (
 				422F5A841B8F26AB005421C8 /* Main.storyboard in Resources */,
 				422F5A891B8F26AB005421C8 /* LaunchScreen.xib in Resources */,
-				E763335F1B9CA46B007D2520 /* yellow-star@2x.png in Resources */,
-				E763335D1B9CA44B007D2520 /* yellow-star-filled@2x.png in Resources */,
-				E75E14E51BF63EA9001C73CB /* menu@2x.png in Resources */,
-				E76333651B9CCA27007D2520 /* wrap@2x.png in Resources */,
-				E763335B1B9CA231007D2520 /* sstar-filled@2x.png in Resources */,
 				422F5A861B8F26AB005421C8 /* Images.xcassets in Resources */,
-				E76333591B9CA221007D2520 /* sstar@2x.png in Resources */,
 				428B40C61B8F890000A8EF74 /* GoogleMaps.bundle in Resources */,
 				E745D2881B95AC4F00CB5138 /* shawarma.jpg in Resources */,
 				426E611B1B9F8307003336D1 /* sliderCell.xib in Resources */,

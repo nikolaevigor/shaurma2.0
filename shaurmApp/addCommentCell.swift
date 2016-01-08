@@ -25,7 +25,7 @@ class addCommentCell: UITableViewCell, UITextFieldDelegate {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        print("ADD INIT")
+        //print("ADD INIT")
         
         
         self.backgroundColor = UIColor.whiteColor()
@@ -115,7 +115,7 @@ class addCommentCell: UITableViewCell, UITextFieldDelegate {
     func watchFrameChanges(){
         if self.observationInfo == nil {
             self.addObserver(self, forKeyPath: "frame", options: .New, context: nil)
-            print("WATCH")
+            //print("WATCH")
         }
         
         //checkHeight()

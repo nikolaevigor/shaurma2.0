@@ -30,7 +30,7 @@ class starCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        print("INIT STAR")
+        //print("INIT STAR")
         
         //super.awakeFromNib()
         let width = UIScreen.mainScreen().bounds.width
@@ -82,16 +82,9 @@ class starCell: UITableViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-
-    
-    
-    
-
-    
 
     @IBAction func valueChanged(sender: AnyObject) {
-        print(starView.value)
+        //print(starView.value)
         
         UIView.animateWithDuration(0.5, animations: {
             self.totalLabel.hidden = true
@@ -115,10 +108,6 @@ class starCell: UITableViewCell {
         })
     
     }
-    
-    
-
-    
     
     func expandHeight(){
     

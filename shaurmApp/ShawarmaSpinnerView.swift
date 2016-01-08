@@ -16,7 +16,7 @@ class ShawarmaSpinnerView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         spinnerImageView = UIImageView(frame: frame)
-        spinnerImageView.image = UIImage(named: "wrap.png")
+        spinnerImageView.image = UIImage(named: "spinner")
         
         
         self.addSubview(spinnerImageView)
