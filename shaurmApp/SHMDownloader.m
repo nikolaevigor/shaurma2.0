@@ -13,9 +13,16 @@
 
 + (void)getTemplesInBackgroundWithBlock:(void (^)(NSArray *))completeion
 {
-    PFQuery *query = [PFQuery queryWithClassName:@"Temple"];
+    PFQuery *query = [PFQuery queryWithClassName:@"Temples2"];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-        completeion(objects);
+        if (!error)
+        {
+            completeion(objects);
+        }
+        else
+        {
+            NSLog(@"Error occured in getting temples: %@", error.localizedDescription);
+        }
     }];
 }
 
