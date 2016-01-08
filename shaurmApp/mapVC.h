@@ -13,6 +13,5 @@
 
 @interface mapVC : UIViewController <GMSMapViewDelegate, CLLocationManagerDelegate>
 
-
 @end
 

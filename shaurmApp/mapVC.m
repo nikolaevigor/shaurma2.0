@@ -30,22 +30,21 @@ static const CGFloat CalloutYOffset = 10.0f;
 }
 
 - (void)viewDidLoad {
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:55.75309756657614
-                                                            longitude:37.62137420204017
-                                                                 zoom:0];
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:55.75309756657614 longitude:37.62137420204017 zoom:0];
+    
     mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     mapView_.settings.compassButton = YES;
-    mapView_.padding = UIEdgeInsetsMake(5, 0, 0, 0);//move compass
+    mapView_.padding = UIEdgeInsetsMake(60, 0, 0, 0);//move compass
     mapView_.delegate = self;
-    [mapView_ addObserver:self
-               forKeyPath:@"myLocation"
-                  options:NSKeyValueObservingOptionNew
-                  context:NULL];
+    
+    [mapView_ addObserver:self forKeyPath:@"myLocation" options:NSKeyValueObservingOptionNew context:NULL];
+    
     self.view = mapView_;
     
     dispatch_async(dispatch_get_main_queue(), ^{
         mapView_.myLocationEnabled = YES;
     });
+    
     
     self.calloutView = [[SMCalloutView alloc] init];
     self.calloutView.hidden = YES;
@@ -92,10 +91,7 @@ static const CGFloat CalloutYOffset = 10.0f;
 
 #pragma mark - KVO update methods
 
-- (void)observeValueForKeyPath:(NSString *)keyPath
-                      ofObject:(id)object
-                        change:(NSDictionary *)change
-                       context:(void *)context {
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if (!firstLocationUpdate_) {
         // If the first location update has not yet been recieved, then jump to that
         // location.
@@ -107,9 +103,7 @@ static const CGFloat CalloutYOffset = 10.0f;
 }
 
 - (void)dealloc {
-    [mapView_ removeObserver:self
-                  forKeyPath:@"myLocation"
-                     context:NULL];
+    [mapView_ removeObserver:self forKeyPath:@"myLocation" context:NULL];
 }
 
 #pragma mark - Callout window methods
@@ -120,17 +114,13 @@ static const CGFloat CalloutYOffset = 10.0f;
     CGPoint point = [mapView.projection pointForCoordinate:anchor];
     
     self.calloutView.title = marker.title;
-    
     self.calloutView.subtitle = marker.snippet;
-    
     self.calloutView.calloutOffset = CGPointMake(0, -CalloutYOffset);
-    
     self.calloutView.hidden = NO;
     
     CGRect calloutRect = CGRectZero;
     calloutRect.origin = point;
     calloutRect.size = CGSizeZero;
-    
     
     [self.calloutView presentCalloutFromRect:calloutRect
                                       inView:mapView
