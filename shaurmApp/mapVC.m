@@ -20,6 +20,8 @@ static const CGFloat CalloutYOffset = 10.0f;
 
 @property (strong, nonatomic) NSArray *temples;
 
+//@property (nonatomic, retain) CLLocationManager *locationManager;
+
 @end
 
 @implementation mapVC
@@ -30,22 +32,23 @@ static const CGFloat CalloutYOffset = 10.0f;
 }
 
 - (void)viewDidLoad {
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:55.75309756657614
-                                                            longitude:37.62137420204017
-                                                                 zoom:0];
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:55.75309756657614 longitude:37.62137420204017 zoom:0];
+    
     mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     mapView_.settings.compassButton = YES;
-    mapView_.padding = UIEdgeInsetsMake(5, 0, 0, 0);//move compass
+    mapView_.settings.myLocationButton = YES;
+    mapView_.myLocationEnabled = YES;
+    mapView_.padding = UIEdgeInsetsMake(60.0, 0.0, 90.0, 0.0); //first: impacts on compass; second: impacts on location button
     mapView_.delegate = self;
-    [mapView_ addObserver:self
-               forKeyPath:@"myLocation"
-                  options:NSKeyValueObservingOptionNew
-                  context:NULL];
+    
+    [mapView_ addObserver:self forKeyPath:@"myLocation" options:NSKeyValueObservingOptionNew context: NULL];
+    
     self.view = mapView_;
     
     dispatch_async(dispatch_get_main_queue(), ^{
         mapView_.myLocationEnabled = YES;
     });
+    
     
     self.calloutView = [[SMCalloutView alloc] init];
     self.calloutView.hidden = YES;
@@ -75,27 +78,37 @@ static const CGFloat CalloutYOffset = 10.0f;
                                           ];
             for (int i = 0; i < self.temples.count; i++)
                 {
-                    GMSMarker *mrk = [[GMSMarker alloc] init];
-                    PFGeoPoint *gPoint = self.temples[i][@"location"];
-                    mrk.position = CLLocationCoordinate2DMake(gPoint.latitude, gPoint.longitude);
-                    mrk.map = mapView_;
-                    mrk.title = self.temples[i][@"title"];
-                    mrk.snippet = self.temples[i][@"rate"];
-                    NSInteger g = [self.temples[i][@"rating"] integerValue];
-                    mrk.icon = [self image:customIconsArray[g] scaledToSize:CGSizeMake(30.0f, 60.0f)];
-                    mrk.userData = [self.temples[i] objectId];
+                    GMSMarker *mark = [[GMSMarker alloc] init];
+                    PFGeoPoint *geoPoint = self.temples[i][@"location"];
+                    NSInteger ratingNumber = [self.temples[i][@"ratingNumber"] integerValue];
+                    
+                    mark.position = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
+                    mark.map = mapView_;
+                    mark.title = self.temples[i][@"title"];
+                    mark.snippet = self.temples[i][@"ratingString"];
+                    mark.icon = [self image:customIconsArray[ratingNumber] scaledToSize:CGSizeMake(30.0f, 60.0f)];
+                    mark.userData = [self.temples[i] objectId];
                 }
     }];
     
     [super viewDidLoad];
 };
 
+//- (void)showCurrentLocation {
+//    mapView_.myLocationEnabled = YES;
+//    [self.locationManager startUpdatingLocation];
+//}
+//
+//- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+//    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:newLocation.coordinate.latitude
+//                                                            longitude:newLocation.coordinate.longitude
+//                                                                 zoom:17.0];
+//    [mapView_ animateToCameraPosition:camera];
+//}
+
 #pragma mark - KVO update methods
 
-- (void)observeValueForKeyPath:(NSString *)keyPath
-                      ofObject:(id)object
-                        change:(NSDictionary *)change
-                       context:(void *)context {
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if (!firstLocationUpdate_) {
         // If the first location update has not yet been recieved, then jump to that
         // location.
@@ -107,9 +120,7 @@ static const CGFloat CalloutYOffset = 10.0f;
 }
 
 - (void)dealloc {
-    [mapView_ removeObserver:self
-                  forKeyPath:@"myLocation"
-                     context:NULL];
+    [mapView_ removeObserver:self forKeyPath:@"myLocation" context:NULL];
 }
 
 #pragma mark - Callout window methods
@@ -120,17 +131,13 @@ static const CGFloat CalloutYOffset = 10.0f;
     CGPoint point = [mapView.projection pointForCoordinate:anchor];
     
     self.calloutView.title = marker.title;
-    
     self.calloutView.subtitle = marker.snippet;
-    
     self.calloutView.calloutOffset = CGPointMake(0, -CalloutYOffset);
-    
     self.calloutView.hidden = NO;
     
     CGRect calloutRect = CGRectZero;
     calloutRect.origin = point;
     calloutRect.size = CGSizeZero;
-    
     
     [self.calloutView presentCalloutFromRect:calloutRect
                                       inView:mapView

@@ -253,7 +253,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ky-es-0xW">
-                                                    <rect key="frame" x="140" y="19" width="135" height="82"/>
+                                                    <rect key="frame" x="140" y="19" width="227" height="82"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -261,7 +261,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottomMargin" secondItem="1Ky-es-0xW" secondAttribute="bottom" constant="10" id="0rP-mN-RyM"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="1Ky-es-0xW" secondAttribute="trailing" constant="92" id="6cI-Sf-axc"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="1Ky-es-0xW" secondAttribute="trailing" id="6cI-Sf-axc"/>
                                                 <constraint firstItem="1Ky-es-0xW" firstAttribute="top" secondItem="fhJ-mX-kNz" secondAttribute="topMargin" constant="11" id="Cp9-cW-nls"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="YRZ-2W-71M" secondAttribute="bottom" constant="1" id="H0A-v6-flm"/>
                                                 <constraint firstAttribute="leadingMargin" secondItem="YRZ-2W-71M" secondAttribute="leading" id="gAk-vu-U8V"/>
@@ -527,6 +527,6 @@
         <image name="yellow-star-filled" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6CV-hJ-qoj"/>
+        <segue reference="suH-da-vH3"/>
     </inferredMetricsTieBreakers>
 </document>

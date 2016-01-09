@@ -26,7 +26,7 @@
     
     [self.container setOption:PPRevealSideOptionsiOS7StatusBarMoving];
     [self.container pushViewController:self.map onDirection:PPRevealSideDirectionTop withOffset:80 animated:NO];
-    //container.options = PPRevealSideOptionsShowShadows << 1;
+    //self.container.options = PPRevealSideOptionsShowShadows << 1;
     
     UISwipeGestureRecognizer *swipeDown = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(sliderSwiped:)];
     swipeDown.direction = UISwipeGestureRecognizerDirectionDown;
