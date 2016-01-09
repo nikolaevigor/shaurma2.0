@@ -164,7 +164,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         
 
         
-        PFQuery(className: "Temple").getObjectInBackgroundWithId(id) {
+        PFQuery(className: "Temples2").getObjectInBackgroundWithId(id) {
             (object: AnyObject?, error: NSError?) -> Void in
             
             if (object != nil) {
@@ -173,7 +173,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 self.templeTitleLabel.sizeToFit()
                 self.subwayLabel.sizeToFit()
                 
-                if let obj = object!.valueForKey("picture") {
+                if let obj = object!.valueForKey("image") {
                     
                     obj.getDataInBackgroundWithBlock {
                     (imageData:NSData?, error: NSError?) -> Void in
@@ -300,8 +300,6 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             let cccell:commentCell = tableView.dequeueReusableCellWithIdentifier("commentCell") as! commentCell
             cccell.sizeToFit()
             
-            //print("COMMENTS")
-            //print(self.resultReviewArray.count)
             
             if resultReviewArray.count != 0 {
                 if(indexPath.row - 3 < self.resultReviewArray.count){
@@ -312,15 +310,11 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 
                 let commentDateStr = dateForm.stringFromDate(commentDate)
                 
-                //print("COMMENTS")
-                //print(self.resultReviewArray.count)
                 
                 
                 cccell.dateLabel.text = commentDateStr
                 cccell.commentTextLabel.text = self.resultReviewArray[indexPath.row - 3].valueForKey("comment") as? String
                     
-                //print("COMTEXT")
-                //print(cccell.commentTextLabel.text)
                 cccell.userNameLabel.text = self.resultReviewArray[indexPath.row - 3].valueForKey("userName") as? String
                 
                 cccell.commentTextLabel.sizeToFit()
@@ -430,7 +424,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         review["userName"] = "Петя"
         
         do{
-        review["temple"] = try PFQuery.getObjectOfClass("Temple", objectId: self.id)       // FIX
+        review["temple"] = try PFQuery.getObjectOfClass("Temples2", objectId: self.id)       // FIX
         
         } catch let error as NSError {
         print("Error: \(error.localizedDescription)")

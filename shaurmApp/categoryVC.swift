@@ -77,7 +77,10 @@ class categoryVC: UIViewController, UIScrollViewDelegate {
                 //self.catTitleLabel.center = self.categoryImage.center
                 //self.catTitleLabel.center.x = width/2
                 
-                PFQuery(className: "Temple").whereKey("cat", equalTo: object).findObjectsInBackgroundWithBlock{
+                
+                
+                
+                PFQuery(className: "Temples2").whereKey("category", equalTo: object).findObjectsInBackgroundWithBlock{
                     (objects: [PFObject]?, error: NSError?) -> Void in
                     
                     if let objects = objects {
@@ -85,6 +88,7 @@ class categoryVC: UIViewController, UIScrollViewDelegate {
                         for o in objects {
                             self.templeTitlesArray.append(o.valueForKey("title") as! String)
                         }
+                        
                         self.templesArray = objects
                         self.tableView.reloadData()
                         spinner.hidden = true
@@ -126,7 +130,7 @@ class categoryVC: UIViewController, UIScrollViewDelegate {
         if templesArray.count != 0 {
             
     
-                if let obj = self.templesArray[indexPath.row].valueForKey("picture") {
+                if let obj = self.templesArray[indexPath.row].valueForKey("image") {
                     
                 obj.getDataInBackgroundWithBlock {
                 (imageData:NSData?, error: NSError?) -> Void in
@@ -135,13 +139,11 @@ class categoryVC: UIViewController, UIScrollViewDelegate {
             
                 if error == nil {
                     let image = UIImage(data: imageData!)
-                    print(imageData == nil)
                     cell.templeImage.image = image
                     cell.templeImage.contentMode = .ScaleAspectFill
                 }
                     }}
             
-                    
             
             cell.templeTitleLabel.text = self.templeTitlesArray[indexPath.row]
             cell.templeId = (templesArray[indexPath.row] as! PFObject).objectId!

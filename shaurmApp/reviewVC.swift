@@ -34,6 +34,7 @@ class reviewVC: UIViewController {
         
         resultsTable.alpha = 0
         self.automaticallyAdjustsScrollViewInsets = false;
+        
 
         
         let spinner = ShawarmaSpinnerView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
@@ -138,7 +139,6 @@ class reviewVC: UIViewController {
         
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! reviewCell
         
-//        resultCellCatTitle = cell.titleLbl.text!
         resultCellCatTitle = cell.categoryTitleLabel.text!
         resultCellCatImage = cell.categoryImage.image!
         resultCellCatId = self.resultsCategoryIdArray[indexPath.row]
