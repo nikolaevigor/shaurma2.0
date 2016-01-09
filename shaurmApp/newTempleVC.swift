@@ -173,13 +173,17 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 self.templeTitleLabel.sizeToFit()
                 self.subwayLabel.sizeToFit()
                 
-                object!.valueForKey("picture")!.getDataInBackgroundWithBlock {
+                if let obj = object!.valueForKey("picture") {
+                    
+                    obj.getDataInBackgroundWithBlock {
                     (imageData:NSData?, error: NSError?) -> Void in
                     
                     if error == nil {
                         let image = UIImage(data: imageData!)
                         self.templePictureView.image = image
-                    }}
+                        }
+                    }
+                }
             }
             
             do{

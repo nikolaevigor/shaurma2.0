@@ -124,21 +124,29 @@ class categoryVC: UIViewController, UIScrollViewDelegate {
         cell.preservesSuperviewLayoutMargins = false
         
         if templesArray.count != 0 {
-        self.templesArray[indexPath.row].valueForKey("picture")!.getDataInBackgroundWithBlock {
+            
+    
+                if let obj = self.templesArray[indexPath.row].valueForKey("picture") {
+                    
+                obj.getDataInBackgroundWithBlock {
                 (imageData:NSData?, error: NSError?) -> Void in
-                
+            
+            
+            
                 if error == nil {
                     let image = UIImage(data: imageData!)
+                    print(imageData == nil)
                     cell.templeImage.image = image
                     cell.templeImage.contentMode = .ScaleAspectFill
-            }}
-
+                }
+                    }}
             
+                    
             
             cell.templeTitleLabel.text = self.templeTitlesArray[indexPath.row]
             cell.templeId = (templesArray[indexPath.row] as! PFObject).objectId!
             
-        }
+        } 
         return cell
     }
     
