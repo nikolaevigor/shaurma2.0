@@ -57,7 +57,7 @@
     PFObject *temple = self.nearestTemples[indexPath.row];
     [(sliderCell *)cell templeTitle].text = temple[@"title"];
     [(sliderCell *)cell price].text = [temple[@"price"] stringValue];
-    [(sliderCell *)cell ratingLabel].text = temple[@"ratingString"];
+    [(sliderCell *)cell ratingLabel].text = [temple[@"ratingNumber"] stringValue];
     [(sliderCell *)cell metroLabel].text = temple[@"subway"];
     //[(sliderCell *)cell templePic]
 }
