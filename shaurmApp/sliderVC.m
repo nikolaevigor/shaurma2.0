@@ -23,8 +23,10 @@
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     self.view.backgroundColor = [UIColor whiteColor];
     
-    UILabel *welcomeLabel = [[UILabel alloc] initWithFrame:CGRectMake(screenRect.size.width/2 - 60, 0, 150, 50)];
+    UILabel *welcomeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenRect.size.width, 50)];
     welcomeLabel.text = @"Рядом со мной";
+    welcomeLabel.textAlignment = NSTextAlignmentCenter;
+    //welcomeLabel.backgroundColor =
     [self.view addSubview:welcomeLabel];
     
     self.table = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, screenRect.size.width, 500)];
@@ -56,6 +58,7 @@
     [(sliderCell *)cell templeTitle].text = temple[@"title"];
     [(sliderCell *)cell price].text = [temple[@"price"] stringValue];
     [(sliderCell *)cell ratingLabel].text = temple[@"ratingString"];
+    [(sliderCell *)cell metroLabel].text = temple[@"subway"];
     //[(sliderCell *)cell templePic]
 }
 

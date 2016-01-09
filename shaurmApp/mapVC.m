@@ -106,18 +106,6 @@ static const CGFloat CalloutYOffset = 10.0f;
     [super viewDidLoad];
 };
 
-//- (void)showCurrentLocation {
-//    mapView_.myLocationEnabled = YES;
-//    [self.locationManager startUpdatingLocation];
-//}
-//
-//- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-//    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:newLocation.coordinate.latitude
-//                                                            longitude:newLocation.coordinate.longitude
-//                                                                 zoom:17.0];
-//    [mapView_ animateToCameraPosition:camera];
-//}
-
 #pragma mark - KVO update methods
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
@@ -233,7 +221,7 @@ static const CGFloat CalloutYOffset = 10.0f;
 
 - (NSArray *)getNearest
 {
-    return [SHMManager getNearestTemplesFor:mapView_.myLocation.coordinate from:self.temples numberOfPointsToFind:6];
+    return [SHMManager getNearestTemplesFor:mapView_.myLocation.coordinate from:self.temples numberOfPointsToFind:7];
 }
 
 @end

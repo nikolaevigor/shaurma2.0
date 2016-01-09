@@ -14,5 +14,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *templeTitle;
 @property (weak, nonatomic) IBOutlet UILabel *price;
 @property (weak, nonatomic) IBOutlet UILabel *ratingLabel;
+@property (weak, nonatomic) IBOutlet UILabel *metroLabel;
 
 @end
