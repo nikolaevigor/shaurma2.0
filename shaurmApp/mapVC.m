@@ -233,7 +233,7 @@ static const CGFloat CalloutYOffset = 10.0f;
 
 - (NSArray *)getNearest
 {
-    return [SHMManager getNearestTemplesFor:mapView_.myLocation.coordinate from:self.temples numberOfPointsToFind:3];
+    return [SHMManager getNearestTemplesFor:mapView_.myLocation.coordinate from:self.temples numberOfPointsToFind:6];
 }
 
 @end

@@ -9,5 +9,6 @@
 @protocol containerDelegate
 
 - (void)templesIsDownloaded;
+- (void)refreshSlider;
 
 @end

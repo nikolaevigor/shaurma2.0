@@ -47,12 +47,18 @@
 
 - (void)sliderSwiped:(UISwipeGestureRecognizer *)swipe
 {
+    [self.delegateSlider setTableViewWith:[self.delegateMap getNearest]]; //refresh table on swipe
     [self.container pushViewController:self.map onDirection:PPRevealSideDirectionTop withOffset:80 animated:YES];
 }
 
 #pragma mark - containerDelegate methods
 
 - (void)templesIsDownloaded
+{
+    [self.delegateSlider setTableViewWith:[self.delegateMap getNearest]];
+}
+
+- (void)refreshSlider
 {
     [self.delegateSlider setTableViewWith:[self.delegateMap getNearest]];
 }
