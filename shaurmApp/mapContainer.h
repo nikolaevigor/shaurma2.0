@@ -10,7 +10,8 @@
 #import "PPRevealSideViewController.h"
 #import "mapVC.h"
 #import "sliderVC.h"
+#import "containerDelegate.h"
 
-@interface mapContainer : UIViewController
+@interface mapContainer : UIViewController <containerDelegate>
 
 @end

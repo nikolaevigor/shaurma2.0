@@ -12,4 +12,7 @@
 
 @interface SHMManager : NSObject
 
++ (PFObject *)getNearestTempleFor:(CLLocationCoordinate2D)point from:(NSArray *)temples;
++ (NSArray *)getNearestTemplesFor:(CLLocationCoordinate2D)point from:(NSArray *)temples numberOfPointsToFind:(NSInteger)number;
+
 @end

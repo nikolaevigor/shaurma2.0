@@ -95,6 +95,9 @@
 		42375B6E1C10D6D9003CBB1F /* libBolts.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libBolts.a; path = "Pods/../build/Debug-iphoneos/libBolts.a"; sourceTree = "<group>"; };
 		424097AE1C4149C4005F39DB /* SHMManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHMManager.h; sourceTree = "<group>"; };
 		424097AF1C4149C4005F39DB /* SHMManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHMManager.m; sourceTree = "<group>"; };
+		424097B11C415160005F39DB /* mapDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mapDelegate.h; sourceTree = "<group>"; };
+		424097B21C415169005F39DB /* sliderDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = sliderDelegate.h; sourceTree = "<group>"; };
+		424097B31C4152A6005F39DB /* containerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = containerDelegate.h; sourceTree = "<group>"; };
 		4248AFDF1B9E30F2006FEE7E /* mapContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mapContainer.h; sourceTree = "<group>"; };
 		4248AFE01B9E30F2006FEE7E /* mapContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mapContainer.m; sourceTree = "<group>"; };
 		4248AFE21B9E316F006FEE7E /* sliderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sliderVC.h; sourceTree = "<group>"; };
@@ -309,6 +312,9 @@
 				426675C91C3F0BAD00135FFD /* SHMDownloader.m */,
 				424097AE1C4149C4005F39DB /* SHMManager.h */,
 				424097AF1C4149C4005F39DB /* SHMManager.m */,
+				424097B11C415160005F39DB /* mapDelegate.h */,
+				424097B21C415169005F39DB /* sliderDelegate.h */,
+				424097B31C4152A6005F39DB /* containerDelegate.h */,
 			);
 			name = Infrastructure;
 			sourceTree = "<group>";

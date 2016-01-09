@@ -7,12 +7,17 @@
 //
 
 #import "mapContainer.h"
+#import "mapDelegate.h"
+#import "sliderDelegate.h"
 
 @interface mapContainer ()
 
 @property (strong, nonatomic) PPRevealSideViewController *container;
 @property (strong, nonatomic) mapVC *map;
 @property (strong, nonatomic) sliderVC *slider;
+
+@property (weak, nonatomic) id <mapDelegate> delegateMap;
+@property (weak, nonatomic) id <sliderDelegate> delegateSlider;
 
 @end
 
@@ -23,6 +28,9 @@
     self.map = [[mapVC alloc] init];
     self.slider = [[sliderVC alloc] init];
     self.container = [[PPRevealSideViewController alloc] initWithRootViewController:self.slider];
+    
+    self.delegateMap = self.map;
+    self.delegateSlider = self.slider;
     
     [self.container setOption:PPRevealSideOptionsiOS7StatusBarMoving];
     [self.container pushViewController:self.map onDirection:PPRevealSideDirectionTop withOffset:80 animated:NO];
@@ -40,6 +48,13 @@
 - (void)sliderSwiped:(UISwipeGestureRecognizer *)swipe
 {
     [self.container pushViewController:self.map onDirection:PPRevealSideDirectionTop withOffset:80 animated:YES];
+}
+
+#pragma mark - containerDelegate methods
+
+- (void)templesIsDownloaded
+{
+    [self.delegateSlider setTableViewWith:[self.delegateMap getNearest]];
 }
 
 

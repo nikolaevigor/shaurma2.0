@@ -10,7 +10,7 @@
 
 @implementation SHMManager
 
-- (PFObject *)getNearestTempleFor:(CLLocationCoordinate2D)point from:(NSArray *)temples
++ (PFObject *)getNearestTempleFor:(CLLocationCoordinate2D)point from:(NSArray *)temples
 {
     PFObject *nearestObject = temples[0];
     PFGeoPoint *nearestGeoPoint = nearestObject[@"location"];
@@ -28,7 +28,21 @@
     return nearestObject;
 }
 
-- (NSInteger)metersfromPlace:(CLLocationCoordinate2D)from andToPlace:(CLLocationCoordinate2D)to
++ (NSArray *)getNearestTemplesFor:(CLLocationCoordinate2D)point from:(NSArray *)temples numberOfPointsToFind:(NSInteger)number
+{
+    NSMutableArray *outputArray = [[NSMutableArray alloc] init];
+    NSMutableArray *temples_ = [temples mutableCopy];
+    
+    for (int i = 0; i < number; i++) {
+        PFObject *nearestObject = [self getNearestTempleFor:point from:temples_];
+        [outputArray addObject:nearestObject];
+        [temples_ removeObject:nearestObject];
+    }
+    
+    return (NSArray *)outputArray;
+}
+
++ (NSInteger)metersfromPlace:(CLLocationCoordinate2D)from andToPlace:(CLLocationCoordinate2D)to
 {
     CLLocation *userloc = [[CLLocation alloc]initWithLatitude:from.latitude longitude:from.longitude];
     CLLocation *dest = [[CLLocation alloc]initWithLatitude:to.latitude longitude:to.longitude];

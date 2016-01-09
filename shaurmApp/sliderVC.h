@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface sliderVC : UIViewController <UITableViewDataSource, UITableViewDelegate>
+#import "sliderDelegate.h"
+
+@interface sliderVC : UIViewController <UITableViewDataSource, UITableViewDelegate, sliderDelegate>
 
 @end

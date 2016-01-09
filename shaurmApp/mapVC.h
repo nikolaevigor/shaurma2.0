@@ -10,8 +10,9 @@
 #import "SMCalloutView.h"
 @import GoogleMaps;
 @import CoreLocation;
+#import "mapDelegate.h"
 
-@interface mapVC : UIViewController <GMSMapViewDelegate, CLLocationManagerDelegate>
+@interface mapVC : UIViewController <GMSMapViewDelegate, CLLocationManagerDelegate, mapDelegate>
 
 @end
 

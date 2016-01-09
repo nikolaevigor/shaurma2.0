@@ -8,8 +8,12 @@
 
 #import "sliderVC.h"
 #import "sliderCell.h"
+#import "Parse.h"
 
 @interface sliderVC ()
+
+@property (strong, nonatomic) UITableView *table;
+@property (strong, nonatomic) NSArray *nearestTemples;
 
 @end
 
@@ -23,12 +27,12 @@
     welcomeLabel.text = @"Рядом со мной";
     [self.view addSubview:welcomeLabel];
     
-    UITableView *table = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, screenRect.size.width, 500)];
-    table.delegate = self;
-    table.dataSource = self;
-    table.scrollEnabled = NO;
-    [table registerNib:[UINib nibWithNibName:@"sliderCell" bundle:nil] forCellReuseIdentifier:@"cellID"];
-    [self.view addSubview:table];
+    self.table = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, screenRect.size.width, 500)];
+    self.table.delegate = self;
+    self.table.dataSource = self;
+    self.table.scrollEnabled = NO;
+    [self.table registerNib:[UINib nibWithNibName:@"sliderCell" bundle:nil] forCellReuseIdentifier:@"cellID"];
+    [self.view addSubview:self.table];
     
     [super viewDidLoad];
 }
@@ -48,9 +52,10 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [(sliderCell *)cell templeTitle].text = @"Title Test";
-    [(sliderCell *)cell price].text = @"Price Test";
-    [(sliderCell *)cell ratingLabel].text = @"3";
+    PFObject *temple = self.nearestTemples[indexPath.row];
+    [(sliderCell *)cell templeTitle].text = temple[@"title"];
+    [(sliderCell *)cell price].text = [temple[@"price"] stringValue];
+    [(sliderCell *)cell ratingLabel].text = temple[@"ratingString"];
     //[(sliderCell *)cell templePic]
 }
 
@@ -61,12 +66,20 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return self.nearestTemples.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 80;
+}
+
+#pragma mark - sliderDelegate methods
+
+- (void)setTableViewWith:(NSArray *)temples
+{
+    self.nearestTemples = temples;
+    [self.table reloadData];
 }
 
 @end

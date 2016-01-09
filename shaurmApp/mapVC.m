@@ -10,6 +10,9 @@
 #import "shaurmApp-Swift.h"
 #import "Parse.h"
 #import "SHMDownloader.h"
+#import "containerDelegate.h"
+#import "mapContainer.h"
+#import "SHMManager.h"
 
 static const CGFloat CalloutYOffset = 10.0f;
 
@@ -20,7 +23,7 @@ static const CGFloat CalloutYOffset = 10.0f;
 
 @property (strong, nonatomic) NSArray *temples;
 
-//@property (nonatomic, retain) CLLocationManager *locationManager;
+@property (weak, nonatomic) id <containerDelegate> containerDelegate;
 
 @end
 
@@ -32,6 +35,11 @@ static const CGFloat CalloutYOffset = 10.0f;
 }
 
 - (void)viewDidLoad {
+    UITabBarController *mainTabBar = (UITabBarController *)[[[UIApplication sharedApplication] keyWindow] rootViewController];
+    UINavigationController *localNavController = (UINavigationController *)[mainTabBar viewControllers][1];
+    mapContainer *container = [localNavController viewControllers][0];
+    self.containerDelegate = container;
+    
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:55.75309756657614 longitude:37.62137420204017 zoom:0];
     
     mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
@@ -61,34 +69,38 @@ static const CGFloat CalloutYOffset = 10.0f;
     
     self.emptyCalloutView = [[UIView alloc] initWithFrame:CGRectZero];
     
+    NSArray *customIconsArray = @[
+                                  [UIImage imageNamed:@"pin0"],
+                                  [UIImage imageNamed:@"pin1"],
+                                  [UIImage imageNamed:@"pin2"],
+                                  [UIImage imageNamed:@"pin3"],
+                                  [UIImage imageNamed:@"pin4"],
+                                  [UIImage imageNamed:@"pin5"],
+                                  [UIImage imageNamed:@"pin6"],
+                                  [UIImage imageNamed:@"pin7"],
+                                  [UIImage imageNamed:@"pin8"],
+                                  [UIImage imageNamed:@"pin9"],
+                                  [UIImage imageNamed:@"pin10"],
+                                  ];
+    
     [SHMDownloader getTemplesInBackgroundWithBlock:^void (NSArray * temples_) {
-            self.temples = temples_;
-            NSArray *customIconsArray = @[
-                                          [UIImage imageNamed:@"pin0"],
-                                          [UIImage imageNamed:@"pin1"],
-                                          [UIImage imageNamed:@"pin2"],
-                                          [UIImage imageNamed:@"pin3"],
-                                          [UIImage imageNamed:@"pin4"],
-                                          [UIImage imageNamed:@"pin5"],
-                                          [UIImage imageNamed:@"pin6"],
-                                          [UIImage imageNamed:@"pin7"],
-                                          [UIImage imageNamed:@"pin8"],
-                                          [UIImage imageNamed:@"pin9"],
-                                          [UIImage imageNamed:@"pin10"],
-                                          ];
-            for (int i = 0; i < self.temples.count; i++)
-                {
-                    GMSMarker *mark = [[GMSMarker alloc] init];
-                    PFGeoPoint *geoPoint = self.temples[i][@"location"];
-                    NSInteger ratingNumber = [self.temples[i][@"ratingNumber"] integerValue];
-                    
-                    mark.position = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
-                    mark.map = mapView_;
-                    mark.title = self.temples[i][@"title"];
-                    mark.snippet = self.temples[i][@"ratingString"];
-                    mark.icon = [self image:customIconsArray[ratingNumber] scaledToSize:CGSizeMake(30.0f, 60.0f)];
-                    mark.userData = [self.temples[i] objectId];
-                }
+        self.temples = temples_;
+        
+        [self.containerDelegate templesIsDownloaded];
+        
+        for (int i = 0; i < self.temples.count; i++)
+        {
+            GMSMarker *mark = [[GMSMarker alloc] init];
+            PFGeoPoint *geoPoint = self.temples[i][@"location"];
+            NSInteger ratingNumber = [self.temples[i][@"ratingNumber"] integerValue];
+            
+            mark.position = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
+            mark.map = mapView_;
+            mark.title = self.temples[i][@"title"];
+            mark.snippet = self.temples[i][@"ratingString"];
+            mark.icon = [self image:customIconsArray[ratingNumber] scaledToSize:CGSizeMake(30.0f, 60.0f)];
+            mark.userData = [self.temples[i] objectId];
+        }
     }];
     
     [super viewDidLoad];
@@ -215,6 +227,13 @@ static const CGFloat CalloutYOffset = 10.0f;
     
     //return image
     return image;
+}
+
+#pragma mark - mapDelegate methods
+
+- (NSArray *)getNearest
+{
+    return [SHMManager getNearestTemplesFor:mapView_.myLocation.coordinate from:self.temples numberOfPointsToFind:3];
 }
 
 @end
