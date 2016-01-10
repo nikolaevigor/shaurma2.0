@@ -182,15 +182,26 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                         }
                     }
                 }
-            }
             
-            do{
-                let comments = try PFQuery(className: "Review").whereKey("temple", equalTo: object!).findObjects()
-                self.resultReviewArray = comments
-            } catch let error as NSError {
-                print("Error: \(error.localizedDescription)")
-                abort()
+            
+            PFQuery(className: "Review").whereKey("temple", equalTo: object!).findObjectsInBackgroundWithBlock({ ( objects:[PFObject]?, error:NSError?) -> Void in
+                if let objects = objects{
+                self.resultReviewArray = objects
+                }
+            })
+
+
             }
+
+            
+            
+//            do{
+//                let comments = try PFQuery(className: "Review").whereKey("temple", equalTo: object!).findObjects()
+//                self.resultReviewArray = comments
+//            } catch let error as NSError {
+//                print("Error: \(error.localizedDescription)")
+//                abort()
+//            }
             
             
             
@@ -421,13 +432,16 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         review["comment"] = text
         review["userName"] = "Петя"
         
-        do{
-        review["temple"] = try PFQuery.getObjectOfClass("Temples2", objectId: self.id)       // FIX
+            PFQuery(className: "Temples2").getObjectInBackgroundWithId(self.id){
+                (object: PFObject?, error: NSError?) -> Void in
+                if let object = object {
+                review["temple"] = object
+                }
+                }
+                
         
-        } catch let error as NSError {
-        print("Error: \(error.localizedDescription)")
-        abort()
-        }
+
+
         
         review.saveInBackgroundWithBlock {
             (success: Bool, error: NSError?) -> Void in
