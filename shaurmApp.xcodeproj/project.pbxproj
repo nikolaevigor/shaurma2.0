@@ -20,6 +20,7 @@
 		424097B01C4149C4005F39DB /* SHMManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 424097AF1C4149C4005F39DB /* SHMManager.m */; };
 		4248AFE11B9E30F2006FEE7E /* mapContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4248AFE01B9E30F2006FEE7E /* mapContainer.m */; };
 		4248AFE41B9E316F006FEE7E /* sliderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4248AFE31B9E316F006FEE7E /* sliderVC.m */; };
+		424DA4A31C41C81800E3597C /* metroJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = 424DA4A21C41C81800E3597C /* metroJSON.json */; };
 		426675CA1C3F0BAD00135FFD /* SHMDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 426675C91C3F0BAD00135FFD /* SHMDownloader.m */; };
 		426CC3571C0DE8A80002EC4B /* libPPHelpMe.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 426CC3531C0DE8A80002EC4B /* libPPHelpMe.a */; };
 		426CC3581C0DE8A80002EC4B /* libPPRevealSideViewController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 426CC3541C0DE8A80002EC4B /* libPPRevealSideViewController.a */; };
@@ -102,6 +103,7 @@
 		4248AFE01B9E30F2006FEE7E /* mapContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mapContainer.m; sourceTree = "<group>"; };
 		4248AFE21B9E316F006FEE7E /* sliderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sliderVC.h; sourceTree = "<group>"; };
 		4248AFE31B9E316F006FEE7E /* sliderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = sliderVC.m; sourceTree = "<group>"; };
+		424DA4A21C41C81800E3597C /* metroJSON.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = metroJSON.json; sourceTree = "<group>"; };
 		426675C81C3F0BAD00135FFD /* SHMDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHMDownloader.h; sourceTree = "<group>"; };
 		426675C91C3F0BAD00135FFD /* SHMDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHMDownloader.m; sourceTree = "<group>"; };
 		426CC3511C0DE8A80002EC4B /* libBolts.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libBolts.a; path = "Pods/../build/Debug-iphoneos/libBolts.a"; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 				422F5A791B8F26AB005421C8 /* AppDelegate.h */,
 				422F5A7A1B8F26AB005421C8 /* AppDelegate.m */,
 				422F5A821B8F26AB005421C8 /* Main.storyboard */,
+				424DA4A21C41C81800E3597C /* metroJSON.json */,
 				422F5A851B8F26AB005421C8 /* Images.xcassets */,
 				422F5A871B8F26AB005421C8 /* LaunchScreen.xib */,
 				E72A9CC91B8F77590013275F /* shaurmApp-Bridging-Header.h */,
@@ -443,7 +446,7 @@
 				TargetAttributes = {
 					422F5A711B8F26AB005421C8 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = 2H654K823K;
+						DevelopmentTeam = KWT862S93C;
 					};
 					422F5A8D1B8F26AB005421C8 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -475,6 +478,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				424DA4A31C41C81800E3597C /* metroJSON.json in Resources */,
 				422F5A841B8F26AB005421C8 /* Main.storyboard in Resources */,
 				422F5A891B8F26AB005421C8 /* LaunchScreen.xib in Resources */,
 				422F5A861B8F26AB005421C8 /* Images.xcassets in Resources */,
