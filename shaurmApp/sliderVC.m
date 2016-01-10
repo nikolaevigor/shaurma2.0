@@ -9,6 +9,7 @@
 #import "sliderVC.h"
 #import "sliderCell.h"
 #import "Parse.h"
+#import "SHMManager.h"
 
 @interface sliderVC ()
 
@@ -26,7 +27,6 @@
     UILabel *welcomeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenRect.size.width, 50)];
     welcomeLabel.text = @"Рядом со мной";
     welcomeLabel.textAlignment = NSTextAlignmentCenter;
-    //welcomeLabel.backgroundColor =
     [self.view addSubview:welcomeLabel];
     
     self.table = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, screenRect.size.width, 500)];
@@ -56,9 +56,10 @@
 {
     PFObject *temple = self.nearestTemples[indexPath.row];
     [(sliderCell *)cell templeTitle].text = temple[@"title"];
-    [(sliderCell *)cell price].text = [temple[@"price"] stringValue];
+    [(sliderCell *)cell price].text = [NSString stringWithFormat:@"%@ ₽", temple[@"price"]];
     [(sliderCell *)cell ratingLabel].text = [temple[@"ratingNumber"] stringValue];
     [(sliderCell *)cell metroLabel].text = temple[@"subway"];
+    [(sliderCell *)cell metroLabel].textColor = [SHMManager colorForStation:temple[@"subway"]];
     //[(sliderCell *)cell templePic]
 }
 

@@ -54,4 +54,41 @@
     return [distance integerValue];
 }
 
++ (UIColor *)colorForStation:(NSString *)station
+{
+    return [self colorFromHexString:[self hexColorOfStation:station]];
+}
+
++ (NSString *)hexColorOfStation:(NSString *)station
+{
+    NSBundle *mainBundle = [NSBundle mainBundle];
+    NSString *path = [mainBundle pathForResource: @"metroJSON" ofType: @"json"];
+    NSData *data = [[NSFileManager defaultManager] contentsAtPath:path];
+    
+    NSArray* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+    for (int i = 0; i < json.count; i++)
+    {
+        NSDictionary *line = json[i];
+        NSString *colorInHex = [line allKeys][0];
+        NSArray *stations = [line allValues][0];
+        for (int i = 0; i < stations.count; i++) {
+            if ([stations[i] isEqual:station]) {
+                return colorInHex;
+            }
+        }
+    }
+    return nil;
+}
+
++ (UIColor *)colorFromHexString:(NSString *)hexString {
+    if (!hexString) {
+        return [UIColor greenColor];
+    }
+    unsigned rgbValue = 0;
+    NSScanner *scanner = [NSScanner scannerWithString:hexString];
+    [scanner setScanLocation:1]; // bypass '#' character
+    [scanner scanHexInt:&rgbValue];
+    return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:1.0];
+}
+
 @end
