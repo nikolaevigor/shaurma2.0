@@ -75,8 +75,6 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
 
         
-        //var height = templePictureView.frame.size.height
-
         
         mainTableView.frame.size = UIScreen.mainScreen().bounds.size
         

@@ -101,6 +101,8 @@ class categoryVC: UIViewController, UIScrollViewDelegate {
             }
         }
         
+        tableView.registerClass(sliderCell.self, forCellReuseIdentifier: "Temple")
+        
         
         headerView = tableView.tableHeaderView
         tableView.tableHeaderView = nil
@@ -121,7 +123,10 @@ class categoryVC: UIViewController, UIScrollViewDelegate {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell:templeCell = tableView.dequeueReusableCellWithIdentifier("Temple") as! templeCell
+        let cell:sliderCell = tableView.dequeueReusableCellWithIdentifier("Temple") as! sliderCell
+        //let cell:templeCell = tableView.dequeueReusableCellWithIdentifier("Temple") as! templeCell
+        
+    
         
         cell.separatorInset = UIEdgeInsetsZero
         cell.layoutMargins = UIEdgeInsetsZero
@@ -139,16 +144,24 @@ class categoryVC: UIViewController, UIScrollViewDelegate {
             
                 if error == nil {
                     let image = UIImage(data: imageData!)
-                    cell.templeImage.image = image
-                    cell.templeImage.contentMode = .ScaleAspectFill
+                    
+                    cell.templePic!.image = image
+                    cell.templePic!.contentMode = .ScaleAspectFill
+                    
+//                    cell.templeImage.image = image
+//                    cell.templeImage.contentMode = .ScaleAspectFill
                 }
                     }}
             
             
-            cell.templeTitleLabel.text = self.templeTitlesArray[indexPath.row]
-            cell.templeId = (templesArray[indexPath.row] as! PFObject).objectId!
+//            cell.templeTitleLabel.text = self.templeTitlesArray[indexPath.row]
+//            cell.templeId = (templesArray[indexPath.row] as! PFObject).objectId!
+            //cell.templeId = (templesArray[indexPath.row] as! PFObject).objectId!
             
-        } 
+            cell.templeTitle?.text = self.templeTitlesArray[indexPath.row]
+            //cell.templeTitle!.text = self.templeTitlesArray[indexPath.row]
+
+        }
         return cell
     }
     
@@ -167,7 +180,10 @@ class categoryVC: UIViewController, UIScrollViewDelegate {
         
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! templeCell
         
-        resultCellId = cell.templeId
+        //resultCellId = cell.templeId
+        resultCellId = (templesArray[indexPath.row] as! PFObject).objectId!
+
+        
         resultCellTitle = cell.templeTitleLabel.text!
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)

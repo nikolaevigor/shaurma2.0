@@ -27,7 +27,6 @@ class reviewCell: UITableViewCell {
         categoryImage.clipsToBounds =  true
         titleLbl.font = UIFont(name: "HelveticaNeue-Bold", size: 21)
         
-        
     }
     
     
