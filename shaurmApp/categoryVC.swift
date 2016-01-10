@@ -26,9 +26,6 @@ class categoryVC: UIViewController, UIScrollViewDelegate {
     var resultCellId = String()
     var resultCellTitle = String()
 
-    //var catTitleLabel: UILabel!
-
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -51,7 +48,6 @@ class categoryVC: UIViewController, UIScrollViewDelegate {
         categoryImage.image = catImage
         categoryImage.contentMode = .ScaleAspectFill
         categoryImage.clipsToBounds =  true
-        //categoryImage.frame.size = CGSize(width: width, height: 220)
         
         // ADDING A TITLE LABEL
         
@@ -74,8 +70,6 @@ class categoryVC: UIViewController, UIScrollViewDelegate {
                 
                 self.catTitleLabel.text = title as? String
                 self.catTitleLabel.sizeToFit()
-                //self.catTitleLabel.center = self.categoryImage.center
-                //self.catTitleLabel.center.x = width/2
                 
                 
                 
@@ -102,7 +96,6 @@ class categoryVC: UIViewController, UIScrollViewDelegate {
         }
         
         tableView.registerNib(UINib.init(nibName: "sliderCell", bundle: nil), forCellReuseIdentifier: "cellID")
-        //tableView.registerClass(sliderCell.self, forCellReuseIdentifier: "Temple")
         
         
         headerView = tableView.tableHeaderView
@@ -116,11 +109,12 @@ class categoryVC: UIViewController, UIScrollViewDelegate {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(templesArray.count)
         return templesArray.count
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 120
+        return 70
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath){
@@ -146,23 +140,20 @@ class categoryVC: UIViewController, UIScrollViewDelegate {
             
             
             if let obj = self.templesArray[indexPath.row].valueForKey("title") {
-                //(cell as! sliderCell).templeTitle?.text = self.templeTitlesArray[indexPath.row]
                 (cell as! sliderCell).templeTitle?.text = obj as? String
             }
             
             if let obj2 = self.templesArray[indexPath.row].valueForKey("subway") {
-                print(obj2)
                 (cell as! sliderCell).metroLabel?.text = obj2 as? String
             }
             
             if let obj3 = self.templesArray[indexPath.row].valueForKey("ratingNumber") {
-                (cell as! sliderCell).ratingLabel?.text = obj3 as? String
+                (cell as! sliderCell).ratingLabel?.text = String(obj3)
+                
             }
             
             if let obj4 = self.templesArray[indexPath.row].valueForKey("price") {
-                (cell as! sliderCell).price?.text = NSString(format: "%@ ₽", [obj4]) as String
-
-                
+                (cell as! sliderCell).price?.text = String(format: "%@ ₽", String(obj4))
             }
         }
 
