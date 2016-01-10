@@ -73,8 +73,9 @@ class categoryVC: UIViewController, UIScrollViewDelegate {
                 
                 
                 
-                
-                PFQuery(className: "Temples2").whereKey("category", equalTo: object).findObjectsInBackgroundWithBlock{
+                let templesQuery = PFQuery(className: "Temples2")
+                templesQuery.limit = 1000
+                templesQuery.whereKey("category", equalTo: object).findObjectsInBackgroundWithBlock{
                     (objects: [PFObject]?, error: NSError?) -> Void in
                     
                     if let objects = objects {
