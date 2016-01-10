@@ -14,6 +14,7 @@
 + (void)getTemplesInBackgroundWithBlock:(void (^)(NSArray *))completeion
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Temples2"];
+    query.limit = 1000;
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if (!error)
         {
