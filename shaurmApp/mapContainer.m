@@ -16,6 +16,7 @@
 @property (strong, nonatomic) PPRevealSideViewController *container;
 @property (strong, nonatomic) mapVC *map;
 @property (strong, nonatomic) sliderVC *slider;
+@property (strong, nonatomic) newTempleVC *openedTemple;
 
 @property (weak, nonatomic) id <mapDelegate> delegateMap;
 @property (weak, nonatomic) id <sliderDelegate> delegateSlider;
@@ -66,14 +67,9 @@
 
 - (void)openTempleVC:(NSString *)id_
 {
-    newTempleVC *wnd = [self.storyboard instantiateViewControllerWithIdentifier:@"newTempleVC"];
-    [wnd setId:id_];
-    [self prepareForSegue:[UIStoryboardSegue segueWithIdentifier:@"mapToTemple"
-                                                          source:self
-                                                     destination:wnd
-                                                  performHandler:^{}]
-                   sender:self];
-    [self performSegueWithIdentifier:@"mapToTemple" sender:self];
+    self.openedTemple = [[newTempleVC alloc] init];
+    [self.openedTemple setId:id_];
+    [self.navigationController pushViewController:self.openedTemple animated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated
