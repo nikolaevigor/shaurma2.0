@@ -111,9 +111,12 @@
                     <tabBarItem key="tabBarItem" title="Обзор" image="Align.png" id="Q5g-Bb-HTe"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DnF-QB-Acx">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="DnF-QB-Acx">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="EL4-fu-dsD" kind="relationship" relationship="rootViewController" id="o1Z-Xl-xMo"/>
