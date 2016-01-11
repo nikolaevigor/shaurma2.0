@@ -24,9 +24,11 @@
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     self.view.backgroundColor = [UIColor whiteColor];
     
-    UILabel *welcomeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenRect.size.width, 50)];
+    UILabel *welcomeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenRect.size.width, 55)];
     welcomeLabel.text = @"Рядом со мной";
     welcomeLabel.textAlignment = NSTextAlignmentCenter;
+    welcomeLabel.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.65f];
+    welcomeLabel.textColor = [UIColor whiteColor];
     [self.view addSubview:welcomeLabel];
     
     self.table = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, screenRect.size.width, 500)];
@@ -60,7 +62,7 @@
     [(sliderCell *)cell ratingLabel].text = [temple[@"ratingNumber"] stringValue];
     [(sliderCell *)cell metroLabel].text = temple[@"subway"];
     [(sliderCell *)cell metroLabel].textColor = [SHMManager colorForStation:temple[@"subway"]];
-    //[(sliderCell *)cell templePic]
+    //[(sliderCell *)cell templePic].image = [UIImage imageWithData:[temple[@"picture"] getDataInBackground]];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -85,5 +87,8 @@
     self.nearestTemples = temples;
     [self.table reloadData];
 }
+
+#pragma mark - Nice snippets
+
 
 @end

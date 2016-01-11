@@ -34,7 +34,7 @@
     
     [self.container setOption:PPRevealSideOptionsiOS7StatusBarMoving];
     [self.container pushViewController:self.map onDirection:PPRevealSideDirectionTop withOffset:80 animated:NO];
-    //self.container.options = PPRevealSideOptionsShowShadows << 1;
+    self.container.options = PPRevealSideOptionsShowShadows << 1; //shadows: off
     
     UISwipeGestureRecognizer *swipeDown = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(sliderSwiped:)];
     swipeDown.direction = UISwipeGestureRecognizerDirectionDown;
@@ -62,7 +62,6 @@
 {
     [self.delegateSlider setTableViewWith:[self.delegateMap getNearest]];
 }
-
 
 
 /*/snippet to make navBar invisible in map and visible in templeVC
