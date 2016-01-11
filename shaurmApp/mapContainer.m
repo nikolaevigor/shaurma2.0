@@ -9,6 +9,7 @@
 #import "mapContainer.h"
 #import "mapDelegate.h"
 #import "sliderDelegate.h"
+#import "shaurmApp-Swift.h"
 
 @interface mapContainer ()
 
@@ -63,19 +64,29 @@
     [self.delegateSlider setTableViewWith:[self.delegateMap getNearest]];
 }
 
+- (void)openTempleVC:(NSString *)id_
+{
+    newTempleVC *wnd = [self.storyboard instantiateViewControllerWithIdentifier:@"newTempleVC"];
+    [wnd setId:id_];
+    [self prepareForSegue:[UIStoryboardSegue segueWithIdentifier:@"mapToTemple"
+                                                          source:self
+                                                     destination:wnd
+                                                  performHandler:^{}]
+                   sender:self];
+    [self performSegueWithIdentifier:@"mapToTemple" sender:self];
+}
 
-/*/snippet to make navBar invisible in map and visible in templeVC
 - (void)viewWillAppear:(BOOL)animated
 {
-    [self.navigationController setNavigationBarHidden:YES animated:animated];
+    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault]; // prevent tab bar to disappear after returning from newTempleVC
     [super viewWillAppear:animated];
 }
+//
+//- (void)viewWillDisappear:(BOOL)animated
+//{
+//    [self.navigationController setNavigationBarHidden:NO animated:animated];
+//    [super viewWillDisappear:animated];
+//}
 
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [self.navigationController setNavigationBarHidden:NO animated:animated];
-    [super viewWillDisappear:animated];
-}
-//snippet ends here*/
 
 @end

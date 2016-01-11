@@ -41,6 +41,8 @@
     [super viewDidLoad];
 }
 
+#pragma mark - Table View methods
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIdentifier = @"cellID";

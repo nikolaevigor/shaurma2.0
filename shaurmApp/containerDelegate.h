@@ -10,5 +10,6 @@
 
 - (void)templesIsDownloaded;
 - (void)refreshSlider;
+- (void)openTempleVC:(NSString *)id_;
 
 @end

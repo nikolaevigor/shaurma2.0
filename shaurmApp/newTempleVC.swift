@@ -48,6 +48,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     var headerView: UIView!
     var starWidgetView: UIView!
     
+    
     var id = String()
     var templeTitle = String()
     var templeRating = CGFloat()

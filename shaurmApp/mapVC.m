@@ -178,12 +178,7 @@ static const CGFloat CalloutYOffset = 10.0f;
 - (void)calloutAccessoryButtonTapped:(id)sender {
     if (mapView_.selectedMarker)
     {
-        
-        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
-        
-        newTempleVC *wnd = (newTempleVC *)[mainStoryboard instantiateViewControllerWithIdentifier: @"newTempleVC"];
-        
-        [self presentViewController:wnd animated:YES completion:^{wnd.id = (NSString *)mapView_.selectedMarker.userData;}];
+        [self.containerDelegate openTempleVC:(NSString *)mapView_.selectedMarker.userData];
     }
 }
 
