@@ -38,6 +38,7 @@
 		428B40C61B8F890000A8EF74 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 428B40C41B8F890000A8EF74 /* GoogleMaps.bundle */; };
 		428B40D31B8FA6C200A8EF74 /* SMCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 428B40D21B8FA6C200A8EF74 /* SMCalloutView.m */; };
 		518A1A5182C048EE18915553 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E91F6AC7BAB03505670FD7A0 /* libPods.a */; };
+		59D3FBD11C4885E400FFCCE7 /* commentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59D3FBD01C4885E400FFCCE7 /* commentCell.xib */; };
 		E7245EAD1BA190D400F7D035 /* newTempleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7245EAC1BA190D400F7D035 /* newTempleVC.swift */; };
 		E7245EAF1BA1BA6A00F7D035 /* menuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7245EAE1BA1BA6A00F7D035 /* menuCell.swift */; };
 		E7245EB11BA1BA7600F7D035 /* starCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7245EB01BA1BA7600F7D035 /* starCell.swift */; };
@@ -125,6 +126,7 @@
 		428B40C41B8F890000A8EF74 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = Pods/GoogleMaps/Frameworks/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		428B40D21B8FA6C200A8EF74 /* SMCalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCalloutView.m; sourceTree = "<group>"; };
 		4C3DFE05025592F486FABEA0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		59D3FBD01C4885E400FFCCE7 /* commentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = commentCell.xib; sourceTree = "<group>"; };
 		70627CF31B0BFA236799CD9E /* libPods-shaurmApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-shaurmApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7245EAC1BA190D400F7D035 /* newTempleVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = newTempleVC.swift; sourceTree = "<group>"; };
 		E7245EAE1BA1BA6A00F7D035 /* menuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = menuCell.swift; sourceTree = "<group>"; };
@@ -386,6 +388,7 @@
 				E72A9CCE1B8FB7350013275F /* reviewCell.swift */,
 				E7ECE2AE1BECE97900DA2202 /* featuresCellTableViewCell.swift */,
 				E761793F1B97281700674739 /* commentCell.swift */,
+				59D3FBD01C4885E400FFCCE7 /* commentCell.xib */,
 				E75E14E61BFACEE4001C73CB /* addCommentCell.swift */,
 				E7245EAE1BA1BA6A00F7D035 /* menuCell.swift */,
 				E7245EB01BA1BA7600F7D035 /* starCell.swift */,
@@ -446,7 +449,7 @@
 				TargetAttributes = {
 					422F5A711B8F26AB005421C8 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = KWT862S93C;
+						DevelopmentTeam = 2H654K823K;
 					};
 					422F5A8D1B8F26AB005421C8 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -481,6 +484,7 @@
 				424DA4A31C41C81800E3597C /* metroJSON.json in Resources */,
 				422F5A841B8F26AB005421C8 /* Main.storyboard in Resources */,
 				422F5A891B8F26AB005421C8 /* LaunchScreen.xib in Resources */,
+				59D3FBD11C4885E400FFCCE7 /* commentCell.xib in Resources */,
 				422F5A861B8F26AB005421C8 /* Images.xcassets in Resources */,
 				428B40C61B8F890000A8EF74 /* GoogleMaps.bundle in Resources */,
 				E745D2881B95AC4F00CB5138 /* shawarma.jpg in Resources */,

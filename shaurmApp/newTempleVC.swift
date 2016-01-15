@@ -84,8 +84,9 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         
         mainTableView.registerClass(menuCell.self, forCellReuseIdentifier: "menuCell")
         mainTableView.registerClass(featuresCell.self, forCellReuseIdentifier: "featuresCell")
-        mainTableView.registerClass(commentCell.self, forCellReuseIdentifier: "commentCell")
+        //mainTableView.registerClass(commentCell.self, forCellReuseIdentifier: "commentCell")
         mainTableView.registerClass(addCommentCell.self, forCellReuseIdentifier: "addCommentCell")
+        mainTableView.registerNib(UINib.init(nibName: "commentCell", bundle: nil), forCellReuseIdentifier: "commentCell")
 
         
         
@@ -189,9 +190,12 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 if let objects = objects{
                 self.resultReviewArray = objects
                 }
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.mainTableView.reloadData()
+                }
             })
-
-
+               
+                
             }
 
             
@@ -206,9 +210,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             
             
             
-    dispatch_async(dispatch_get_main_queue()) {
-            self.mainTableView.reloadData()
-        }
+
             
             spinner.hidden = true
             UIView.animateWithDuration(0.5, animations: {
@@ -312,6 +314,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             
             
             if resultReviewArray.count != 0 {
+                
                 if(indexPath.row - 3 < self.resultReviewArray.count){
 
                 let commentDate:NSDate! = self.resultReviewArray[indexPath.row - 3].valueForKey("createdAt") as? NSDate
@@ -324,6 +327,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 
                 cccell.dateLabel.text = commentDateStr
                 cccell.commentTextLabel.text = self.resultReviewArray[indexPath.row - 3].valueForKey("comment") as? String
+                
                     
                 cccell.userNameLabel.text = self.resultReviewArray[indexPath.row - 3].valueForKey("userName") as? String
                 
@@ -435,12 +439,18 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         
             PFQuery(className: "Temples2").getObjectInBackgroundWithId(self.id){
                 (object: PFObject?, error: NSError?) -> Void in
+                if error == nil {
                 if let object = object {
                 review["temple"] = object
-                }
-                }
+                    }
                 
-        
+                
+        print(text)
+                }
+                else {
+                    print("Error: \(error!) \(error!.userInfo)")
+                }
+
 
 
         
@@ -451,23 +461,25 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             } else {
                 print(error)
             }
-        }
-
+                }
+            
+            
+            }
     
             self.refresh()
 
             self.addButtonAction()
 
 
-        }}
+        }
+    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "templeToComments") {
             
             let viewController:commentsVC = segue.destinationViewController as! commentsVC
             
-            viewController.id = self.id
-            viewController.templeTitle = self.templeTitle
+            viewController.templeId = self.id
         }
     }
 
