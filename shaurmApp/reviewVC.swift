@@ -33,6 +33,7 @@ class reviewVC: UIViewController {
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.Plain, target:nil, action:nil)
         
         resultsTable.alpha = 0
+        resultsTable.backgroundColor = UIColor.blackColor()
         self.automaticallyAdjustsScrollViewInsets = false;
         
 
@@ -46,7 +47,7 @@ class reviewVC: UIViewController {
         
         // RETREIVING CATEGORIES
         
-        navTitle.title = "Kатегории"
+        navTitle.title = "Обзор"
         
         
         let query = PFQuery(className:"Category")
