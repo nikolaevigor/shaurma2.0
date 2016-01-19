@@ -27,7 +27,7 @@ class commentCell: UITableViewCell {
         self.layoutMargins = UIEdgeInsetsZero
         self.preservesSuperviewLayoutMargins = false
 
-        let commentWidth = width - 80
+        //let commentWidth = width - 80
         //commentTextLabel = UILabel(frame: CGRectMake(20, 30, commentWidth, 50))
         
         //commentTextLabel.frame.width = commentWidth

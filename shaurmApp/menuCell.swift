@@ -12,8 +12,9 @@ import UIKit
 
 class menuCell: UITableViewCell {
     var titleLabel: UILabel!
+    var rowOneLabel: UILabel!
     var menuPicView: UIImageView!
-    class var expandedHeight: CGFloat {get{return 200}}
+    class var expandedHeight: CGFloat {get{return 180}}
     class var defaultHeight: CGFloat {get{return 70}}
 
     
@@ -44,10 +45,26 @@ class menuCell: UITableViewCell {
         
         titleLabel.center.x = self.center.x + (titleLabel.frame.width/2 + 20 + menuPicView.frame.width/2) / 2
         menuPicView.center.x = self.center.x - (titleLabel.frame.width/2 + 50 + menuPicView.frame.width/2) / 2
+        
+        rowOneLabel = UILabel(frame: CGRectMake(0, vertCenter, 300, 100))
+        rowOneLabel.numberOfLines = 0
+        rowOneLabel.text = "Шаурма в пите - 150р\nШаурма в лаваше - 120р"
+        rowOneLabel.font = UIFont(name: "HelveticaNeue", size: 17.0)
+        rowOneLabel.textColor = UIColor.darkGrayColor()
+        rowOneLabel.sizeToFit()
+        rowOneLabel.center = self.center
+        rowOneLabel.center.y = menuCell.expandedHeight / 2
+        rowOneLabel.textAlignment = .Left
+        rowOneLabel.hidden = true
+        
+
+
     
 
         contentView.addSubview(menuPicView)
         contentView.addSubview(titleLabel)
+        contentView.addSubview(rowOneLabel)
+
 
     }
     
@@ -88,17 +105,22 @@ class menuCell: UITableViewCell {
     func checkHeight(){
         if self.frame.size.height > menuCell.defaultHeight{
         UIView.animateWithDuration(0.1, animations: {
+            self.rowOneLabel.alpha = 1.0
         })
+            self.rowOneLabel.hidden = false
+
         }
         else{
             UIView.animateWithDuration(0.1, animations: {
+                self.rowOneLabel.alpha = 0.0
             })
+            self.rowOneLabel.hidden = true
+
         }
     
     }
-    
 
-    
+
 }
 
 
