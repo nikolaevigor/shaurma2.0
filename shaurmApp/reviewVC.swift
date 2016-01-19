@@ -20,6 +20,7 @@ class reviewVC: UIViewController {
     var resultCellCatImage =  UIImage()
     var resultCellCatId = String()
 
+    //@IBOutlet weak var tapBar: UITabBarItem!
 
 
     @IBOutlet weak var resultsTable: UITableView!
@@ -32,11 +33,17 @@ class reviewVC: UIViewController {
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.Plain, target:nil, action:nil)
         
+        
+        self.tabBarController!.tabBar.barStyle = UIBarStyle.Black
+        
+        UITabBar.appearance().barStyle = UIBarStyle.Black
+        
         resultsTable.alpha = 0
-        resultsTable.backgroundColor = UIColor.blackColor()
+        //resultsTable.backgroundColor = UIColor(red: 108.0, green: 122.0, blue: 137.0, alpha: 1.0)
+        resultsTable.backgroundColor = UIColor.darkTextColor()
+        
         self.automaticallyAdjustsScrollViewInsets = false;
         
-
         
         let spinner = ShawarmaSpinnerView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         self.view.addSubview(spinner)

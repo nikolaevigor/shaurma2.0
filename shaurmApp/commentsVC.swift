@@ -37,7 +37,9 @@ class commentsVC: UITableViewController {
         let width = UIScreen.mainScreen().bounds.width
         let height = UIScreen.mainScreen().bounds.height
         
-        tableView.alpha = 0
+        //tableView.alpha = 0
+        let yInset = (self.navigationController?.navigationBar.frame.size.height)! + (self.navigationController?.navigationBar.frame.origin.y)!
+        tableView.contentInset = UIEdgeInsetsMake(yInset,0,0,0);
         tableView.frame.size.height = height - 150
         tableView.frame.size.width = width
 
@@ -62,7 +64,6 @@ class commentsVC: UITableViewController {
         
         spinner.start()
         
-        print(self.templeId)
     
         PFQuery(className: "Temples2").getObjectInBackgroundWithId(self.templeId) {
             (object: PFObject?, error: NSError?) -> Void in
@@ -75,7 +76,6 @@ class commentsVC: UITableViewController {
             
             if (objects != nil) {
                 self.commentsArray = objects!
-                print("obj")
                 print(self.commentsArray.count)
 
             }
@@ -111,43 +111,44 @@ class commentsVC: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 70
+        return 150
     }
     
-override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath){
-        
-        if commentsArray.count != 0 {
-            if let userName = self.commentsArray[indexPath.row].valueForKey("userName") {
-                (cell as! commentCell).userNameLabel?.text = userName as? String
-            }
-            
-            if let date = self.commentsArray[indexPath.row].valueForKey("createdAt") {
-                (cell as! commentCell).dateLabel?.text = date as? String
-            }
-            
-            if let commentText = self.commentsArray[indexPath.row].valueForKey("commentText") {
-                (cell as! commentCell).commentTextLabel?.text = String(commentText)
-                
-            }
-            
-            
-            
-            
-            (cell as! commentCell).commentTextLabel.sizeToFit()
-            (cell as! commentCell).dateLabel.sizeToFit()
-            (cell as! commentCell).userNameLabel.sizeToFit()
-            
-        }
-    
-    
-    
-    }
+
     
     
     override
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell:commentCell = mainTableView.dequeueReusableCellWithIdentifier("commentCellID") as! commentCell
         cell.sizeToFit()
+        
+        if commentsArray.count != 0 {
+            if let userName = self.commentsArray[indexPath.row].valueForKey("userName") {
+                cell.userNameLabel?.text = userName as? String
+            }
+            
+            if let commentDate = self.commentsArray[indexPath.row].valueForKey("createdAt") as? NSDate {
+                let dateForm = NSDateFormatter()
+                dateForm.dateStyle = NSDateFormatterStyle.LongStyle
+
+                cell.dateLabel?.text = dateForm.stringFromDate(commentDate)
+                
+                }
+            
+            if let commentText = self.commentsArray[indexPath.row].valueForKey("comment") as? String{
+                cell.commentTextLabel?.text = commentText
+                
+            }
+            
+            
+            
+            
+            cell.commentTextLabel.sizeToFit()
+            cell.dateLabel.sizeToFit()
+            cell.userNameLabel.sizeToFit()
+            
+        }
+
         
         
         
