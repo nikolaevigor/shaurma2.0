@@ -39,8 +39,8 @@ class reviewVC: UIViewController {
         UITabBar.appearance().barStyle = UIBarStyle.Black
         
         resultsTable.alpha = 0
-        //resultsTable.backgroundColor = UIColor(red: 108.0, green: 122.0, blue: 137.0, alpha: 1.0)
         resultsTable.backgroundColor = UIColor.darkTextColor()
+        resultsTable.separatorColor = UIColor.blackColor()
         
         self.automaticallyAdjustsScrollViewInsets = false;
         
