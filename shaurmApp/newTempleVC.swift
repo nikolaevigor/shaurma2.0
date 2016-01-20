@@ -9,11 +9,10 @@
 import UIKit
 
 class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
-    let tableHeaderHeight: CGFloat = 250.0
+    let tableHeaderHeight: CGFloat = 300.0
     var activeCellIndexPath = 0
     
     @IBOutlet weak var totalLabel: UILabel!
-    
     @IBOutlet weak var starView: HCSStarRatingView!
     @IBOutlet weak var recentLabel: UILabel!
     @IBOutlet weak var markButton: UIButton!
@@ -171,6 +170,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 self.subwayLabel.text = object!.valueForKey("subway") as? String
                 self.templeTitleLabel.text = object!.valueForKey("title") as? String
                 self.templeTitleLabel.sizeToFit()
+                self.templeTitleLabel.numberOfLines = 0
                 self.subwayLabel.sizeToFit()
                 
                 if let obj = object!.valueForKey("image") {
@@ -268,6 +268,8 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         }
         return 100
     }
+    
+
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

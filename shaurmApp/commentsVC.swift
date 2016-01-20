@@ -39,7 +39,7 @@ class commentsVC: UITableViewController {
         
         //tableView.alpha = 0
         let yInset = (self.navigationController?.navigationBar.frame.size.height)! + (self.navigationController?.navigationBar.frame.origin.y)!
-        tableView.contentInset = UIEdgeInsetsMake(yInset,0,0,0);
+        tableView.contentInset = UIEdgeInsetsMake(yInset,0,yInset,0);
         tableView.frame.size.height = height - 150
         tableView.frame.size.width = width
 
