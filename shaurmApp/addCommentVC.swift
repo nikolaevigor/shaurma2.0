@@ -12,7 +12,6 @@ class addCommentVC: UIViewController {
     
     @IBAction func OKButtonAction(sender: AnyObject) {
         self.commentTextView.resignFirstResponder()
-        delegate!.addCommentDidFinish(commentTextView.text, controller: self)
     }
 
     @IBOutlet weak var OKButton: UIBarButtonItem!
@@ -22,6 +21,7 @@ class addCommentVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.automaticallyAdjustsScrollViewInsets = false
         self.commentTextView.becomeFirstResponder()
     }
 

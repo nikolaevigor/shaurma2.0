@@ -85,8 +85,8 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
 //        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
+        //NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
+        //NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
 
         
         
@@ -563,16 +563,16 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     func keyboardWillShow(notification: NSNotification) {
         //print("one")
         
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-            self.view.frame.origin.y -= (keyboardSize.height)
-        }
+//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+//            self.view.frame.origin.y -= (keyboardSize.height)
+//        }
         
     }
     
     func keyboardWillHide(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-            self.view.frame.origin.y += (keyboardSize.height)
-        }
+//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+//            self.view.frame.origin.y += (keyboardSize.height)
+//        }
     }
     
     override func viewWillAppear(animated: Bool) {

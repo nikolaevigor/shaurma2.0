@@ -63,16 +63,14 @@ class addCommentCell: UITableViewCell, UITextViewDelegate {
         //submitButton.titleLabel?.textColor = UIColor.whiteColor()
         //submitButton.backgroundColor = UIColor.blueColor()
         //submitButton = UIButton(frame: CGRectMake(0, vertCenter + 1.5*commentTextView.frame.height + 20, 150, 30))
-        
         submitButton.frame = CGRectMake(0, vertCenter + 1.5*commentTextView.frame.height + 20, 150, 30)
         submitButton.hidden = true
         submitButton.titleLabel?.textAlignment = NSTextAlignment.Center
         
         print(width)
-        
-        expandButton.frame = CGRectMake(0, 0, width/2 - 10, (width/2 - 10)/2.5)
-        expandButton.frame.origin.x = width/2 - expandButton.frame.width - 5
-        expandButton.frame.origin.y = vertCenter - expandButton.frame.height/2
+        //expandButton.frame = CGRectMake(0, 0, width/2 - 50, (width/2 - 10)/2.5)
+        //expandButton.frame.origin.x = width/2 - expandButton.frame.width - 5
+        //expandButton.frame.origin.y = vertCenter - expandButton.frame.height/2
 
         //expandButton.setTitle("Все отзывы", forState: UIControlState.Normal)
         //expandButton.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 18.0)!
@@ -80,8 +78,9 @@ class addCommentCell: UITableViewCell, UITextViewDelegate {
         //expandButton.backgroundColor = UIColor.grayColor()
         expandButton.titleLabel?.textAlignment = NSTextAlignment.Center
         
-        
-        seeAllButton.frame.origin.x = width/2 + seeAllButton.frame.width + 5
+        //seeAllButton.frame = CGRectMake(0, 0, width/2 - 50, (width/2 - 10)/2.5)
+
+        //seeAllButton.frame.origin.x = width/2 + seeAllButton.frame.width + 5
 
         //submitButton = UIButton(frame: CGRectMake(0, 0, width/2 - 10, (width/2 - 10)/2.5))
         submitButton.frame.origin.x = width/2 + 5
