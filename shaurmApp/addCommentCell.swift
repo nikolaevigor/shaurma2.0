@@ -8,114 +8,118 @@
 
 import UIKit
 
-class addCommentCell: UITableViewCell, UITextFieldDelegate {
-    var seeAllButton: UIButton!
-    var expandButton: UIButton!
-    var addButton: UIButton!
-
+class addCommentCell: UITableViewCell, UITextViewDelegate {
+    
+    @IBOutlet weak var seeAllButton: UIButton!
+    @IBOutlet weak var expandButton: UIButton!
 
     
-    var submitButton: UIButton!
-    var commentField: UITextField!
+    @IBOutlet weak var commentTextView: UITextView!
+    @IBOutlet weak var submitButton: UIButton!
+    
+    //var seeAllButton: UIButton!
+    //var expandButton: UIButton!
+    //var addButton: UIButton!
+    //var submitButton: UIButton!
+    //var commentField: UITextView!
     
     class var expandedHeight: CGFloat {get{return 300}}
     class var defaultHeight: CGFloat {get{return 100}}
     
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        //print("ADD INIT")
-        
+    override func awakeFromNib() {
+        super.awakeFromNib()
         
         self.backgroundColor = UIColor.whiteColor()
         self.selectionStyle = UITableViewCellSelectionStyle.None
         
         let width = UIScreen.mainScreen().bounds.width
         
-        contentView.frame = CGRectMake(0, 0, width, 100)
+       // contentView.frame = CGRectMake(0, 0, width, addCommentCell.defaultHeight)
         let vertCenter = addCommentCell.defaultHeight/2
         
         
-        commentField = UITextField(frame: CGRectMake(0, 0, 300, 100))
-        commentField.frame.origin.y = vertCenter + commentField.frame.height/2
-        commentField.font = UIFont(name: "HelveticaNeue", size: 15.0)
-        commentField.textColor = UIColor.blackColor()
-        //commentField.center = self.center
-        commentField.backgroundColor = UIColor.lightGrayColor()
-        commentField.delegate = self
+        //commentTextView = UITextView(frame: CGRectMake(0, 0, 300, 100))
+        //commentTextView = UITextField(frame: CGRectMake(0, 0, 300, 100))
+        //commentTextView = self.center
+        //commentTextView.textColor = UIColor.blackColor()
+        //commentField.placeholder = "Введите текст"
+        //commentTextView.backgroundColor = UIColor.lightGrayColor()
+        //commentTextView.font = UIFont(name: "HelveticaNeue", size: 15.0)
+        //commentField.clearButtonMode = UITextFieldViewMode.WhileEditing;
+        //commentTextView.delegate = self
         
-        commentField.placeholder = "Введите текст"
-        commentField.autocorrectionType = UITextAutocorrectionType.No
-        commentField.keyboardType = UIKeyboardType.Default
-        commentField.returnKeyType = UIReturnKeyType.Done
-        commentField.clearButtonMode = UITextFieldViewMode.WhileEditing;
-        commentField.hidden = true
         
-        submitButton = UIButton(frame: CGRectMake(0, vertCenter + 1.5*commentField.frame.height + 20, 150, 30))
-        submitButton.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 20.0)!
-        submitButton.setTitle("Добавить", forState: UIControlState.Normal)
-        submitButton.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 18.0)!
-        submitButton.titleLabel?.textColor = UIColor.whiteColor()
-        submitButton.backgroundColor = UIColor.blueColor()
+        commentTextView.frame.origin.y = vertCenter + commentTextView.frame.height/2
+        commentTextView.autocorrectionType = UITextAutocorrectionType.No
+        commentTextView.keyboardType = UIKeyboardType.Default
+        commentTextView.returnKeyType = UIReturnKeyType.Done
+        commentTextView.hidden = true
+        
+        
+        //submitButton.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 20.0)!
+        //submitButton.setTitle("Добавить", forState: UIControlState.Normal)
+        //submitButton.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 18.0)!
+        //submitButton.titleLabel?.textColor = UIColor.whiteColor()
+        //submitButton.backgroundColor = UIColor.blueColor()
+        //submitButton = UIButton(frame: CGRectMake(0, vertCenter + 1.5*commentTextView.frame.height + 20, 150, 30))
+        
+        submitButton.frame = CGRectMake(0, vertCenter + 1.5*commentTextView.frame.height + 20, 150, 30)
         submitButton.hidden = true
         submitButton.titleLabel?.textAlignment = NSTextAlignment.Center
         
-
         print(width)
         
-        expandButton = UIButton(frame: CGRectMake(0, 0, width/2 - 10, (width/2 - 10)/2.5))
+        expandButton.frame = CGRectMake(0, 0, width/2 - 10, (width/2 - 10)/2.5)
         expandButton.frame.origin.x = width/2 - expandButton.frame.width - 5
         expandButton.frame.origin.y = vertCenter - expandButton.frame.height/2
 
-        expandButton.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 20.0)!
-        expandButton.setTitle("Все отзывы", forState: UIControlState.Normal)
-        expandButton.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 18.0)!
-        expandButton.titleLabel?.textColor = UIColor.blackColor()
-        expandButton.backgroundColor = UIColor.grayColor()
+        //expandButton.setTitle("Все отзывы", forState: UIControlState.Normal)
+        //expandButton.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 18.0)!
+        //expandButton.titleLabel?.textColor = UIColor.blackColor()
+        //expandButton.backgroundColor = UIColor.grayColor()
         expandButton.titleLabel?.textAlignment = NSTextAlignment.Center
         
-        addButton = UIButton(frame: CGRectMake(0, 0, width/2 - 10, (width/2 - 10)/2.5))
-        addButton.frame.origin.x = width/2 + 5
-        addButton.frame.origin.y = vertCenter - addButton.frame.height/2
-        addButton.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 20.0)!
-        addButton.setTitle("Написать отзыв", forState: UIControlState.Normal)
-        addButton.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 18.0)!
-        addButton.titleLabel?.textColor = UIColor.blackColor()
-        addButton.backgroundColor = UIColor.grayColor()
-        addButton.titleLabel?.textAlignment = NSTextAlignment.Center
+        
+        seeAllButton.frame.origin.x = width/2 + seeAllButton.frame.width + 5
+
+        //submitButton = UIButton(frame: CGRectMake(0, 0, width/2 - 10, (width/2 - 10)/2.5))
+        submitButton.frame.origin.x = width/2 + 5
+        submitButton.frame.origin.y = vertCenter - submitButton.frame.height/2
+        
+        //submitButton.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 20.0)!
+        //submitButton.setTitle("Написать отзыв", forState: UIControlState.Normal)
+        //submitButton.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 18.0)!
+        //submitButton.titleLabel?.textColor = UIColor.blackColor()
+        //submitButton.backgroundColor = UIColor.grayColor()
+        
+        submitButton.titleLabel?.textAlignment = NSTextAlignment.Center
         
 
-        addButton.frame.width
+        //submitButton.frame.width
 
         
         
-        
-        
-        contentView.addSubview(commentField)
-        contentView.addSubview(expandButton)
-        contentView.addSubview(addButton)
-        contentView.addSubview(submitButton)
-
-        
+//        
+//        
+          //contentView.addSubview(commentTextView)
+//        contentView.addSubview(expandButton)
+//        //contentView.addSubview(addButton)
+//        contentView.addSubview(submitButton)
+//
+//        
     }
     
     deinit{
-        //print("DEINIT")
         self.ignoreFrameChanges()
     }
     
-    
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+
     
     
     func watchFrameChanges(){
         if self.observationInfo == nil {
             self.addObserver(self, forKeyPath: "frame", options: .New, context: nil)
-            //print("WATCH")
         }
         
         //checkHeight()
@@ -137,22 +141,21 @@ class addCommentCell: UITableViewCell, UITextFieldDelegate {
     func checkHeight(){
         if self.frame.size.height > addCommentCell.defaultHeight{
             UIView.animateWithDuration(0.1, animations: {
-                self.commentField.alpha = 1.0
+                self.commentTextView.alpha = 1.0
                 self.submitButton.alpha = 1.0
                 
             })
-            self.commentField.hidden = false
+            self.commentTextView.hidden = false
             self.submitButton.hidden = false
 
         }
         else{
             UIView.animateWithDuration(0.1, animations: {
-                self.commentField.alpha = 0.0
+                self.commentTextView.alpha = 0.0
                 self.submitButton.alpha = 0.0
                 
-
             })
-            self.commentField.hidden = true
+            self.commentTextView.hidden = true
             self.submitButton.hidden = true
         }
         

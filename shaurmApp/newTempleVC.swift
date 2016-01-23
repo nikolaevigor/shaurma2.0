@@ -8,7 +8,7 @@
 
 import UIKit
 
-class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate,AddCommentDelegate {
     let tableHeaderHeight: CGFloat = 300.0
     var activeCellIndexPath = 0
     
@@ -16,6 +16,12 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     @IBOutlet weak var starView: HCSStarRatingView!
     @IBOutlet weak var recentLabel: UILabel!
     @IBOutlet weak var markButton: UIButton!
+    
+    func addCommentDidFinish(addCommentText: String, controller: addCommentVC) {
+        commentText = addCommentText
+        controller.navigationController!.popViewControllerAnimated(true)
+        self.addCommentAction()
+    }
     
     @IBAction func markButtonPressed(sender: AnyObject) {
         print(starView.value)
@@ -71,6 +77,14 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         
         self.automaticallyAdjustsScrollViewInsets = false;
         
+//        self.navigationController?.navigationBar.setBackgroundImage(UIImage.init(), forBarMetrics: UIBarMetrics.Default)
+//        self.navigationController?.navigationBar.shadowImage = UIImage.init()
+//        self.navigationController?.view.backgroundColor = UIColor.clearColor()
+//        
+//        
+//        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
 
@@ -84,7 +98,8 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         mainTableView.registerClass(menuCell.self, forCellReuseIdentifier: "menuCell")
         mainTableView.registerClass(featuresCell.self, forCellReuseIdentifier: "featuresCell")
         //mainTableView.registerClass(commentCell.self, forCellReuseIdentifier: "commentCell")
-        mainTableView.registerClass(addCommentCell.self, forCellReuseIdentifier: "addCommentCell")
+        //mainTableView.registerClass(addCommentCell.self, forCellReuseIdentifier: "addCommentCell")
+        mainTableView.registerNib(UINib.init(nibName: "addCommentCell", bundle: nil), forCellReuseIdentifier: "addCommentCell")
         mainTableView.registerNib(UINib.init(nibName: "commentCell", bundle: nil), forCellReuseIdentifier: "commentCell")
 
         
@@ -154,12 +169,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         spinner.start()
         
         
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage.init(), forBarMetrics: UIBarMetrics.Default)
-        self.navigationController?.navigationBar.shadowImage = UIImage.init()
-        self.navigationController?.view.backgroundColor = UIColor.clearColor()
-        
-        
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+
         
 
         
@@ -190,9 +200,12 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 if let objects = objects{
                 self.resultReviewArray = objects
                 }
-                dispatch_async(dispatch_get_main_queue()) {
-                    self.mainTableView.reloadData()
-                }
+                
+                self.mainTableView.reloadData()
+
+//                dispatch_async(dispatch_get_main_queue()) {
+//                    self.mainTableView.reloadData()
+//                }
             })
                
                 
@@ -347,11 +360,11 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         if indexPath.row == 6{
                 let ccell:addCommentCell = tableView.dequeueReusableCellWithIdentifier("addCommentCell") as! addCommentCell
                 ccell.submitButton.addTarget(self, action: "addCommentAction", forControlEvents: UIControlEvents.TouchUpInside)
-                ccell.expandButton.addTarget(self, action: "expandButtonAction", forControlEvents: UIControlEvents.TouchUpInside)
-                ccell.addButton.addTarget(self, action: "addButtonAction", forControlEvents: UIControlEvents.TouchUpInside)
-
-
-                ccell.commentField.delegate = self
+                ccell.seeAllButton.addTarget(self, action: "expandButtonAction", forControlEvents: UIControlEvents.TouchUpInside)
+                ccell.expandButton.addTarget(self, action: "addButtonAction", forControlEvents: UIControlEvents.TouchUpInside)
+                //ccell.commentTextView.removeLayoutGuide(ccell.commentTextView.layoutGuides[0])
+                ccell.commentTextView.textStorage.removeLayoutManager(ccell.commentTextView.layoutManager)
+                ccell.commentTextView.delegate = self
                 cell = ccell
             
             }
@@ -404,11 +417,24 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         }
     }
     
+    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
     
+//    func textViewShouldEndEditing(textView: UITextView) -> Bool {
+//        textView.resignFirstResponder()
+//        return true
+//    }
+//    
+//    func textViewDidBeginEditing(textView: UITextView) {
+//    }
+    
+//    func textViewDidEndEditing(textView: UITextView) {
+//        self.commentText = textView.text!
+//    }
+//    
 
     func textFieldDidEndEditing(textField: UITextField) {
         self.commentText = textField.text!
@@ -470,14 +496,20 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
             self.refresh()
 
-            self.addButtonAction()
+            //self.addButtonAction()
 
 
         }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "templeToComments") {
+        if (segue.identifier == "templeToAddComment") {
+
+            let vc = segue.destinationViewController as! addCommentVC
+            vc.delegate = self
+        }
+        
+        else if (segue.identifier == "templeToComments") {
             
             let viewController:commentsVC = segue.destinationViewController as! commentsVC
             
@@ -488,28 +520,29 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     func addButtonAction(){
 
-        if self.activeCellIndexPath == 6 {
-            
-            
-            self.activeCellIndexPath = 0
-            self.mainTableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 6, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Fade)
-        
-            self.mainTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 6, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
+//        if self.activeCellIndexPath == 6 {
+//            
+//            
+//            self.activeCellIndexPath = 0
+//            self.mainTableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 6, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Fade)
+//        
+//            self.mainTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 6, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
+//
+//        }
+//        else{
+//            
+//            
+//            
+//            self.activeCellIndexPath = 6
+//            self.mainTableView.beginUpdates()
+//            self.mainTableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 6, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Fade)
+//            self.mainTableView.endUpdates()
+//            
+//            
+//            self.mainTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 6, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
+//        }
+        self.performSegueWithIdentifier("templeToAddComment", sender: self)
 
-        }
-        else{
-            
-            
-            
-            self.activeCellIndexPath = 6
-            self.mainTableView.beginUpdates()
-            self.mainTableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 6, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Fade)
-            self.mainTableView.endUpdates()
-            
-            
-            self.mainTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 6, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
-        }
-        
     }
     
     
@@ -523,11 +556,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     func textViewShouldBeginEditing(textView: UITextView) -> Bool {
         self.mainTableView.reloadData()
 
-        self.mainTableView.scrollToRowAtIndexPath(NSIndexPath(index: 3), atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
-
-        
-        
-
+        //self.mainTableView.scrollToRowAtIndexPath(NSIndexPath(index: 3), atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
         return true
     }
     
@@ -546,5 +575,17 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         }
     }
     
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage.init(), forBarMetrics: UIBarMetrics.Default)
+        self.navigationController?.navigationBar.shadowImage = UIImage.init()
+        self.navigationController?.view.backgroundColor = UIColor.clearColor()
+        
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+    }
+//
+//    func textViewDidChange(textView: UITextView) { //Handle the text changes here
+//        print(textView.text); //the textView parameter is the textView where text was changed
+//    }
+//    
     
 }
