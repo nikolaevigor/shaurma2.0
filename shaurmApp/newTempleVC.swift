@@ -77,14 +77,6 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         
         self.automaticallyAdjustsScrollViewInsets = false;
         
-//        self.navigationController?.navigationBar.setBackgroundImage(UIImage.init(), forBarMetrics: UIBarMetrics.Default)
-//        self.navigationController?.navigationBar.shadowImage = UIImage.init()
-//        self.navigationController?.view.backgroundColor = UIColor.clearColor()
-//        
-//        
-//        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        
-        
         //NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
         //NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
 

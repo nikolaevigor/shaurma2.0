@@ -104,10 +104,10 @@ class reviewVC: UIViewController {
         cell.categoryTitleLabel.backgroundColor = UIColor.clearColor()
         cell.categoryTitleLabel.textColor = UIColor.whiteColor()
         cell.categoryTitleLabel.sizeToFit()
-        cell.categoryTitleLabel.center = cell.contentView.center
-        cell.categoryTitleLabel.adjustsFontSizeToFitWidth = true
-        cell.categoryTitleLabel.layer.zPosition = 25
-        cell.categoryTitleLabel.font = UIFont(name: "HelveticaNeue", size: 25)
+        //cell.categoryTitleLabel.center = cell.contentView.center
+        //cell.categoryTitleLabel.adjustsFontSizeToFitWidth = true
+        //cell.categoryTitleLabel.layer.zPosition = 25
+        //cell.categoryTitleLabel.font = UIFont(name: "HelveticaNeue", size: 25)
 
         
         

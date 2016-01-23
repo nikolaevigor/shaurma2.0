@@ -52,9 +52,8 @@ class categoryVC: UIViewController, UIScrollViewDelegate {
         // ADDING A TITLE LABEL
         
         self.catTitleLabel.textColor = UIColor.whiteColor()
-        self.catTitleLabel.adjustsFontSizeToFitWidth = true
-        self.catTitleLabel.layer.zPosition = 25
-        self.catTitleLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 21)
+        //self.catTitleLabel.adjustsFontSizeToFitWidth = true
+        //self.catTitleLabel.layer.zPosition = 25
         
         
         self.title = "Рекомендации"

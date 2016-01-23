@@ -13,8 +13,7 @@ class reviewCell: UITableViewCell {
     
     @IBOutlet weak var categoryImage: UIImageView!
     @IBOutlet weak var categoryTitleLabel: UILabel!
-    
-    var titleLbl = UILabel(frame: CGRectMake(0, 0, 20, 10))
+    //var titleLbl = UILabel(frame: CGRectMake(0, 0, 20, 10))
     var categoryId = String()
     
     
@@ -25,7 +24,6 @@ class reviewCell: UITableViewCell {
         
         contentView.frame = CGRectMake(0, 0, width, 120)
         categoryImage.clipsToBounds =  true
-        titleLbl.font = UIFont(name: "HelveticaNeue-Bold", size: 21)
         
     }
     
