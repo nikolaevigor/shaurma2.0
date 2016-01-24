@@ -7,11 +7,15 @@
 //
 
 #import "sliderCell.h"
+#import "SHMManager.h"
 
 @implementation sliderCell
 
 - (void)awakeFromNib {
     // Initialization code
+
+    //self.metroLabel.textColor = [SHMManager colorForStation:self.metroLabel.text];
+
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

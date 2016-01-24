@@ -29,11 +29,11 @@ class templeCell: UITableViewCell {
         
         contentView.frame = CGRectMake(0, 0, width, 120)
         
-        //profileImage.center = CGPointMake(60, 60)
-        // profileImage.layer.cornerRadius = profileImage.frame.size.width/2
-        //templeImage.clipsToBounds =  true
-        //profileNameLabel.center = CGPointMake(230, 55)
         
+        //[SHMManager colorForStation:temple[@"subway"]];
+        
+        
+
         
     }
     

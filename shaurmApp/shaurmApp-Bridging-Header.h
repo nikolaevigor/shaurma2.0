@@ -5,5 +5,6 @@
 
 #import "sliderCell.h"
 #import "HCSStarRatingView.h"
-#import <Parse/Parse.h> 
+//#import <Parse/Parse.h>
 #import <Bolts/BFTask.h>
+#import "SHMManager.h"

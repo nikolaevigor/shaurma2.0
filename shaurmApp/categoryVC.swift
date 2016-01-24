@@ -145,6 +145,8 @@ class categoryVC: UIViewController, UIScrollViewDelegate {
             
             if let obj2 = self.templesArray[indexPath.row].valueForKey("subway") {
                 (cell as! sliderCell).metroLabel?.text = obj2 as? String
+                (cell as! sliderCell).metroLabel?.textColor = SHMManager.colorForStation(obj2 as? String)
+
             }
             
             if let obj3 = self.templesArray[indexPath.row].valueForKey("ratingNumber") {

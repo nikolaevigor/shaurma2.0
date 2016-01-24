@@ -46,7 +46,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             
         })
     }
-    
+
 
     @IBOutlet weak var mainTableView: UITableView!
     let width = UIScreen.mainScreen().bounds.width
@@ -242,6 +242,10 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
         if indexPath.row == 0{
+            return 65
+        }
+        
+        if indexPath.row == 1{
             if indexPath == selectedIndexPath{
                 return menuCell.expandedHeight
             }
@@ -249,9 +253,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 return menuCell.defaultHeight
                 }
         }
-        if indexPath.row == 1{
-            return 70
-        }
+
         
         if indexPath.row == 2{
             return 0
@@ -298,13 +300,9 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         separatorView.backgroundColor = UIColor.lightGrayColor()
         
 
+    
         
         if indexPath.row == 0{
-            let ccell:menuCell = tableView.dequeueReusableCellWithIdentifier("menuCell") as! menuCell
-            cell = ccell
-        }
-        
-        if indexPath.row == 1{
             
             let cccell:featuresCell = tableView.dequeueReusableCellWithIdentifier("featuresCell") as! featuresCell
             //cccell.setLabelText(categories[0], t2: categories[1])
@@ -312,6 +310,11 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             cccell.clipsToBounds = true
             cell = cccell
             
+        }
+        
+        if indexPath.row == 1{
+            let ccell:menuCell = tableView.dequeueReusableCellWithIdentifier("menuCell") as! menuCell
+            cell = ccell
         }
         
         if indexPath.row == 2{
@@ -400,7 +403,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath){
-        if indexPath.row == 0{
+        if indexPath.row == 1{
         (cell as! menuCell).watchFrameChanges()
         }
         if indexPath.row == 6{
@@ -411,7 +414,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
 
     func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.row == 0{
+        if indexPath.row == 1{
             (cell as! menuCell).ignoreFrameChanges()
         }
         if indexPath.row == 6{
