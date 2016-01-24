@@ -34,12 +34,16 @@ class reviewVC: UIViewController {
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.Plain, target:nil, action:nil)
         
         
-        self.tabBarController!.tabBar.barStyle = UIBarStyle.Black
+        //self.tabBarController!.tabBar.barStyle = UIBarStyle.Black
         
-        UITabBar.appearance().barStyle = UIBarStyle.Black
+        
+        //UITabBar.appearance().barStyle = UIBarStyle.Black
+        
+        
+        self.tabBarController
         
         resultsTable.alpha = 0
-        resultsTable.backgroundColor = UIColor.darkTextColor()
+        //resultsTable.backgroundColor = UIColor.darkTextColor()
         resultsTable.separatorColor = UIColor.blackColor()
         
         self.automaticallyAdjustsScrollViewInsets = false;
