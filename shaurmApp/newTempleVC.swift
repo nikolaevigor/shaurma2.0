@@ -92,7 +92,10 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
        
         
         mainTableView.registerClass(menuCell.self, forCellReuseIdentifier: "menuCell")
-        mainTableView.registerClass(featuresCell.self, forCellReuseIdentifier: "featuresCell")
+        //mainTableView.registerClass(featuresCell.self, forCellReuseIdentifier: "featuresCell")
+        
+        
+        mainTableView.registerNib(UINib.init(nibName: "featuresCell", bundle: nil), forCellReuseIdentifier: "featuresCell")
         mainTableView.registerNib(UINib.init(nibName: "addCommentCell", bundle: nil), forCellReuseIdentifier: "addCommentCell")
         mainTableView.registerNib(UINib.init(nibName: "commentCell", bundle: nil), forCellReuseIdentifier: "commentCell")
 
@@ -246,9 +249,14 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 return menuCell.defaultHeight
                 }
         }
-        if indexPath.row == 1 || indexPath.row == 2{
-            return featuresCell.height
+        if indexPath.row == 1{
+            return 70
         }
+        
+        if indexPath.row == 2{
+            return 0
+        }
+        
         
         if indexPath.row >= 3 && indexPath.row <= 5 {
             if resultReviewArray.count < (indexPath.row - 2) {
@@ -299,7 +307,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         if indexPath.row == 1{
             
             let cccell:featuresCell = tableView.dequeueReusableCellWithIdentifier("featuresCell") as! featuresCell
-            cccell.setLabelText(categories[0], t2: categories[1])
+            //cccell.setLabelText(categories[0], t2: categories[1])
             cccell.frame.size.width = width
             cccell.clipsToBounds = true
             cell = cccell
@@ -309,7 +317,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         if indexPath.row == 2{
             
             let cccell:featuresCell = tableView.dequeueReusableCellWithIdentifier("featuresCell") as! featuresCell
-            cccell.setLabelText(categories[2], t2: categories[3])
+            //cccell.setLabelText(categories[2], t2: categories[3])
             cccell.frame.size.width = width
             cccell.clipsToBounds = true
             cell = cccell
