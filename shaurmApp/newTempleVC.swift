@@ -70,6 +70,10 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     var resultReviewArray = []
 
     
+    func setTableView(){
+        self.mainTableView = UITableView(frame: CGRect())
+    }
+    
     
     
     override func viewDidLoad(){
@@ -89,8 +93,6 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         
         mainTableView.registerClass(menuCell.self, forCellReuseIdentifier: "menuCell")
         mainTableView.registerClass(featuresCell.self, forCellReuseIdentifier: "featuresCell")
-        //mainTableView.registerClass(commentCell.self, forCellReuseIdentifier: "commentCell")
-        //mainTableView.registerClass(addCommentCell.self, forCellReuseIdentifier: "addCommentCell")
         mainTableView.registerNib(UINib.init(nibName: "addCommentCell", bundle: nil), forCellReuseIdentifier: "addCommentCell")
         mainTableView.registerNib(UINib.init(nibName: "commentCell", bundle: nil), forCellReuseIdentifier: "commentCell")
 

@@ -357,10 +357,10 @@
                                                 </mask>
                                             </variation>
                                         </imageView>
-                                        <view alpha="0.30000001192092896" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ezo-yu-CtB">
+                                        <view alpha="0.45000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ezo-yu-CtB">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="350"/>
                                             <animations/>
-                                            <color key="backgroundColor" red="0.33333333329999998" green="0.277795813" blue="0.2435478455" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="0.33333333329999998" green="0.23523890477528356" blue="0.19959716994526316" alpha="1" colorSpace="calibratedRGB"/>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" minimumFontSize="17" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="oW4-om-0kv">
                                             <rect key="frame" x="260" y="132" width="80" height="36"/>
@@ -595,6 +595,6 @@
         <image name="yellow-star-filled" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="suH-da-vH3"/>
+        <segue reference="6CV-hJ-qoj"/>
     </inferredMetricsTieBreakers>
 </document>

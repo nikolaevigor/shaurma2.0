@@ -17,6 +17,9 @@ class commentsVC: UITableViewController {
     var commentsArray = [PFObject]()
     var userNamesArray = [String]()
     
+    
+
+
     var resultCellId = String()
     
     @IBOutlet var mainTableView: UITableView!
@@ -158,9 +161,7 @@ class commentsVC: UITableViewController {
         
         return cell
     }
-    
 
-    
 
     
     override func viewWillAppear(animated: Bool) {

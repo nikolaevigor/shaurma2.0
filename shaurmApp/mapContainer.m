@@ -17,7 +17,6 @@
 @property (strong, nonatomic) mapVC *map;
 @property (strong, nonatomic) sliderVC *slider;
 @property (strong, nonatomic) newTempleVC *openedTemple;
-
 @property (weak, nonatomic) id <mapDelegate> delegateMap;
 @property (weak, nonatomic) id <sliderDelegate> delegateSlider;
 
@@ -65,11 +64,24 @@
     [self.delegateSlider setTableViewWith:[self.delegateMap getNearest]];
 }
 
+
+
 - (void)openTempleVC:(NSString *)id_
 {
-    self.openedTemple = [[newTempleVC alloc] init];
+    
+    
+//    self.openedTemple = [[newTempleVC alloc] init];
+//    [self.openedTemple setId:id_];
+//    [self.navigationController pushViewController:self.openedTemple animated:YES];
+    
+    
+    //ALTERNATIVE IMPLEMENTATION
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    self.openedTemple = [storyBoard instantiateViewControllerWithIdentifier:@"newTempleVC"];
+    self.openedTemple.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     [self.openedTemple setId:id_];
     [self.navigationController pushViewController:self.openedTemple animated:YES];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
