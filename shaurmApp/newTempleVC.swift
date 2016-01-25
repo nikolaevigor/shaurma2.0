@@ -24,7 +24,6 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     }
     
     @IBAction func markButtonPressed(sender: AnyObject) {
-        print(starView.value)
         UIView.animateWithDuration(0.5, animations: {
                 self.totalLabel.hidden = false
                 self.recentLabel.hidden = false
@@ -43,7 +42,8 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             self.markButton.hidden = false
             self.markButton.alpha = 1.0
             self.templeRating = self.starView.value
-            
+            self.saveRating(self.templeRating)
+            self.refresh()
         })
     }
 
@@ -165,7 +165,11 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         
         spinner.start()
         
+        let userDefaults = NSUserDefaults.standardUserDefaults()
         
+        if let rating = userDefaults.valueForKey(self.id) {
+            self.recentLabel.text = "Моя оценка: \(rating as! CGFloat)"
+        }
 
         
 
@@ -587,10 +591,11 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
     }
-//
-//    func textViewDidChange(textView: UITextView) { //Handle the text changes here
-//        print(textView.text); //the textView parameter is the textView where text was changed
-//    }
-//    
+    
+    func saveRating(ratingNumber: CGFloat) {
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        userDefaults.setValue(ratingNumber, forKey: self.id)
+        userDefaults.synchronize()
+    }
     
 }

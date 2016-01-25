@@ -30,7 +30,7 @@
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G5L-HG-4UP">
-                        <rect key="frame" x="202" y="16" width="176" height="60"/>
+                        <rect key="frame" x="201" y="14" width="179" height="60"/>
                         <animations/>
                         <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -54,7 +54,7 @@
                         </variation>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kBx-ek-9zb">
-                        <rect key="frame" x="16" y="16" width="176" height="60"/>
+                        <rect key="frame" x="14" y="14" width="180" height="60"/>
                         <animations/>
                         <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -80,6 +80,7 @@
                 </subviews>
                 <animations/>
                 <constraints>
+                    <constraint firstItem="kBx-ek-9zb" firstAttribute="top" secondItem="a5T-BS-2oK" secondAttribute="topMargin" constant="6" id="1XX-0M-aXu"/>
                     <constraint firstItem="G5L-HG-4UP" firstAttribute="leading" secondItem="kBx-ek-9zb" secondAttribute="trailing" constant="42" id="48F-Dn-n8p"/>
                     <constraint firstItem="G5L-HG-4UP" firstAttribute="leading" secondItem="kBx-ek-9zb" secondAttribute="trailing" constant="70" id="4OT-bg-rWE"/>
                     <constraint firstItem="kBx-ek-9zb" firstAttribute="leading" secondItem="a5T-BS-2oK" secondAttribute="leadingMargin" constant="8" id="5mt-Ha-msl"/>
@@ -97,6 +98,7 @@
                     <constraint firstItem="kBx-ek-9zb" firstAttribute="top" secondItem="a5T-BS-2oK" secondAttribute="topMargin" constant="14" id="N3K-cm-g3L"/>
                     <constraint firstItem="kBx-ek-9zb" firstAttribute="width" secondItem="G5L-HG-4UP" secondAttribute="width" id="PGZ-yf-uHm"/>
                     <constraint firstItem="G5L-HG-4UP" firstAttribute="top" secondItem="a5T-BS-2oK" secondAttribute="topMargin" constant="14" id="Q6V-lu-yjg"/>
+                    <constraint firstItem="G5L-HG-4UP" firstAttribute="top" secondItem="a5T-BS-2oK" secondAttribute="topMargin" constant="6" id="RW3-Vo-H4a"/>
                     <constraint firstItem="G5L-HG-4UP" firstAttribute="leading" secondItem="kBx-ek-9zb" secondAttribute="trailing" constant="70" id="RkW-az-MR2"/>
                     <constraint firstItem="kBx-ek-9zb" firstAttribute="leading" secondItem="a5T-BS-2oK" secondAttribute="leadingMargin" constant="22" id="XaL-MC-GZF"/>
                     <constraint firstItem="kBx-ek-9zb" firstAttribute="top" secondItem="a5T-BS-2oK" secondAttribute="topMargin" constant="8" id="Yw2-uf-HO1"/>
@@ -105,29 +107,37 @@
                     <constraint firstItem="G5L-HG-4UP" firstAttribute="leading" secondItem="kBx-ek-9zb" secondAttribute="trailing" constant="42" id="dGl-Ou-Pc1"/>
                     <constraint firstItem="kBx-ek-9zb" firstAttribute="leading" secondItem="a5T-BS-2oK" secondAttribute="leadingMargin" constant="8" id="gWG-P9-kv0"/>
                     <constraint firstItem="G5L-HG-4UP" firstAttribute="leading" secondItem="kBx-ek-9zb" secondAttribute="trailing" constant="22" id="hY0-D4-oHm"/>
+                    <constraint firstItem="G5L-HG-4UP" firstAttribute="leading" secondItem="kBx-ek-9zb" secondAttribute="trailing" constant="7" id="hg0-CO-psh"/>
                     <constraint firstItem="G5L-HG-4UP" firstAttribute="leading" secondItem="kBx-ek-9zb" secondAttribute="trailing" constant="54" id="hnk-6U-muk"/>
                     <constraint firstAttribute="trailingMargin" secondItem="G5L-HG-4UP" secondAttribute="trailing" constant="8" id="kN7-se-A0Q"/>
                     <constraint firstItem="kBx-ek-9zb" firstAttribute="top" secondItem="a5T-BS-2oK" secondAttribute="topMargin" constant="14" id="mT3-ti-RDn"/>
                     <constraint firstItem="G5L-HG-4UP" firstAttribute="top" secondItem="a5T-BS-2oK" secondAttribute="topMargin" constant="14" id="oDv-2t-7QG"/>
                     <constraint firstAttribute="trailingMargin" secondItem="G5L-HG-4UP" secondAttribute="trailing" constant="22" id="rhF-Vf-qSk"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="G5L-HG-4UP" secondAttribute="trailing" constant="6" id="vw1-Vn-8Pe"/>
+                    <constraint firstItem="kBx-ek-9zb" firstAttribute="leading" secondItem="a5T-BS-2oK" secondAttribute="leadingMargin" constant="6" id="wfg-Ul-RPF"/>
                     <constraint firstItem="G5L-HG-4UP" firstAttribute="leading" secondItem="kBx-ek-9zb" secondAttribute="trailing" constant="22" id="wpG-Gc-4Qb"/>
+                    <constraint firstItem="G5L-HG-4UP" firstAttribute="leading" secondItem="kBx-ek-9zb" secondAttribute="trailing" constant="8" id="yhJ-AL-Ht3"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
+                        <exclude reference="5mt-Ha-msl"/>
                         <exclude reference="6gT-yF-TB3"/>
                         <exclude reference="C1h-0t-1zG"/>
                         <exclude reference="Hvs-83-ccZ"/>
                         <exclude reference="IZX-S8-3sG"/>
                         <exclude reference="N3K-cm-g3L"/>
                         <exclude reference="XaL-MC-GZF"/>
+                        <exclude reference="Yw2-uf-HO1"/>
                         <exclude reference="gWG-P9-kv0"/>
                         <exclude reference="mT3-ti-RDn"/>
                         <exclude reference="48F-Dn-n8p"/>
                         <exclude reference="4OT-bg-rWE"/>
                         <exclude reference="67n-at-8bw"/>
+                        <exclude reference="8X8-fj-P6r"/>
                         <exclude reference="BND-ra-qob"/>
                         <exclude reference="Eqp-Au-FBF"/>
                         <exclude reference="Hcq-jw-1nb"/>
+                        <exclude reference="Kbn-H9-DVU"/>
                         <exclude reference="MVi-FK-Wh8"/>
                         <exclude reference="Q6V-lu-yjg"/>
                         <exclude reference="RkW-az-MR2"/>
@@ -136,9 +146,11 @@
                         <exclude reference="dGl-Ou-Pc1"/>
                         <exclude reference="hY0-D4-oHm"/>
                         <exclude reference="hnk-6U-muk"/>
+                        <exclude reference="kN7-se-A0Q"/>
                         <exclude reference="oDv-2t-7QG"/>
                         <exclude reference="rhF-Vf-qSk"/>
                         <exclude reference="wpG-Gc-4Qb"/>
+                        <exclude reference="yhJ-AL-Ht3"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>

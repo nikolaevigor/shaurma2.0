@@ -54,7 +54,7 @@ class starCell: UITableViewCell {
         totalLabel.sizeToFit()
         
         recentLabel = UILabel(frame: CGRectMake(width/2 + 5, starCell.defaultHeight - 20.0, 10, 10))
-        recentLabel.text = "Моя оценка: 3"
+        recentLabel.text = "Моя оценка: -"
         recentLabel.font = UIFont(name: "HelveticaNeue", size: 18.0)
         recentLabel.textColor = UIColor.blackColor()
         recentLabel.sizeToFit()
@@ -83,9 +83,7 @@ class starCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    @IBAction func valueChanged(sender: AnyObject) {
-        //print(starView.value)
-        
+    @IBAction func valueChanged(sender: AnyObject) {        
         UIView.animateWithDuration(0.5, animations: {
             self.totalLabel.hidden = true
             self.recentLabel.hidden = true
