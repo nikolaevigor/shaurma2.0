@@ -65,12 +65,11 @@
 		E76179401B97281700674739 /* commentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E761793F1B97281700674739 /* commentCell.swift */; };
 		E76333631B9CC442007D2520 /* ShawarmaSpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76333621B9CC442007D2520 /* ShawarmaSpinnerView.swift */; };
 		E77FC3031C3A8619002FD36D /* commentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77FC3021C3A8619002FD36D /* commentsVC.swift */; };
-		E7EA17621C55B3AE00B59311 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E7EA17601C55B3AE00B59311 /* Model.xcdatamodeld */; settings = {ASSET_TAGS = (); }; };
 		E7ECE2AF1BECE97900DA2202 /* featuresCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7ECE2AE1BECE97900DA2202 /* featuresCell.swift */; };
-		E7EDADF21C54265400341628 /* Montserrat-Reg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E7EDADF11C5422D800341628 /* Montserrat-Reg.ttf */; settings = {ASSET_TAGS = (); }; };
-		E7EDADF31C54265900341628 /* montserrat-light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E7EDADEF1C54215400341628 /* montserrat-light.ttf */; settings = {ASSET_TAGS = (); }; };
-		E7EDADF41C54265C00341628 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E7EDADEE1C54215400341628 /* Montserrat-Bold.ttf */; settings = {ASSET_TAGS = (); }; };
-		E7EDADF61C54725900341628 /* featuresCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7EDADF51C54725800341628 /* featuresCell.xib */; settings = {ASSET_TAGS = (); }; };
+		E7EDADF21C54265400341628 /* Montserrat-Reg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E7EDADF11C5422D800341628 /* Montserrat-Reg.ttf */; };
+		E7EDADF31C54265900341628 /* montserrat-light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E7EDADEF1C54215400341628 /* montserrat-light.ttf */; };
+		E7EDADF41C54265C00341628 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E7EDADEE1C54215400341628 /* Montserrat-Bold.ttf */; };
+		E7EDADF61C54725900341628 /* featuresCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7EDADF51C54725800341628 /* featuresCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -167,7 +166,6 @@
 		E761793F1B97281700674739 /* commentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = commentCell.swift; sourceTree = "<group>"; };
 		E76333621B9CC442007D2520 /* ShawarmaSpinnerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShawarmaSpinnerView.swift; sourceTree = "<group>"; };
 		E77FC3021C3A8619002FD36D /* commentsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = commentsVC.swift; sourceTree = "<group>"; };
-		E7EA17611C55B3AE00B59311 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		E7ECE2AE1BECE97900DA2202 /* featuresCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = featuresCell.swift; sourceTree = "<group>"; };
 		E7EDADEE1C54215400341628 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		E7EDADEF1C54215400341628 /* montserrat-light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "montserrat-light.ttf"; sourceTree = "<group>"; };
@@ -268,7 +266,6 @@
 				422F5A821B8F26AB005421C8 /* Main.storyboard */,
 				424DA4A21C41C81800E3597C /* metroJSON.json */,
 				422F5A851B8F26AB005421C8 /* Images.xcassets */,
-				E7EA17601C55B3AE00B59311 /* Model.xcdatamodeld */,
 				422F5A871B8F26AB005421C8 /* LaunchScreen.xib */,
 				E72A9CC91B8F77590013275F /* shaurmApp-Bridging-Header.h */,
 				422F5A751B8F26AB005421C8 /* Supporting Files */,
@@ -564,7 +561,6 @@
 				E72A9CD51B906C9E0013275F /* templeCell.swift in Sources */,
 				422F5AA01B8F297E005421C8 /* addSpotVC.m in Sources */,
 				422F5A7B1B8F26AB005421C8 /* AppDelegate.m in Sources */,
-				E7EA17621C55B3AE00B59311 /* Model.xcdatamodeld in Sources */,
 				E77FC3031C3A8619002FD36D /* commentsVC.swift in Sources */,
 				59D1EA201C52F5AD00144972 /* AddCommentDelegate.swift in Sources */,
 				E745D2831B946E9B00CB5138 /* reviewCell.swift in Sources */,
@@ -799,19 +795,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		E7EA17601C55B3AE00B59311 /* Model.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				E7EA17611C55B3AE00B59311 /* Model.xcdatamodel */,
-			);
-			currentVersion = E7EA17611C55B3AE00B59311 /* Model.xcdatamodel */;
-			path = Model.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 422F5A6A1B8F26AB005421C8 /* Project object */;
 }

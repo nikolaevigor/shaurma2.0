@@ -49,7 +49,7 @@ class reviewVC: UIViewController {
         self.automaticallyAdjustsScrollViewInsets = false;
         
         
-        let spinner = ShawarmaSpinnerView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        let spinner = ShawarmaSpinnerView(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
         self.view.addSubview(spinner)
         spinner.center = self.view.center
         spinner.start()
