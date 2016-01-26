@@ -12,6 +12,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     let tableHeaderHeight: CGFloat = 300.0
     var activeCellIndexPath = 0
     
+    @IBOutlet weak var subwayLabelWrapper: UIView!
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var starView: HCSStarRatingView!
     @IBOutlet weak var recentLabel: UILabel!
@@ -179,10 +180,17 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             
             if (object != nil) {
                 self.subwayLabel.text = object!.valueForKey("subway") as? String
+                self.subwayLabel.textColor = SHMManager.colorForStation(self.subwayLabel.text)
+                self.subwayLabel.sizeToFit()
+                self.subwayLabel.backgroundColor = UIColor.whiteColor()
+                
+                self.subwayLabelWrapper.layer.masksToBounds = true
+                self.subwayLabelWrapper.layer.cornerRadius = 10
+                self.subwayLabelWrapper.layer.zPosition = 100
+                
                 self.templeTitleLabel.text = object!.valueForKey("title") as? String
                 self.templeTitleLabel.sizeToFit()
                 self.templeTitleLabel.numberOfLines = 0
-                self.subwayLabel.sizeToFit()
                 
                 if let obj = object!.valueForKey("image") {
                     
