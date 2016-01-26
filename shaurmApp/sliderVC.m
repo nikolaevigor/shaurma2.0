@@ -35,6 +35,8 @@
     self.table.delegate = self;
     self.table.dataSource = self;
     self.table.scrollEnabled = NO;
+    self.table.rowHeight = UITableViewAutomaticDimension;
+    self.table.estimatedRowHeight = 70.0;
     [self.table registerNib:[UINib nibWithNibName:@"sliderCell" bundle:nil] forCellReuseIdentifier:@"cellID"];
     [self.view addSubview:self.table];
     
@@ -77,9 +79,27 @@
     return self.nearestTemples.count;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 70;
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static sliderCell *cell = nil;
+    
+    cell = [tableView dequeueReusableCellWithIdentifier:@"cellID"];
+    PFObject *temple = self.nearestTemples[indexPath.row];
+    [cell templeTitle].text = temple[@"title"];
+    [cell price].text = [NSString stringWithFormat:@"%@ ₽", temple[@"price"]];
+    [cell ratingLabel].text = [temple[@"ratingNumber"] stringValue];
+    [cell metroLabel].text = temple[@"subway"];
+    
+    NSLog(@"height is %f", [self calculateHeightForConfiguredSizingCell:cell]);
+    
+    return [self calculateHeightForConfiguredSizingCell:cell];
+}
+
+- (CGFloat)calculateHeightForConfiguredSizingCell:(UITableViewCell *)sizingCell {
+    [sizingCell layoutIfNeeded];
+    
+    CGSize size = [sizingCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    return size.height + 10; //this is not good i assume
 }
 
 #pragma mark - sliderDelegate methods

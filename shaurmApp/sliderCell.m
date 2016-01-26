@@ -12,9 +12,6 @@
 @implementation sliderCell
 
 - (void)awakeFromNib {
-    // Initialization code
-
-    //self.metroLabel.textColor = [SHMManager colorForStation:self.metroLabel.text];
 
 }
 
