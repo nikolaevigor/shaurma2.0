@@ -27,7 +27,7 @@
     UILabel *welcomeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenRect.size.width, 55)];
     welcomeLabel.text = @"Рядом со мной";
     welcomeLabel.textAlignment = NSTextAlignmentCenter;
-    welcomeLabel.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.65f];
+    welcomeLabel.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:1.0f];
     welcomeLabel.textColor = [UIColor whiteColor];
     [self.view addSubview:welcomeLabel];
     

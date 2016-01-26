@@ -80,6 +80,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="zR8-Wu-Fg4">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </textAttributes>
@@ -129,6 +130,7 @@
         <scene sceneID="U62-zH-qfd">
             <objects>
                 <navigationController id="XhV-le-acU" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="Обзор" image="Align.png" selectedImage="Align" id="Q5g-Bb-HTe">
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="keyPath">
@@ -138,7 +140,7 @@
                     </tabBarItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="DnF-QB-Acx">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="DnF-QB-Acx">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
@@ -253,14 +255,14 @@
                         <viewControllerLayoutGuide type="bottom" id="dJB-D1-nmm"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="mV3-4Y-FOq">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="117" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="cfM-hc-eqk">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="z0n-xv-vHY">
-                                    <rect key="frame" x="0.0" y="64" width="375" height="120"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9RJ-y3-mms">
@@ -301,11 +303,12 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="dJB-D1-nmm" firstAttribute="top" secondItem="cfM-hc-eqk" secondAttribute="bottom" id="Ipk-16-IAm"/>
-                            <constraint firstItem="cfM-hc-eqk" firstAttribute="top" secondItem="mV3-4Y-FOq" secondAttribute="top" constant="64" id="aN6-aJ-8mX"/>
+                            <constraint firstItem="cfM-hc-eqk" firstAttribute="top" secondItem="mV3-4Y-FOq" secondAttribute="top" id="aN6-aJ-8mX"/>
                             <constraint firstItem="cfM-hc-eqk" firstAttribute="leading" secondItem="mV3-4Y-FOq" secondAttribute="leading" id="eSd-PX-c42"/>
                             <constraint firstAttribute="trailing" secondItem="cfM-hc-eqk" secondAttribute="trailing" id="r0v-y4-zFt"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="1ZC-mT-i8y"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
@@ -330,15 +333,14 @@
                         <viewControllerLayoutGuide type="bottom" id="AvM-NG-8Dh"/>
                     </layoutGuides>
                     <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="fjh-wd-wyf">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="oiR-ow-baH">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <inset key="scrollIndicatorInsets" minX="0.0" minY="100" maxX="0.0" maxY="0.0"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" horizontalHuggingPriority="350" id="fpf-z5-cb5">
-                                    <rect key="frame" x="0.0" y="64" width="600" height="450"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="450"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shawarma.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Xor-vP-Iu8">
@@ -510,6 +512,7 @@
                             <constraint firstItem="oiR-ow-baH" firstAttribute="leading" secondItem="fjh-wd-wyf" secondAttribute="leading" id="mry-aW-6Fe"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="600"/>
                     <connections>
@@ -540,11 +543,11 @@
                         <viewControllerLayoutGuide type="bottom" id="rI7-Zb-jh6"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="VJN-ql-63s">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" keyboardDismissMode="interactive" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="41q-8Z-lzW">
-                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="492"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
@@ -584,7 +587,7 @@
             <objects>
                 <tableViewController id="wP0-oA-Ukf" customClass="commentsVC" customModule="shaurmApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="R5J-bV-3lU">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <inset key="scrollIndicatorInsets" minX="50" minY="100" maxX="0.0" maxY="0.0"/>

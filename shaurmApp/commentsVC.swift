@@ -166,7 +166,7 @@ class commentsVC: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.navigationBar.setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
-        self.navigationController?.navigationBar.barStyle = UIBarStyle.BlackTranslucent
+        self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
         
     }
     
