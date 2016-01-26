@@ -22,20 +22,24 @@
                             <constraint firstAttribute="width" constant="53" id="Zzv-ev-zGj"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="10" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8RT-nA-XL3">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8RT-nA-XL3">
                         <rect key="frame" x="285" y="8" width="27" height="27"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="27" id="7H1-Po-rW7"/>
+                            <constraint firstAttribute="width" constant="27" id="hDE-td-QK4"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Сокольники" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vPe-aH-Ldk">
-                        <rect key="frame" x="75" y="40" width="179" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Сокольники" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vPe-aH-Ldk">
+                        <rect key="frame" x="75" y="42" width="89" height="19"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
                         <color key="textColor" red="0.87917564655172409" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" misplaced="YES" text="Пивная 47Пивная 47Пивная 47Пивная 47Пивная 47Пивная 47Пивная 47Пивная 47" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hq0-g9-vQE">
-                        <rect key="frame" x="75" y="8" width="192" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Пивная 47Пивная 47Пивная 47Пивная 47Пивная 47Пивная 47Пивная 47Пивная 47" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hq0-g9-vQE">
+                        <rect key="frame" x="75" y="8" width="192" height="23"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="192" id="GdM-z4-NXt"/>
                         </constraints>
@@ -43,8 +47,12 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="150 Р" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oFo-Hv-xs3">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="150 Р" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oFo-Hv-xs3">
                         <rect key="frame" x="262" y="40" width="50" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="XVm-LN-seU"/>
+                            <constraint firstAttribute="width" constant="50" id="lgq-Kj-zKa"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                         <color key="textColor" red="0.45320391414141414" green="0.45320391414141414" blue="0.45320391414141414" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
