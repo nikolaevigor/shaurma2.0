@@ -90,8 +90,6 @@
     [cell ratingLabel].text = [temple[@"ratingNumber"] stringValue];
     [cell metroLabel].text = temple[@"subway"];
     
-    NSLog(@"height is %f", [self calculateHeightForConfiguredSizingCell:cell]);
-    
     return [self calculateHeightForConfiguredSizingCell:cell];
 }
 
