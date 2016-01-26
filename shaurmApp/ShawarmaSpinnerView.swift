@@ -15,10 +15,11 @@ class ShawarmaSpinnerView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        spinnerImageView = UIImageView(frame: frame)
+        spinnerImageView = UIImageView(frame: CGRect(x: frame.origin.x + 5, y: frame.origin.y + 5, width: frame.width-10, height: frame.height-10))
         spinnerImageView.image = UIImage(named: "spinner")
         
-        
+        self.backgroundColor = UIColor.whiteColor()
+        self.layer.cornerRadius = self.frame.size.width/2
         self.addSubview(spinnerImageView)
         
     }
