@@ -9,6 +9,8 @@
 import UIKit
 
 class featuresCell: UITableViewCell {
+    var delegate:StarViewDelegate? = nil
+
     class var height: CGFloat {get{return 80}}
     //var categories:[String] = ["Размер","Перчатки","Соус","Мастер"]
     var labelOne: UILabel!
@@ -32,6 +34,10 @@ class featuresCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        delegate!.dismissStarView(self)
     }
 
 }

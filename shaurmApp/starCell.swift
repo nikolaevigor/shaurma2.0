@@ -20,7 +20,8 @@ class starCell: UITableViewCell {
     var recentLabel: UILabel!
     var markLabel: UILabel!
 
-    
+    var delegate:StarViewDelegate? = nil
+
     
     var starView = HCSStarRatingView()
     
@@ -112,6 +113,11 @@ class starCell: UITableViewCell {
         UIView.animateWithDuration(0.5, animations: {
         self.frame.size.height = 100
         })
+    }
+    
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        delegate!.dismissStarView(self)
     }
     
 

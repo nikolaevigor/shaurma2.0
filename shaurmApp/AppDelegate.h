@@ -8,11 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+
 @import GoogleMaps;
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate>{
+
+}
 
 @property (strong, nonatomic) UIWindow *window;
+
+
 
 @end
 

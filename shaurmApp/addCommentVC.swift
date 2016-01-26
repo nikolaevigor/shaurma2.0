@@ -12,6 +12,7 @@ class addCommentVC: UIViewController {
     
     @IBAction func OKButtonAction(sender: AnyObject) {
         self.commentTextView.resignFirstResponder()
+        delegate!.addCommentDidFinish(commentTextView.text, controller: self)
     }
 
     @IBOutlet weak var OKButton: UIBarButtonItem!
@@ -35,15 +36,4 @@ class addCommentVC: UIViewController {
         self.navigationController?.navigationBar.barStyle = UIBarStyle.BlackTranslucent
         
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

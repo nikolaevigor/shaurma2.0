@@ -27,6 +27,7 @@ IB_DESIGNABLE
 @property (nonatomic) IBInspectable NSUInteger maximumValue;
 @property (nonatomic) IBInspectable CGFloat minimumValue;
 @property (nonatomic) IBInspectable CGFloat value;
+@property (nonatomic) IBInspectable BOOL active;
 @property (nonatomic) IBInspectable CGFloat spacing;
 @property (nonatomic) IBInspectable BOOL allowsHalfStars;
 @property (nonatomic) IBInspectable BOOL accurateHalfStars;

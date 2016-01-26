@@ -8,7 +8,7 @@
 
 import UIKit
 
-class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate,AddCommentDelegate {
+class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate,AddCommentDelegate, StarViewDelegate {
     let tableHeaderHeight: CGFloat = 300.0
     var activeCellIndexPath = 0
     
@@ -29,21 +29,21 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 self.recentLabel.hidden = false
                 self.markButton.hidden = true
                 self.markButton.alpha = 0.0
-                
+                self.templeRating = self.starView.value
+                self.saveRating(self.templeRating)
+                self.refresh()
             })
             
     }
     
     @IBAction func changeValue(sender: AnyObject) {
         print(starView.value)
+        self.starView.active = true
         UIView.animateWithDuration(0.5, animations: {
             self.totalLabel.hidden = true
             self.recentLabel.hidden = true
             self.markButton.hidden = false
             self.markButton.alpha = 1.0
-            self.templeRating = self.starView.value
-            self.saveRating(self.templeRating)
-            self.refresh()
         })
     }
 
@@ -75,26 +75,14 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     }
     
     
-    
     override func viewDidLoad(){
         super.viewDidLoad()
-        
+        self.starView.active = false
         self.automaticallyAdjustsScrollViewInsets = false;
-        
-        //NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
-        //NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
 
-        
-        
         mainTableView.frame.size = UIScreen.mainScreen().bounds.size
-        
-        
-       
-        
+
         mainTableView.registerClass(menuCell.self, forCellReuseIdentifier: "menuCell")
-        //mainTableView.registerClass(featuresCell.self, forCellReuseIdentifier: "featuresCell")
-        
-        
         mainTableView.registerNib(UINib.init(nibName: "featuresCell", bundle: nil), forCellReuseIdentifier: "featuresCell")
         mainTableView.registerNib(UINib.init(nibName: "addCommentCell", bundle: nil), forCellReuseIdentifier: "addCommentCell")
         mainTableView.registerNib(UINib.init(nibName: "commentCell", bundle: nil), forCellReuseIdentifier: "commentCell")
@@ -106,11 +94,6 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         mainTableView.preservesSuperviewLayoutMargins = false
         mainTableView.separatorStyle = .None
         
-        
-
-
-
-
         totalLabel.text = "Всего оценок: 123"
         totalLabel.font = UIFont(name: "HelveticaNeue", size: 18.0)
         totalLabel.textColor = UIColor.blackColor()
@@ -121,24 +104,17 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         recentLabel.textColor = UIColor.blackColor()
         recentLabel.sizeToFit()
         
-        
-
         markButton.setTitle("ОЦЕНИТЬ", forState: UIControlState.Normal)
         markButton.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 18.0)!
         markButton.titleLabel?.textAlignment = NSTextAlignment.Center
         markButton.alpha = 0.0
         markButton.hidden = true
 
+        self.view.frame.size.width = width
+
 
         self.templeTitleLabel.numberOfLines = 0
         self.templeTitleLabel.center.x = self.view.center.x
-        
-        self.view.frame.size.width = width
-        
-        
-        
-        
-        
         self.templeTitleLabel.alpha = 0.0
         self.subwayLabel.alpha = 0.0
         self.templePictureView.alpha = 0.0
@@ -157,11 +133,13 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
 
     
     func refresh() {
-        
         let spinner = ShawarmaSpinnerView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         self.view.addSubview(spinner)
         spinner.center.x = self.view.center.x
         spinner.center.y = self.view.center.y + 100.0
+        
+        print(self.view.center.x, self.view.center.y + 100.0)
+        print(spinner.center.x, spinner.center.y)
         
         spinner.start()
         
@@ -171,15 +149,19 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             self.recentLabel.text = "Моя оценка: \(rating as! CGFloat)"
         }
 
-        
-
-        
         PFQuery(className: "Temples2").getObjectInBackgroundWithId(id) {
-            (object: AnyObject?, error: NSError?) -> Void in
+            (object: PFObject?, error: NSError?) -> Void in
             
             if (object != nil) {
                 self.subwayLabel.text = object!.valueForKey("subway") as? String
                 self.templeTitleLabel.text = object!.valueForKey("title") as? String
+                
+                
+                if let ratingNum = object!.valueForKey("ratingNumber") {
+                    self.templeRating = CGFloat(NSNumberFormatter().numberFromString(String(ratingNum))!)/2
+                    self.starView.value = self.templeRating
+                }
+                
                 self.templeTitleLabel.sizeToFit()
                 self.templeTitleLabel.numberOfLines = 0
                 self.subwayLabel.sizeToFit()
@@ -213,7 +195,6 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             }
 
             
-            
 //            do{
 //                let comments = try PFQuery(className: "Review").whereKey("temple", equalTo: object!).findObjects()
 //                self.resultReviewArray = comments
@@ -222,11 +203,6 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
 //                abort()
 //            }
             
-            
-            
-
-            
-            spinner.hidden = true
             UIView.animateWithDuration(0.5, animations: {
                 self.templeTitleLabel.alpha = 1.0
                 self.mainTableView.alpha = 1.0
@@ -234,14 +210,14 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 self.templePictureView.alpha = 1.0
             })
             spinner.stop()
+            spinner.hidden = true
+            spinner.removeFromSuperview()
         }
-
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 8
     }
-    
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
@@ -295,7 +271,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
-        var categories:[String] = ["Размер","Перчатки","Соус","Мастер"]
+        let categories:[String] = ["Размер","Перчатки","Соус","Мастер"]
 
         
         //SEPARATOR
@@ -303,21 +279,20 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         separatorView.frame = CGRectMake(0, 0, width, 0.7)
         separatorView.backgroundColor = UIColor.lightGrayColor()
         
-
-    
-        
         if indexPath.row == 0{
             
             let cccell:featuresCell = tableView.dequeueReusableCellWithIdentifier("featuresCell") as! featuresCell
             //cccell.setLabelText(categories[0], t2: categories[1])
             cccell.frame.size.width = width
             cccell.clipsToBounds = true
+            cccell.delegate = self
             cell = cccell
             
         }
         
         if indexPath.row == 1{
             let ccell:menuCell = tableView.dequeueReusableCellWithIdentifier("menuCell") as! menuCell
+            ccell.delegate = self
             cell = ccell
         }
         
@@ -327,8 +302,8 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             //cccell.setLabelText(categories[2], t2: categories[3])
             cccell.frame.size.width = width
             cccell.clipsToBounds = true
+            cccell.delegate = self
             cell = cccell
-            
         }
         
         
@@ -364,6 +339,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 }
                 
             }
+            cccell.delegate = self
             cell = cccell
         }
         if indexPath.row == 6{
@@ -374,8 +350,8 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 //ccell.commentTextView.removeLayoutGuide(ccell.commentTextView.layoutGuides[0])
                 ccell.commentTextView.textStorage.removeLayoutManager(ccell.commentTextView.layoutManager)
                 ccell.commentTextView.delegate = self
+                ccell.delegate = self
                 cell = ccell
-            
             }
         
         
@@ -466,8 +442,9 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     }
     
     func addCommentAction(){
+        self.dismissStarView()
+        
         let text = self.commentText
-        //print(text)
 
         if text != "" {
         let review = PFObject(className:"Review")
@@ -499,15 +476,8 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 print(error)
             }
                 }
-            
-            
             }
-    
             self.refresh()
-
-            //self.addButtonAction()
-
-
         }
     }
     
@@ -528,61 +498,41 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
 
     
     func addButtonAction(){
-
-//        if self.activeCellIndexPath == 6 {
-//            
-//            
-//            self.activeCellIndexPath = 0
-//            self.mainTableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 6, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Fade)
-//        
-//            self.mainTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 6, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
-//
-//        }
-//        else{
-//            
-//            
-//            
-//            self.activeCellIndexPath = 6
-//            self.mainTableView.beginUpdates()
-//            self.mainTableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 6, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Fade)
-//            self.mainTableView.endUpdates()
-//            
-//            
-//            self.mainTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 6, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
-//        }
+        self.dismissStarView()
         self.performSegueWithIdentifier("templeToAddComment", sender: self)
-
     }
     
     
     func expandButtonAction(){
-
+        self.dismissStarView()
         self.performSegueWithIdentifier("templeToComments", sender: self)
-
-    
     }
     
     func textViewShouldBeginEditing(textView: UITextView) -> Bool {
         self.mainTableView.reloadData()
-
-        //self.mainTableView.scrollToRowAtIndexPath(NSIndexPath(index: 3), atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
         return true
     }
     
-    func keyboardWillShow(notification: NSNotification) {
-        //print("one")
-        
-//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-//            self.view.frame.origin.y -= (keyboardSize.height)
-//        }
-        
+    func dismissStarView(){
+        if self.starView.active == true {
+        UIView.animateWithDuration(0.5, animations: {
+            self.totalLabel.hidden = false
+            self.recentLabel.hidden = false
+            self.markButton.hidden = true
+            self.markButton.alpha = 0.0
+            self.starView.value = self.templeRating
+            self.starView.active = false
+        })
+        }
     }
     
-    func keyboardWillHide(notification: NSNotification) {
-//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-//            self.view.frame.origin.y += (keyboardSize.height)
-//        }
+    func dismissStarView(controller:AnyObject){
+        if self.starView.active == true {
+        self.dismissStarView()
+        }
     }
+    
+
     
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage.init(), forBarMetrics: UIBarMetrics.Default)

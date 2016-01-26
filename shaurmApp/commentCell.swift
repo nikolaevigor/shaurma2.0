@@ -14,7 +14,8 @@ class commentCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var commentTextLabel: UILabel!
     
-    
+    var delegate:StarViewDelegate? = nil
+
     override func awakeFromNib() {
         super.awakeFromNib()
         //super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -28,33 +29,14 @@ class commentCell: UITableViewCell {
         self.layoutMargins = UIEdgeInsetsZero
         self.preservesSuperviewLayoutMargins = false
 
-        //let commentWidth = width - 80
-        //commentTextLabel = UILabel(frame: CGRectMake(20, 30, commentWidth, 50))
-        
-        //commentTextLabel.frame.width = commentWidth
         commentTextLabel.sizeToFit()
         commentTextLabel.numberOfLines = 0
-
-        //dateLabel = UILabel(frame: CGRectMake(150, 0, 20, 10))
         dateLabel.sizeToFit()
         userNameLabel.sizeToFit()
-
-        //dateLabel.textColor = UIColor.lightGrayColor()
-        //dateLabel.font = UIFont(name: "HelveticaNeue-Light", size: 15.0)
-
-        
-        //userNameLabel = UILabel(frame: CGRectMake(50, 0, 20, 10))
-        //userNameLabel.textColor = UIColor.darkGrayColor()
-        //userNameLabel.font = UIFont(name: "HelveticaNeue-Light", size: 16.0)
-        
-
-        
-//        contentView.addSubview(commentTextLabel)
-//        contentView.addSubview(dateLabel)
-//        contentView.addSubview(userNameLabel)
-
-        
-        
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        delegate!.dismissStarView(self)
     }
 
     

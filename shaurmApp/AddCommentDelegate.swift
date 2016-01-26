@@ -11,3 +11,7 @@ import Foundation
 protocol AddCommentDelegate{
     func addCommentDidFinish(addCommentText:String,controller:addCommentVC)
 }
+
+protocol StarViewDelegate{
+    func dismissStarView(controller:AnyObject)
+}

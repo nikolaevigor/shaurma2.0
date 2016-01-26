@@ -16,7 +16,7 @@ class menuCell: UITableViewCell {
     var menuPicView: UIImageView!
     class var expandedHeight: CGFloat {get{return 180}}
     class var defaultHeight: CGFloat {get{return 65}}
-
+    var delegate:StarViewDelegate? = nil
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -134,6 +134,12 @@ class menuCell: UITableViewCell {
 
         }
     
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.setSelected(true, animated: false)
+        super.touchesBegan(touches, withEvent: event)
+        delegate!.dismissStarView(self)
     }
 
 
