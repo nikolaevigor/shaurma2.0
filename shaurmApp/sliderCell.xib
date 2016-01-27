@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -17,62 +18,58 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4F1-w9-gw8">
                         <rect key="frame" x="8" y="8" width="53" height="53"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="53" id="R1M-1d-vmv"/>
-                            <constraint firstAttribute="height" constant="53" id="Uqq-WW-cvB"/>
+                            <constraint firstAttribute="height" constant="53" id="Cah-Co-lKK"/>
+                            <constraint firstAttribute="width" constant="53" id="Zzv-ev-zGj"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8RT-nA-XL3">
                         <rect key="frame" x="285" y="8" width="27" height="27"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="27" id="V3K-vv-4uK"/>
-                            <constraint firstAttribute="height" constant="27" id="lPy-1m-gDQ"/>
+                            <constraint firstAttribute="height" constant="27" id="7H1-Po-rW7"/>
+                            <constraint firstAttribute="width" constant="27" id="hDE-td-QK4"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="150 Р" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oFo-Hv-xs3">
-                        <rect key="frame" x="262" y="40" width="50" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="Fz8-3R-dKi"/>
-                            <constraint firstAttribute="width" constant="50" id="kBU-45-t6j"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
-                        <color key="textColor" red="0.45320391414141414" green="0.45320391414141414" blue="0.45320391414141414" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Сокольники" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vPe-aH-Ldk">
-                        <rect key="frame" x="75" y="40" width="179" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="JVb-ch-FS4"/>
-                            <constraint firstAttribute="width" constant="179" id="p6G-dc-hfy"/>
-                        </constraints>
+                        <rect key="frame" x="75" y="42" width="89" height="19"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
                         <color key="textColor" red="0.87917564655172409" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Пивная 47" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hq0-g9-vQE">
-                        <rect key="frame" x="75" y="8" width="192" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Пивная 47Пивная 47Пивная 47Пивная 47Пивная 47Пивная 47Пивная 47Пивная 47" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hq0-g9-vQE">
+                        <rect key="frame" x="75" y="8" width="192" height="23"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="21" id="0fF-Kg-l7y"/>
-                            <constraint firstAttribute="width" constant="192" id="lqU-zR-d6S"/>
+                            <constraint firstAttribute="width" constant="192" id="GdM-z4-NXt"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="150 Р" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oFo-Hv-xs3">
+                        <rect key="frame" x="262" y="40" width="50" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="XVm-LN-seU"/>
+                            <constraint firstAttribute="width" constant="50" id="lgq-Kj-zKa"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                        <color key="textColor" red="0.45320391414141414" green="0.45320391414141414" blue="0.45320391414141414" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="topMargin" secondItem="hq0-g9-vQE" secondAttribute="top" id="2Cb-ez-8EI"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="oFo-Hv-xs3" secondAttribute="trailing" id="FEf-LD-9we"/>
-                    <constraint firstItem="vPe-aH-Ldk" firstAttribute="leading" secondItem="4F1-w9-gw8" secondAttribute="trailing" constant="14" id="SwJ-qy-cCV"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="oFo-Hv-xs3" secondAttribute="bottom" id="fcy-gw-ElC"/>
-                    <constraint firstAttribute="leadingMargin" secondItem="4F1-w9-gw8" secondAttribute="leading" id="hdp-5J-Wsp"/>
-                    <constraint firstAttribute="topMargin" secondItem="4F1-w9-gw8" secondAttribute="top" id="jYv-ew-0Q9"/>
-                    <constraint firstItem="hq0-g9-vQE" firstAttribute="leading" secondItem="4F1-w9-gw8" secondAttribute="trailing" constant="14" id="k9X-9j-aHb"/>
-                    <constraint firstAttribute="topMargin" secondItem="8RT-nA-XL3" secondAttribute="top" id="knL-9C-0pE"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="vPe-aH-Ldk" secondAttribute="bottom" id="wUj-gV-vNK"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="8RT-nA-XL3" secondAttribute="trailing" id="yvR-Hq-nS6"/>
+                    <constraint firstItem="vPe-aH-Ldk" firstAttribute="top" secondItem="hq0-g9-vQE" secondAttribute="bottom" constant="11" id="C8K-4a-7e8"/>
+                    <constraint firstAttribute="topMargin" secondItem="hq0-g9-vQE" secondAttribute="top" id="Fmo-aS-5Sg"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="8RT-nA-XL3" secondAttribute="bottom" multiplier="3:1" constant="-44" id="Fte-M0-5qb"/>
+                    <constraint firstItem="vPe-aH-Ldk" firstAttribute="leading" secondItem="4F1-w9-gw8" secondAttribute="trailing" constant="14" id="KWQ-e6-bCL"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="vPe-aH-Ldk" secondAttribute="bottom" id="LmP-nm-g1M"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="oFo-Hv-xs3" secondAttribute="bottom" multiplier="3:2" constant="-30.5" id="Y1S-cv-LS8"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="4F1-w9-gw8" secondAttribute="leading" id="omw-jX-rrw"/>
+                    <constraint firstItem="4F1-w9-gw8" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="p1T-gC-aTr"/>
+                    <constraint firstItem="hq0-g9-vQE" firstAttribute="leading" secondItem="4F1-w9-gw8" secondAttribute="trailing" constant="14" id="uLb-YH-mPP"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="oFo-Hv-xs3" secondAttribute="trailing" id="vaN-c9-EVh"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="8RT-nA-XL3" secondAttribute="trailing" id="zAV-pS-8Fa"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
