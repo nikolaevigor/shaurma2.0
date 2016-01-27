@@ -20,7 +20,6 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     func addCommentDidFinish(addCommentText: String, controller: addCommentVC) {
         commentText = addCommentText
-        controller.navigationController!.popViewControllerAnimated(true)
         self.addCommentAction()
     }
     
@@ -143,6 +142,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         print(spinner.center.x, spinner.center.y)
         
         spinner.start()
+
         
         let userDefaults = NSUserDefaults.standardUserDefaults()
         
@@ -416,18 +416,6 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         return true
     }
     
-//    func textViewShouldEndEditing(textView: UITextView) -> Bool {
-//        textView.resignFirstResponder()
-//        return true
-//    }
-//    
-//    func textViewDidBeginEditing(textView: UITextView) {
-//    }
-    
-//    func textViewDidEndEditing(textView: UITextView) {
-//        self.commentText = textView.text!
-//    }
-//    
 
     func textFieldDidEndEditing(textField: UITextField) {
         self.commentText = textField.text!
@@ -544,11 +532,13 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage.init(), forBarMetrics: UIBarMetrics.Default)
-        self.navigationController?.navigationBar.shadowImage = UIImage.init()
         self.navigationController?.navigationBar.translucent = true
+        self.navigationController?.navigationBar.shadowImage = UIImage.init()
         self.navigationController?.view.backgroundColor = UIColor.clearColor()
         
+        
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+
     }
     
     func saveRating(ratingNumber: CGFloat) {

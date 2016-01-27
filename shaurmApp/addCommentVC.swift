@@ -32,8 +32,6 @@ class addCommentVC: UIViewController {
     
     
     override func viewWillAppear(animated: Bool) {
-        self.navigationController?.navigationBar.setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
-        self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
-        
+        self.navigationController?.navigationBar.translucent = false
     }
 }

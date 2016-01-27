@@ -25,24 +25,16 @@ class commentsVC: UITableViewController {
     @IBOutlet var mainTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.Plain, target:nil, action:nil)
-        self.automaticallyAdjustsScrollViewInsets = false;
-        
-        
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage.init(), forBarMetrics: UIBarMetrics.Default)
-        self.navigationController?.navigationBar.shadowImage = UIImage.init()
-        self.navigationController?.view.backgroundColor = UIColor.clearColor()
-        
-        
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+//        self.automaticallyAdjustsScrollViewInsets = false;
         
         let width = UIScreen.mainScreen().bounds.width
         let height = UIScreen.mainScreen().bounds.height
         
         //tableView.alpha = 0
-        let yInset = (self.navigationController?.navigationBar.frame.size.height)! + (self.navigationController?.navigationBar.frame.origin.y)!
-        tableView.contentInset = UIEdgeInsetsMake(yInset,0,yInset,0);
+//        let yInset = (self.navigationController?.navigationBar.frame.size.height)! + (self.navigationController?.navigationBar.frame.origin.y)!
+        
+    
+//        tableView.contentInset = UIEdgeInsetsMake(yInset,0,yInset,0);
         tableView.frame.size.height = height - 150
         tableView.frame.size.width = width
 
@@ -85,15 +77,9 @@ class commentsVC: UITableViewController {
             self.mainTableView.reloadData()
 
         })
-                
             }
-
-
         }
-        
-        
-        
-        
+    
         dispatch_async(dispatch_get_main_queue()) {
             self.mainTableView.reloadData()
         }
@@ -165,10 +151,10 @@ class commentsVC: UITableViewController {
 
     
     override func viewWillAppear(animated: Bool) {
-        self.navigationController?.navigationBar.setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
-        self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
-        
+        self.navigationController?.navigationBar.translucent = false
     }
+
+
     
     
     override func didReceiveMemoryWarning() {

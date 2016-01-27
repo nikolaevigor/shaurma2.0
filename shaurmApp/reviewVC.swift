@@ -28,13 +28,12 @@ class reviewVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+ 
         self.navigationController?.navigationBar.barStyle = UIBarStyle.BlackTranslucent
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.Plain, target:nil, action:nil)
         
-        
-        //self.tabBarController!.tabBar.barStyle = UIBarStyle.Black
+
         
         
         //UITabBar.appearance().barStyle = UIBarStyle.Black
