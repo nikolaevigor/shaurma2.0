@@ -14,7 +14,8 @@ class menuCell: UITableViewCell {
     var titleLabel: UILabel!
     var rowOneLabel: UILabel!
     var menuPicView: UIImageView!
-    class var expandedHeight: CGFloat {get{return 180}}
+    var menuData: NSArray!
+    class var expandedHeight: CGFloat {get{return 150}}
     class var defaultHeight: CGFloat {get{return 65}}
     var delegate:StarViewDelegate? = nil
     
@@ -64,12 +65,12 @@ class menuCell: UITableViewCell {
         
         rowOneLabel = UILabel(frame: CGRectMake(0, vertCenter, 300, 100))
         rowOneLabel.numberOfLines = 0
-        rowOneLabel.text = "Шаурма в пите - 150р\nШаурма в лаваше - 120р"
+        
+        
+        self.refresh()
         rowOneLabel.font = UIFont(name: "HelveticaNeue", size: 17.0)
         rowOneLabel.textColor = UIColor.darkGrayColor()
-        rowOneLabel.sizeToFit()
-        rowOneLabel.center = self.center
-        rowOneLabel.center.y = menuCell.expandedHeight / 2
+
         rowOneLabel.textAlignment = .Left
         rowOneLabel.hidden = true
         
@@ -87,6 +88,23 @@ class menuCell: UITableViewCell {
     deinit{
         //print("DEINIT")
         self.ignoreFrameChanges()
+    }
+    
+    func refresh(){
+        var rowText = ""
+        
+        if let menuData = self.menuData {
+            for a in menuData {
+                rowText.appendContentsOf("Шаурма \((a as! NSArray)[0]) - \((a as! NSArray)[1])\n")
+            }
+            
+        }
+        rowOneLabel.text = rowText
+        rowOneLabel.sizeToFit()
+        rowOneLabel.center = self.center
+        rowOneLabel.center.y = menuCell.expandedHeight / 2
+
+
     }
 
     

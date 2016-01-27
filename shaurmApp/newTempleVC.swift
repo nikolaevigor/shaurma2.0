@@ -59,6 +59,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     var templeTitle = String()
     var templeRating = CGFloat()
     var commentText = String()
+    var menuData = NSArray()
     
     @IBOutlet weak var headerContainerView: UIView!
     @IBOutlet weak var templePictureView: UIImageView!
@@ -172,6 +173,11 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                     self.starView.value = self.templeRating
                 }
                 
+                
+                if let loadedMenuData = object!.valueForKey("menu") {
+                    self.menuData = loadedMenuData as! NSArray
+                }
+                
                 self.templeTitleLabel.sizeToFit()
                 self.templeTitleLabel.numberOfLines = 0
                 
@@ -280,7 +286,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
-        let categories:[String] = ["Размер","Перчатки","Соус","Мастер"]
+        //let categories:[String] = ["Размер","Перчатки","Соус","Мастер"]
 
         
         //SEPARATOR
@@ -302,6 +308,8 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         if indexPath.row == 1{
             let ccell:menuCell = tableView.dequeueReusableCellWithIdentifier("menuCell") as! menuCell
             ccell.delegate = self
+            ccell.menuData = self.menuData
+            ccell.refresh()
             cell = ccell
         }
         
