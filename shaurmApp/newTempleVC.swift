@@ -20,6 +20,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     func addCommentDidFinish(addCommentText: String, controller: addCommentVC) {
         commentText = addCommentText
+        controller.navigationController!.popViewControllerAnimated(true)
         self.addCommentAction()
     }
     
