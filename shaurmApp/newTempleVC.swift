@@ -88,6 +88,8 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         mainTableView.registerNib(UINib.init(nibName: "featuresCell", bundle: nil), forCellReuseIdentifier: "featuresCell")
         mainTableView.registerNib(UINib.init(nibName: "addCommentCell", bundle: nil), forCellReuseIdentifier: "addCommentCell")
         mainTableView.registerNib(UINib.init(nibName: "commentCell", bundle: nil), forCellReuseIdentifier: "commentCell")
+        mainTableView.registerNib(UINib.init(nibName: "locationCell", bundle: nil), forCellReuseIdentifier: "locationCell")
+
 
         
         
@@ -231,7 +233,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8
+        return 9
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -270,14 +272,16 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             }
         }
         
-        if indexPath.row == 7{
-            if indexPath == selectedIndexPath{
-                return addCommentCell.expandedHeight
-            }
-            else{
-                return 0
-            }
-        }
+//        if indexPath.row == 7{
+//            if indexPath == selectedIndexPath{
+//                return addCommentCell.expandedHeight
+//            }
+//            else{
+//                return 0
+//            }
+//        }
+//        
+
         return 100
     }
     
@@ -370,6 +374,13 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 ccell.delegate = self
                 cell = ccell
             }
+        if indexPath.row == 7 {
+            let ccell:locationCell = tableView.dequeueReusableCellWithIdentifier("locationCell") as! locationCell
+            ccell.goToMapButton.addTarget(self, action: "goToMapAction", forControlEvents: UIControlEvents.TouchUpInside)
+            //ccell.delegate = self
+            cell = ccell
+        }
+
         
         
         cell.addSubview(separatorView)
@@ -507,6 +518,11 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         self.performSegueWithIdentifier("templeToAddComment", sender: self)
     }
     
+    func goToMapAction(){
+        self.dismissStarView()
+        self.performSegueWithIdentifier("templeToMap", sender: self)
+    }
+    
     
     func expandButtonAction(){
         self.dismissStarView()
@@ -536,6 +552,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         self.dismissStarView()
         }
     }
+
     
 
     

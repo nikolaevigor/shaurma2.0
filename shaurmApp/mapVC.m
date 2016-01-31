@@ -20,7 +20,6 @@ static const CGFloat CalloutYOffset = 10.0f;
 
 @property (strong, nonatomic) SMCalloutView *calloutView;
 @property (strong, nonatomic) UIView *emptyCalloutView;
-
 @property (strong, nonatomic) NSArray *temples;
 
 @property (weak, nonatomic) id <containerDelegate> containerDelegate;

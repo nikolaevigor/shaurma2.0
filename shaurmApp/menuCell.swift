@@ -9,6 +9,8 @@
 import UIKit
 
 
+//  Данные для меню хранятся в таком виде
+//  [["в обычном лаваше",150],["в сырном лаваше",180],["в пите",190]]
 
 class menuCell: UITableViewCell {
     var titleLabel: UILabel!

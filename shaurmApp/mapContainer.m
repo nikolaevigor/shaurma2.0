@@ -69,7 +69,6 @@
 - (void)openTempleVC:(NSString *)id_
 {
     
-    
 //    self.openedTemple = [[newTempleVC alloc] init];
 //    [self.openedTemple setId:id_];
 //    [self.navigationController pushViewController:self.openedTemple animated:YES];

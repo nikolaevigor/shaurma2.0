@@ -39,7 +39,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="258.5" y="545.5"/>
+            <point key="canvasLocation" x="-113.5" y="537.5"/>
         </scene>
         <!--Add Spot-->
         <scene sceneID="26v-8f-wKt">
@@ -71,7 +71,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HcE-MO-4cw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-202.5" y="-167.5"/>
+            <point key="canvasLocation" x="-974.5" y="-1419.5"/>
         </scene>
         <!--Карта-->
         <scene sceneID="W4B-QC-c41">
@@ -129,7 +129,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-843.5" y="-510.5"/>
+            <point key="canvasLocation" x="-787.5" y="-446.5"/>
         </scene>
         <!--Обзор-->
         <scene sceneID="U62-zH-qfd">
@@ -156,7 +156,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="npq-k2-WOO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-217" y="-1090"/>
+            <point key="canvasLocation" x="-223.5" y="-1090.5"/>
         </scene>
         <!--Обзор-->
         <scene sceneID="ma9-E1-wMf">
@@ -254,7 +254,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H9b-Il-e3g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="342.5" y="-1172.5"/>
+            <point key="canvasLocation" x="353.5" y="-1090.5"/>
         </scene>
         <!--CategoryVC-->
         <scene sceneID="Bst-cV-xRo">
@@ -353,7 +353,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="oiR-ow-baH">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="502"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" horizontalHuggingPriority="350" id="fpf-z5-cb5">
@@ -379,10 +379,10 @@
                                             <animations/>
                                             <color key="backgroundColor" red="0.33333333329999998" green="0.23523890477528356" blue="0.19959716994526316" alpha="1" colorSpace="calibratedRGB"/>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bMj-ID-0Rn">
+                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bMj-ID-0Rn">
                                             <rect key="frame" x="16" y="308" width="75" height="26"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69D-fE-agj">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69D-fE-agj">
                                                     <rect key="frame" x="15" y="2" width="45" height="21"/>
                                                     <animations/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -418,7 +418,7 @@
                                                 </mask>
                                             </variation>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" minimumFontSize="17" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="oW4-om-0kv">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" minimumFontSize="17" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="oW4-om-0kv">
                                             <rect key="frame" x="260" y="132" width="80" height="36"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="30"/>
@@ -535,7 +535,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="AvM-NG-8Dh" firstAttribute="top" secondItem="oiR-ow-baH" secondAttribute="bottom" constant="64" id="IT3-1i-pSR"/>
+                            <constraint firstItem="AvM-NG-8Dh" firstAttribute="top" secondItem="oiR-ow-baH" secondAttribute="bottom" constant="49" id="IT3-1i-pSR"/>
                             <constraint firstItem="oiR-ow-baH" firstAttribute="top" secondItem="fjh-wd-wyf" secondAttribute="top" id="b4S-VE-si1"/>
                             <constraint firstAttribute="trailing" secondItem="oiR-ow-baH" secondAttribute="trailing" id="ebH-aO-Vsp"/>
                             <constraint firstItem="oiR-ow-baH" firstAttribute="leading" secondItem="fjh-wd-wyf" secondAttribute="leading" id="mry-aW-6Fe"/>
@@ -556,11 +556,31 @@
                         <outlet property="totalLabel" destination="uG7-e7-aj1" id="Glj-Vh-kDN"/>
                         <segue destination="wP0-oA-Ukf" kind="show" identifier="templeToComments" id="CoM-uL-XDJ"/>
                         <segue destination="iiI-rG-onP" kind="show" identifier="templeToAddComment" id="Gdd-4t-m3l"/>
+                        <segue destination="3HY-bx-229" kind="show" identifier="templeToMap" id="6ve-9Z-5yh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4ZJ-Cs-RX6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="902" y="-264"/>
+            <point key="canvasLocation" x="786" y="0.0"/>
+        </scene>
+        <!--MapVC-->
+        <scene sceneID="DRk-m9-wH6">
+            <objects>
+                <viewController id="3HY-bx-229" customClass="mapVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0nV-iU-kDx"/>
+                        <viewControllerLayoutGuide type="bottom" id="Jaa-lh-pYe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xLs-h8-RY3">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VrY-gm-5cM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="740" y="858"/>
         </scene>
         <!--Добавить отзыв-->
         <scene sceneID="kcZ-4u-7ie">
@@ -610,7 +630,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CHh-fY-6Q5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1505" y="-252"/>
+            <point key="canvasLocation" x="1851" y="-264"/>
         </scene>
         <!--CommentsVC-->
         <scene sceneID="xjU-qc-HWZ">
@@ -633,7 +653,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r89-aN-EG8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="927" y="579"/>
+            <point key="canvasLocation" x="1859" y="571"/>
         </scene>
     </scenes>
     <resources>
@@ -646,6 +666,6 @@
         <image name="yellow-star-filled" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="suH-da-vH3"/>
+        <segue reference="6CV-hJ-qoj"/>
     </inferredMetricsTieBreakers>
 </document>

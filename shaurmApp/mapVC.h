@@ -13,6 +13,5 @@
 #import "mapDelegate.h"
 
 @interface mapVC : UIViewController <GMSMapViewDelegate, CLLocationManagerDelegate, mapDelegate>
-
 @end
 
