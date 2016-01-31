@@ -39,9 +39,9 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Пивная 47Пивная 47Пивная 47Пивная 47Пивная 47Пивная 47Пивная 47Пивная 47" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hq0-g9-vQE">
-                        <rect key="frame" x="75" y="8" width="192" height="23"/>
+                        <rect key="frame" x="75" y="8" width="202" height="23"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="192" id="GdM-z4-NXt"/>
+                            <constraint firstAttribute="width" constant="202" id="GdM-z4-NXt"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
