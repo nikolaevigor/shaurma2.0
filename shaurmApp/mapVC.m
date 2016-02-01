@@ -21,7 +21,6 @@ static const CGFloat CalloutYOffset = 10.0f;
 @property (strong, nonatomic) SMCalloutView *calloutView;
 @property (strong, nonatomic) UIView *emptyCalloutView;
 @property (strong, nonatomic) NSArray *temples;
-
 @property (weak, nonatomic) id <containerDelegate> containerDelegate;
 
 @end
@@ -40,6 +39,7 @@ static const CGFloat CalloutYOffset = 10.0f;
     self.containerDelegate = container;
     
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:55.75309756657614 longitude:37.62137420204017 zoom:0];
+    
     
     mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     mapView_.settings.compassButton = YES;
@@ -106,6 +106,8 @@ static const CGFloat CalloutYOffset = 10.0f;
 };
 
 #pragma mark - KVO update methods
+
+
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if (!firstLocationUpdate_) {
@@ -212,6 +214,7 @@ static const CGFloat CalloutYOffset = 10.0f;
 }
 
 #pragma mark - mapDelegate methods
+
 
 - (NSArray *)getNearest
 {

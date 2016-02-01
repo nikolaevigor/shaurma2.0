@@ -64,6 +64,7 @@
 		E74BFDF11C59CF050036B6A7 /* templeMapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74BFDF01C59CF050036B6A7 /* templeMapVC.swift */; settings = {ASSET_TAGS = (); }; };
 		E74BFDF31C59D1290036B6A7 /* locationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74BFDF21C59D1290036B6A7 /* locationCell.swift */; settings = {ASSET_TAGS = (); }; };
 		E74BFDF51C59D1370036B6A7 /* locationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E74BFDF41C59D1370036B6A7 /* locationCell.xib */; settings = {ASSET_TAGS = (); }; };
+		E74BFDF71C5EDE0A0036B6A7 /* menuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E74BFDF61C5EDE0A0036B6A7 /* menuCell.xib */; settings = {ASSET_TAGS = (); }; };
 		E75E14E71BFACEE4001C73CB /* addCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75E14E61BFACEE4001C73CB /* addCommentCell.swift */; };
 		E76179401B97281700674739 /* commentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E761793F1B97281700674739 /* commentCell.swift */; };
 		E76333631B9CC442007D2520 /* ShawarmaSpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76333621B9CC442007D2520 /* ShawarmaSpinnerView.swift */; };
@@ -168,6 +169,7 @@
 		E74BFDF01C59CF050036B6A7 /* templeMapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = templeMapVC.swift; sourceTree = "<group>"; };
 		E74BFDF21C59D1290036B6A7 /* locationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = locationCell.swift; sourceTree = "<group>"; };
 		E74BFDF41C59D1370036B6A7 /* locationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = locationCell.xib; sourceTree = "<group>"; };
+		E74BFDF61C5EDE0A0036B6A7 /* menuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = menuCell.xib; sourceTree = "<group>"; };
 		E75E14E61BFACEE4001C73CB /* addCommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addCommentCell.swift; sourceTree = "<group>"; };
 		E761793F1B97281700674739 /* commentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = commentCell.swift; sourceTree = "<group>"; };
 		E76333621B9CC442007D2520 /* ShawarmaSpinnerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShawarmaSpinnerView.swift; sourceTree = "<group>"; };
@@ -421,6 +423,7 @@
 				5962FEF21C506894000D4C94 /* addCommentCell.xib */,
 				E7EDADF51C54725800341628 /* featuresCell.xib */,
 				E7245EAE1BA1BA6A00F7D035 /* menuCell.swift */,
+				E74BFDF61C5EDE0A0036B6A7 /* menuCell.xib */,
 				E7245EB01BA1BA7600F7D035 /* starCell.swift */,
 			);
 			name = cells;
@@ -524,6 +527,7 @@
 				428B40C61B8F890000A8EF74 /* GoogleMaps.bundle in Resources */,
 				E745D2881B95AC4F00CB5138 /* shawarma.jpg in Resources */,
 				E74BFDF51C59D1370036B6A7 /* locationCell.xib in Resources */,
+				E74BFDF71C5EDE0A0036B6A7 /* menuCell.xib in Resources */,
 				426E611B1B9F8307003336D1 /* sliderCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

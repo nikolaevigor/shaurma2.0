@@ -379,10 +379,10 @@
                                             <animations/>
                                             <color key="backgroundColor" red="0.33333333329999998" green="0.23523890477528356" blue="0.19959716994526316" alpha="1" colorSpace="calibratedRGB"/>
                                         </view>
-                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bMj-ID-0Rn">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bMj-ID-0Rn">
                                             <rect key="frame" x="16" y="308" width="75" height="26"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69D-fE-agj">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69D-fE-agj">
                                                     <rect key="frame" x="15" y="2" width="45" height="21"/>
                                                     <animations/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -418,7 +418,7 @@
                                                 </mask>
                                             </variation>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" minimumFontSize="17" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="oW4-om-0kv">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" minimumFontSize="17" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="oW4-om-0kv">
                                             <rect key="frame" x="260" y="132" width="80" height="36"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="30"/>
@@ -660,7 +660,7 @@
         <image name="Align" width="30" height="30"/>
         <image name="Align.png" width="25" height="25"/>
         <image name="Plus.png" width="25" height="25"/>
-        <image name="map.png" width="25" height="25"/>
+        <image name="map.png" width="30" height="30"/>
         <image name="shawarma.jpg" width="580" height="326"/>
         <image name="yellow-star" width="64" height="64"/>
         <image name="yellow-star-filled" width="64" height="64"/>

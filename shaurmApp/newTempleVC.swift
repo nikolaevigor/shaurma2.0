@@ -87,7 +87,9 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
 
         mainTableView.frame.size = UIScreen.mainScreen().bounds.size
 
-        mainTableView.registerClass(menuCell.self, forCellReuseIdentifier: "menuCell")
+        //mainTableView.registerClass(menuCell.self, forCellReuseIdentifier: "menuCell")
+        
+        mainTableView.registerNib(UINib.init(nibName: "menuCell", bundle: nil), forCellReuseIdentifier: "menuCell")
         mainTableView.registerNib(UINib.init(nibName: "featuresCell", bundle: nil), forCellReuseIdentifier: "featuresCell")
         mainTableView.registerNib(UINib.init(nibName: "addCommentCell", bundle: nil), forCellReuseIdentifier: "addCommentCell")
         mainTableView.registerNib(UINib.init(nibName: "commentCell", bundle: nil), forCellReuseIdentifier: "commentCell")
@@ -101,7 +103,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
 
         
 
-        
+        mainTableView.backgroundColor = UIColor(red: CGFloat(240.0/255.0), green: CGFloat(240.0/255.0), blue: CGFloat(240.0/255.0), alpha: 1.0)
         mainTableView.separatorInset = UIEdgeInsetsZero
         mainTableView.layoutMargins = UIEdgeInsetsZero
         mainTableView.preservesSuperviewLayoutMargins = false
@@ -254,7 +256,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 9
+        return 8
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -264,7 +266,6 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         }
         
         if indexPath.row == 1{
-            //if indexPath == selectedIndexPath{
             if self.activeCellIndexPath == indexPath.row {
 
                 return menuCell.expandedHeight
@@ -276,7 +277,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
 
         
         if indexPath.row == 2{
-            return 0
+            return 70
         }
         
         
@@ -287,13 +288,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                  }
 
         if indexPath.row == 6{
-            if indexPath == selectedIndexPath{
-
-                return addCommentCell.expandedHeight
-            }
-            else{
-                return addCommentCell.defaultHeight
-            }
+               return addCommentCell.defaultHeight
         }
         
 //        if indexPath.row == 7{
@@ -307,7 +302,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
 //        
         
         if indexPath.row == 7{
-            return 70
+            return 0
         }
 
         return 100
@@ -346,13 +341,8 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         }
         
         if indexPath.row == 2{
-            
-            let cccell:featuresCell = tableView.dequeueReusableCellWithIdentifier("featuresCell") as! featuresCell
-            //cccell.setLabelText(categories[2], t2: categories[3])
-            cccell.frame.size.width = width
-            cccell.clipsToBounds = true
-            cccell.delegate = self
-            cell = cccell
+            let ccell:locationCell = tableView.dequeueReusableCellWithIdentifier("locationCell") as! locationCell
+            cell = ccell
         }
         
         
@@ -396,17 +386,12 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 ccell.submitButton.addTarget(self, action: "addCommentAction", forControlEvents: UIControlEvents.TouchUpInside)
                 ccell.seeAllButton.addTarget(self, action: "expandButtonAction", forControlEvents: UIControlEvents.TouchUpInside)
                 ccell.expandButton.addTarget(self, action: "addButtonAction", forControlEvents: UIControlEvents.TouchUpInside)
-                //ccell.commentTextView.removeLayoutGuide(ccell.commentTextView.layoutGuides[0])
-                ccell.commentTextView.textStorage.removeLayoutManager(ccell.commentTextView.layoutManager)
-                ccell.commentTextView.delegate = self
                 ccell.delegate = self
                 cell = ccell
             }
         if indexPath.row == 7 {
-            let ccell:locationCell = tableView.dequeueReusableCellWithIdentifier("locationCell") as! locationCell
-            //ccell.goToMapButton.addTarget(self, action: "goToMapAction", forControlEvents: UIControlEvents.TouchUpInside)
-            //ccell.delegate = self
-            cell = ccell
+//            let ccell:locationCell = tableView.dequeueReusableCellWithIdentifier("locationCell") as! locationCell
+//            cell = ccell
         }
 
         
@@ -441,7 +426,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         self.menuAction()
         }
         
-        if indexPath.row == 7{
+        if indexPath.row == 2{
             self.goToMapAction()
         }
 
@@ -452,9 +437,6 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         if indexPath.row == 1{
         (cell as! menuCell).watchFrameChanges()
         }
-        if indexPath.row == 6{
-            (cell as! addCommentCell).watchFrameChanges()
-        }
     
     }
     
@@ -463,21 +445,10 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         if indexPath.row == 1{
             (cell as! menuCell).ignoreFrameChanges()
         }
-        if indexPath.row == 6{
-            (cell as! addCommentCell).ignoreFrameChanges()
-        }
-    }
-    
-    
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
+
     }
     
 
-    func textFieldDidEndEditing(textField: UITextField) {
-        self.commentText = textField.text!
-    }
     
     
 
