@@ -60,6 +60,8 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     var templeRating = CGFloat()
     var commentText = String()
     var menuData = NSArray()
+    var templeLocation = CLLocationCoordinate2D()
+
     
     @IBOutlet weak var headerContainerView: UIView!
     @IBOutlet weak var templePictureView: UIImageView!
@@ -81,6 +83,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         super.viewDidLoad()
         self.starView.active = false
         self.automaticallyAdjustsScrollViewInsets = false;
+        
 
         mainTableView.frame.size = UIScreen.mainScreen().bounds.size
 
@@ -90,8 +93,14 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         mainTableView.registerNib(UINib.init(nibName: "commentCell", bundle: nil), forCellReuseIdentifier: "commentCell")
         mainTableView.registerNib(UINib.init(nibName: "locationCell", bundle: nil), forCellReuseIdentifier: "locationCell")
 
+        
 
         
+
+        
+
+        
+
         
         mainTableView.separatorInset = UIEdgeInsetsZero
         mainTableView.layoutMargins = UIEdgeInsetsZero
@@ -134,9 +143,11 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         mainTableView.contentOffset = CGPoint(x: 0, y: -tableHeaderHeight)
 
     }
+    
 
     
     func refresh() {
+        
         let spinner = ShawarmaSpinnerView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         self.view.addSubview(spinner)
         spinner.center.x = self.view.center.x
@@ -174,6 +185,16 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                     self.templeRating = CGFloat(NSNumberFormatter().numberFromString(String(ratingNum))!)/2
                     self.starView.value = self.templeRating
                 }
+                
+                if let geoPoint:PFGeoPoint = object!.valueForKey("location") as? PFGeoPoint {
+                    self.templeLocation = CLLocationCoordinate2D(latitude: geoPoint.latitude, longitude: geoPoint.longitude)
+                }
+                
+//                PFGeoPoint *geoPoint = self.temples[i][@"location"];
+//                NSInteger ratingNumber = [self.temples[i][@"ratingNumber"] integerValue];
+//                
+//                mark.position = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
+//                mark.map = mapView_;
                 
                 
                 if let loadedMenuData = object!.valueForKey("menu") {
@@ -243,7 +264,9 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         }
         
         if indexPath.row == 1{
-            if indexPath == selectedIndexPath{
+            //if indexPath == selectedIndexPath{
+            if self.activeCellIndexPath == indexPath.row {
+
                 return menuCell.expandedHeight
             }
             else{
@@ -264,7 +287,8 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                  }
 
         if indexPath.row == 6{
-            if self.activeCellIndexPath == indexPath.row {
+            if indexPath == selectedIndexPath{
+
                 return addCommentCell.expandedHeight
             }
             else{
@@ -281,6 +305,10 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
 //            }
 //        }
 //        
+        
+        if indexPath.row == 7{
+            return 70
+        }
 
         return 100
     }
@@ -376,7 +404,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             }
         if indexPath.row == 7 {
             let ccell:locationCell = tableView.dequeueReusableCellWithIdentifier("locationCell") as! locationCell
-            ccell.goToMapButton.addTarget(self, action: "goToMapAction", forControlEvents: UIControlEvents.TouchUpInside)
+            //ccell.goToMapButton.addTarget(self, action: "goToMapAction", forControlEvents: UIControlEvents.TouchUpInside)
             //ccell.delegate = self
             cell = ccell
         }
@@ -388,7 +416,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+
         let previousIndexPath = selectedIndexPath
         if indexPath == selectedIndexPath{
         selectedIndexPath = nil
@@ -408,6 +436,16 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         if indexPaths.count > 0 {
             mainTableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.None)
         }
+        
+        if indexPath.row == 1{
+        self.menuAction()
+        }
+        
+        if indexPath.row == 7{
+            self.goToMapAction()
+        }
+
+        
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath){
@@ -510,6 +548,43 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             
             viewController.templeId = self.id
         }
+        
+            
+        else if (segue.identifier == "templeToMap") {
+            
+            //let viewController:mapVC = segue.destinationViewController as! mapVC
+            
+            //viewController.setCameraPosition(self.templeLocation.latitude, longitude: self.templeLocation.longitude)
+            
+        }
+    }
+    
+    
+    func menuAction(){
+    
+        if self.activeCellIndexPath == 1 {
+            
+            
+            self.activeCellIndexPath = 0
+            self.mainTableView.beginUpdates()
+            self.mainTableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 1, inSection: 0)], withRowAnimation: UITableViewRowAnimation.None)
+            self.mainTableView.endUpdates()
+
+            self.mainTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
+            
+        }
+        else{
+            
+            self.activeCellIndexPath = 1
+            self.mainTableView.beginUpdates()
+            self.mainTableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 1, inSection: 0)], withRowAnimation: UITableViewRowAnimation.None)
+            self.mainTableView.endUpdates()
+            
+            
+            self.mainTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
+        }
+
+    
     }
 
     
