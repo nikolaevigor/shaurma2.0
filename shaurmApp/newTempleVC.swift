@@ -110,17 +110,17 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         mainTableView.separatorStyle = .None
         
         totalLabel.text = "Всего оценок: 123"
-        totalLabel.font = UIFont(name: "HelveticaNeue", size: 18.0)
+        //totalLabel.font = UIFont(name: "HelveticaNeue", size: 18.0)
         totalLabel.textColor = UIColor.blackColor()
         totalLabel.sizeToFit()
         
         recentLabel.text = "Моя оценка: 3"
-        recentLabel.font = UIFont(name: "HelveticaNeue", size: 18.0)
+        //recentLabel.font = UIFont(name: "HelveticaNeue", size: 18.0)
         recentLabel.textColor = UIColor.blackColor()
         recentLabel.sizeToFit()
         
         markButton.setTitle("ОЦЕНИТЬ", forState: UIControlState.Normal)
-        markButton.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 18.0)!
+        //markButton.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 18.0)!
         markButton.titleLabel?.textAlignment = NSTextAlignment.Center
         markButton.alpha = 0.0
         markButton.hidden = true
