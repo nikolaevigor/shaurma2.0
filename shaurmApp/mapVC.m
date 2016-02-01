@@ -21,8 +21,10 @@ static const CGFloat CalloutYOffset = 10.0f;
 @property (strong, nonatomic) SMCalloutView *calloutView;
 @property (strong, nonatomic) UIView *emptyCalloutView;
 @property (strong, nonatomic) NSArray *temples;
+@property (strong, nonatomic) GMSCameraPosition *camera;
+@property (nonatomic) BOOL templesLoaded;
+@property (strong, nonatomic) NSMutableArray<GMSMarker *> *markers;
 @property (weak, nonatomic) id <containerDelegate> containerDelegate;
-
 @end
 
 @implementation mapVC
@@ -30,18 +32,54 @@ static const CGFloat CalloutYOffset = 10.0f;
     GMSMapView *mapView_;
     BOOL firstLocationUpdate_;
     UIView *popUpWindow;
+    
 }
 
+- (BOOL)setNearest {
+    return NO;
+}
+
+
+
+
+
+- (NSArray*)customIconsArray{
+    return @[
+             [UIImage imageNamed:@"pin0"],
+             [UIImage imageNamed:@"pin1"],
+             [UIImage imageNamed:@"pin2"],
+             [UIImage imageNamed:@"pin3"],
+             [UIImage imageNamed:@"pin4"],
+             [UIImage imageNamed:@"pin5"],
+             [UIImage imageNamed:@"pin6"],
+             [UIImage imageNamed:@"pin7"],
+             [UIImage imageNamed:@"pin8"],
+             [UIImage imageNamed:@"pin9"],
+             [UIImage imageNamed:@"pin10"],
+             ];
+
+}
+
+
+
+
+
 - (void)viewDidLoad {
+
     UITabBarController *mainTabBar = (UITabBarController *)[[[UIApplication sharedApplication] keyWindow] rootViewController];
     UINavigationController *localNavController = (UINavigationController *)[mainTabBar viewControllers][1];
     mapContainer *container = [localNavController viewControllers][0];
     self.containerDelegate = container;
     
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:55.75309756657614 longitude:37.62137420204017 zoom:0];
+    
+//    if (self.camera == nil) {
+//        self.camera = [GMSCameraPosition cameraWithLatitude:55.75309756657614 longitude:37.62137420204017 zoom:0];
+//    }
     
     
-    mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
+    mapView_ = [[GMSMapView alloc] initWithFrame:CGRectZero];
+    
+    
     mapView_.settings.compassButton = YES;
     mapView_.settings.myLocationButton = YES;
     mapView_.myLocationEnabled = YES;
@@ -68,46 +106,104 @@ static const CGFloat CalloutYOffset = 10.0f;
     
     self.emptyCalloutView = [[UIView alloc] initWithFrame:CGRectZero];
     
-    NSArray *customIconsArray = @[
-                                  [UIImage imageNamed:@"pin0"],
-                                  [UIImage imageNamed:@"pin1"],
-                                  [UIImage imageNamed:@"pin2"],
-                                  [UIImage imageNamed:@"pin3"],
-                                  [UIImage imageNamed:@"pin4"],
-                                  [UIImage imageNamed:@"pin5"],
-                                  [UIImage imageNamed:@"pin6"],
-                                  [UIImage imageNamed:@"pin7"],
-                                  [UIImage imageNamed:@"pin8"],
-                                  [UIImage imageNamed:@"pin9"],
-                                  [UIImage imageNamed:@"pin10"],
-                                  ];
     
-    [SHMDownloader getTemplesInBackgroundWithBlock:^void (NSArray * temples_) {
-        self.temples = temples_;
-        
-        [self.containerDelegate templesIsDownloaded];
-        
-        for (int i = 0; i < self.temples.count; i++)
-        {
-            GMSMarker *mark = [[GMSMarker alloc] init];
-            PFGeoPoint *geoPoint = self.temples[i][@"location"];
-            NSInteger ratingNumber = [self.temples[i][@"ratingNumber"] integerValue];
+    if (self.templesLoaded == false) {
+        self.templesLoaded = true;
+        [SHMDownloader getTemplesInBackgroundWithBlock:^void (NSArray * temples_) {
+            self.temples = temples_;
             
-            mark.position = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
-            mark.map = mapView_;
-            mark.title = self.temples[i][@"title"];
-            mark.snippet = self.temples[i][@"ratingString"];
-            mark.icon = [self image:customIconsArray[ratingNumber] scaledToSize:CGSizeMake(30.0f, 60.0f)];
-            mark.userData = [self.temples[i] objectId];
-        }
-    }];
-    
+            [self.containerDelegate templesIsDownloaded];
+
+            
+            if (self.markers == nil){
+                self.markers = [NSMutableArray array];
+            }
+            
+            for (int i = 0; i < self.temples.count; i++)
+            {
+                GMSMarker *mark = [[GMSMarker alloc] init];
+                PFGeoPoint *geoPoint = self.temples[i][@"location"];
+                NSInteger ratingNumber = [self.temples[i][@"ratingNumber"] integerValue];
+                
+                mark.position = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
+                mark.map = mapView_;
+                mark.title = self.temples[i][@"title"];
+                mark.snippet = self.temples[i][@"ratingString"];
+                mark.icon = [self image:self.customIconsArray[ratingNumber] scaledToSize:CGSizeMake(30.0f, 60.0f)];
+                mark.userData = [self.temples[i] objectId];
+                [self.markers addObject:mark];
+            }
+            
+        }];
+    }
+
     [super viewDidLoad];
+
 };
 
 #pragma mark - KVO update methods
 
 
+
+
+-(void)setTempleById:(NSString *)templeId{
+    self.markers = [NSMutableArray array];
+    GMSMarker *templeMarker;
+    
+    PFGeoPoint *templePoint =[[PFGeoPoint alloc] init];
+    
+    
+    
+    for (GMSMarker *mark in self.markers) {
+        if ([mark.userData isEqualToString:templeId]){
+            templeMarker = [[GMSMarker alloc] init];
+            templeMarker = mark;
+            break;
+        }
+    }
+    
+    if (self.templesLoaded == false) {
+        self.templesLoaded = true;
+    if (templeMarker == nil) {
+        templeMarker = [[GMSMarker alloc] init];
+
+        [SHMDownloader getTemplesInBackgroundWithBlock:^void (NSArray * temples_) {
+            self.temples = temples_;
+            [self.containerDelegate templesIsDownloaded];
+            
+            for (int i = 0; i < self.temples.count; i++)
+            {
+                if ([[self.temples[i] objectId] isEqualToString:templeId]){
+                    PFGeoPoint *geoPoint = self.temples[i][@"location"];
+                    NSInteger ratingNumber = [self.temples[i][@"ratingNumber"] integerValue];
+                    
+                    templeMarker.position = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
+                    templeMarker.map = mapView_;
+                    templeMarker.title = self.temples[i][@"title"];
+                    templeMarker.snippet = self.temples[i][@"ratingString"];
+                    templeMarker.icon = [self image:self.customIconsArray[ratingNumber] scaledToSize:CGSizeMake(30.0f, 60.0f)];
+                    templeMarker.userData = [self.temples[i] objectId];
+                    [self.markers addObject:templeMarker];
+                    
+                    templePoint.latitude = geoPoint.latitude;
+                    templePoint.longitude = geoPoint.longitude;
+                    break;
+                }
+            }
+            
+            mapView_.selectedMarker = templeMarker;
+            GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:templePoint.latitude longitude:templePoint.longitude zoom:13];
+            [mapView_ setCamera:camera];
+    
+        }];
+    }}
+    else {
+        mapView_.selectedMarker = templeMarker;
+        GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:templePoint.latitude longitude:templePoint.longitude zoom:13];
+        [mapView_ setCamera:camera];
+    }
+
+}
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if (!firstLocationUpdate_) {
@@ -115,8 +211,12 @@ static const CGFloat CalloutYOffset = 10.0f;
         // location.
         firstLocationUpdate_ = YES;
         CLLocation *location = [change objectForKey:NSKeyValueChangeNewKey];
-        mapView_.camera = [GMSCameraPosition cameraWithTarget:location.coordinate
-                                                         zoom:14];
+        //mapView_.camera = [GMSCameraPosition cameraWithTarget:location.coordinate
+        //                                                 zoom:14];
+        
+        [mapView_ setCamera:[GMSCameraPosition cameraWithTarget:location.coordinate
+                                                           zoom:14]];
+        
     }
 }
 

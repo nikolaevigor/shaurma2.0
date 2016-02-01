@@ -523,8 +523,8 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             
         else if (segue.identifier == "templeToMap") {
             
-            //let viewController:mapVC = segue.destinationViewController as! mapVC
-            
+            let viewController:mapVC = segue.destinationViewController as! mapVC
+            viewController.setTempleById(self.id)
             //viewController.setCameraPosition(self.templeLocation.latitude, longitude: self.templeLocation.longitude)
             
         }
