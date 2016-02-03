@@ -262,10 +262,12 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
         if indexPath.row == 0{
-            return 65
+            return 50
         }
         
-        if indexPath.row == 1{
+        if indexPath.row == 2{
+            //menu cell
+            
             if self.activeCellIndexPath == indexPath.row {
 
                 return menuCell.expandedHeight
@@ -276,7 +278,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         }
 
         
-        if indexPath.row == 2{
+        if indexPath.row == 1{
             return 70
         }
         
@@ -284,28 +286,22 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         if indexPath.row >= 3 && indexPath.row <= 5 {
             if resultReviewArray.count < (indexPath.row - 2) {
                     return 0
-                    }
-                 }
+            }else{
+                if indexPath.row == 3{
+                        return 125
+                }
+            }
+        }
 
         if indexPath.row == 6{
                return addCommentCell.defaultHeight
         }
         
-//        if indexPath.row == 7{
-//            if indexPath == selectedIndexPath{
-//                return addCommentCell.expandedHeight
-//            }
-//            else{
-//                return 0
-//            }
-//        }
-//        
-        
         if indexPath.row == 7{
             return 0
         }
 
-        return 100
+        return 95
     }
     
 
@@ -332,7 +328,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             
         }
         
-        if indexPath.row == 1{
+        if indexPath.row == 2{
             let ccell:menuCell = tableView.dequeueReusableCellWithIdentifier("menuCell") as! menuCell
             ccell.delegate = self
             ccell.menuData = self.menuData
@@ -340,7 +336,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             cell = ccell
         }
         
-        if indexPath.row == 2{
+        if indexPath.row == 1{
             let ccell:locationCell = tableView.dequeueReusableCellWithIdentifier("locationCell") as! locationCell
             cell = ccell
         }
@@ -354,6 +350,10 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             if resultReviewArray.count != 0 {
                 
                 if(indexPath.row - 3 < self.resultReviewArray.count){
+                    if(indexPath.row != 3){
+                        cccell.hideHeader()
+                    }
+                    
 
                 let commentDate:NSDate! = self.resultReviewArray[indexPath.row - 3].valueForKey("createdAt") as? NSDate
                 let dateForm = NSDateFormatter()
@@ -373,8 +373,6 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 cccell.dateLabel.sizeToFit()
                 cccell.userNameLabel.sizeToFit()
                     
-
-                    
                 }
                 
             }
@@ -383,7 +381,6 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         }
         if indexPath.row == 6{
                 let ccell:addCommentCell = tableView.dequeueReusableCellWithIdentifier("addCommentCell") as! addCommentCell
-                ccell.submitButton.addTarget(self, action: "addCommentAction", forControlEvents: UIControlEvents.TouchUpInside)
                 ccell.seeAllButton.addTarget(self, action: "expandButtonAction", forControlEvents: UIControlEvents.TouchUpInside)
                 ccell.expandButton.addTarget(self, action: "addButtonAction", forControlEvents: UIControlEvents.TouchUpInside)
                 ccell.delegate = self
@@ -422,11 +419,11 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             mainTableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.None)
         }
         
-        if indexPath.row == 1{
+        if indexPath.row == 2{
         self.menuAction()
         }
         
-        if indexPath.row == 2{
+        if indexPath.row == 1{
             self.goToMapAction()
         }
 
@@ -434,7 +431,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath){
-        if indexPath.row == 1{
+        if indexPath.row == 2{
         (cell as! menuCell).watchFrameChanges()
         }
     
@@ -442,7 +439,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
 
     func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.row == 1{
+        if indexPath.row == 2{
             (cell as! menuCell).ignoreFrameChanges()
         }
 
@@ -533,26 +530,26 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     func menuAction(){
     
-        if self.activeCellIndexPath == 1 {
+        if self.activeCellIndexPath == 2 {
             
             
             self.activeCellIndexPath = 0
             self.mainTableView.beginUpdates()
-            self.mainTableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 1, inSection: 0)], withRowAnimation: UITableViewRowAnimation.None)
+            self.mainTableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 2, inSection: 0)], withRowAnimation: UITableViewRowAnimation.None)
             self.mainTableView.endUpdates()
 
-            self.mainTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
+            //self.mainTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
             
         }
         else{
             
-            self.activeCellIndexPath = 1
+            self.activeCellIndexPath = 2
             self.mainTableView.beginUpdates()
-            self.mainTableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 1, inSection: 0)], withRowAnimation: UITableViewRowAnimation.None)
+            self.mainTableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 2, inSection: 0)], withRowAnimation: UITableViewRowAnimation.None)
             self.mainTableView.endUpdates()
             
             
-            self.mainTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
+            //self.mainTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
         }
 
     

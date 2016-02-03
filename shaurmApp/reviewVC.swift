@@ -75,17 +75,18 @@ class reviewVC: UIViewController {
                         self.resultsCategoryIdArray.append(o.objectId!)
 
                         
-                        self.resultsTable.reloadData()
                         
-                        spinner.hidden = true
-                        UIView.animateWithDuration(0.3, animations: {self.resultsTable.alpha = 1.0})
-                        spinner.stop()
                     }}
             }
             
              else {
                 //print("Error: \(error!) \(error!.userInfo)")
             }
+            self.resultsTable.reloadData()
+            
+            spinner.hidden = true
+            UIView.animateWithDuration(0.3, animations: {self.resultsTable.alpha = 1.0})
+            spinner.stop()
         }
     }
     

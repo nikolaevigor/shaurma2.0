@@ -14,6 +14,7 @@ class commentCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var commentTextLabel: UILabel!
     
+    @IBOutlet weak var headerLabel: UILabel!
     var delegate:StarViewDelegate? = nil
 
     override func awakeFromNib() {
@@ -29,14 +30,24 @@ class commentCell: UITableViewCell {
         self.layoutMargins = UIEdgeInsetsZero
         self.preservesSuperviewLayoutMargins = false
 
+
         commentTextLabel.sizeToFit()
         commentTextLabel.numberOfLines = 0
         dateLabel.sizeToFit()
         userNameLabel.sizeToFit()
+        
+
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         delegate!.dismissStarView(self)
+    }
+    
+    func hideHeader(){
+        
+        self.headerLabel.text = ""
+        //self.headerLabel.hidden = true
+
     }
 
     
