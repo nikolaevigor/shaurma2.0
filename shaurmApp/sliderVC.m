@@ -10,11 +10,14 @@
 #import "sliderCell.h"
 #import "Parse.h"
 #import "SHMManager.h"
+#import "containerDelegate.h"
+#import "mapContainer.h"
 
 @interface sliderVC ()
 
 @property (strong, nonatomic) UITableView *table;
 @property (strong, nonatomic) NSArray *nearestTemples;
+@property (weak, nonatomic) id <containerDelegate> containerDelegate;
 
 @end
 
@@ -24,23 +27,41 @@
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     self.view.backgroundColor = [UIColor whiteColor];
     
-    UILabel *welcomeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenRect.size.width, 55)];
+    UITabBarController *mainTabBar = (UITabBarController *)[[[UIApplication sharedApplication] keyWindow] rootViewController];
+    UINavigationController *localNavController = (UINavigationController *)[mainTabBar viewControllers][1];
+    mapContainer *container = [localNavController viewControllers][0];
+    self.containerDelegate = container;
+    
+    UILabel *welcomeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenRect.size.width, 64)];
     welcomeLabel.text = @"Рядом со мной";
     welcomeLabel.textAlignment = NSTextAlignmentCenter;
     welcomeLabel.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:1.0f];
     welcomeLabel.textColor = [UIColor whiteColor];
     [self.view addSubview:welcomeLabel];
     
-    self.table = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, screenRect.size.width, 500)];
+    UIButton *welcomeButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 64, screenRect.size.width, 64)];
+    [welcomeButton setTitle:@"Рядом со мной" forState:UIControlStateNormal];
+    [welcomeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [welcomeButton setBackgroundColor:[UIColor blackColor]];
+    
+    [welcomeButton addTarget:self action:@selector(getBack) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:welcomeButton];
+    
+    self.table = [[UITableView alloc] initWithFrame:CGRectMake(0, 128, screenRect.size.width, 500)];
     self.table.delegate = self;
     self.table.dataSource = self;
-    self.table.scrollEnabled = NO;
+    self.table.scrollEnabled = YES;
     self.table.rowHeight = UITableViewAutomaticDimension;
     self.table.estimatedRowHeight = 70.0;
     [self.table registerNib:[UINib nibWithNibName:@"sliderCell" bundle:nil] forCellReuseIdentifier:@"cellID"];
     [self.view addSubview:self.table];
     
     [super viewDidLoad];
+}
+
+- (void)getBack
+{
+    [self.containerDelegate pop];
 }
 
 #pragma mark - Table View methods

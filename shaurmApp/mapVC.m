@@ -25,6 +25,7 @@ static const CGFloat CalloutYOffset = 10.0f;
 @property (nonatomic) BOOL templesLoaded;
 @property (strong, nonatomic) NSMutableArray<GMSMarker *> *markers;
 @property (weak, nonatomic) id <containerDelegate> containerDelegate;
+
 @end
 
 @implementation mapVC
@@ -32,16 +33,11 @@ static const CGFloat CalloutYOffset = 10.0f;
     GMSMapView *mapView_;
     BOOL firstLocationUpdate_;
     UIView *popUpWindow;
-    
 }
 
 - (BOOL)setNearest {
     return NO;
 }
-
-
-
-
 
 - (NSArray*)customIconsArray{
     return @[
@@ -57,12 +53,7 @@ static const CGFloat CalloutYOffset = 10.0f;
              [UIImage imageNamed:@"pin9"],
              [UIImage imageNamed:@"pin10"],
              ];
-
 }
-
-
-
-
 
 - (void)viewDidLoad {
 
@@ -143,16 +134,11 @@ static const CGFloat CalloutYOffset = 10.0f;
 
 #pragma mark - KVO update methods
 
-
-
-
 -(void)setTempleById:(NSString *)templeId{
     self.markers = [NSMutableArray array];
     GMSMarker *templeMarker;
     
-    PFGeoPoint *templePoint =[[PFGeoPoint alloc] init];
-    
-    
+    PFGeoPoint *templePoint = [[PFGeoPoint alloc] init];
     
     for (GMSMarker *mark in self.markers) {
         if ([mark.userData isEqualToString:templeId]){
@@ -283,16 +269,14 @@ static const CGFloat CalloutYOffset = 10.0f;
     }
 }
 
-- (void)closePopUpWindow
-{
+- (void)closePopUpWindow {
     [popUpWindow removeFromSuperview];
 }
 
 #pragma mark - Nice snippets
 
 //method for resizing image
-- (UIImage *)image:(UIImage*)originalImage scaledToSize:(CGSize)size
-{
+- (UIImage *)image:(UIImage*)originalImage scaledToSize:(CGSize)size {
     //avoid redundant drawing
     if (CGSizeEqualToSize(originalImage.size, size))
     {
@@ -315,10 +299,8 @@ static const CGFloat CalloutYOffset = 10.0f;
 
 #pragma mark - mapDelegate methods
 
-
-- (NSArray *)getNearest
-{
-    return [SHMManager getNearestTemplesFor:mapView_.myLocation.coordinate from:self.temples numberOfPointsToFind:7];
+- (NSArray *)getNearest {
+    return [SHMManager getNearestTemplesFor:mapView_.myLocation.coordinate from:self.temples numberOfPointsToFind:10];
 }
 
 @end

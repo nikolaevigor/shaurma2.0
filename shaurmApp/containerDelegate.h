@@ -11,5 +11,6 @@
 - (void)templesIsDownloaded;
 - (void)refreshSlider;
 - (void)openTempleVC:(NSString *)id_;
+- (void)pop;
 
 @end
