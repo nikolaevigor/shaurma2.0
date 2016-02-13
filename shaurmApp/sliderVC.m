@@ -47,7 +47,7 @@
     [welcomeButton addTarget:self action:@selector(getBack) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:welcomeButton];
     
-    self.table = [[UITableView alloc] initWithFrame:CGRectMake(0, 128, screenRect.size.width, 500)];
+    self.table = [[UITableView alloc] initWithFrame:CGRectMake(0, 128, screenRect.size.width, screenRect.size.height - 128 - 49)];
     self.table.delegate = self;
     self.table.dataSource = self;
     self.table.scrollEnabled = YES;
