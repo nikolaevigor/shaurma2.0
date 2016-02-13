@@ -14,8 +14,9 @@ class ShawarmaSpinnerView: UIView {
     var rotating = Bool()
     
     override init(frame: CGRect) {
-        super.init(frame: frame)
-        spinnerImageView = UIImageView(frame: CGRect(x: frame.origin.x + 5, y: frame.origin.y + 5, width: frame.width-10, height: frame.height-10))
+        let screenSize: CGRect = UIScreen.mainScreen().bounds
+        super.init(frame: CGRect(x: screenSize.size.width/2 - 25, y: screenSize.size.height/2 - 25, width: 50, height: 50))
+        spinnerImageView = UIImageView(frame: CGRect(x: 5, y: 5, width: 40, height: 40))
         spinnerImageView.image = UIImage(named: "spinner")
         
         self.backgroundColor = UIColor.whiteColor()

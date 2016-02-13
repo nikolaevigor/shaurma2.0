@@ -23,7 +23,7 @@ static const CGFloat CalloutYOffset = 10.0f;
 @property (strong, nonatomic) NSArray *temples;
 @property (strong, nonatomic) GMSCameraPosition *camera;
 @property (nonatomic) BOOL templesLoaded;
-@property (strong, nonatomic) NSMutableArray<GMSMarker *> *markers;
+@property (strong, nonatomic) NSMutableArray <GMSMarker *> *markers;
 @property (weak, nonatomic) id <containerDelegate> containerDelegate;
 
 @end
@@ -97,6 +97,9 @@ static const CGFloat CalloutYOffset = 10.0f;
     
     self.emptyCalloutView = [[UIView alloc] initWithFrame:CGRectZero];
     
+    //ShawarmaSpinnerView *spinner = [[ShawarmaSpinnerView alloc] init];
+    //[self.view addSubview:spinner];
+    //[spinner start];
     
     if (self.templesLoaded == false) {
         self.templesLoaded = true;
@@ -110,6 +113,7 @@ static const CGFloat CalloutYOffset = 10.0f;
                 self.markers = [NSMutableArray array];
             }
             
+            
             for (int i = 0; i < self.temples.count; i++)
             {
                 GMSMarker *mark = [[GMSMarker alloc] init];
@@ -117,6 +121,7 @@ static const CGFloat CalloutYOffset = 10.0f;
                 NSInteger ratingNumber = [self.temples[i][@"ratingNumber"] integerValue];
                 
                 mark.position = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
+                mark.appearAnimation = kGMSMarkerAnimationPop;
                 mark.map = mapView_;
                 mark.title = self.temples[i][@"title"];
                 mark.snippet = self.temples[i][@"ratingString"];
@@ -155,7 +160,6 @@ static const CGFloat CalloutYOffset = 10.0f;
 
         [SHMDownloader getTemplesInBackgroundWithBlock:^void (NSArray * temples_) {
             self.temples = temples_;
-            [self.containerDelegate templesIsDownloaded];
             
             for (int i = 0; i < self.temples.count; i++)
             {
