@@ -86,7 +86,7 @@
     [(sliderCell *)cell price].text = [NSString stringWithFormat:@"%@ ₽", temple[@"price"]];
     [(sliderCell *)cell ratingLabel].text = [temple[@"ratingNumber"] stringValue];
     [(sliderCell *)cell metroLabel].text = temple[@"subway"];
-    //[(sliderCell *)cell metroLabel].textColor = [SHMManager colorForStation:temple[@"subway"]];
+    [(sliderCell *)cell metroLabel].textColor = [SHMManager colorForStation:temple[@"subway"]];
     //[(sliderCell *)cell templePic].image = [UIImage imageWithData:[temple[@"picture"] getDataInBackground]];
 }
 
@@ -119,6 +119,13 @@
     
     CGSize size = [sizingCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
     return size.height + 10; //this is not good i assume
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    PFObject *temple = self.nearestTemples[indexPath.row];
+    [self.containerDelegate openTempleVC:[temple objectId]];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark - sliderDelegate methods
