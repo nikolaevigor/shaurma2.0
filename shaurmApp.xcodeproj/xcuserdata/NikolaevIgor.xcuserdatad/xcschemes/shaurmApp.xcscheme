@@ -71,8 +71,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "422F5A711B8F26AB005421C8"
-               BuildableName = "shaurmApp.app"
-               BlueprintName = "shaurmApp"
+               BuildableName = "ShaurmApp.app"
+               BlueprintName = "ShaurmApp"
                ReferencedContainer = "container:shaurmApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -113,8 +113,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "422F5A711B8F26AB005421C8"
-            BuildableName = "shaurmApp.app"
-            BlueprintName = "shaurmApp"
+            BuildableName = "ShaurmApp.app"
+            BlueprintName = "ShaurmApp"
             ReferencedContainer = "container:shaurmApp.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -136,8 +136,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "422F5A711B8F26AB005421C8"
-            BuildableName = "shaurmApp.app"
-            BlueprintName = "shaurmApp"
+            BuildableName = "ShaurmApp.app"
+            BlueprintName = "ShaurmApp"
             ReferencedContainer = "container:shaurmApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -155,8 +155,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "422F5A711B8F26AB005421C8"
-            BuildableName = "shaurmApp.app"
-            BlueprintName = "shaurmApp"
+            BuildableName = "ShaurmApp.app"
+            BlueprintName = "ShaurmApp"
             ReferencedContainer = "container:shaurmApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

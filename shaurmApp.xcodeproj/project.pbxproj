@@ -89,7 +89,7 @@
 /* Begin PBXFileReference section */
 		42275CBB1B9E378F0028C89A /* libPPHelpMe.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPPHelpMe.a; path = "Pods/../build/Debug-iphoneos/libPPHelpMe.a"; sourceTree = "<group>"; };
 		42275CBC1B9E378F0028C89A /* libPPRevealSideViewController.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPPRevealSideViewController.a; path = "Pods/../build/Debug-iphoneos/libPPRevealSideViewController.a"; sourceTree = "<group>"; };
-		422F5A721B8F26AB005421C8 /* shaurmApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = shaurmApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		422F5A721B8F26AB005421C8 /* ShaurmApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShaurmApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		422F5A761B8F26AB005421C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		422F5A771B8F26AB005421C8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		422F5A791B8F26AB005421C8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -257,7 +257,7 @@
 		422F5A731B8F26AB005421C8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				422F5A721B8F26AB005421C8 /* shaurmApp.app */,
+				422F5A721B8F26AB005421C8 /* ShaurmApp.app */,
 				422F5A8E1B8F26AB005421C8 /* shaurmAppTests.xctest */,
 			);
 			name = Products;
@@ -432,9 +432,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		422F5A711B8F26AB005421C8 /* shaurmApp */ = {
+		422F5A711B8F26AB005421C8 /* ShaurmApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 422F5A981B8F26AB005421C8 /* Build configuration list for PBXNativeTarget "shaurmApp" */;
+			buildConfigurationList = 422F5A981B8F26AB005421C8 /* Build configuration list for PBXNativeTarget "ShaurmApp" */;
 			buildPhases = (
 				422F5A6E1B8F26AB005421C8 /* Sources */,
 				422F5A6F1B8F26AB005421C8 /* Frameworks */,
@@ -445,9 +445,9 @@
 			);
 			dependencies = (
 			);
-			name = shaurmApp;
+			name = ShaurmApp;
 			productName = shaurmApp;
-			productReference = 422F5A721B8F26AB005421C8 /* shaurmApp.app */;
+			productReference = 422F5A721B8F26AB005421C8 /* ShaurmApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 		422F5A8D1B8F26AB005421C8 /* shaurmAppTests */ = {
@@ -503,7 +503,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				422F5A711B8F26AB005421C8 /* shaurmApp */,
+				422F5A711B8F26AB005421C8 /* ShaurmApp */,
 				422F5A8D1B8F26AB005421C8 /* shaurmAppTests */,
 			);
 		};
@@ -607,7 +607,7 @@
 /* Begin PBXTargetDependency section */
 		422F5A901B8F26AB005421C8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 422F5A711B8F26AB005421C8 /* shaurmApp */;
+			target = 422F5A711B8F26AB005421C8 /* ShaurmApp */;
 			targetProxy = 422F5A8F1B8F26AB005421C8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -792,7 +792,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		422F5A981B8F26AB005421C8 /* Build configuration list for PBXNativeTarget "shaurmApp" */ = {
+		422F5A981B8F26AB005421C8 /* Build configuration list for PBXNativeTarget "ShaurmApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				422F5A991B8F26AB005421C8 /* Debug */,
