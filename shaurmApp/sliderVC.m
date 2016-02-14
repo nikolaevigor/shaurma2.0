@@ -39,15 +39,16 @@
     welcomeLabel.textColor = [UIColor whiteColor];
     [self.view addSubview:welcomeLabel];
     
-    UIButton *welcomeButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 64, screenRect.size.width, 64)];
-    [welcomeButton setTitle:@"Рядом со мной" forState:UIControlStateNormal];
-    [welcomeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    UIButton *welcomeButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 64, screenRect.size.width, 50)];
+    //[welcomeButton setTitle:@"Рядом со мной" forState:UIControlStateNormal];
+    //[welcomeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [welcomeButton setImage:[UIImage imageNamed:@"Expand"] forState:UIControlStateNormal];
     [welcomeButton setBackgroundColor:[UIColor blackColor]];
     
     [welcomeButton addTarget:self action:@selector(getBack) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:welcomeButton];
     
-    self.table = [[UITableView alloc] initWithFrame:CGRectMake(0, 128, screenRect.size.width, screenRect.size.height - 128 - 49)];
+    self.table = [[UITableView alloc] initWithFrame:CGRectMake(0, 114, screenRect.size.width, screenRect.size.height - 114 - 49)];
     self.table.delegate = self;
     self.table.dataSource = self;
     self.table.scrollEnabled = YES;

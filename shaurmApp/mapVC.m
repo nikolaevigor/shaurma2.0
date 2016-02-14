@@ -35,7 +35,8 @@ static const CGFloat CalloutYOffset = 10.0f;
     UIView *popUpWindow;
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     self.containerDelegate = [self getContainer];
     
     mapView_ = [[GMSMapView alloc] initWithFrame:CGRectZero];
@@ -78,7 +79,7 @@ static const CGFloat CalloutYOffset = 10.0f;
             self.temples = temples_;
             
             [self.containerDelegate templesIsDownloaded];
-
+            
             
             if (self.markers == nil){
                 self.markers = [NSMutableArray array];
@@ -105,7 +106,7 @@ static const CGFloat CalloutYOffset = 10.0f;
             
         }];
     }
-
+    
     [super viewDidLoad];
 };
 
@@ -136,34 +137,34 @@ static const CGFloat CalloutYOffset = 10.0f;
             templeMarker = [[GMSMarker alloc] init];
             
             [SHMDownloader getTemplesInBackgroundWithBlock:^void (NSArray * temples_)
-            {
-                self.temples = temples_;
-                
-                for (int i = 0; i < self.temples.count; i++)
-                {
-                    if ([[self.temples[i] objectId] isEqualToString:templeId])
-                    {
-                        PFGeoPoint *geoPoint = self.temples[i][@"location"];
-                        NSInteger ratingNumber = [self.temples[i][@"ratingNumber"] integerValue];
-                        
-                        templeMarker.position = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
-                        templeMarker.map = mapView_;
-                        templeMarker.title = self.temples[i][@"title"];
-                        templeMarker.snippet = self.temples[i][@"ratingString"];
-                        templeMarker.icon = [self image:self.customIconsArray[ratingNumber] scaledToSize:CGSizeMake(30.0f, 60.0f)];
-                        templeMarker.userData = [self.temples[i] objectId];
-                        [self.markers addObject:templeMarker];
-                        
-                        templePoint.latitude = geoPoint.latitude;
-                        templePoint.longitude = geoPoint.longitude;
-                        break;
-                    }
-                }
-                
-                GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:templePoint.latitude longitude:templePoint.longitude zoom:13];
-                [mapView_ setCamera:camera];
-                mapView_.selectedMarker = templeMarker;
-            }];
+             {
+                 self.temples = temples_;
+                 
+                 for (int i = 0; i < self.temples.count; i++)
+                 {
+                     if ([[self.temples[i] objectId] isEqualToString:templeId])
+                     {
+                         PFGeoPoint *geoPoint = self.temples[i][@"location"];
+                         NSInteger ratingNumber = [self.temples[i][@"ratingNumber"] integerValue];
+                         
+                         templeMarker.position = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
+                         templeMarker.map = mapView_;
+                         templeMarker.title = self.temples[i][@"title"];
+                         templeMarker.snippet = self.temples[i][@"ratingString"];
+                         templeMarker.icon = [self image:self.customIconsArray[ratingNumber] scaledToSize:CGSizeMake(30.0f, 60.0f)];
+                         templeMarker.userData = [self.temples[i] objectId];
+                         [self.markers addObject:templeMarker];
+                         
+                         templePoint.latitude = geoPoint.latitude;
+                         templePoint.longitude = geoPoint.longitude;
+                         break;
+                     }
+                 }
+                 
+                 GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:templePoint.latitude longitude:templePoint.longitude zoom:13];
+                 [mapView_ setCamera:camera];
+                 mapView_.selectedMarker = templeMarker;
+             }];
         }}
     else
     {
@@ -174,7 +175,8 @@ static const CGFloat CalloutYOffset = 10.0f;
     
 }
 
-- (NSArray*)customIconsArray{
+- (NSArray*)customIconsArray
+{
     return @[
              [UIImage imageNamed:@"pin0"],
              [UIImage imageNamed:@"pin1"],
@@ -192,7 +194,8 @@ static const CGFloat CalloutYOffset = 10.0f;
 
 #pragma mark - KVO update methods
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
     if (!firstLocationUpdate_) {
         // If the first location update has not yet been recieved, then jump to that
         // location.
@@ -207,13 +210,15 @@ static const CGFloat CalloutYOffset = 10.0f;
     }
 }
 
-- (void)dealloc {
+- (void)dealloc
+{
     [mapView_ removeObserver:self forKeyPath:@"myLocation" context:NULL];
 }
 
 #pragma mark - Callout window methods
 
-- (UIView *)mapView:(GMSMapView *)mapView markerInfoWindow:(GMSMarker *)marker {
+- (UIView *)mapView:(GMSMapView *)mapView markerInfoWindow:(GMSMarker *)marker
+{
     CLLocationCoordinate2D anchor = marker.position;
     
     CGPoint point = [mapView.projection pointForCoordinate:anchor];
@@ -235,7 +240,8 @@ static const CGFloat CalloutYOffset = 10.0f;
     return self.emptyCalloutView;
 }
 
-- (void)mapView:(GMSMapView *)pMapView didChangeCameraPosition:(GMSCameraPosition *)position {
+- (void)mapView:(GMSMapView *)pMapView didChangeCameraPosition:(GMSCameraPosition *)position
+{
     /* move callout with map drag */
     if (pMapView.selectedMarker != nil && !self.calloutView.hidden) {
         CLLocationCoordinate2D anchor = [pMapView.selectedMarker position];
@@ -252,32 +258,37 @@ static const CGFloat CalloutYOffset = 10.0f;
     }
 }
 
-- (void)mapView:(GMSMapView *)mapView didTapAtCoordinate:(CLLocationCoordinate2D)coordinate {
+- (void)mapView:(GMSMapView *)mapView didTapAtCoordinate:(CLLocationCoordinate2D)coordinate
+{
     self.calloutView.hidden = YES;
 }
 
-- (BOOL)mapView:(GMSMapView *)mapView didTapMarker:(GMSMarker *)marker {
+- (BOOL)mapView:(GMSMapView *)mapView didTapMarker:(GMSMarker *)marker
+{
     /* don't move map camera to center marker on tap */
     mapView.selectedMarker = marker;
     return YES;
     
 }
 
-- (void)calloutAccessoryButtonTapped:(id)sender {
+- (void)calloutAccessoryButtonTapped:(id)sender
+{
     if (mapView_.selectedMarker)
     {
         [self.containerDelegate openTempleVC:(NSString *)mapView_.selectedMarker.userData];
     }
 }
 
-- (void)closePopUpWindow {
+- (void)closePopUpWindow
+{
     [popUpWindow removeFromSuperview];
 }
 
 #pragma mark - Nice snippets
 
 //method for resizing image
-- (UIImage *)image:(UIImage*)originalImage scaledToSize:(CGSize)size {
+- (UIImage *)image:(UIImage*)originalImage scaledToSize:(CGSize)size
+{
     //avoid redundant drawing
     if (CGSizeEqualToSize(originalImage.size, size))
     {
@@ -319,7 +330,8 @@ static const CGFloat CalloutYOffset = 10.0f;
 
 #pragma mark - mapDelegate methods
 
-- (NSArray *)getNearest {
+- (NSArray *)getNearest
+{
     return [SHMManager getNearestTemplesFor:mapView_.myLocation.coordinate from:self.temples numberOfPointsToFind:10];
 }
 
