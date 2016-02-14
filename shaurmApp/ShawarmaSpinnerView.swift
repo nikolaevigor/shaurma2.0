@@ -49,7 +49,4 @@ class ShawarmaSpinnerView: UIView {
         rotating = false
     }
     
-
-
-    
 }

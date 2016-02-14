@@ -56,7 +56,6 @@ static const CGFloat CalloutYOffset = 10.0f;
 }
 
 - (void)viewDidLoad {
-
     UITabBarController *mainTabBar = (UITabBarController *)[[[UIApplication sharedApplication] keyWindow] rootViewController];
     UINavigationController *localNavController = (UINavigationController *)[mainTabBar viewControllers][1];
     mapContainer *container = [localNavController viewControllers][0];
@@ -97,9 +96,16 @@ static const CGFloat CalloutYOffset = 10.0f;
     
     self.emptyCalloutView = [[UIView alloc] initWithFrame:CGRectZero];
     
-    //ShawarmaSpinnerView *spinner = [[ShawarmaSpinnerView alloc] init];
-    //[self.view addSubview:spinner];
-    //[spinner start];
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    UIImageView *spinner = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"spinner"]];
+    spinner.frame = CGRectMake(screenRect.size.width/2 - 20, screenRect.size.height/2 - 20, 40, 40);
+    UIView *spinnerBackground = [[UIView alloc] initWithFrame:CGRectMake(screenRect.size.width/2 - 25, screenRect.size.height/2 - 25, 50, 50)];
+    spinnerBackground.backgroundColor = [UIColor whiteColor];
+    spinnerBackground.layer.cornerRadius = spinnerBackground.frame.size.width/2;
+    [self.view addSubview:spinnerBackground];
+    [self.view addSubview:spinner];
+    
+    [self runSpinAnimationOnView:spinner duration:1.0 rotations:1 repeat:10.0];
     
     if (self.templesLoaded == false) {
         self.templesLoaded = true;
@@ -121,7 +127,6 @@ static const CGFloat CalloutYOffset = 10.0f;
                 NSInteger ratingNumber = [self.temples[i][@"ratingNumber"] integerValue];
                 
                 mark.position = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
-                mark.appearAnimation = kGMSMarkerAnimationPop;
                 mark.map = mapView_;
                 mark.title = self.temples[i][@"title"];
                 mark.snippet = self.temples[i][@"ratingString"];
@@ -129,12 +134,14 @@ static const CGFloat CalloutYOffset = 10.0f;
                 mark.userData = [self.temples[i] objectId];
                 [self.markers addObject:mark];
             }
+            [spinner.layer removeAllAnimations];
+            [spinner setHidden:YES];
+            [spinnerBackground removeFromSuperview];
             
         }];
     }
 
     [super viewDidLoad];
-
 };
 
 #pragma mark - KVO update methods
@@ -299,6 +306,18 @@ static const CGFloat CalloutYOffset = 10.0f;
     
     //return image
     return image;
+}
+
+- (void) runSpinAnimationOnView:(UIView*)view duration:(CGFloat)duration rotations:(CGFloat)rotations repeat:(float)repeat;
+{
+    CABasicAnimation* rotationAnimation;
+    rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+    rotationAnimation.toValue = [NSNumber numberWithFloat: M_PI * 2.0 /* full rotation*/ * rotations * duration ];
+    rotationAnimation.duration = duration;
+    rotationAnimation.cumulative = YES;
+    rotationAnimation.repeatCount = repeat;
+    
+    [view.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
 }
 
 #pragma mark - mapDelegate methods
