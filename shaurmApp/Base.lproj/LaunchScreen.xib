@@ -10,7 +10,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wrap.png" translatesAutoresizingMaskIntoConstraints="NO" id="exS-Ih-Jcv">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="spinner" translatesAutoresizingMaskIntoConstraints="NO" id="exS-Ih-Jcv">
                     <rect key="frame" x="137" y="284" width="100" height="100"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="100" id="Tzh-bz-QKG"/>
@@ -39,6 +39,6 @@
         </view>
     </objects>
     <resources>
-        <image name="wrap.png" width="50" height="50"/>
+        <image name="spinner" width="50" height="50"/>
     </resources>
 </document>
