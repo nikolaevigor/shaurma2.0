@@ -111,31 +111,38 @@ static const CGFloat CalloutYOffset = 10.0f;
 
 #pragma mark - Methods for interactions with first screen
 
-- (void)setTempleById:(NSString *)templeId{
+- (void)setTempleById:(NSString *)templeId
+{
     self.markers = [NSMutableArray array];
     GMSMarker *templeMarker;
     
     PFGeoPoint *templePoint = [[PFGeoPoint alloc] init];
     
-    for (GMSMarker *mark in self.markers) {
-        if ([mark.userData isEqualToString:templeId]){
+    for (GMSMarker *mark in self.markers)
+    {
+        if ([mark.userData isEqualToString:templeId])
+        {
             templeMarker = [[GMSMarker alloc] init];
             templeMarker = mark;
             break;
         }
     }
     
-    if (self.templesLoaded == false) {
+    if (self.templesLoaded == false)
+    {
         self.templesLoaded = true;
-        if (templeMarker == nil) {
+        if (templeMarker == nil)
+        {
             templeMarker = [[GMSMarker alloc] init];
             
-            [SHMDownloader getTemplesInBackgroundWithBlock:^void (NSArray * temples_) {
+            [SHMDownloader getTemplesInBackgroundWithBlock:^void (NSArray * temples_)
+            {
                 self.temples = temples_;
                 
                 for (int i = 0; i < self.temples.count; i++)
                 {
-                    if ([[self.temples[i] objectId] isEqualToString:templeId]){
+                    if ([[self.temples[i] objectId] isEqualToString:templeId])
+                    {
                         PFGeoPoint *geoPoint = self.temples[i][@"location"];
                         NSInteger ratingNumber = [self.temples[i][@"ratingNumber"] integerValue];
                         
@@ -153,16 +160,16 @@ static const CGFloat CalloutYOffset = 10.0f;
                     }
                 }
                 
-                mapView_.selectedMarker = templeMarker;
                 GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:templePoint.latitude longitude:templePoint.longitude zoom:13];
                 [mapView_ setCamera:camera];
-                
+                mapView_.selectedMarker = templeMarker;
             }];
         }}
-    else {
-        mapView_.selectedMarker = templeMarker;
+    else
+    {
         GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:templePoint.latitude longitude:templePoint.longitude zoom:13];
         [mapView_ setCamera:camera];
+        mapView_.selectedMarker = templeMarker;
     }
     
 }
