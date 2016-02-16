@@ -610,7 +610,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             
             object?.setValue(averageRating*2, forKey: "ratingNumber")
             object?.setValue(self.ratingAmount + 1, forKey: "ratingAmount")
-
+            object?.setValue("\(averageRating*2)/10", forKey: "ratingString")
             object?.saveInBackground()
         }
         
