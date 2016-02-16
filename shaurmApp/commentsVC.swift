@@ -1,6 +1,6 @@
 //
 //  commentsVC.swift
-//  
+//
 //
 //  Created by Tim on 2016-01-04.
 //
@@ -11,42 +11,42 @@ import UIKit
 
 
 class commentsVC: UITableViewController {
-
+    
     var templeId = String()
     
     var commentsArray = [PFObject]()
     var userNamesArray = [String]()
     
     
-
-
+    
+    
     var resultCellId = String()
     
     @IBOutlet var mainTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.automaticallyAdjustsScrollViewInsets = false;
+        //        self.automaticallyAdjustsScrollViewInsets = false;
         
         let width = UIScreen.mainScreen().bounds.width
         let height = UIScreen.mainScreen().bounds.height
         
         //tableView.alpha = 0
-//        let yInset = (self.navigationController?.navigationBar.frame.size.height)! + (self.navigationController?.navigationBar.frame.origin.y)!
+        //        let yInset = (self.navigationController?.navigationBar.frame.size.height)! + (self.navigationController?.navigationBar.frame.origin.y)!
         
-    
-//        tableView.contentInset = UIEdgeInsetsMake(yInset,0,yInset,0);
+        
+        //        tableView.contentInset = UIEdgeInsetsMake(yInset,0,yInset,0);
         tableView.frame.size.height = height - 150
         tableView.frame.size.width = width
-
         
         
         
-    
+        
+        
         
         mainTableView.registerNib(UINib.init(nibName: "commentCell", bundle: nil), forCellReuseIdentifier: "commentCellID")
         
         self.refresh()
-
+        
         
     }
     
@@ -59,59 +59,66 @@ class commentsVC: UITableViewController {
         
         spinner.start()
         
-    
+        
         PFQuery(className: "Temples2").getObjectInBackgroundWithId(self.templeId) {
             (object: PFObject?, error: NSError?) -> Void in
             
             if let object = object {
                 
-        PFQuery(className: "Review").whereKey("temple", equalTo: object).findObjectsInBackgroundWithBlock({
-            (objects:[PFObject]?, error: NSError?) -> Void in
-            
-            
-            if (objects != nil) {
-                self.commentsArray = objects!
-                print(self.commentsArray.count)
-
-            }
-            self.mainTableView.reloadData()
-
-        })
+                PFQuery(className: "Review").whereKey("temple", equalTo: object).findObjectsInBackgroundWithBlock({
+                    (objects:[PFObject]?, error: NSError?) -> Void in
+                    
+                    
+                    if (objects != nil) {
+                        self.commentsArray = objects!
+                        print(self.commentsArray.count)
+                        
+                    }
+                    self.mainTableView.reloadData()
+                    
+                })
             }
         }
-    
+        
         dispatch_async(dispatch_get_main_queue()) {
             self.mainTableView.reloadData()
         }
         
         spinner.hidden = true
         UIView.animateWithDuration(0.5, animations: {
-//            self.templeTitleLabel.alpha = 1.0
-//            self.mainTableView.alpha = 1.0
-//            self.subwayLabel.alpha = 1.0
-//            self.templePictureView.alpha = 1.0
+            //            self.templeTitleLabel.alpha = 1.0
+            //            self.mainTableView.alpha = 1.0
+            //            self.subwayLabel.alpha = 1.0
+            //            self.templePictureView.alpha = 1.0
         })
         spinner.stop()
-
+        
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return commentsArray.count
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.row == 0{
+            return 125
+        }
         return 100
     }
     
-
     
     
-    override
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell:commentCell = mainTableView.dequeueReusableCellWithIdentifier("commentCellID") as! commentCell
         cell.sizeToFit()
         
         if commentsArray.count != 0 {
+            if(indexPath.row != 0){
+                cell.hideHeader()
+            }
+            
+            
             if let userName = self.commentsArray[indexPath.row].valueForKey("userName") {
                 cell.userNameLabel?.text = userName as? String
             }
@@ -119,10 +126,10 @@ class commentsVC: UITableViewController {
             if let commentDate = self.commentsArray[indexPath.row].valueForKey("createdAt") as? NSDate {
                 let dateForm = NSDateFormatter()
                 dateForm.dateStyle = NSDateFormatterStyle.LongStyle
-
+                
                 cell.dateLabel?.text = dateForm.stringFromDate(commentDate)
                 
-                }
+            }
             
             if let commentText = self.commentsArray[indexPath.row].valueForKey("comment") as? String{
                 cell.commentTextLabel?.text = commentText
@@ -137,7 +144,7 @@ class commentsVC: UITableViewController {
             cell.userNameLabel.sizeToFit()
             
         }
-
+        
         
         
         
@@ -147,18 +154,18 @@ class commentsVC: UITableViewController {
         
         return cell
     }
-
-
+    
+    
     
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.navigationBar.translucent = false
     }
-
-
+    
+    
     
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
 }

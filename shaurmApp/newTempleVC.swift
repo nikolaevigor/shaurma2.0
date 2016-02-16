@@ -26,15 +26,14 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     @IBAction func markButtonPressed(sender: AnyObject) {
         UIView.animateWithDuration(0.5, animations: {
-                self.totalLabel.hidden = false
-                self.recentLabel.hidden = false
-                self.markButton.hidden = true
-                self.markButton.alpha = 0.0
-                self.templeRating = self.starView.value
-                self.saveRating(self.templeRating)
-                self.refresh()
-            })
-            
+            self.totalLabel.hidden = false
+            self.recentLabel.hidden = false
+            self.markButton.hidden = true
+            self.markButton.alpha = 0.0
+            self.saveRating(self.starView.value)
+            self.refresh()
+        })
+        
     }
     
     @IBAction func changeValue(sender: AnyObject) {
@@ -47,8 +46,8 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             self.markButton.alpha = 1.0
         })
     }
-
-
+    
+    
     @IBOutlet weak var mainTableView: UITableView!
     let width = UIScreen.mainScreen().bounds.width
     var headerView: UIView!
@@ -61,7 +60,8 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     var commentText = String()
     var menuData = NSArray()
     var templeLocation = CLLocationCoordinate2D()
-
+    var ratingAmount = CGFloat(1)
+    
     
     @IBOutlet weak var headerContainerView: UIView!
     @IBOutlet weak var templePictureView: UIImageView!
@@ -69,10 +69,10 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     @IBOutlet weak var subwayLabel: UILabel!
     
     //var subwayLabel: UILabel!
-
+    
     var selectedIndexPath:NSIndexPath?
     var resultReviewArray = []
-
+    
     
     func setTableView(){
         self.mainTableView = UITableView(frame: CGRect())
@@ -84,9 +84,9 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         self.starView.active = false
         self.automaticallyAdjustsScrollViewInsets = false;
         
-
+        
         mainTableView.frame.size = UIScreen.mainScreen().bounds.size
-
+        
         //mainTableView.registerClass(menuCell.self, forCellReuseIdentifier: "menuCell")
         
         mainTableView.registerNib(UINib.init(nibName: "menuCell", bundle: nil), forCellReuseIdentifier: "menuCell")
@@ -94,15 +94,15 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         mainTableView.registerNib(UINib.init(nibName: "addCommentCell", bundle: nil), forCellReuseIdentifier: "addCommentCell")
         mainTableView.registerNib(UINib.init(nibName: "commentCell", bundle: nil), forCellReuseIdentifier: "commentCell")
         mainTableView.registerNib(UINib.init(nibName: "locationCell", bundle: nil), forCellReuseIdentifier: "locationCell")
-
         
-
         
-
         
-
         
-
+        
+        
+        
+        
+        
         mainTableView.backgroundColor = UIColor(red: CGFloat(240.0/255.0), green: CGFloat(240.0/255.0), blue: CGFloat(240.0/255.0), alpha: 1.0)
         mainTableView.separatorInset = UIEdgeInsetsZero
         mainTableView.layoutMargins = UIEdgeInsetsZero
@@ -124,10 +124,10 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         markButton.titleLabel?.textAlignment = NSTextAlignment.Center
         markButton.alpha = 0.0
         markButton.hidden = true
-
+        
         self.view.frame.size.width = width
-
-
+        
+        
         self.templeTitleLabel.numberOfLines = 0
         self.templeTitleLabel.center.x = self.view.center.x
         self.templeTitleLabel.alpha = 0.0
@@ -143,10 +143,10 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         //headerView.addSubview(catTitleLabel)
         mainTableView.contentInset = UIEdgeInsets(top: tableHeaderHeight, left: 0, bottom: 0, right: 0)
         mainTableView.contentOffset = CGPoint(x: 0, y: -tableHeaderHeight)
-
+        
     }
     
-
+    
     
     func refresh() {
         
@@ -159,14 +159,14 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         print(spinner.center.x, spinner.center.y)
         
         spinner.start()
-
+        
         
         let userDefaults = NSUserDefaults.standardUserDefaults()
         
         if let rating = userDefaults.valueForKey(self.id) {
             self.recentLabel.text = "Моя оценка: \(rating as! CGFloat)"
         }
-
+        
         PFQuery(className: "Temples2").getObjectInBackgroundWithId(id) {
             (object: PFObject?, error: NSError?) -> Void in
             
@@ -192,11 +192,9 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                     self.templeLocation = CLLocationCoordinate2D(latitude: geoPoint.latitude, longitude: geoPoint.longitude)
                 }
                 
-//                PFGeoPoint *geoPoint = self.temples[i][@"location"];
-//                NSInteger ratingNumber = [self.temples[i][@"ratingNumber"] integerValue];
-//                
-//                mark.position = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
-//                mark.map = mapView_;
+                if let loadedRatingAmount = object!.valueForKey("ratingAmount") {
+                    self.ratingAmount = loadedRatingAmount as! CGFloat
+                }
                 
                 
                 if let loadedMenuData = object!.valueForKey("menu") {
@@ -209,39 +207,25 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 if let obj = object!.valueForKey("image") {
                     
                     obj.getDataInBackgroundWithBlock {
-                    (imageData:NSData?, error: NSError?) -> Void in
-                    
-                    if error == nil {
-                        let image = UIImage(data: imageData!)
-                        self.templePictureView.image = image
+                        (imageData:NSData?, error: NSError?) -> Void in
+                        
+                        if error == nil {
+                            let image = UIImage(data: imageData!)
+                            self.templePictureView.image = image
                         }
                     }
                 }
-            
-            
-            PFQuery(className: "Review").whereKey("temple", equalTo: object!).findObjectsInBackgroundWithBlock({ ( objects:[PFObject]?, error:NSError?) -> Void in
-                if let objects = objects{
-                self.resultReviewArray = objects
-                }
                 
-                self.mainTableView.reloadData()
-
-//                dispatch_async(dispatch_get_main_queue()) {
-//                    self.mainTableView.reloadData()
-//                }
-            })
-               
                 
+                PFQuery(className: "Review").whereKey("temple", equalTo: object!).findObjectsInBackgroundWithBlock({ ( objects:[PFObject]?, error:NSError?) -> Void in
+                    if let objects = objects{
+                        self.resultReviewArray = objects
+                    }
+                    
+                    self.mainTableView.reloadData()
+                    
+                })
             }
-
-            
-//            do{
-//                let comments = try PFQuery(className: "Review").whereKey("temple", equalTo: object!).findObjects()
-//                self.resultReviewArray = comments
-//            } catch let error as NSError {
-//                print("Error: \(error.localizedDescription)")
-//                abort()
-//            }
             
             UIView.animateWithDuration(0.5, animations: {
                 self.templeTitleLabel.alpha = 1.0
@@ -269,14 +253,14 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             //menu cell
             
             if self.activeCellIndexPath == indexPath.row {
-
+                
                 return menuCell.expandedHeight
             }
             else{
                 return menuCell.defaultHeight
-                }
+            }
         }
-
+        
         
         if indexPath.row == 1{
             return 70
@@ -285,32 +269,32 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         
         if indexPath.row >= 3 && indexPath.row <= 5 {
             if resultReviewArray.count < (indexPath.row - 2) {
-                    return 0
+                return 0
             }else{
                 if indexPath.row == 3{
-                        return 125
+                    return 125
                 }
             }
         }
-
+        
         if indexPath.row == 6{
-               return addCommentCell.defaultHeight
+            return addCommentCell.defaultHeight
         }
         
         if indexPath.row == 7{
             return 0
         }
-
+        
         return 95
     }
     
-
+    
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
         //let categories:[String] = ["Размер","Перчатки","Соус","Мастер"]
-
+        
         
         //SEPARATOR
         let separatorView = UIView()
@@ -354,24 +338,24 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                         cccell.hideHeader()
                     }
                     
-
-                let commentDate:NSDate! = self.resultReviewArray[indexPath.row - 3].valueForKey("createdAt") as? NSDate
-                let dateForm = NSDateFormatter()
-                dateForm.dateStyle = NSDateFormatterStyle.LongStyle
-                
-                let commentDateStr = dateForm.stringFromDate(commentDate)
-                
-                
-                
-                cccell.dateLabel.text = commentDateStr
-                cccell.commentTextLabel.text = self.resultReviewArray[indexPath.row - 3].valueForKey("comment") as? String
-                
                     
-                cccell.userNameLabel.text = self.resultReviewArray[indexPath.row - 3].valueForKey("userName") as? String
-                
-                cccell.commentTextLabel.sizeToFit()
-                cccell.dateLabel.sizeToFit()
-                cccell.userNameLabel.sizeToFit()
+                    let commentDate:NSDate! = self.resultReviewArray[indexPath.row - 3].valueForKey("createdAt") as? NSDate
+                    let dateForm = NSDateFormatter()
+                    dateForm.dateStyle = NSDateFormatterStyle.LongStyle
+                    
+                    let commentDateStr = dateForm.stringFromDate(commentDate)
+                    
+                    
+                    
+                    cccell.dateLabel.text = commentDateStr
+                    cccell.commentTextLabel.text = self.resultReviewArray[indexPath.row - 3].valueForKey("comment") as? String
+                    
+                    
+                    cccell.userNameLabel.text = self.resultReviewArray[indexPath.row - 3].valueForKey("userName") as? String
+                    
+                    cccell.commentTextLabel.sizeToFit()
+                    cccell.dateLabel.sizeToFit()
+                    cccell.userNameLabel.sizeToFit()
                     
                 }
                 
@@ -380,28 +364,28 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             cell = cccell
         }
         if indexPath.row == 6{
-                let ccell:addCommentCell = tableView.dequeueReusableCellWithIdentifier("addCommentCell") as! addCommentCell
-                ccell.seeAllButton.addTarget(self, action: "expandButtonAction", forControlEvents: UIControlEvents.TouchUpInside)
-                ccell.expandButton.addTarget(self, action: "addButtonAction", forControlEvents: UIControlEvents.TouchUpInside)
-                ccell.delegate = self
-                cell = ccell
-            }
-        if indexPath.row == 7 {
-//            let ccell:locationCell = tableView.dequeueReusableCellWithIdentifier("locationCell") as! locationCell
-//            cell = ccell
+            let ccell:addCommentCell = tableView.dequeueReusableCellWithIdentifier("addCommentCell") as! addCommentCell
+            ccell.seeAllButton.addTarget(self, action: "expandButtonAction", forControlEvents: UIControlEvents.TouchUpInside)
+            ccell.expandButton.addTarget(self, action: "addButtonAction", forControlEvents: UIControlEvents.TouchUpInside)
+            ccell.delegate = self
+            cell = ccell
         }
-
+        if indexPath.row == 7 {
+            //            let ccell:locationCell = tableView.dequeueReusableCellWithIdentifier("locationCell") as! locationCell
+            //            cell = ccell
+        }
+        
         
         
         cell.addSubview(separatorView)
         return cell
     }
-
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-
+        
         let previousIndexPath = selectedIndexPath
         if indexPath == selectedIndexPath{
-        selectedIndexPath = nil
+            selectedIndexPath = nil
         }
         else{
             selectedIndexPath = indexPath
@@ -420,35 +404,35 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         }
         
         if indexPath.row == 2{
-        self.menuAction()
+            self.menuAction()
         }
         
         if indexPath.row == 1{
             self.goToMapAction()
         }
-
+        
         
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath){
         if indexPath.row == 2{
-        (cell as! menuCell).watchFrameChanges()
+            (cell as! menuCell).watchFrameChanges()
         }
-    
+        
     }
     
-
+    
     func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row == 2{
             (cell as! menuCell).ignoreFrameChanges()
         }
-
+        
     }
     
-
     
     
-
+    
+    
     func updateHeaderView(){
         var headerRect = CGRect(x: 0, y: -tableHeaderHeight, width: mainTableView.bounds.width, height: tableHeaderHeight)
         if mainTableView.contentOffset.y < -tableHeaderHeight {
@@ -467,36 +451,36 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         self.dismissStarView()
         
         let text = self.commentText
-
-        if text != "" {
-        let review = PFObject(className:"Review")
-        review["comment"] = text
-        review["userName"] = "Петя"
         
+        if text != "" {
+            let review = PFObject(className:"Review")
+            review["comment"] = text
+            review["userName"] = "Петя"
+            
             PFQuery(className: "Temples2").getObjectInBackgroundWithId(self.id){
                 (object: PFObject?, error: NSError?) -> Void in
                 if error == nil {
-                if let object = object {
-                review["temple"] = object
+                    if let object = object {
+                        review["temple"] = object
                     }
-                
-                
-        print(text)
+                    
+                    
+                    print(text)
                 }
                 else {
                     print("Error: \(error!) \(error!.userInfo)")
                 }
-
-
-
-        
-        review.saveInBackgroundWithBlock {
-            (success: Bool, error: NSError?) -> Void in
-            if (success) {
-                print("comment saved")
-            } else {
-                print(error)
-            }
+                
+                
+                
+                
+                review.saveInBackgroundWithBlock {
+                    (success: Bool, error: NSError?) -> Void in
+                    if (success) {
+                        print("comment saved")
+                    } else {
+                        print(error)
+                    }
                 }
             }
             self.refresh()
@@ -505,18 +489,18 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "templeToAddComment") {
-
+            
             let vc = segue.destinationViewController as! addCommentVC
             vc.delegate = self
         }
-        
+            
         else if (segue.identifier == "templeToComments") {
             
             let viewController:commentsVC = segue.destinationViewController as! commentsVC
             
             viewController.templeId = self.id
         }
-        
+            
             
         else if (segue.identifier == "templeToMap") {
             
@@ -529,7 +513,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     
     func menuAction(){
-    
+        
         if self.activeCellIndexPath == 2 {
             
             
@@ -537,7 +521,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             self.mainTableView.beginUpdates()
             self.mainTableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 2, inSection: 0)], withRowAnimation: UITableViewRowAnimation.None)
             self.mainTableView.endUpdates()
-
+            
             //self.mainTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
             
         }
@@ -551,10 +535,10 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             
             //self.mainTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
         }
-
-    
+        
+        
     }
-
+    
     
     func addButtonAction(){
         self.dismissStarView()
@@ -579,25 +563,25 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     func dismissStarView(){
         if self.starView.active == true {
-        UIView.animateWithDuration(0.5, animations: {
-            self.totalLabel.hidden = false
-            self.recentLabel.hidden = false
-            self.markButton.hidden = true
-            self.markButton.alpha = 0.0
-            self.starView.value = self.templeRating
-            self.starView.active = false
-        })
+            UIView.animateWithDuration(0.5, animations: {
+                self.totalLabel.hidden = false
+                self.recentLabel.hidden = false
+                self.markButton.hidden = true
+                self.markButton.alpha = 0.0
+                self.starView.value = self.templeRating
+                self.starView.active = false
+            })
         }
     }
     
     func dismissStarView(controller:AnyObject){
         if self.starView.active == true {
-        self.dismissStarView()
+            self.dismissStarView()
         }
     }
-
     
-
+    
+    
     
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage.init(), forBarMetrics: UIBarMetrics.Default)
@@ -607,13 +591,31 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         
         
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-
+        
     }
     
     func saveRating(ratingNumber: CGFloat) {
         let userDefaults = NSUserDefaults.standardUserDefaults()
         userDefaults.setValue(ratingNumber, forKey: self.id)
         userDefaults.synchronize()
+        
+        let averageRating = (CGFloat(self.templeRating)*(CGFloat(self.ratingAmount)) + ratingNumber)/CGFloat(self.ratingAmount + 1)
+        
+        print("RATING")
+        print(averageRating)
+        
+        
+        PFQuery(className: "Temples2").getObjectInBackgroundWithId(self.id) {
+            (object: PFObject?, error: NSError?) -> Void in
+            
+            object?.setValue(averageRating*2, forKey: "ratingNumber")
+            object?.setValue(self.ratingAmount + 1, forKey: "ratingAmount")
+
+            object?.saveInBackground()
+        }
+        
+
+        
     }
     
 }

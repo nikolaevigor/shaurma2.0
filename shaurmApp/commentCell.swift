@@ -44,10 +44,8 @@ class commentCell: UITableViewCell {
     }
     
     func hideHeader(){
-        
         self.headerLabel.text = ""
         //self.headerLabel.hidden = true
-
     }
 
     
