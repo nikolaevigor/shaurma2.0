@@ -61,6 +61,20 @@ static const CGFloat CalloutYOffset = 10.0f;
      forControlEvents:UIControlEventTouchUpInside];
     self.calloutView.rightAccessoryView = button;
     
+    NSArray *customIconsArray =  @[
+                                   [self image:[UIImage imageNamed:@"pin0"] scaledToSize:CGSizeMake(30.0f, 60.0f)],
+                                   [self image:[UIImage imageNamed:@"pin1"] scaledToSize:CGSizeMake(30.0f, 60.0f)],
+                                   [self image:[UIImage imageNamed:@"pin2"] scaledToSize:CGSizeMake(30.0f, 60.0f)],
+                                   [self image:[UIImage imageNamed:@"pin3"] scaledToSize:CGSizeMake(30.0f, 60.0f)],
+                                   [self image:[UIImage imageNamed:@"pin4"] scaledToSize:CGSizeMake(30.0f, 60.0f)],
+                                   [self image:[UIImage imageNamed:@"pin5"] scaledToSize:CGSizeMake(30.0f, 60.0f)],
+                                   [self image:[UIImage imageNamed:@"pin6"] scaledToSize:CGSizeMake(30.0f, 60.0f)],
+                                   [self image:[UIImage imageNamed:@"pin7"] scaledToSize:CGSizeMake(30.0f, 60.0f)],
+                                   [self image:[UIImage imageNamed:@"pin8"] scaledToSize:CGSizeMake(30.0f, 60.0f)],
+                                   [self image:[UIImage imageNamed:@"pin9"] scaledToSize:CGSizeMake(30.0f, 60.0f)],
+                                   [self image:[UIImage imageNamed:@"pin10"] scaledToSize:CGSizeMake(30.0f, 60.0f)],
+                                   ];
+    
     if (self.templesLoaded == false)
     {
         self.templesLoaded = true;
@@ -96,7 +110,7 @@ static const CGFloat CalloutYOffset = 10.0f;
                 mark.map = mapView_;
                 mark.title = self.temples[i][@"title"];
                 mark.snippet = self.temples[i][@"ratingString"];
-                mark.icon = [self image:self.customIconsArray[ratingNumber] scaledToSize:CGSizeMake(30.0f, 60.0f)];
+                mark.icon = [self image:customIconsArray[ratingNumber] scaledToSize:CGSizeMake(30.0f, 60.0f)];
                 mark.userData = [self.temples[i] objectId];
                 [self.markers addObject:mark];
             }
@@ -116,6 +130,20 @@ static const CGFloat CalloutYOffset = 10.0f;
 {
     self.markers = [NSMutableArray array];
     GMSMarker *templeMarker;
+    
+    NSArray *customIconsArray =  @[
+                                   [self image:[UIImage imageNamed:@"pin0"] scaledToSize:CGSizeMake(30.0f, 60.0f)],
+                                   [self image:[UIImage imageNamed:@"pin1"] scaledToSize:CGSizeMake(30.0f, 60.0f)],
+                                   [self image:[UIImage imageNamed:@"pin2"] scaledToSize:CGSizeMake(30.0f, 60.0f)],
+                                   [self image:[UIImage imageNamed:@"pin3"] scaledToSize:CGSizeMake(30.0f, 60.0f)],
+                                   [self image:[UIImage imageNamed:@"pin4"] scaledToSize:CGSizeMake(30.0f, 60.0f)],
+                                   [self image:[UIImage imageNamed:@"pin5"] scaledToSize:CGSizeMake(30.0f, 60.0f)],
+                                   [self image:[UIImage imageNamed:@"pin6"] scaledToSize:CGSizeMake(30.0f, 60.0f)],
+                                   [self image:[UIImage imageNamed:@"pin7"] scaledToSize:CGSizeMake(30.0f, 60.0f)],
+                                   [self image:[UIImage imageNamed:@"pin8"] scaledToSize:CGSizeMake(30.0f, 60.0f)],
+                                   [self image:[UIImage imageNamed:@"pin9"] scaledToSize:CGSizeMake(30.0f, 60.0f)],
+                                   [self image:[UIImage imageNamed:@"pin10"] scaledToSize:CGSizeMake(30.0f, 60.0f)],
+                                   ];
     
     PFGeoPoint *templePoint = [[PFGeoPoint alloc] init];
     
@@ -151,7 +179,7 @@ static const CGFloat CalloutYOffset = 10.0f;
                          templeMarker.map = mapView_;
                          templeMarker.title = self.temples[i][@"title"];
                          templeMarker.snippet = self.temples[i][@"ratingString"];
-                         templeMarker.icon = [self image:self.customIconsArray[ratingNumber] scaledToSize:CGSizeMake(30.0f, 60.0f)];
+                         templeMarker.icon = [self image:customIconsArray[ratingNumber] scaledToSize:CGSizeMake(30.0f, 60.0f)];
                          templeMarker.userData = [self.temples[i] objectId];
                          [self.markers addObject:templeMarker];
                          
@@ -173,23 +201,6 @@ static const CGFloat CalloutYOffset = 10.0f;
         mapView_.selectedMarker = templeMarker;
     }
     
-}
-
-- (NSArray*)customIconsArray
-{
-    return @[
-             [UIImage imageNamed:@"pin0"],
-             [UIImage imageNamed:@"pin1"],
-             [UIImage imageNamed:@"pin2"],
-             [UIImage imageNamed:@"pin3"],
-             [UIImage imageNamed:@"pin4"],
-             [UIImage imageNamed:@"pin5"],
-             [UIImage imageNamed:@"pin6"],
-             [UIImage imageNamed:@"pin7"],
-             [UIImage imageNamed:@"pin8"],
-             [UIImage imageNamed:@"pin9"],
-             [UIImage imageNamed:@"pin10"],
-             ];
 }
 
 #pragma mark - KVO update methods

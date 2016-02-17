@@ -34,7 +34,7 @@
     self.delegateSlider = self.slider;
     
     [self.container setOption:PPRevealSideOptionsiOS7StatusBarMoving];
-    [self.container pushViewController:self.map onDirection:PPRevealSideDirectionTop withOffset:89 animated:NO];
+    [self.container pushViewController:self.map onDirection:PPRevealSideDirectionTop withOffset:90 animated:NO];
     self.container.options = PPRevealSideOptionsShowShadows << 1; //shadows: off
     
     UISwipeGestureRecognizer *swipeDown = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(sliderSwiped:)];
@@ -49,7 +49,7 @@
 - (void)sliderSwiped:(UISwipeGestureRecognizer *)swipe
 {
     [self.delegateSlider setTableViewWith:[self.delegateMap getNearest]]; //refresh table on swipe
-    [self.container pushViewController:self.map onDirection:PPRevealSideDirectionTop withOffset:89 animated:YES];
+    [self.container pushViewController:self.map onDirection:PPRevealSideDirectionTop withOffset:90 animated:YES];
 }
 
 #pragma mark - containerDelegate methods
@@ -57,7 +57,7 @@
 - (void)pop
 {
     [self.delegateSlider setTableViewWith:[self.delegateMap getNearest]]; //refresh table on pop
-    [self.container pushViewController:self.map onDirection:PPRevealSideDirectionTop withOffset:89 animated:YES];
+    [self.container pushViewController:self.map onDirection:PPRevealSideDirectionTop withOffset:90 animated:YES];
 }
 
 - (void)templesIsDownloaded
