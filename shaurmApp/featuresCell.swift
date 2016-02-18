@@ -46,16 +46,16 @@ class featuresCell: UITableViewCell {
         }
         
         if hot{
-            self.sizeImage.image  = UIImage(named: "chili")
+            self.hotImage.image  = UIImage(named: "chili")
         }else{
-            self.sizeImage.image  = UIImage(named: "noChili")
+            self.hotImage.image  = UIImage(named: "noChili")
         }
         
         if gloves{
-            self.sizeImage.image  = UIImage(named: "gloves")
+            self.glovesImage.image  = UIImage(named: "gloves")
             
         }else{
-            self.sizeImage.image  = UIImage(named: "noGloves")
+            self.glovesImage.image  = UIImage(named: "noGloves")
         }
     }
     
