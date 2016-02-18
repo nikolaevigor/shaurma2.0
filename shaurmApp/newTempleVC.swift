@@ -61,6 +61,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     var menuData = NSArray()
     var templeLocation = CLLocationCoordinate2D()
     var ratingAmount = CGFloat(1)
+    var features = ["M", true, true]
     
     
     @IBOutlet weak var headerContainerView: UIView!
@@ -97,12 +98,6 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         
         
         
-        
-        
-        
-        
-        
-        
         mainTableView.backgroundColor = UIColor(red: CGFloat(240.0/255.0), green: CGFloat(240.0/255.0), blue: CGFloat(240.0/255.0), alpha: 1.0)
         mainTableView.separatorInset = UIEdgeInsetsZero
         mainTableView.layoutMargins = UIEdgeInsetsZero
@@ -110,17 +105,14 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         mainTableView.separatorStyle = .None
         
         totalLabel.text = "Всего оценок: 123"
-        //totalLabel.font = UIFont(name: "HelveticaNeue", size: 18.0)
         totalLabel.textColor = UIColor.blackColor()
         totalLabel.sizeToFit()
         
         recentLabel.text = "Моя оценка: 3"
-        //recentLabel.font = UIFont(name: "HelveticaNeue", size: 18.0)
         recentLabel.textColor = UIColor.blackColor()
         recentLabel.sizeToFit()
         
         markButton.setTitle("ОЦЕНИТЬ", forState: UIControlState.Normal)
-        //markButton.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 18.0)!
         markButton.titleLabel?.textAlignment = NSTextAlignment.Center
         markButton.alpha = 0.0
         markButton.hidden = true
@@ -196,10 +188,16 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                     self.ratingAmount = loadedRatingAmount as! CGFloat
                 }
                 
-                
-                if let loadedMenuData = object!.valueForKey("menu") {
-                    self.menuData = loadedMenuData as! NSArray
+                if let menuData = object!.valueForKey("menu") {
+                    self.menuData = menuData as! NSArray
                 }
+                
+                
+                if let size = object!.valueForKey("size"), hot = object!.valueForKey("hot"), gloves = object!.valueForKey("gloves") {
+                    self.features = [size as! String, hot as! Bool, gloves as! Bool]
+                }
+                
+                
                 
                 self.templeTitleLabel.sizeToFit()
                 self.templeTitleLabel.numberOfLines = 0
@@ -304,7 +302,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         if indexPath.row == 0{
             
             let cccell:featuresCell = tableView.dequeueReusableCellWithIdentifier("featuresCell") as! featuresCell
-            //cccell.setLabelText(categories[0], t2: categories[1])
+            cccell.setImages(self.features[0] as! String, hot: self.features[1] as! Bool, gloves: self.features[2] as! Bool)
             cccell.frame.size.width = width
             cccell.clipsToBounds = true
             cccell.delegate = self
@@ -316,6 +314,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             let ccell:menuCell = tableView.dequeueReusableCellWithIdentifier("menuCell") as! menuCell
             ccell.delegate = self
             ccell.menuData = self.menuData
+            print(self.menuData)
             ccell.refresh()
             cell = ccell
         }
@@ -608,9 +607,9 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         PFQuery(className: "Temples2").getObjectInBackgroundWithId(self.id) {
             (object: PFObject?, error: NSError?) -> Void in
             
-            object?.setValue(averageRating*2, forKey: "ratingNumber")
+            object?.setValue(Int(averageRating*2), forKey: "ratingNumber")
             object?.setValue(self.ratingAmount + 1, forKey: "ratingAmount")
-            object?.setValue("\(averageRating*2)/10", forKey: "ratingString")
+            object?.setValue("\(Int(averageRating*2))/10", forKey: "ratingString")
             object?.saveInBackground()
         }
         

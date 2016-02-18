@@ -19,5 +19,8 @@ class templeMapVC: UIViewController {
         self.map = mapVC.init()
     
     }
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController?.navigationBar.translucent = false
+    }
 
 }

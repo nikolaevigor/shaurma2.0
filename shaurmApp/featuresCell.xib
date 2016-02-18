@@ -8,7 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="featuresCell" rowHeight="100" id="pwG-rT-Gdk" customClass="featuresCell" customModule="shaurmApp" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="featuresCell" rowHeight="100" id="pwG-rT-Gdk" customClass="featuresCell" customModule="ShaurmApp" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="501" height="50"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pwG-rT-Gdk" id="ZHY-DJ-d9Q">
@@ -141,7 +141,7 @@
                             </mask>
                         </variation>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Chili" translatesAutoresizingMaskIntoConstraints="NO" id="RXF-oS-dVe">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chili" translatesAutoresizingMaskIntoConstraints="NO" id="RXF-oS-dVe">
                         <rect key="frame" x="230" y="8" width="30" height="30"/>
                         <animations/>
                         <constraints>
@@ -270,12 +270,17 @@
                 </variation>
             </tableViewCellContentView>
             <animations/>
+            <connections>
+                <outlet property="glovesImage" destination="iNs-or-XDi" id="Og8-uM-Y4A"/>
+                <outlet property="hotImage" destination="RXF-oS-dVe" id="uJl-D2-a6G"/>
+                <outlet property="sizeImage" destination="bfP-Jf-nSK" id="uEQ-QT-zOx"/>
+            </connections>
             <point key="canvasLocation" x="555.5" y="312.5"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Chili" width="30" height="30"/>
         <image name="Garden" width="30" height="30"/>
         <image name="M" width="30" height="30"/>
+        <image name="chili" width="30" height="30"/>
     </resources>
 </document>
