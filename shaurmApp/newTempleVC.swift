@@ -56,6 +56,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     var id = String()
     var templeTitle = String()
+    var subway = String()
     var templeRating = CGFloat()
     var commentText = String()
     var menuData = NSArray()
@@ -161,14 +162,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             (object: PFObject?, error: NSError?) -> Void in
             
             if (object != nil) {
-                self.subwayLabel.text = object!.valueForKey("subway") as? String
-                self.subwayLabel.textColor = SHMManager.colorForStation(self.subwayLabel.text)
-                self.subwayLabel.sizeToFit()
-                self.subwayLabel.backgroundColor = UIColor.whiteColor()
-                
-                self.subwayLabelWrapper.layer.masksToBounds = true
-                self.subwayLabelWrapper.layer.cornerRadius = 10
-                self.subwayLabelWrapper.layer.zPosition = 100
+                self.subway = (object!.valueForKey("subway") as? String)!
                 
                 self.templeTitleLabel.text = object!.valueForKey("title") as? String
                 
@@ -211,6 +205,14 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                         }
                     }
                 }
+                
+                self.subwayLabel.text = self.subway
+                self.subwayLabel.textColor = SHMManager.colorForStation(self.subwayLabel.text)
+                self.subwayLabel.sizeToFit()
+                self.subwayLabel.backgroundColor = UIColor.whiteColor()
+                self.subwayLabelWrapper.layer.masksToBounds = true
+                self.subwayLabelWrapper.layer.cornerRadius = 10
+                self.subwayLabelWrapper.layer.zPosition = 100
                 
                 
                 PFQuery(className: "Review").whereKey("temple", equalTo: object!).findObjectsInBackgroundWithBlock({ ( objects:[PFObject]?, error:NSError?) -> Void in
@@ -305,6 +307,13 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             cccell.clipsToBounds = true
             cccell.delegate = self
             cell = cccell
+        }
+        
+        if indexPath.row == 1{
+            
+            let cccell:locationCell = tableView.dequeueReusableCellWithIdentifier("locationCell") as! locationCell
+            cccell.setLabels(self.subway, address: self.templeTitle)
+            cell = cccell
             
         }
         
@@ -317,10 +326,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             cell = ccell
         }
         
-        if indexPath.row == 1{
-            let ccell:locationCell = tableView.dequeueReusableCellWithIdentifier("locationCell") as! locationCell
-            cell = ccell
-        }
+
         
         
         if indexPath.row >= 3 && indexPath.row <= 5 {

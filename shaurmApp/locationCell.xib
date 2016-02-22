@@ -14,7 +14,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="79" id="ZWS-AP-sRR" customClass="locationCell" customModule="shaurmApp" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="79" id="ZWS-AP-sRR" customClass="locationCell" customModule="ShaurmApp" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="402" height="79"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZWS-AP-sRR" id="6fc-Bj-pFa">
@@ -71,6 +71,10 @@
                 </variation>
             </tableViewCellContentView>
             <animations/>
+            <connections>
+                <outlet property="addressLabel" destination="Vgw-4Q-ngZ" id="dTc-eL-Rpl"/>
+                <outlet property="subwayLabel" destination="Rac-5w-D0S" id="zVn-rX-5MH"/>
+            </connections>
             <point key="canvasLocation" x="622" y="315.5"/>
         </tableViewCell>
     </objects>
