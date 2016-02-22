@@ -38,6 +38,7 @@ class categoryVC: UIViewController, UIScrollViewDelegate {
         tableView.alpha = 0
         tableView.frame.size.height = height - 150
         tableView.frame.size.width = width
+        tableView.backgroundColor = UIColor(red: CGFloat(240.0/255.0), green: CGFloat(240.0/255.0), blue: CGFloat(240.0/255.0), alpha: 1.0)
 
         let spinner = ShawarmaSpinnerView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         self.view.addSubview(spinner)
@@ -52,10 +53,6 @@ class categoryVC: UIViewController, UIScrollViewDelegate {
         // ADDING A TITLE LABEL
         
         self.catTitleLabel.textColor = UIColor.whiteColor()
-        //self.catTitleLabel.adjustsFontSizeToFitWidth = true
-        //self.catTitleLabel.layer.zPosition = 25
-        
-        
         self.title = "Рекомендации"
         
         PFQuery(className: "Category").getObjectInBackgroundWithId(self.categoryId) {

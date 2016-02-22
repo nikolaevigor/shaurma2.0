@@ -14,35 +14,33 @@ class reviewVC: UIViewController {
     var resultsCategoryImageFiles = [PFFile]()
     var resultsCategoryTemples = [PFObject]()
     var resultsCategoryIdArray = [String]()
-
+    
     
     var resultCellCatTitle = String()
     var resultCellCatImage =  UIImage()
     var resultCellCatId = String()
-
+    
     //@IBOutlet weak var tapBar: UITabBarItem!
-
-
+    
+    
     @IBOutlet weak var resultsTable: UITableView!
     @IBOutlet weak var navTitle: UINavigationItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
- 
+        
         self.navigationController?.navigationBar.barStyle = UIBarStyle.BlackTranslucent
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.Plain, target:nil, action:nil)
         
-
+        
         
         
         //UITabBar.appearance().barStyle = UIBarStyle.Black
         
         
-        self.tabBarController
-        
+        resultsTable.backgroundColor = UIColor(red: CGFloat(240.0/255.0), green: CGFloat(240.0/255.0), blue: CGFloat(240.0/255.0), alpha: 1.0)
         resultsTable.alpha = 0
-        //resultsTable.backgroundColor = UIColor.darkTextColor()
         resultsTable.separatorColor = UIColor.blackColor()
         
         self.automaticallyAdjustsScrollViewInsets = false;
@@ -52,7 +50,7 @@ class reviewVC: UIViewController {
         self.view.addSubview(spinner)
         spinner.center = self.view.center
         spinner.start()
-
+        
         
         
         // RETREIVING CATEGORIES
@@ -68,18 +66,18 @@ class reviewVC: UIViewController {
                 if let objects = objects {
                     for o in objects {
                         
-                                                
+                        
                         
                         self.resultsCategoryTitleArray.append(o.valueForKey("title") as! String)
                         self.resultsCategoryImageFiles.append(o["image"] as! PFFile)
                         self.resultsCategoryIdArray.append(o.objectId!)
-
+                        
                         
                         
                     }}
             }
-            
-             else {
+                
+            else {
                 //print("Error: \(error!) \(error!.userInfo)")
             }
             self.resultsTable.reloadData()
@@ -108,13 +106,6 @@ class reviewVC: UIViewController {
         cell.categoryTitleLabel.backgroundColor = UIColor.clearColor()
         cell.categoryTitleLabel.textColor = UIColor.whiteColor()
         cell.categoryTitleLabel.sizeToFit()
-        //cell.categoryTitleLabel.center = cell.contentView.center
-        //cell.categoryTitleLabel.adjustsFontSizeToFitWidth = true
-        //cell.categoryTitleLabel.layer.zPosition = 25
-        //cell.categoryTitleLabel.font = UIFont(name: "HelveticaNeue", size: 25)
-
-        
-        
         cell.separatorInset = UIEdgeInsetsZero
         cell.layoutMargins = UIEdgeInsetsZero
         cell.preservesSuperviewLayoutMargins = false
@@ -129,7 +120,7 @@ class reviewVC: UIViewController {
                 self.resultCellCatImage = image!
                 cell.categoryImage.contentMode = .ScaleAspectFill
             }
-    }
+        }
         return cell
     }
     
@@ -143,7 +134,7 @@ class reviewVC: UIViewController {
             //print(resultCellCatImage.description)
             viewController.catImage = resultCellCatImage
             //print("we")
-
+            
         }
     }
     
@@ -157,10 +148,10 @@ class reviewVC: UIViewController {
         
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-
+        
         self.performSegueWithIdentifier("goToCategoryVC", sender: self)
     }
-
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -25,7 +25,12 @@
 
 - (void)viewDidLoad {
     CGRect screenRect = [[UIScreen mainScreen] bounds];
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor colorWithRed:240.0f/255.0f
+                                                green:240.0f/255.0f
+                                                 blue:240.0f/255.0f
+                                                alpha:1.0f];
+    
+    
     
     UITabBarController *mainTabBar = (UITabBarController *)[[[UIApplication sharedApplication] keyWindow] rootViewController];
     UINavigationController *localNavController = (UINavigationController *)[mainTabBar viewControllers][1];
@@ -54,6 +59,10 @@
     self.table.scrollEnabled = YES;
     self.table.rowHeight = UITableViewAutomaticDimension;
     self.table.estimatedRowHeight = 70.0;
+    self.table.backgroundColor = [UIColor colorWithRed:240.0f/255.0f
+                                                 green:240.0f/255.0f
+                                                  blue:240.0f/255.0f
+                                                 alpha:1.0f];
     [self.table registerNib:[UINib nibWithNibName:@"sliderCell" bundle:nil] forCellReuseIdentifier:@"cellID"];
     [self.view addSubview:self.table];
     
