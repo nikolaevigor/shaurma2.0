@@ -25,10 +25,10 @@ class categoryVC: UIViewController, UIScrollViewDelegate {
     
     var resultCellId = String()
     var resultCellTitle = String()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.Plain, target:nil, action:nil)
         self.automaticallyAdjustsScrollViewInsets = false;
         
@@ -39,7 +39,7 @@ class categoryVC: UIViewController, UIScrollViewDelegate {
         tableView.frame.size.height = height - 150
         tableView.frame.size.width = width
         tableView.backgroundColor = UIColor(red: CGFloat(240.0/255.0), green: CGFloat(240.0/255.0), blue: CGFloat(240.0/255.0), alpha: 1.0)
-
+        
         let spinner = ShawarmaSpinnerView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         self.view.addSubview(spinner)
         spinner.center = self.view.center
@@ -62,7 +62,7 @@ class categoryVC: UIViewController, UIScrollViewDelegate {
                 
                 
                 let title: AnyObject? = object.valueForKey("title")
-
+                
                 
                 self.catTitleLabel.text = title as? String
                 self.catTitleLabel.sizeToFit()
@@ -85,8 +85,8 @@ class categoryVC: UIViewController, UIScrollViewDelegate {
                         spinner.hidden = true
                         UIView.animateWithDuration(0.3, animations: {self.tableView.alpha = 1.0})
                         spinner.stop()
-
-
+                        
+                        
                     }
                 }
             }
@@ -131,41 +131,41 @@ class categoryVC: UIViewController, UIScrollViewDelegate {
                         
                         (cell as! sliderCell).templePic!.image = image
                         (cell as! sliderCell).templePic!.contentMode = .ScaleAspectFill
-
+                        
                     }
                 }}
             
             
-            if let obj = self.templesArray[indexPath.row].valueForKey("title") {
-                (cell as! sliderCell).templeTitle?.text = obj as? String
+            if let titleValue = self.templesArray[indexPath.row].valueForKey("title") {
+                (cell as! sliderCell).templeTitle?.text = titleValue as? String
             }
             
-            if let obj2 = self.templesArray[indexPath.row].valueForKey("subway") {
-                (cell as! sliderCell).metroLabel?.text = obj2 as? String
-                (cell as! sliderCell).metroLabel?.textColor = SHMManager.colorForStation(obj2 as? String)
-
-            }
-            
-            if let obj3 = self.templesArray[indexPath.row].valueForKey("ratingNumber") {
-                (cell as! sliderCell).ratingLabel?.text = String(obj3)
+            if let subwayValue = self.templesArray[indexPath.row].valueForKey("subway") {
+                (cell as! sliderCell).metroLabel?.text = subwayValue as? String
+                (cell as! sliderCell).metroLabel?.textColor = SHMManager.colorForStation(subwayValue as? String)
                 
             }
             
-            if let obj4 = self.templesArray[indexPath.row].valueForKey("price") {
-                (cell as! sliderCell).price?.text = String(format: "%@ ₽", String(obj4))
+            if let ratingValue = self.templesArray[indexPath.row].valueForKey("ratingNumber") {
+                (cell as! sliderCell).ratingLabel?.text = String(ratingValue)
+                
+            }
+            
+            if let priceValue = self.templesArray[indexPath.row].valueForKey("price") {
+                (cell as! sliderCell).price?.text = String(format: "%@ ₽", String(priceValue))
             }
         }
-
-    
-    
+        
+        
+        
     }
-
+    
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell:sliderCell = tableView.dequeueReusableCellWithIdentifier("cellID") as! sliderCell
-
-    
+        
+        
         
         cell.separatorInset = UIEdgeInsetsZero
         cell.layoutMargins = UIEdgeInsetsZero
@@ -185,29 +185,40 @@ class categoryVC: UIViewController, UIScrollViewDelegate {
         }
     }
     
+    
+    func openTempleVC(id: String){
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let templeView = storyBoard.instantiateViewControllerWithIdentifier("newTempleVC")
+        templeView.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
+        (templeView as! newTempleVC).id = id
+        self.navigationController?.pushViewController(templeView, animated: true)
+    }
+    
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         
         resultCellId = (templesArray[indexPath.row] as! PFObject).objectId!
-
+        
         
         resultCellTitle = self.templeTitlesArray[indexPath.row]
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+//        self.openTempleVC(self.resultCellId)
         self.performSegueWithIdentifier("goToNewTempleVC", sender: self)
-
+        
     }
     
     
     func updateHeaderView(){
         var headerRect = CGRect(x: 0, y: -tableHeaderHeight, width: tableView.bounds.width, height: tableHeaderHeight)
-
+        
         if tableView.contentOffset.y < -tableHeaderHeight {
             headerRect.origin.y = tableView.contentOffset.y
             headerRect.size.height = -tableView.contentOffset.y
         }
         
-        headerView.frame = headerRect        
+        headerView.frame = headerRect
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
@@ -217,9 +228,9 @@ class categoryVC: UIViewController, UIScrollViewDelegate {
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.navigationBar.setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
         self.navigationController?.navigationBar.barStyle = UIBarStyle.BlackTranslucent
-
+        
     }
-
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

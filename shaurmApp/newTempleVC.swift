@@ -81,7 +81,8 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     
     override func viewDidLoad(){
-        super.viewDidLoad()
+
+        
         self.starView.active = false
         self.automaticallyAdjustsScrollViewInsets = false;
         
@@ -133,8 +134,11 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         mainTableView.addSubview(headerView)
         
         //headerView.addSubview(catTitleLabel)
+        
         mainTableView.contentInset = UIEdgeInsets(top: tableHeaderHeight, left: 0, bottom: 0, right: 0)
         mainTableView.contentOffset = CGPoint(x: 0, y: -tableHeaderHeight)
+        super.viewDidLoad()
+
         
     }
     
@@ -142,14 +146,8 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     func refresh() {
         
-        let spinner = ShawarmaSpinnerView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        let spinner = ShawarmaSpinnerView(frame: CGRect(x: self.view.center.x, y: self.view.center.y + 100.0, width: 50, height: 50))
         self.view.addSubview(spinner)
-        spinner.center.x = self.view.center.x
-        spinner.center.y = self.view.center.y + 100.0
-        
-        print(self.view.center.x, self.view.center.y + 100.0)
-        print(spinner.center.x, spinner.center.y)
-        
         spinner.start()
         
         
