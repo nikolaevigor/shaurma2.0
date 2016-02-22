@@ -341,11 +341,11 @@
                         <viewControllerLayoutGuide type="bottom" id="AvM-NG-8Dh"/>
                     </layoutGuides>
                     <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="fjh-wd-wyf">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="oiR-ow-baH">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="502"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" horizontalHuggingPriority="350" id="fpf-z5-cb5">
@@ -528,12 +528,13 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="AvM-NG-8Dh" firstAttribute="top" secondItem="oiR-ow-baH" secondAttribute="bottom" constant="49" id="IT3-1i-pSR"/>
+                            <constraint firstItem="AvM-NG-8Dh" firstAttribute="top" secondItem="oiR-ow-baH" secondAttribute="bottom" id="IT3-1i-pSR"/>
                             <constraint firstItem="oiR-ow-baH" firstAttribute="top" secondItem="fjh-wd-wyf" secondAttribute="top" id="b4S-VE-si1"/>
                             <constraint firstAttribute="trailing" secondItem="oiR-ow-baH" secondAttribute="trailing" id="ebH-aO-Vsp"/>
                             <constraint firstItem="oiR-ow-baH" firstAttribute="leading" secondItem="fjh-wd-wyf" secondAttribute="leading" id="mry-aW-6Fe"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="600"/>
                     <connections>
@@ -659,6 +660,6 @@
         <image name="yellow-star-filled" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="suH-da-vH3"/>
+        <segue reference="6CV-hJ-qoj"/>
     </inferredMetricsTieBreakers>
 </document>
