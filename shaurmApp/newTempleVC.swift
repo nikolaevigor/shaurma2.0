@@ -61,7 +61,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     var commentText = String()
     var menuData = NSArray()
     var templeLocation = CLLocationCoordinate2D()
-    var ratingAmount = CGFloat(1)
+    var ratingAmount = Int(1)
     var features = ["M", true, true]
     
     
@@ -82,7 +82,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     
     override func viewDidLoad(){
-
+        
         
         self.starView.active = false
         self.automaticallyAdjustsScrollViewInsets = false;
@@ -106,11 +106,11 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         mainTableView.preservesSuperviewLayoutMargins = false
         mainTableView.separatorStyle = .None
         
-        totalLabel.text = "Всего оценок: 123"
+        totalLabel.text = "Всего оценок: 1"
         totalLabel.textColor = UIColor.blackColor()
         totalLabel.sizeToFit()
         
-        recentLabel.text = "Моя оценка: 3"
+        recentLabel.text = "Моя оценка: "
         recentLabel.textColor = UIColor.blackColor()
         recentLabel.sizeToFit()
         
@@ -139,7 +139,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         mainTableView.contentInset = UIEdgeInsets(top: tableHeaderHeight, left: 0, bottom: 0, right: 0)
         mainTableView.contentOffset = CGPoint(x: 0, y: -tableHeaderHeight)
         super.viewDidLoad()
-
+        
         
     }
     
@@ -177,7 +177,8 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 }
                 
                 if let loadedRatingAmount = object!.valueForKey("ratingAmount") {
-                    self.ratingAmount = loadedRatingAmount as! CGFloat
+                    self.ratingAmount = loadedRatingAmount as! Int
+                    self.totalLabel.text = "Всего оценок: \(self.ratingAmount)"
                 }
                 
                 if let menuData = object!.valueForKey("menu") {
@@ -194,7 +195,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 self.templeTitleLabel.sizeToFit()
                 self.templeTitleLabel.numberOfLines = 0
                 
-                if let obj = object!.valueForKey("image") {
+                if let obj = object!.valueForKey("picture") {
                     
                     obj.getDataInBackgroundWithBlock {
                         (imageData:NSData?, error: NSError?) -> Void in
@@ -326,7 +327,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             cell = ccell
         }
         
-
+        
         
         
         if indexPath.row >= 3 && indexPath.row <= 5 {
@@ -456,33 +457,57 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         let text = self.commentText
         
         if text != "" {
-            let review = PFObject(className:"Review")
-            review["comment"] = text
-            review["userName"] = "Петя"
+            let userDefaults = NSUserDefaults.standardUserDefaults()
+            var userNumber = userDefaults.valueForKey("userNumber")
             
-            PFQuery(className: "Temples2").getObjectInBackgroundWithId(self.id){
-                (object: PFObject?, error: NSError?) -> Void in
-                if error == nil {
-                    if let object = object {
-                        review["temple"] = object
+            if userNumber == nil {
+                
+                let count = PFQuery(className: "Gourmand").countObjects(nil) + 1
+                let gourmand = PFObject(className:"Gourmand")
+                gourmand["count"] = count
+                userDefaults.setValue(count, forKey: "userNumber")
+                userDefaults.synchronize()
+                userNumber = count
+                
+                gourmand.saveInBackgroundWithBlock {
+                    (success: Bool, error: NSError?) -> Void in
+                    if (success) {
+                        print("user saved")
+                    } else {
+                        print(error)
+                    }
+                }
+            }
+            if let userNumber = userNumber {
+                
+                let review = PFObject(className:"Review")
+                review["comment"] = text
+                review["userName"] = "Гурман #\(userNumber)"
+                
+                PFQuery(className: "Temples2").getObjectInBackgroundWithId(self.id){
+                    (object: PFObject?, error: NSError?) -> Void in
+                    if error == nil {
+                        if let object = object {
+                            review["temple"] = object
+                        }
+                        
+                        
+                        print(text)
+                    }
+                    else {
+                        print("Error: \(error!) \(error!.userInfo)")
                     }
                     
                     
-                    print(text)
-                }
-                else {
-                    print("Error: \(error!) \(error!.userInfo)")
-                }
-                
-                
-                
-                
-                review.saveInBackgroundWithBlock {
-                    (success: Bool, error: NSError?) -> Void in
-                    if (success) {
-                        print("comment saved")
-                    } else {
-                        print(error)
+                    
+                    
+                    review.saveInBackgroundWithBlock {
+                        (success: Bool, error: NSError?) -> Void in
+                        if (success) {
+                            print("comment saved")
+                        } else {
+                            print(error)
+                        }
                     }
                 }
             }
@@ -617,7 +642,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             object?.saveInBackground()
         }
         
-
+        
         
     }
     
