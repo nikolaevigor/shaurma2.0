@@ -37,7 +37,6 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     }
     
     @IBAction func changeValue(sender: AnyObject) {
-        print(starView.value)
         self.starView.active = true
         UIView.animateWithDuration(0.5, animations: {
             self.totalLabel.hidden = true
@@ -322,7 +321,6 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             let ccell:menuCell = tableView.dequeueReusableCellWithIdentifier("menuCell") as! menuCell
             ccell.delegate = self
             ccell.menuData = self.menuData
-            print(self.menuData)
             ccell.refresh()
             cell = ccell
         }
@@ -491,9 +489,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                             review["temple"] = object
                         }
                         
-                        
-                        print(text)
-                    }
+                                    }
                     else {
                         print("Error: \(error!) \(error!.userInfo)")
                     }
@@ -628,11 +624,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         userDefaults.synchronize()
         
         let averageRating = (CGFloat(self.templeRating)*(CGFloat(self.ratingAmount)) + ratingNumber)/CGFloat(self.ratingAmount + 1)
-        
-        print("RATING")
-        print(averageRating)
-        
-        
+
         PFQuery(className: "Temples2").getObjectInBackgroundWithId(self.id) {
             (object: PFObject?, error: NSError?) -> Void in
             

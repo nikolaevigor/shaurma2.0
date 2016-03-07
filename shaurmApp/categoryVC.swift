@@ -106,7 +106,6 @@ class categoryVC: UIViewController, UIScrollViewDelegate {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(templesArray.count)
         return templesArray.count
     }
     

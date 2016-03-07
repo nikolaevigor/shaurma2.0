@@ -16,7 +16,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G5L-HG-4UP">
-                        <rect key="frame" x="200" y="14" width="183" height="60"/>
+                        <rect key="frame" x="200" y="14" width="183" height="62"/>
                         <animations/>
                         <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -34,6 +34,7 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="2ge-ep-Usj"/>
+                                <exclude reference="T1j-5g-9Vb"/>
                                 <exclude reference="TxO-E4-MZS"/>
                                 <exclude reference="aeC-yp-YXX"/>
                                 <exclude reference="dnn-cI-bop"/>
@@ -42,7 +43,7 @@
                         </variation>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kBx-ek-9zb">
-                        <rect key="frame" x="11" y="14" width="183" height="60"/>
+                        <rect key="frame" x="11" y="14" width="183" height="62"/>
                         <animations/>
                         <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -62,6 +63,7 @@
                                 <exclude reference="C0Y-pd-0uh"/>
                                 <exclude reference="Dtv-VC-8OX"/>
                                 <exclude reference="csB-Ks-fth"/>
+                                <exclude reference="ePC-Sn-i5c"/>
                             </mask>
                         </variation>
                     </button>
