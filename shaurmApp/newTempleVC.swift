@@ -30,7 +30,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             self.recentLabel.hidden = false
             self.markButton.hidden = true
             self.markButton.alpha = 0.0
-            self.saveRating(self.starView.value)
+            self.saveRating(self.starView.value*2)
             self.refresh()
         })
         
@@ -154,7 +154,9 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         let userDefaults = NSUserDefaults.standardUserDefaults()
         
         if let rating = userDefaults.valueForKey(self.id) {
-            self.recentLabel.text = "Моя оценка: \(rating as! CGFloat)"
+            let curRating = (rating as! CGFloat)*2
+            self.recentLabel.text = "Моя оценка: \(curRating)"
+            self.templeRating = curRating
         }
         
         PFQuery(className: "Temples2").getObjectInBackgroundWithId(id) {
@@ -167,7 +169,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 
                 
                 if let ratingNum = object!.valueForKey("ratingNumber") {
-                    self.templeRating = CGFloat(NSNumberFormatter().numberFromString(String(ratingNum))!)/2
+                    self.templeRating = CGFloat(NSNumberFormatter().numberFromString(String(ratingNum))!)
                     self.starView.value = self.templeRating
                 }
                 
@@ -628,9 +630,9 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         PFQuery(className: "Temples2").getObjectInBackgroundWithId(self.id) {
             (object: PFObject?, error: NSError?) -> Void in
             
-            object?.setValue(Int(averageRating*2), forKey: "ratingNumber")
+            object?.setValue(Int(averageRating), forKey: "ratingNumber")
             object?.setValue(self.ratingAmount + 1, forKey: "ratingAmount")
-            object?.setValue("\(Int(averageRating*2))/10", forKey: "ratingString")
+            object?.setValue("\(Int(averageRating))/10", forKey: "ratingString")
             object?.saveInBackground()
         }
         
