@@ -31,8 +31,6 @@ class starCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        //print("INIT STAR")
-        
         //super.awakeFromNib()
         let width = UIScreen.mainScreen().bounds.width
         
@@ -96,7 +94,6 @@ class starCell: UITableViewCell {
     
     
     @IBAction func changeValue(sender: HCSStarRatingView){
-        print(starView.value)
         UIView.animateWithDuration(0.5, animations: {
             self.totalLabel.hidden = true
             self.recentLabel.hidden = true

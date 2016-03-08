@@ -47,7 +47,6 @@ class menuCell: UITableViewCell {
     func watchFrameChanges(){
         if self.observationInfo == nil {
             self.addObserver(self, forKeyPath: "frame", options: .New, context: nil)
-            //print("WATCH")
         }
 
         //checkHeight()
