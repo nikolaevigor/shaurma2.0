@@ -17,17 +17,37 @@
                     <color key="textColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="shaurma" translatesAutoresizingMaskIntoConstraints="NO" id="kk3-tX-Wgt">
-                    <rect key="frame" x="112" y="259" width="150" height="150"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HCOCB International" textAlignment="center" lineBreakMode="headTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fj9-MQ-6yn">
+                    <rect key="frame" x="97" y="618" width="182" height="43"/>
                     <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="43" id="sHF-FG-JIv"/>
+                        <constraint firstAttribute="width" constant="182" id="xqi-0Q-IMI"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="21"/>
+                    <color key="textColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shawarma-big" translatesAutoresizingMaskIntoConstraints="NO" id="kk3-tX-Wgt">
+                    <rect key="frame" x="113" y="259" width="150" height="150"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="150" id="8RM-Da-QHe"/>
+                        <constraint firstAttribute="width" constant="150" id="MlD-9a-mZM"/>
+                    </constraints>
                 </imageView>
             </subviews>
             <animations/>
             <color key="backgroundColor" red="0.16078431372549018" green="0.16078431372549018" blue="0.16078431372549018" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="fj9-MQ-6yn" secondAttribute="bottom" constant="6" id="0x0-QV-56R"/>
                 <constraint firstItem="RMJ-lm-cy5" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="3wS-aj-Mcl"/>
                 <constraint firstItem="RMJ-lm-cy5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="152" id="8O3-8d-I31"/>
+                <constraint firstAttribute="bottom" secondItem="fj9-MQ-6yn" secondAttribute="bottom" constant="23" id="YVS-Qc-Vel"/>
+                <constraint firstItem="fj9-MQ-6yn" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="fsV-a5-8F0"/>
                 <constraint firstItem="RMJ-lm-cy5" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="p6X-de-XAh"/>
+                <constraint firstItem="kk3-tX-Wgt" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="uEP-5J-38A"/>
+                <constraint firstItem="kk3-tX-Wgt" firstAttribute="top" secondItem="RMJ-lm-cy5" secondAttribute="bottom" constant="49" id="waR-tk-Hiz"/>
                 <constraint firstItem="RMJ-lm-cy5" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="yzZ-W4-EAr"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
@@ -39,12 +59,13 @@
                 <mask key="constraints">
                     <exclude reference="3wS-aj-Mcl"/>
                     <exclude reference="yzZ-W4-EAr"/>
+                    <exclude reference="YVS-Qc-Vel"/>
                 </mask>
             </variation>
             <point key="canvasLocation" x="547.5" y="454.5"/>
         </view>
     </objects>
     <resources>
-        <image name="shaurma" width="100" height="100"/>
+        <image name="shawarma-big" width="1024" height="1024"/>
     </resources>
 </document>
