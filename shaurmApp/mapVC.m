@@ -80,7 +80,7 @@ static const CGFloat CalloutYOffset = 10.0f;
         self.templesLoaded = true;
         
         CGRect screenRect = [[UIScreen mainScreen] bounds];
-        UIImageView *spinner = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"spinner"]];
+        UIImageView *spinner = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"shaurma"]];
         spinner.frame = CGRectMake(screenRect.size.width/2 - 20, screenRect.size.height/2 - 20, 40, 40);
         UIView *spinnerBackground = [[UIView alloc] initWithFrame:CGRectMake(screenRect.size.width/2 - 25, screenRect.size.height/2 - 25, 50, 50)];
         spinnerBackground.backgroundColor = [UIColor whiteColor];

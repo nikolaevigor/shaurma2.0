@@ -10,10 +10,6 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="shaurma" translatesAutoresizingMaskIntoConstraints="NO" id="kk3-tX-Wgt">
-                    <rect key="frame" x="120" y="290" width="135" height="117"/>
-                    <animations/>
-                </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SHAURMAPP" textAlignment="center" lineBreakMode="headTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RMJ-lm-cy5">
                     <rect key="frame" x="48" y="152" width="279" height="58"/>
                     <animations/>
@@ -21,9 +17,13 @@
                     <color key="textColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="shaurma" translatesAutoresizingMaskIntoConstraints="NO" id="kk3-tX-Wgt">
+                    <rect key="frame" x="112" y="259" width="150" height="150"/>
+                    <animations/>
+                </imageView>
             </subviews>
             <animations/>
-            <color key="backgroundColor" red="0.16195913461538458" green="0.16195913461538458" blue="0.16195913461538458" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.16078431372549018" green="0.16078431372549018" blue="0.16078431372549018" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="RMJ-lm-cy5" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="3wS-aj-Mcl"/>
                 <constraint firstItem="RMJ-lm-cy5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="152" id="8O3-8d-I31"/>

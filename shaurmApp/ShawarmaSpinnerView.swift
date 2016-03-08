@@ -17,7 +17,7 @@ class ShawarmaSpinnerView: UIView {
         let screenSize: CGRect = UIScreen.mainScreen().bounds
         super.init(frame: CGRect(x: screenSize.size.width/2 - 25, y: screenSize.size.height/2 - 25, width: 50, height: 50))
         spinnerImageView = UIImageView(frame: CGRect(x: 5, y: 5, width: 40, height: 40))
-        spinnerImageView.image = UIImage(named: "spinner")
+        spinnerImageView.image = UIImage(named: "shaurma")
         
         self.backgroundColor = UIColor.whiteColor()
         self.layer.cornerRadius = self.frame.size.width/2
