@@ -25,29 +25,12 @@ class commentsVC: UITableViewController {
     @IBOutlet var mainTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        self.automaticallyAdjustsScrollViewInsets = false;
-        
         let width = UIScreen.mainScreen().bounds.width
         let height = UIScreen.mainScreen().bounds.height
-        
-        //tableView.alpha = 0
-        //        let yInset = (self.navigationController?.navigationBar.frame.size.height)! + (self.navigationController?.navigationBar.frame.origin.y)!
-        
-        
-        //        tableView.contentInset = UIEdgeInsetsMake(yInset,0,yInset,0);
         tableView.frame.size.height = height - 150
         tableView.frame.size.width = width
-        
-        
-        
-        
-        
-        
         mainTableView.registerNib(UINib.init(nibName: "commentCell", bundle: nil), forCellReuseIdentifier: "commentCellID")
-        
         self.refresh()
-        
-        
     }
     
     func refresh() {
@@ -112,7 +95,7 @@ class commentsVC: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell:commentCell = mainTableView.dequeueReusableCellWithIdentifier("commentCellID") as! commentCell
         cell.sizeToFit()
-        
+        cell.userInteractionEnabled = false
         if commentsArray.count != 0 {
             if(indexPath.row != 0){
                 cell.hideHeader()
