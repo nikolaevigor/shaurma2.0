@@ -16,19 +16,18 @@ class commentsVC: UITableViewController {
     
     var commentsArray = [PFObject]()
     var userNamesArray = [String]()
-    
-    
-    
-    
+    var datesArray = [String]()
+    var commentTextArray = [String]()
     var resultCellId = String()
+    var screenWidth = CGFloat()
     
     @IBOutlet var mainTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        let width = UIScreen.mainScreen().bounds.width
+        self.screenWidth = UIScreen.mainScreen().bounds.width
         let height = UIScreen.mainScreen().bounds.height
         tableView.frame.size.height = height - 150
-        tableView.frame.size.width = width
+        tableView.frame.size.width = self.screenWidth
         mainTableView.registerNib(UINib.init(nibName: "commentCell", bundle: nil), forCellReuseIdentifier: "commentCellID")
         self.refresh()
     }
@@ -54,11 +53,23 @@ class commentsVC: UITableViewController {
                     
                     if (objects != nil) {
                         self.commentsArray = objects!
-                        print(self.commentsArray.count)
                         
+                        
+                        for comment in self.commentsArray {
+                            if let userName = comment.valueForKey("userName") {
+                                self.userNamesArray.append(userName as! String)
+                            }
+                            if let commentDate = comment.valueForKey("createdAt") as? NSDate {
+                                let dateForm = NSDateFormatter()
+                                dateForm.dateStyle = NSDateFormatterStyle.LongStyle
+                                self.datesArray.append(dateForm.stringFromDate(commentDate))
+                            }
+                            if let commentText = comment.valueForKey("comment") as? String{
+                                self.commentTextArray.append(commentText)
+                            }
+                        }
                     }
                     self.mainTableView.reloadData()
-                    
                 })
             }
         }
@@ -84,9 +95,10 @@ class commentsVC: UITableViewController {
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.row == 0{
-            return 125
+            return max(125, heightForView(commentTextArray[indexPath.row],font: UIFont(name: "Montserrat", size: 18)!, width: 0.8*(self.screenWidth)) + 35)
         }
-        return 100
+        
+        return max(110, heightForView(commentTextArray[indexPath.row],font: UIFont(name: "Montserrat", size: 18)!, width: 0.8*(self.screenWidth)) + 10)
     }
     
     
@@ -101,36 +113,14 @@ class commentsVC: UITableViewController {
                 cell.hideHeader()
             }
             
-            
-            if let userName = self.commentsArray[indexPath.row].valueForKey("userName") {
-                cell.userNameLabel?.text = userName as? String
-            }
-            
-            if let commentDate = self.commentsArray[indexPath.row].valueForKey("createdAt") as? NSDate {
-                let dateForm = NSDateFormatter()
-                dateForm.dateStyle = NSDateFormatterStyle.LongStyle
-                
-                cell.dateLabel?.text = dateForm.stringFromDate(commentDate)
-                
-            }
-            
-            if let commentText = self.commentsArray[indexPath.row].valueForKey("comment") as? String{
-                cell.commentTextLabel?.text = commentText
-                
-            }
-            
-            
-            
+            cell.userNameLabel?.text = userNamesArray[indexPath.row]
+            cell.dateLabel?.text = datesArray[indexPath.row]
+            cell.commentTextLabel?.text = commentTextArray[indexPath.row]
             
             cell.commentTextLabel.sizeToFit()
             cell.dateLabel.sizeToFit()
             cell.userNameLabel.sizeToFit()
-            
         }
-        
-        
-        
-        
         cell.separatorInset = UIEdgeInsetsZero
         cell.layoutMargins = UIEdgeInsetsZero
         cell.preservesSuperviewLayoutMargins = false
@@ -145,10 +135,19 @@ class commentsVC: UITableViewController {
     }
     
     
-    
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func heightForView(text:String, font:UIFont, width:CGFloat) -> CGFloat{
+        let label:UILabel = UILabel(frame: CGRectMake(0, 0, width, CGFloat.max))
+        label.numberOfLines = 0
+        label.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        label.font = font
+        label.text = text
+        
+        label.sizeToFit()
+        return label.frame.height
     }
     
 }

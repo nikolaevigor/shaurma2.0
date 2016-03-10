@@ -73,6 +73,11 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     var selectedIndexPath:NSIndexPath?
     var resultReviewArray = []
+    var reviewTextArray = [String]()
+    var reviewDateArray = [String]()
+    var reviewUserArray = [String]()
+    
+    var screenWidth = CGFloat()
     
     
     func setTableView(){
@@ -81,8 +86,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     
     
     override func viewDidLoad(){
-        
-        
+        self.screenWidth = UIScreen.mainScreen().bounds.width
         self.starView.active = false
         self.automaticallyAdjustsScrollViewInsets = false;
         
@@ -220,10 +224,18 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 PFQuery(className: "Review").whereKey("temple", equalTo: object!).findObjectsInBackgroundWithBlock({ ( objects:[PFObject]?, error:NSError?) -> Void in
                     if let objects = objects{
                         self.resultReviewArray = objects
+                        
+                        for review in self.resultReviewArray {
+                            let commentDate:NSDate! = review.valueForKey("createdAt") as? NSDate
+                            let dateForm = NSDateFormatter()
+                            dateForm.dateStyle = NSDateFormatterStyle.LongStyle
+                            let commentDateStr = dateForm.stringFromDate(commentDate)
+                            self.reviewDateArray.append(commentDateStr)
+                            self.reviewTextArray.append((review.valueForKey("comment") as? String)!)
+                            self.reviewUserArray.append((review.valueForKey("userName") as? String)!)
+                        }
                     }
-                    
                     self.mainTableView.reloadData()
-                    
                 })
             }
             
@@ -266,13 +278,18 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             return 70
         }
         
+
         
         if indexPath.row >= 3 && indexPath.row <= 5 {
             if resultReviewArray.count < (indexPath.row - 2) {
                 return 0
             }else{
                 if indexPath.row == 3{
-                    return 125
+                    print(reviewTextArray.count)
+                    return max(125, heightForView(reviewTextArray[indexPath.row - 3],font: UIFont(name: "Montserrat", size: 18)!, width: 0.8*(self.screenWidth)) + 35)
+                }
+                else{
+                return max(100, heightForView(reviewTextArray[indexPath.row - 3],font: UIFont(name: "Montserrat", size: 18)!, width: 0.8*(self.screenWidth)) + 10)
                 }
             }
         }
@@ -341,21 +358,9 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                     if(indexPath.row != 3){
                         cccell.hideHeader()
                     }
-                    
-                    
-                    let commentDate:NSDate! = self.resultReviewArray[indexPath.row - 3].valueForKey("createdAt") as? NSDate
-                    let dateForm = NSDateFormatter()
-                    dateForm.dateStyle = NSDateFormatterStyle.LongStyle
-                    
-                    let commentDateStr = dateForm.stringFromDate(commentDate)
-                    
-                    
-                    
-                    cccell.dateLabel.text = commentDateStr
-                    cccell.commentTextLabel.text = self.resultReviewArray[indexPath.row - 3].valueForKey("comment") as? String
-                    
-                    
-                    cccell.userNameLabel.text = self.resultReviewArray[indexPath.row - 3].valueForKey("userName") as? String
+                    cccell.dateLabel.text = self.reviewDateArray[indexPath.row-3]
+                    cccell.commentTextLabel.text = self.reviewTextArray[indexPath.row-3]
+                    cccell.userNameLabel.text = self.reviewUserArray[indexPath.row-3]
                     
                     cccell.commentTextLabel.sizeToFit()
                     cccell.dateLabel.sizeToFit()
@@ -639,5 +644,17 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         
         
     }
+    
+    func heightForView(text:String, font:UIFont, width:CGFloat) -> CGFloat{
+        let label:UILabel = UILabel(frame: CGRectMake(0, 0, width, CGFloat.max))
+        label.numberOfLines = 0
+        label.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        label.font = font
+        label.text = text
+        
+        label.sizeToFit()
+        return label.frame.height
+    }
+
     
 }
