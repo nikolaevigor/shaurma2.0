@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "S-30.png",
+      "filename" : "S Lowercase-30.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "S-60.png",
+      "filename" : "S Lowercase-60.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "S-90.png",
+      "filename" : "S Lowercase-90.png",
       "scale" : "3x"
     }
   ],
