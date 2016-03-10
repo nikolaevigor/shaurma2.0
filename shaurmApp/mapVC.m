@@ -300,23 +300,18 @@ static const CGFloat CalloutYOffset = 10.0f;
 //method for resizing image
 - (UIImage *)image:(UIImage*)originalImage scaledToSize:(CGSize)size
 {
-    //avoid redundant drawing
     if (CGSizeEqualToSize(originalImage.size, size))
     {
         return originalImage;
     }
     
-    //create drawing context
     UIGraphicsBeginImageContextWithOptions(size, NO, 0.0f);
     
-    //draw
     [originalImage drawInRect:CGRectMake(0.0f, 0.0f, size.width, size.height)];
     
-    //capture resultant image
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
-    //return image
     return image;
 }
 

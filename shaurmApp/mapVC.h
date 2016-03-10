@@ -13,7 +13,10 @@
 #import "mapDelegate.h"
 
 @interface mapVC : UIViewController <GMSMapViewDelegate, CLLocationManagerDelegate, mapDelegate>
+
 @property (nonatomic) BOOL setNearest;
+
 -(void)setTempleById:(NSString *)templeId;
+
 @end
 
