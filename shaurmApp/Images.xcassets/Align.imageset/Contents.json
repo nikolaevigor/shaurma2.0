@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "align-30.png",
+      "filename" : "Align Justify-25.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "align-60.png",
+      "filename" : "Align Justify-50.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "align-90.png",
+      "filename" : "Align Justify-75.png",
       "scale" : "3x"
     }
   ],
