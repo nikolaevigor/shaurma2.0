@@ -319,7 +319,7 @@
                                     <rect key="frame" x="0.0" y="64" width="600" height="450"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shawarma.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Xor-vP-Iu8">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shawarma-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Xor-vP-Iu8">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="350"/>
                                             <animations/>
                                             <constraints>
@@ -623,7 +623,7 @@
         <image name="Align.png" width="25" height="25"/>
         <image name="half-star" width="64" height="64"/>
         <image name="map.png" width="30" height="30"/>
-        <image name="shawarma.jpg" width="580" height="326"/>
+        <image name="shawarma-placeholder" width="1200" height="700"/>
         <image name="yellow-star" width="64" height="64"/>
         <image name="yellow-star-filled" width="64" height="64"/>
     </resources>
