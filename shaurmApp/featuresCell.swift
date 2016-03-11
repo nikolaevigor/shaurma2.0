@@ -46,7 +46,7 @@ class featuresCell: UITableViewCell {
         }
         
         if hot{
-            self.hotImage.image  = UIImage(named: "chili")
+            self.hotImage.image  = UIImage(named: "pepper")
         }else{
             self.hotImage.image  = UIImage(named: "no-chili")
         }

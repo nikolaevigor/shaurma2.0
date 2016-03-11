@@ -158,7 +158,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         let userDefaults = NSUserDefaults.standardUserDefaults()
         
         if let rating = userDefaults.valueForKey(self.id) {
-            let curRating = (rating as! CGFloat)*2
+            let curRating = (rating as! CGFloat)
             self.recentLabel.text = "Моя оценка: \(curRating)"
             self.templeRating = curRating
         }
