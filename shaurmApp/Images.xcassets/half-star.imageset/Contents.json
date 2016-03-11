@@ -2,7 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "half-star.png",
+      "filename" : "half-star@2x.png",
       "scale" : "1x"
     },
     {
