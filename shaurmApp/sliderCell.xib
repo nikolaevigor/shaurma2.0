@@ -20,7 +20,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="69"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shawarma.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="4F1-w9-gw8">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="small-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="4F1-w9-gw8">
                         <rect key="frame" x="8" y="8" width="53" height="53"/>
                         <animations/>
                         <constraints>
@@ -95,6 +95,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="shawarma.jpg" width="580" height="326"/>
+        <image name="small-placeholder" width="30" height="30"/>
     </resources>
 </document>
