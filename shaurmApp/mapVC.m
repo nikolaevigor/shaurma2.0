@@ -22,9 +22,10 @@ static const CGFloat CalloutYOffset = 10.0f;
 @property (strong, nonatomic) UIView *emptyCalloutView;
 @property (strong, nonatomic) NSArray *temples;
 @property (strong, nonatomic) GMSCameraPosition *camera;
-@property (nonatomic) BOOL templesLoaded;
+@property BOOL templesLoaded;
 @property (strong, nonatomic) NSMutableArray <GMSMarker *> *markers;
 @property (weak, nonatomic) id <containerDelegate> containerDelegate;
+@property BOOL openedFromTemple;
 
 @end
 
@@ -128,6 +129,7 @@ static const CGFloat CalloutYOffset = 10.0f;
 
 - (void)setTempleById:(NSString *)templeId
 {
+    self.openedFromTemple = YES;
     self.markers = [NSMutableArray array];
     GMSMarker *templeMarker;
     
@@ -279,11 +281,13 @@ static const CGFloat CalloutYOffset = 10.0f;
     /* don't move map camera to center marker on tap */
     mapView.selectedMarker = marker;
     return YES;
-    
 }
 
 - (void)calloutAccessoryButtonTapped:(id)sender
 {
+    if (self.openedFromTemple) {
+        return;
+    }
     if (mapView_.selectedMarker)
     {
         [self.containerDelegate openTempleVC:(NSString *)mapView_.selectedMarker.userData];
