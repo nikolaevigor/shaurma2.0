@@ -75,7 +75,7 @@ class categoryVC: UIViewController, UIScrollViewDelegate {
                     (objects: [PFObject]?, error: NSError?) -> Void in
                     
                     if let objects = objects {
-                        
+
                         for o in objects {
                             self.templeTitlesArray.append(o.valueForKey("title") as! String)
                         }
@@ -116,9 +116,7 @@ class categoryVC: UIViewController, UIScrollViewDelegate {
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath){
         
         if templesArray.count != 0 {
-            
-            
-            if let obj = self.templesArray[indexPath.row].valueForKey("image") {
+            if let obj = self.templesArray[indexPath.row].valueForKey("picture") {
                 
                 obj.getDataInBackgroundWithBlock {
                     (imageData:NSData?, error: NSError?) -> Void in
@@ -129,7 +127,8 @@ class categoryVC: UIViewController, UIScrollViewDelegate {
                         let image = UIImage(data: imageData!)
                         
                         (cell as! sliderCell).templePic!.image = image
-                        (cell as! sliderCell).templePic!.contentMode = .ScaleAspectFill
+                        (cell as! sliderCell).templePic!.contentMode = .ScaleAspectFit
+
                         
                     }
                 }}
@@ -138,6 +137,7 @@ class categoryVC: UIViewController, UIScrollViewDelegate {
             if let titleValue = self.templesArray[indexPath.row].valueForKey("title") {
                 (cell as! sliderCell).templeTitle?.text = titleValue as? String
             }
+            
             
             if let subwayValue = self.templesArray[indexPath.row].valueForKey("subway") {
                 (cell as! sliderCell).metroLabel?.text = subwayValue as? String
