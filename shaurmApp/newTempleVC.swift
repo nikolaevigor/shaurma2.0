@@ -289,7 +289,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                     return max(125, heightForView(reviewTextArray[indexPath.row - 3],font: UIFont(name: "Montserrat", size: 18)!, width: 0.8*(self.screenWidth)) + 35)
                 }
                 else{
-                return max(100, heightForView(reviewTextArray[indexPath.row - 3],font: UIFont(name: "Montserrat", size: 18)!, width: 0.8*(self.screenWidth)) + 10)
+                return max(110, heightForView(reviewTextArray[indexPath.row - 3],font: UIFont(name: "Montserrat", size: 18)!, width: 0.8*(self.screenWidth)) + 10)
                 }
             }
         }
@@ -361,11 +361,14 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                     cccell.dateLabel.text = self.reviewDateArray[indexPath.row-3]
                     cccell.commentTextLabel.text = self.reviewTextArray[indexPath.row-3]
                     cccell.userNameLabel.text = self.reviewUserArray[indexPath.row-3]
+                    cccell.commentTextLabel.numberOfLines = 4
+
+                    let currentSize = cccell.commentTextLabel.frame.size
+                    let origin = cccell.commentTextLabel.frame.origin
+                    cccell.commentTextLabel.frame = CGRect(origin: origin, size: CGSize(width: currentSize.width, height: min(60, currentSize.height)))
                     
-                    cccell.commentTextLabel.sizeToFit()
                     cccell.dateLabel.sizeToFit()
                     cccell.userNameLabel.sizeToFit()
-                    
                 }
                 
             }
@@ -653,7 +656,9 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         label.text = text
         
         label.sizeToFit()
-        return label.frame.height
+
+        return min(125, label.frame.height)
+
     }
 
     

@@ -19,8 +19,6 @@ class commentCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        //super.init(style: style, reuseIdentifier: reuseIdentifier)
-        //selectionStyle = .None
         
         let width = UIScreen.mainScreen().bounds.width
         
@@ -30,8 +28,6 @@ class commentCell: UITableViewCell {
         self.layoutMargins = UIEdgeInsetsZero
         self.preservesSuperviewLayoutMargins = false
 
-
-        commentTextLabel.sizeToFit()
         commentTextLabel.numberOfLines = 0
         dateLabel.sizeToFit()
         userNameLabel.sizeToFit()

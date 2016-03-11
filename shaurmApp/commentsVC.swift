@@ -20,6 +20,7 @@ class commentsVC: UITableViewController {
     var commentTextArray = [String]()
     var resultCellId = String()
     var screenWidth = CGFloat()
+    var heightsArray = [CGFloat()]
     
     @IBOutlet var mainTableView: UITableView!
     override func viewDidLoad() {
@@ -53,8 +54,6 @@ class commentsVC: UITableViewController {
                     
                     if (objects != nil) {
                         self.commentsArray = objects!
-                        
-                        
                         for comment in self.commentsArray {
                             if let userName = comment.valueForKey("userName") {
                                 self.userNamesArray.append(userName as! String)
@@ -95,10 +94,10 @@ class commentsVC: UITableViewController {
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.row == 0{
-            return max(125, heightForView(commentTextArray[indexPath.row],font: UIFont(name: "Montserrat", size: 18)!, width: 0.8*(self.screenWidth)) + 35)
+            return max(125, self.heightsArray[indexPath.row] + 35)
         }
         
-        return max(110, heightForView(commentTextArray[indexPath.row],font: UIFont(name: "Montserrat", size: 18)!, width: 0.8*(self.screenWidth)) + 10)
+        return max(110, self.heightsArray[indexPath.row] + 10)
     }
     
     
@@ -118,6 +117,11 @@ class commentsVC: UITableViewController {
             cell.commentTextLabel?.text = commentTextArray[indexPath.row]
             
             cell.commentTextLabel.sizeToFit()
+            
+            print("height2 \(cell.commentTextLabel.frame.height)")
+            
+            self.heightsArray[indexPath.row] = cell.commentTextLabel.frame.height
+            
             cell.dateLabel.sizeToFit()
             cell.userNameLabel.sizeToFit()
         }
@@ -147,6 +151,7 @@ class commentsVC: UITableViewController {
         label.text = text
         
         label.sizeToFit()
+        print(label.frame.height)
         return label.frame.height
     }
     
