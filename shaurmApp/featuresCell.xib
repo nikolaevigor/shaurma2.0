@@ -141,7 +141,7 @@
                             </mask>
                         </variation>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chili" translatesAutoresizingMaskIntoConstraints="NO" id="RXF-oS-dVe">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pepper" translatesAutoresizingMaskIntoConstraints="NO" id="RXF-oS-dVe">
                         <rect key="frame" x="230" y="8" width="30" height="30"/>
                         <animations/>
                         <constraints>
@@ -280,7 +280,7 @@
     </objects>
     <resources>
         <image name="M" width="30" height="30"/>
-        <image name="chili" width="30" height="30"/>
         <image name="gloves" width="32" height="32"/>
+        <image name="pepper" width="30" height="30"/>
     </resources>
 </document>

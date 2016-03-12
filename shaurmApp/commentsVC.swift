@@ -20,7 +20,7 @@ class commentsVC: UITableViewController {
     var commentTextArray = [String]()
     var resultCellId = String()
     var screenWidth = CGFloat()
-    var heightsArray = [CGFloat()]
+    var heightsArray:NSMutableArray = [0]
     
     @IBOutlet var mainTableView: UITableView!
     override func viewDidLoad() {
@@ -94,10 +94,16 @@ class commentsVC: UITableViewController {
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.row == 0{
-            return max(125, self.heightsArray[indexPath.row] + 35)
+            if self.heightsArray.count > 0 {
+            return max(125, self.heightsArray[indexPath.row] as! CGFloat + 35.0)
+            }
+            else{return 125}
         }
         
-        return max(110, self.heightsArray[indexPath.row] + 10)
+        if self.heightsArray.count > indexPath.row {
+        return max(110, self.heightsArray[indexPath.row] as! CGFloat + 10.0)
+        }
+        else{ return 110}
     }
     
     
@@ -120,7 +126,7 @@ class commentsVC: UITableViewController {
             
             print("height2 \(cell.commentTextLabel.frame.height)")
             
-            self.heightsArray[indexPath.row] = cell.commentTextLabel.frame.height
+            self.heightsArray.insertObject(cell.commentTextLabel.frame.height, atIndex: indexPath.row)
             
             cell.dateLabel.sizeToFit()
             cell.userNameLabel.sizeToFit()

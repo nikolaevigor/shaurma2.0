@@ -29,10 +29,8 @@ class ShawarmaSpinnerView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     func start() {
         rotating = true
-        
         rotate()
     }
     

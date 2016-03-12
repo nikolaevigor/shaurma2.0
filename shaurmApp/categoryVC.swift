@@ -22,6 +22,8 @@ class categoryVC: UIViewController, UIScrollViewDelegate {
     
     var templesArray = []
     var templeTitlesArray = [String]()
+    var templePicturesArray = [UIImage]()
+
     
     var resultCellId = String()
     var resultCellTitle = String()
@@ -78,15 +80,28 @@ class categoryVC: UIViewController, UIScrollViewDelegate {
 
                         for o in objects {
                             self.templeTitlesArray.append(o.valueForKey("title") as! String)
+                        
+                        
+                        if let obj = o.valueForKey("picture") {
+                            
+                            obj.getDataInBackgroundWithBlock {
+                                (imageData:NSData?, error: NSError?) -> Void in
+                                if error == nil {
+                                    let image = UIImage(data: imageData!)
+                                    self.templePicturesArray.append(image!)
+                                }
+                                self.tableView.reloadData()
+                            }}
+                            
                         }
+                        
+                        
                         
                         self.templesArray = objects
                         self.tableView.reloadData()
                         spinner.hidden = true
                         UIView.animateWithDuration(0.3, animations: {self.tableView.alpha = 1.0})
                         spinner.stop()
-                        
-                        
                     }
                 }
             }
@@ -116,22 +131,24 @@ class categoryVC: UIViewController, UIScrollViewDelegate {
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath){
         
         if templesArray.count != 0 {
-            if let obj = self.templesArray[indexPath.row].valueForKey("picture") {
-                
-                obj.getDataInBackgroundWithBlock {
-                    (imageData:NSData?, error: NSError?) -> Void in
-                    
-                    
-                    
-                    if error == nil {
-                        let image = UIImage(data: imageData!)
-                        
-                        (cell as! sliderCell).templePic!.image = image
-                        (cell as! sliderCell).templePic!.contentMode = .ScaleAspectFit
+            
+            
 
-                        
-                    }
-                }}
+            
+//            if let obj = self.templesArray[indexPath.row].valueForKey("picture") {
+//                
+//                obj.getDataInBackgroundWithBlock {
+//                    (imageData:NSData?, error: NSError?) -> Void in
+//                    
+//                    if error == nil {
+//                        let image = UIImage(data: imageData!)
+//                        
+//                        (cell as! sliderCell).templePic!.image = image
+//                        (cell as! sliderCell).templePic!.contentMode = .ScaleAspectFit
+//
+//                        
+//                    }
+//                }}
             
             
             if let titleValue = self.templesArray[indexPath.row].valueForKey("title") {
@@ -164,7 +181,10 @@ class categoryVC: UIViewController, UIScrollViewDelegate {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell:sliderCell = tableView.dequeueReusableCellWithIdentifier("cellID") as! sliderCell
         
-        
+        if templePicturesArray.count > indexPath.row {
+            cell.templePic!.image = templePicturesArray[indexPath.row]
+            cell.templePic!.contentMode = .ScaleAspectFit
+        }
         
         cell.separatorInset = UIEdgeInsetsZero
         cell.layoutMargins = UIEdgeInsetsZero
