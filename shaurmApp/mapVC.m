@@ -80,24 +80,9 @@ static const CGFloat CalloutYOffset = 10.0f;
     {
         self.templesLoaded = true;
         
-        CGRect screenRect = [[UIScreen mainScreen] bounds];
-        
-        
-//        UIImageView *spinner = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"shaurma"]];
-//        spinner.frame = CGRectMake(screenRect.size.width/2 - 20, screenRect.size.height/2 - 20, 40, 40);
-//        UIView *spinnerBackground = [[UIView alloc] initWithFrame:CGRectMake(screenRect.size.width/2 - 25, screenRect.size.height/2 - 25, 50, 50)];
-//        spinnerBackground.backgroundColor = [UIColor whiteColor];
-//        spinnerBackground.layer.cornerRadius = spinnerBackground.frame.size.width/2;
-//        [self.view addSubview:spinnerBackground];
-//        [self.view addSubview:spinner];
-//        [self runSpinAnimationOnView:spinner duration:1.0 rotations:1 repeat:10.0];
-//        
-//        
-        
         ShawarmaSpinnerView *spinner = [[ShawarmaSpinnerView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
         [self.view addSubview:spinner];
         [spinner start];
-
         
         [SHMDownloader getTemplesInBackgroundWithBlock:^void (NSArray * temples_) {
             self.temples = temples_;
@@ -124,13 +109,9 @@ static const CGFloat CalloutYOffset = 10.0f;
                 mark.userData = [self.temples[i] objectId];
                 [self.markers addObject:mark];
             }
-//            [spinner.layer removeAllAnimations];
-//            [spinner setHidden:YES];
-//            [spinnerBackground setHidden:YES];
+            
             [spinner setHidden:YES];
             [spinner stop];
-            
-
             
         }];
     }
