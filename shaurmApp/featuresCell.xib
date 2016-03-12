@@ -77,7 +77,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="M" translatesAutoresizingMaskIntoConstraints="NO" id="bfP-Jf-nSK">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptyIcon" translatesAutoresizingMaskIntoConstraints="NO" id="bfP-Jf-nSK">
                         <rect key="frame" x="99" y="8" width="30" height="30"/>
                         <animations/>
                         <constraints>
@@ -112,7 +112,7 @@
                             </mask>
                         </variation>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gloves" translatesAutoresizingMaskIntoConstraints="NO" id="iNs-or-XDi">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptyIcon" translatesAutoresizingMaskIntoConstraints="NO" id="iNs-or-XDi">
                         <rect key="frame" x="362" y="8" width="30" height="30"/>
                         <animations/>
                         <constraints>
@@ -141,7 +141,7 @@
                             </mask>
                         </variation>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pepper" translatesAutoresizingMaskIntoConstraints="NO" id="RXF-oS-dVe">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptyIcon" translatesAutoresizingMaskIntoConstraints="NO" id="RXF-oS-dVe">
                         <rect key="frame" x="230" y="8" width="30" height="30"/>
                         <animations/>
                         <constraints>
@@ -279,8 +279,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="M" width="30" height="30"/>
-        <image name="gloves" width="32" height="32"/>
-        <image name="pepper" width="30" height="30"/>
+        <image name="emptyIcon" width="50" height="50"/>
     </resources>
 </document>

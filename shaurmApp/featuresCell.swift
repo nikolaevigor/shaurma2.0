@@ -21,7 +21,6 @@ class featuresCell: UITableViewCell {
     var labelTwo: UILabel!
     var labelText:[String] = []
     
-    
     //
     //    func setLabelText(t1: String, t2: String){
     //        self.labelOne.text = t1
@@ -32,30 +31,37 @@ class featuresCell: UITableViewCell {
     //    }
     
     
-    func setImages(size: String, hot: Bool, gloves: Bool){
+    func setImages(size: String, hot: NSNumber, gloves: NSNumber){
         if size == "S"{
-            self.sizeImage.image  = UIImage(named: "S")
+            self.sizeImage.image = UIImage(named: "S")
         }else if size == "M"{
-            self.sizeImage.image  = UIImage(named: "M")
+            self.sizeImage.image = UIImage(named: "M")
         }else if size == "L"{
-            self.sizeImage.image  = UIImage(named: "L")
+            self.sizeImage.image = UIImage(named: "L")
         }else if size == "XL"{
-            self.sizeImage.image  = UIImage(named: "XL")
+            self.sizeImage.image = UIImage(named: "XL")
         }else {
-            self.sizeImage.image  = UIImage(named: "")
+            self.sizeImage.image = UIImage(named: "emptyIcon")
         }
         
-        if hot{
+        
+        if hot.isEqualToNumber(1) {
             self.hotImage.image  = UIImage(named: "pepper")
-        }else{
+        }else if hot.isEqualToNumber(0) {
             self.hotImage.image  = UIImage(named: "no-chili")
         }
+        else if gloves.isEqualToNumber(2){
+            self.sizeImage.image = UIImage(named: "emptyIcon")
+        }
         
-        if gloves{
+        if gloves.isEqualToNumber(1) {
             self.glovesImage.image  = UIImage(named: "gloves")
             
-        }else{
+        }else if gloves.isEqualToNumber(0) {
             self.glovesImage.image  = UIImage(named: "no-gloves")
+        }
+        else if gloves.isEqualToNumber(2){
+            self.sizeImage.image = UIImage(named: "emptyIcon")
         }
     }
     

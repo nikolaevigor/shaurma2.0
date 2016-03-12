@@ -61,7 +61,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     var menuData = NSArray()
     var templeLocation = CLLocationCoordinate2D()
     var ratingAmount = Int(1)
-    var features = ["M", true, true]
+    var features = ["", 2, 2]
     
     
     @IBOutlet weak var headerContainerView: UIView!
@@ -190,11 +190,9 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                     self.menuData = menuData as! NSArray
                 }
                 
-                
                 if let size = object!.valueForKey("size"), hot = object!.valueForKey("hot"), gloves = object!.valueForKey("gloves") {
-                    self.features = [size as! String, hot as! Bool, gloves as! Bool]
+                    self.features = [size as! String, NSNumber.init(bool: hot as! Bool), NSNumber.init(bool: gloves as! Bool)]
                 }
-                
                 
                 
                 self.templeTitleLabel.sizeToFit()
@@ -312,7 +310,6 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         var cell = UITableViewCell()
         //let categories:[String] = ["Размер","Перчатки","Соус","Мастер"]
         
-        
         //SEPARATOR
         let separatorView = UIView()
         separatorView.frame = CGRectMake(0, 0, width, 0.7)
@@ -321,7 +318,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         if indexPath.row == 0{
             
             let cccell:featuresCell = tableView.dequeueReusableCellWithIdentifier("featuresCell") as! featuresCell
-            cccell.setImages(self.features[0] as! String, hot: self.features[1] as! Bool, gloves: self.features[2] as! Bool)
+            cccell.setImages(self.features[0] as! String, hot: self.features[1] as! Int, gloves: self.features[2] as! Int)
             cccell.frame.size.width = width
             cccell.clipsToBounds = true
             cccell.delegate = self
@@ -438,10 +435,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         if indexPath.row == 2{
             (cell as! menuCell).ignoreFrameChanges()
         }
-        
     }
-    
-    
     
     
     
