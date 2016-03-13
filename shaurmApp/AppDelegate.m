@@ -18,21 +18,6 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
-    [GMSServices provideAPIKey:@"AIzaSyDKgrM3pG0lO2a9r9dxA-srnsEgCuWsJWs"];
-    
-    [Parse enableLocalDatastore];
-    
-    // Initialize Parse.
-    [Parse setApplicationId:@"oHOJc3IsQPgu6f4EYRrZkqIBnJIOli9aq6p9Z5oa"
-                  clientKey:@"dVkdomAkZbsvyEchpe1fa948tHdfwVTfOA84FklH"];
-    
-    // [Optional] Track statistics around application opens.
-    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
-    
-    
-    //instabug crash reporting
-//    [Instabug startWithToken:@"e2f19ea621843fa1621f54f85ab865bd" invocationEvent:IBGInvocationEventShake];
     
     return YES;
 }
