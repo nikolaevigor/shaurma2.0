@@ -41,7 +41,7 @@ class ShawarmaSpinnerView: UIView {
     func throwWarning(){
         
         let screenSize: CGRect = UIScreen.mainScreen().bounds
-        self.frame = CGRect(x: screenSize.size.width/2 - 60, y: screenSize.size.height/2 - 65, width: 120, height: 80)
+        self.frame = CGRect(x: screenSize.size.width/2 - 60, y: screenSize.size.height/2 - 65, width: 120, height: 85)
         self.layer.cornerRadius = self.frame.size.width/10
 
         let warningLabel = UILabel(frame: CGRect(x: self.frame.width/2 - 50, y: self.frame.height - 35, width: 100, height: 40))
@@ -51,7 +51,7 @@ class ShawarmaSpinnerView: UIView {
         warningLabel.sizeToFit()
         
         
-        let crossImage = UIImageView(frame: CGRect(x: self.frame.width/2 - 18, y: 5, width: 36, height: 36))
+        let crossImage = UIImageView(frame: CGRect(x: self.frame.width/2 - 18, y: 10, width: 36, height: 36))
         crossImage.image = UIImage(named: "cross")
         
         self.addSubview(warningLabel)
