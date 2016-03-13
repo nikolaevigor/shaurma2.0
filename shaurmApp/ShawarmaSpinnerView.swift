@@ -46,6 +46,7 @@ class ShawarmaSpinnerView: UIView {
 
         let warningLabel = UILabel(frame: CGRect(x: self.frame.width/2 - 50, y: self.frame.height - 35, width: 100, height: 40))
         warningLabel.font = UIFont(name: "Montserrat-Light", size: 14)
+        warningLabel.textColor = UIColor(red: 102/255, green: 102/255, blue: 102/255, alpha: 1.0)
         warningLabel.text = "нет соединения"
         warningLabel.sizeToFit()
         

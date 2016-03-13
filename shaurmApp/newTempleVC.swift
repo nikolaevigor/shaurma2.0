@@ -31,7 +31,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             self.markButton.hidden = true
             self.markButton.alpha = 0.0
             self.saveRating(self.starView.value*2)
-            self.refresh()
+            
         })
         
     }
@@ -174,7 +174,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 
                 if let ratingNum = object!.valueForKey("ratingNumber") {
                     self.templeRating = CGFloat(NSNumberFormatter().numberFromString(String(ratingNum))!)
-                    self.starView.value = self.templeRating
+                    self.starView.value = self.templeRating/2
                 }
                 
                 if let geoPoint:PFGeoPoint = object!.valueForKey("location") as? PFGeoPoint {
@@ -276,7 +276,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             return 70
         }
         
-
+        
         
         if indexPath.row >= 3 && indexPath.row <= 5 {
             if resultReviewArray.count < (indexPath.row - 2) {
@@ -286,7 +286,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                     return max(125, heightForView(reviewTextArray[indexPath.row - 3],font: UIFont(name: "Montserrat", size: 15)!, width: self.screenWidth ) + 100)
                 }
                 else{
-                return max(110, heightForView(reviewTextArray[indexPath.row - 3],font: UIFont(name: "Montserrat", size: 15)!, width: self.screenWidth) + 80)
+                    return max(110, heightForView(reviewTextArray[indexPath.row - 3],font: UIFont(name: "Montserrat", size: 15)!, width: self.screenWidth) + 80)
                 }
             }
         }
@@ -358,7 +358,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                     cccell.commentTextLabel.text = self.reviewTextArray[indexPath.row-3]
                     cccell.userNameLabel.text = self.reviewUserArray[indexPath.row-3]
                     cccell.commentTextLabel.numberOfLines = 4
-
+                    
                     let currentSize = cccell.commentTextLabel.frame.size
                     let origin = cccell.commentTextLabel.frame.origin
                     cccell.commentTextLabel.frame = CGRect(origin: origin, size: CGSize(width: currentSize.width, height: min(60, currentSize.height)))
@@ -492,7 +492,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                             review["temple"] = object
                         }
                         
-                                    }
+                    }
                     else {
                         print("Error: \(error!) \(error!.userInfo)")
                     }
@@ -549,8 +549,6 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             self.mainTableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 2, inSection: 0)], withRowAnimation: UITableViewRowAnimation.None)
             self.mainTableView.endUpdates()
             
-            //self.mainTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
-            
         }
         else{
             
@@ -558,12 +556,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             self.mainTableView.beginUpdates()
             self.mainTableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 2, inSection: 0)], withRowAnimation: UITableViewRowAnimation.None)
             self.mainTableView.endUpdates()
-            
-            
-            //self.mainTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
-        }
-        
-        
+            }
     }
     
     
@@ -620,28 +613,42 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     }
     
     func saveRating(ratingNumber: CGFloat) {
+        var firstTime = true
+        var averageRating = CGFloat()
+        
         let userDefaults = NSUserDefaults.standardUserDefaults()
+        let myCurrentMark = userDefaults.valueForKey(self.id)
+        
+        if myCurrentMark != nil {
+            firstTime = false
+            averageRating = (CGFloat(self.templeRating)*(CGFloat(self.ratingAmount)) - (myCurrentMark as! CGFloat) + ratingNumber)/CGFloat(self.ratingAmount)
+        }
+        else{
+            averageRating = (CGFloat(self.templeRating)*(CGFloat(self.ratingAmount)) + ratingNumber)/CGFloat(self.ratingAmount + 1)
+        }
+        
         userDefaults.setValue(ratingNumber, forKey: self.id)
         userDefaults.synchronize()
         
-        let averageRating = (CGFloat(self.templeRating)*(CGFloat(self.ratingAmount)) + ratingNumber)/CGFloat(self.ratingAmount + 1)
-
+    
         PFQuery(className: "Temples2").getObjectInBackgroundWithId(self.id) {
             (object: PFObject?, error: NSError?) -> Void in
             
-            object?.setValue(Int(averageRating), forKey: "ratingNumber")
+            if firstTime {
             object?.setValue(self.ratingAmount + 1, forKey: "ratingAmount")
+            }
+
+            object?.setValue(Int(averageRating), forKey: "ratingNumber")
             object?.setValue("\(Int(averageRating))/10", forKey: "ratingString")
             object?.saveInBackground()
+            self.refresh()
         }
         
-        
+        self.templeRating = averageRating
         
     }
     
     func heightForView(text:String, font:UIFont, width:CGFloat) -> CGFloat{
-        
-        print(width)
         
         let newWidth = width - 40
         
@@ -652,8 +659,8 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         label.text = text
         label.sizeToFit()
         return min(80, label.frame.height)
-
+        
     }
-
+    
     
 }
