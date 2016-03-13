@@ -95,13 +95,13 @@ class commentsVC: UITableViewController {
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.row == 0{
             if self.heightsArray.count > 0 {
-            return max(125, self.heightsArray[indexPath.row] as! CGFloat + 35.0)
+            return max(125, self.heightsArray[indexPath.row] as! CGFloat + 120.0)
             }
             else{return 125}
         }
         
         if self.heightsArray.count > indexPath.row {
-        return max(110, self.heightsArray[indexPath.row] as! CGFloat + 10.0)
+        return max(110, self.heightsArray[indexPath.row] as! CGFloat + 100.0)
         }
         else{ return 110}
     }
@@ -148,17 +148,26 @@ class commentsVC: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+
     func heightForView(text:String, font:UIFont, width:CGFloat) -> CGFloat{
-        let label:UILabel = UILabel(frame: CGRectMake(0, 0, width, CGFloat.max))
+        
+        print(width)
+        
+        let newWidth = width - 40
+        
+        let label:UILabel = UILabel(frame: CGRectMake(0, 0, newWidth, CGFloat.max))
         label.numberOfLines = 0
         label.lineBreakMode = NSLineBreakMode.ByWordWrapping
         label.font = font
         label.text = text
         
         label.sizeToFit()
+        
         print(label.frame.height)
         return label.frame.height
+        
     }
+
+    
     
 }

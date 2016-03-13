@@ -283,11 +283,10 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 return 0
             }else{
                 if indexPath.row == 3{
-                    print(reviewTextArray.count)
-                    return max(125, heightForView(reviewTextArray[indexPath.row - 3],font: UIFont(name: "Montserrat", size: 18)!, width: 0.8*(self.screenWidth)) + 35)
+                    return max(125, heightForView(reviewTextArray[indexPath.row - 3],font: UIFont(name: "Montserrat", size: 15)!, width: self.screenWidth ) + 100)
                 }
                 else{
-                return max(110, heightForView(reviewTextArray[indexPath.row - 3],font: UIFont(name: "Montserrat", size: 18)!, width: 0.8*(self.screenWidth)) + 10)
+                return max(110, heightForView(reviewTextArray[indexPath.row - 3],font: UIFont(name: "Montserrat", size: 15)!, width: self.screenWidth) + 80)
                 }
             }
         }
@@ -641,15 +640,18 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     }
     
     func heightForView(text:String, font:UIFont, width:CGFloat) -> CGFloat{
-        let label:UILabel = UILabel(frame: CGRectMake(0, 0, width, CGFloat.max))
+        
+        print(width)
+        
+        let newWidth = width - 40
+        
+        let label:UILabel = UILabel(frame: CGRectMake(0, 0, newWidth, CGFloat.max))
         label.numberOfLines = 0
         label.lineBreakMode = NSLineBreakMode.ByWordWrapping
         label.font = font
         label.text = text
-        
         label.sizeToFit()
-
-        return min(125, label.frame.height)
+        return min(80, label.frame.height)
 
     }
 

@@ -73,7 +73,7 @@ class categoryVC: UIViewController, UIScrollViewDelegate {
                 
                 let templesQuery = PFQuery(className: "Temples2")
                 templesQuery.limit = 1000
-                            
+                
                 templesQuery.whereKey("category", equalTo: object).findObjectsInBackgroundWithBlock{
                     (objects: [PFObject]?, error: NSError?) -> Void in
                     
@@ -195,15 +195,11 @@ class categoryVC: UIViewController, UIScrollViewDelegate {
     
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        
+    
         resultCellId = (templesArray[indexPath.row] as! PFObject).objectId!
-        
-        
         resultCellTitle = self.templeTitlesArray[indexPath.row]
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-//        self.openTempleVC(self.resultCellId)
         self.performSegueWithIdentifier("goToNewTempleVC", sender: self)
         
     }
