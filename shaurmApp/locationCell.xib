@@ -22,7 +22,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MapSnap" translatesAutoresizingMaskIntoConstraints="NO" id="hrs-4f-HVK">
-                        <rect key="frame" x="325" y="8" width="60" height="60"/>
+                        <rect key="frame" x="335" y="8" width="55" height="55"/>
                         <animations/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="hrs-4f-HVK" secondAttribute="height" multiplier="1:1" id="GZv-xv-rJu"/>
@@ -44,8 +44,8 @@
                             </mask>
                         </variation>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Балтийская, 7" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vgw-4Q-ngZ">
-                        <rect key="frame" x="16" y="45" width="205" height="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Балтийская, 7" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vgw-4Q-ngZ">
+                        <rect key="frame" x="16" y="53" width="205" height="17"/>
                         <animations/>
                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
                         <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -54,15 +54,15 @@
                 </subviews>
                 <animations/>
                 <constraints>
-                    <constraint firstAttribute="bottomMargin" secondItem="hrs-4f-HVK" secondAttribute="bottom" constant="2" id="1x8-9g-CCa"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="hrs-4f-HVK" secondAttribute="bottom" constant="7" id="1x8-9g-CCa"/>
                     <constraint firstItem="Vgw-4Q-ngZ" firstAttribute="width" secondItem="Rac-5w-D0S" secondAttribute="width" id="A8g-CE-EsS"/>
                     <constraint firstItem="Rac-5w-D0S" firstAttribute="top" secondItem="6fc-Bj-pFa" secondAttribute="topMargin" constant="5" id="CN8-Ea-fLk"/>
                     <constraint firstItem="Vgw-4Q-ngZ" firstAttribute="leading" secondItem="6fc-Bj-pFa" secondAttribute="leadingMargin" constant="8" id="VHU-Rg-kTJ"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="Vgw-4Q-ngZ" secondAttribute="bottom" constant="8" id="j3l-qI-tgB"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Vgw-4Q-ngZ" secondAttribute="bottom" id="j3l-qI-tgB"/>
                     <constraint firstItem="hrs-4f-HVK" firstAttribute="top" secondItem="6fc-Bj-pFa" secondAttribute="topMargin" id="khw-md-bv8"/>
                     <constraint firstItem="Rac-5w-D0S" firstAttribute="leading" secondItem="6fc-Bj-pFa" secondAttribute="leadingMargin" constant="5" id="qqi-Vy-gsi"/>
                     <constraint firstItem="Rac-5w-D0S" firstAttribute="leading" secondItem="6fc-Bj-pFa" secondAttribute="leadingMargin" constant="8" id="rPN-bH-Wdc"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="hrs-4f-HVK" secondAttribute="trailing" constant="9" id="ztR-Gj-w9V"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="hrs-4f-HVK" secondAttribute="trailing" constant="4" id="ztR-Gj-w9V"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">

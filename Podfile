@@ -6,3 +6,4 @@ inhibit_all_warnings!
 pod 'GoogleMaps'
 pod 'Parse'
 pod 'PPRevealSideViewController', '~> 1.2.2'
+pod 'Instabug', '~> 5.0.1'

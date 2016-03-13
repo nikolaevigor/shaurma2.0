@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <Instabug/Instabug.h>
 
 @interface AppDelegate ()
 
@@ -28,6 +29,10 @@
     
     // [Optional] Track statistics around application opens.
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
+    
+    //instabug crash reporting
+//    [Instabug startWithToken:@"e2f19ea621843fa1621f54f85ab865bd" invocationEvent:IBGInvocationEventShake];
     
     return YES;
 }
