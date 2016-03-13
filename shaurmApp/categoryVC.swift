@@ -73,6 +73,7 @@ class categoryVC: UIViewController, UIScrollViewDelegate {
                 
                 let templesQuery = PFQuery(className: "Temples2")
                 templesQuery.limit = 1000
+                            
                 templesQuery.whereKey("category", equalTo: object).findObjectsInBackgroundWithBlock{
                     (objects: [PFObject]?, error: NSError?) -> Void in
                     
@@ -80,22 +81,21 @@ class categoryVC: UIViewController, UIScrollViewDelegate {
 
                         for o in objects {
                             self.templeTitlesArray.append(o.valueForKey("title") as! String)
-                        
-                        
-                        if let obj = o.valueForKey("picture") {
-                            
+                            self.templePicturesArray.append(UIImage(named: "small-placeholder")!)
+
+                            if let obj = o.valueForKey("picture") {
+                                
                             obj.getDataInBackgroundWithBlock {
                                 (imageData:NSData?, error: NSError?) -> Void in
+
                                 if error == nil {
                                     let image = UIImage(data: imageData!)
-                                    self.templePicturesArray.append(image!)
+                                    self.templePicturesArray.insert(image!, atIndex: objects.indexOf(o)!)
                                 }
                                 self.tableView.reloadData()
-                            }}
-                            
+                                }
+                            }
                         }
-                        
-                        
                         
                         self.templesArray = objects
                         self.tableView.reloadData()
@@ -131,26 +131,6 @@ class categoryVC: UIViewController, UIScrollViewDelegate {
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath){
         
         if templesArray.count != 0 {
-            
-            
-
-            
-//            if let obj = self.templesArray[indexPath.row].valueForKey("picture") {
-//                
-//                obj.getDataInBackgroundWithBlock {
-//                    (imageData:NSData?, error: NSError?) -> Void in
-//                    
-//                    if error == nil {
-//                        let image = UIImage(data: imageData!)
-//                        
-//                        (cell as! sliderCell).templePic!.image = image
-//                        (cell as! sliderCell).templePic!.contentMode = .ScaleAspectFit
-//
-//                        
-//                    }
-//                }}
-            
-            
             if let titleValue = self.templesArray[indexPath.row].valueForKey("title") {
                 (cell as! sliderCell).templeTitle?.text = titleValue as? String
             }
