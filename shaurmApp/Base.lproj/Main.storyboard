@@ -15,6 +15,7 @@
             <string>Montserrat-Light</string>
             <string>Montserrat-Light</string>
             <string>Montserrat-Light</string>
+            <string>Montserrat-Light</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -333,16 +334,11 @@
                                                 </mask>
                                             </variation>
                                         </imageView>
-                                        <view alpha="0.45000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ezo-yu-CtB">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="350"/>
-                                            <animations/>
-                                            <color key="backgroundColor" red="0.33333333329999998" green="0.23523890477528356" blue="0.19959716994526316" alpha="1" colorSpace="calibratedRGB"/>
-                                        </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bMj-ID-0Rn">
-                                            <rect key="frame" x="16" y="308" width="75" height="26"/>
+                                            <rect key="frame" x="16" y="308" width="69" height="26"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69D-fE-agj">
-                                                    <rect key="frame" x="15" y="2" width="45" height="21"/>
+                                                    <rect key="frame" x="12" y="2" width="45" height="21"/>
                                                     <animations/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
@@ -358,11 +354,11 @@
                                                 <constraint firstAttribute="bottom" secondItem="69D-fE-agj" secondAttribute="bottom" constant="3" id="F7c-qa-Unb"/>
                                                 <constraint firstItem="69D-fE-agj" firstAttribute="leading" secondItem="bMj-ID-0Rn" secondAttribute="leading" constant="21" id="I7S-xX-0ZZ"/>
                                                 <constraint firstAttribute="height" constant="26" id="Ksy-fd-WdM"/>
-                                                <constraint firstAttribute="trailing" secondItem="69D-fE-agj" secondAttribute="trailing" constant="15" id="Mrs-JW-fTV"/>
+                                                <constraint firstAttribute="trailing" secondItem="69D-fE-agj" secondAttribute="trailing" constant="12" id="Mrs-JW-fTV"/>
                                                 <constraint firstAttribute="width" constant="86" id="cdk-kJ-m6v"/>
                                                 <constraint firstItem="69D-fE-agj" firstAttribute="top" secondItem="bMj-ID-0Rn" secondAttribute="top" constant="2" id="fgk-O8-WY3"/>
                                                 <constraint firstAttribute="trailing" secondItem="69D-fE-agj" secondAttribute="trailing" constant="20" id="oM5-Ik-fMK"/>
-                                                <constraint firstItem="69D-fE-agj" firstAttribute="leading" secondItem="bMj-ID-0Rn" secondAttribute="leading" constant="15" id="u2Y-iT-KmL"/>
+                                                <constraint firstItem="69D-fE-agj" firstAttribute="leading" secondItem="bMj-ID-0Rn" secondAttribute="leading" constant="12" id="u2Y-iT-KmL"/>
                                                 <constraint firstAttribute="trailing" secondItem="69D-fE-agj" secondAttribute="trailing" constant="20" id="y88-IF-Bem"/>
                                             </constraints>
                                             <variation key="default">
@@ -456,34 +452,45 @@
                                                 <constraint firstAttribute="bottom" secondItem="uG7-e7-aj1" secondAttribute="bottom" constant="8" id="qM0-GJ-4B3"/>
                                             </constraints>
                                         </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="120₽" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wjo-zn-4q3">
+                                            <rect key="frame" x="540" y="321" width="55" height="21"/>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="55" id="vJF-D7-fWv"/>
+                                                <constraint firstAttribute="height" constant="21" id="y4N-i2-Lw9"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="18"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <animations/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="Wjo-zn-4q3" secondAttribute="trailing" constant="20" id="0J0-Ed-Qoo"/>
                                         <constraint firstAttribute="trailing" secondItem="Rzd-Nn-oQu" secondAttribute="trailing" id="2TU-SR-8al"/>
+                                        <constraint firstItem="Rzd-Nn-oQu" firstAttribute="top" secondItem="Wjo-zn-4q3" secondAttribute="bottom" constant="8" id="39b-U0-lT9"/>
                                         <constraint firstItem="Rzd-Nn-oQu" firstAttribute="leading" secondItem="fpf-z5-cb5" secondAttribute="leading" id="4K6-Kx-zfl"/>
                                         <constraint firstAttribute="trailing" secondItem="Xor-vP-Iu8" secondAttribute="trailing" id="5D3-Bg-blE"/>
                                         <constraint firstItem="Xor-vP-Iu8" firstAttribute="top" secondItem="fpf-z5-cb5" secondAttribute="top" id="5jt-jv-mpk"/>
-                                        <constraint firstItem="Ezo-yu-CtB" firstAttribute="height" secondItem="Xor-vP-Iu8" secondAttribute="height" id="9dj-3J-Lox"/>
                                         <constraint firstItem="Rzd-Nn-oQu" firstAttribute="top" secondItem="bMj-ID-0Rn" secondAttribute="bottom" constant="16" id="Fo6-0T-dKN"/>
                                         <constraint firstItem="oW4-om-0kv" firstAttribute="centerY" secondItem="Xor-vP-Iu8" secondAttribute="centerY" constant="-25.5" id="Pbx-dk-Nx6"/>
                                         <constraint firstItem="Rzd-Nn-oQu" firstAttribute="top" secondItem="Xor-vP-Iu8" secondAttribute="bottom" constant="-50" id="QUa-Bm-fIJ"/>
-                                        <constraint firstItem="Ezo-yu-CtB" firstAttribute="width" secondItem="Xor-vP-Iu8" secondAttribute="width" id="VH3-62-adX"/>
                                         <constraint firstItem="bMj-ID-0Rn" firstAttribute="leading" secondItem="fpf-z5-cb5" secondAttribute="leading" constant="16" id="X2D-fl-8fj"/>
-                                        <constraint firstItem="Ezo-yu-CtB" firstAttribute="top" secondItem="Xor-vP-Iu8" secondAttribute="top" id="czZ-m9-jPm"/>
+                                        <constraint firstAttribute="trailing" secondItem="Wjo-zn-4q3" secondAttribute="trailing" constant="5" id="bgG-Ya-Z3S"/>
                                         <constraint firstAttribute="trailing" secondItem="Xor-vP-Iu8" secondAttribute="trailing" id="df2-AP-HEj"/>
                                         <constraint firstItem="oW4-om-0kv" firstAttribute="centerX" secondItem="Xor-vP-Iu8" secondAttribute="centerX" id="eu0-GF-ksU"/>
                                         <constraint firstAttribute="bottom" secondItem="Rzd-Nn-oQu" secondAttribute="bottom" id="ifN-Pl-PzF"/>
                                         <constraint firstItem="Rzd-Nn-oQu" firstAttribute="top" secondItem="Xor-vP-Iu8" secondAttribute="bottom" constant="-50" id="jbq-Sg-BfD"/>
                                         <constraint firstItem="Rzd-Nn-oQu" firstAttribute="leading" secondItem="fpf-z5-cb5" secondAttribute="leading" id="mVL-r5-6yp"/>
                                         <constraint firstItem="Xor-vP-Iu8" firstAttribute="leading" secondItem="fpf-z5-cb5" secondAttribute="leading" id="tFl-F0-4cg"/>
-                                        <constraint firstItem="Ezo-yu-CtB" firstAttribute="leading" secondItem="Xor-vP-Iu8" secondAttribute="leading" id="vmo-XC-0RE"/>
                                         <constraint firstItem="Rzd-Nn-oQu" firstAttribute="top" secondItem="Xor-vP-Iu8" secondAttribute="bottom" id="wGU-jH-q9Y"/>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
                                             <exclude reference="QUa-Bm-fIJ"/>
                                             <exclude reference="jbq-Sg-BfD"/>
+                                            <exclude reference="0J0-Ed-Qoo"/>
                                         </mask>
                                     </variation>
                                 </view>
@@ -509,6 +516,7 @@
                         <outlet property="headerContainerView" destination="fpf-z5-cb5" id="d04-oo-RLh"/>
                         <outlet property="mainTableView" destination="oiR-ow-baH" id="yzR-xA-JWt"/>
                         <outlet property="markButton" destination="71L-lF-2F2" id="7qk-hb-ksx"/>
+                        <outlet property="priceLabel" destination="Wjo-zn-4q3" id="gcS-pt-xQG"/>
                         <outlet property="recentLabel" destination="EO6-YX-u3P" id="Hn9-VE-nxL"/>
                         <outlet property="starView" destination="7UF-Id-Xiz" id="ymN-yC-SAq"/>
                         <outlet property="subwayLabel" destination="69D-fE-agj" id="6Ek-oW-gjb"/>

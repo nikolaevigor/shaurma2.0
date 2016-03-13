@@ -17,6 +17,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     @IBOutlet weak var starView: HCSStarRatingView!
     @IBOutlet weak var recentLabel: UILabel!
     @IBOutlet weak var markButton: UIButton!
+    @IBOutlet weak var priceLabel: UILabel!
     
     func addCommentDidFinish(addCommentText: String, controller: addCommentVC) {
         commentText = addCommentText
@@ -191,6 +192,11 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                     self.menuData = menuData as! NSArray
                 }
                 
+                if let priceValue = object!.valueForKey("price") {
+                    self.priceLabel.text = String(format: "%@ ₽", String(priceValue))
+                     self.priceLabel.sizeToFit()
+                }
+                
                 if let size = object!.valueForKey("size"), hot = object!.valueForKey("hot"), gloves = object!.valueForKey("gloves") {
                     self.features = [size as! String, NSNumber.init(bool: hot as! Bool), NSNumber.init(bool: gloves as! Bool)]
                 }
@@ -210,6 +216,8 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                         }
                     }
                 }
+                
+
                 
                 self.subwayLabel.text = self.subway
                 self.subwayLabel.textColor = SHMManager.colorForStation(self.subwayLabel.text)
