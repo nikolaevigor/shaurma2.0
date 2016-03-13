@@ -35,10 +35,6 @@ class reviewVC: UIViewController {
         
         
         
-        
-        //UITabBar.appearance().barStyle = UIBarStyle.Black
-        
-        
         resultsTable.backgroundColor = UIColor(red: CGFloat(240.0/255.0), green: CGFloat(240.0/255.0), blue: CGFloat(240.0/255.0), alpha: 1.0)
         resultsTable.alpha = 0
         resultsTable.separatorColor = UIColor.blackColor()
@@ -64,16 +60,15 @@ class reviewVC: UIViewController {
             
             if error == nil {
                 if let objects = objects {
+                    self.resultsCategoryTitleArray = Array(count: objects.count, repeatedValue: String())
+                    self.resultsCategoryImageFiles = Array(count: objects.count, repeatedValue: PFFile(data: NSData())!)
+                    self.resultsCategoryIdArray = Array(count: objects.count, repeatedValue: String())
+                    
                     for o in objects {
-                        
-                        
-                        
-                        self.resultsCategoryTitleArray.append(o.valueForKey("title") as! String)
-                        self.resultsCategoryImageFiles.append(o["image"] as! PFFile)
-                        self.resultsCategoryIdArray.append(o.objectId!)
-                        
-                        
-                        
+                        self.resultsCategoryTitleArray[o.valueForKey("order") as! Int] = o.valueForKey("title") as! String
+                        self.resultsCategoryImageFiles[o.valueForKey("order") as! Int] = o["image"] as! PFFile
+                        self.resultsCategoryIdArray[o.valueForKey("order") as! Int] = o.objectId!
+                          
                     }}
             }
                 
@@ -130,8 +125,6 @@ class reviewVC: UIViewController {
             
             let viewController:categoryVC = segue.destinationViewController as! categoryVC
             viewController.categoryId = resultCellCatId
-            
-            //print(resultCellCatImage.description)
             viewController.catImage = resultCellCatImage
             //print("we")
             

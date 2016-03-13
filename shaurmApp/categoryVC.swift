@@ -90,7 +90,7 @@ class categoryVC: UIViewController, UIScrollViewDelegate {
 
                                 if error == nil {
                                     let image = UIImage(data: imageData!)
-                                    self.templePicturesArray.insert(image!, atIndex: objects.indexOf(o)!)
+                                    self.templePicturesArray[objects.indexOf(o)!] = image!
                                 }
                                 self.tableView.reloadData()
                                 }

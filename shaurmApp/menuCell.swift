@@ -88,19 +88,7 @@ class menuCell: UITableViewCell {
 
     
     func getCellHeight() -> CGFloat{
-//        let newWidth = width - 90
-//        
-//        let label:UILabel = UILabel(frame: CGRectMake(0, 0, newWidth, CGFloat.max))
-//        label.numberOfLines = 0
-//        label.lineBreakMode = NSLineBreakMode.ByWordWrapping
-//        label.font = font
-//        label.text = text
-//        label.sizeToFit()
-//        return min(80, label.frame.height)
-        
-        print(self.rowOneLabel.text)
         return(self.rowOneLabel.frame.height + 108)
-
     }
     
     
