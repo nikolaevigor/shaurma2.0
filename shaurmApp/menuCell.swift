@@ -19,7 +19,6 @@ class menuCell: UITableViewCell {
     
     @IBOutlet weak var rowOneLabel: UILabel!
     var menuData: NSArray!
-    class var expandedHeight: CGFloat {get{return 160}}
     class var defaultHeight: CGFloat {get{return 65}}
     var delegate:StarViewDelegate? = nil
     
@@ -87,6 +86,22 @@ class menuCell: UITableViewCell {
     
     }
 
+    
+    func getCellHeight() -> CGFloat{
+//        let newWidth = width - 90
+//        
+//        let label:UILabel = UILabel(frame: CGRectMake(0, 0, newWidth, CGFloat.max))
+//        label.numberOfLines = 0
+//        label.lineBreakMode = NSLineBreakMode.ByWordWrapping
+//        label.font = font
+//        label.text = text
+//        label.sizeToFit()
+//        return min(80, label.frame.height)
+        
+        print(self.rowOneLabel.text)
+        return(self.rowOneLabel.frame.height + 108)
+
+    }
     
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {

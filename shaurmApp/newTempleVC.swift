@@ -76,6 +76,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     var reviewTextArray = [String]()
     var reviewDateArray = [String]()
     var reviewUserArray = [String]()
+    var menuHeight = CGFloat()
     
     var screenWidth = CGFloat()
     
@@ -264,7 +265,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             
             if self.activeCellIndexPath == indexPath.row {
                 
-                return menuCell.expandedHeight
+                return self.menuHeight
             }
             else{
                 return menuCell.defaultHeight
@@ -337,6 +338,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             ccell.delegate = self
             ccell.menuData = self.menuData
             ccell.refresh()
+            self.menuHeight = ccell.getCellHeight()
             cell = ccell
         }
         
@@ -649,7 +651,6 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     }
     
     func heightForView(text:String, font:UIFont, width:CGFloat) -> CGFloat{
-        
         let newWidth = width - 40
         
         let label:UILabel = UILabel(frame: CGRectMake(0, 0, newWidth, CGFloat.max))
@@ -662,5 +663,6 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         
     }
     
+        
     
 }
