@@ -14,7 +14,6 @@
 		422F5A861B8F26AB005421C8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 422F5A851B8F26AB005421C8 /* Images.xcassets */; };
 		422F5A891B8F26AB005421C8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 422F5A871B8F26AB005421C8 /* LaunchScreen.xib */; };
 		422F5A951B8F26AB005421C8 /* shaurmAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 422F5A941B8F26AB005421C8 /* shaurmAppTests.m */; };
-		422F5AA01B8F297E005421C8 /* addSpotVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 422F5A9F1B8F297E005421C8 /* addSpotVC.m */; };
 		42375B6D1C10D67D003CBB1F /* libParse.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 42375B6C1C10D67D003CBB1F /* libParse.a */; };
 		42375B6F1C10D6D9003CBB1F /* libBolts.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 42375B6E1C10D6D9003CBB1F /* libBolts.a */; };
 		424097B01C4149C4005F39DB /* SHMManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 424097AF1C4149C4005F39DB /* SHMManager.m */; };
@@ -43,6 +42,10 @@
 		59D1EA201C52F5AD00144972 /* AddCommentDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D1EA1F1C52F5AC00144972 /* AddCommentDelegate.swift */; };
 		59D3FBD11C4885E400FFCCE7 /* commentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59D3FBD01C4885E400FFCCE7 /* commentCell.xib */; };
 		DB3D1E3C1C95F6EE00A07526 /* Instabug.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DB3D1E3B1C95F6EE00A07526 /* Instabug.bundle */; };
+		DBF4A1201C96DED9009442CD /* SHMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF4A11F1C96DED9009442CD /* SHMViewController.m */; };
+		DBF4A1291C96E3B3009442CD /* SHMChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF4A1271C96E3B3009442CD /* SHMChildViewController.m */; };
+		DBF4A12A1C96E3B3009442CD /* SHMChildViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBF4A1281C96E3B3009442CD /* SHMChildViewController.xib */; };
+		DBF4A1301C96FFD4009442CD /* SHMTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF4A12F1C96FFD4009442CD /* SHMTabViewController.m */; };
 		E7245EAD1BA190D400F7D035 /* newTempleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7245EAC1BA190D400F7D035 /* newTempleVC.swift */; };
 		E7245EAF1BA1BA6A00F7D035 /* menuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7245EAE1BA1BA6A00F7D035 /* menuCell.swift */; };
 		E7245EB11BA1BA7600F7D035 /* starCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7245EB01BA1BA7600F7D035 /* starCell.swift */; };
@@ -103,8 +106,6 @@
 		422F5A8E1B8F26AB005421C8 /* shaurmAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = shaurmAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		422F5A931B8F26AB005421C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		422F5A941B8F26AB005421C8 /* shaurmAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = shaurmAppTests.m; sourceTree = "<group>"; };
-		422F5A9E1B8F297E005421C8 /* addSpotVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addSpotVC.h; sourceTree = "<group>"; };
-		422F5A9F1B8F297E005421C8 /* addSpotVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = addSpotVC.m; sourceTree = "<group>"; };
 		42375B6C1C10D67D003CBB1F /* libParse.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libParse.a; path = "Pods/../build/Debug-iphoneos/libParse.a"; sourceTree = "<group>"; };
 		42375B6E1C10D6D9003CBB1F /* libBolts.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libBolts.a; path = "Pods/../build/Debug-iphoneos/libBolts.a"; sourceTree = "<group>"; };
 		424097AE1C4149C4005F39DB /* SHMManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHMManager.h; sourceTree = "<group>"; };
@@ -144,6 +145,14 @@
 		59D3FBD01C4885E400FFCCE7 /* commentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = commentCell.xib; sourceTree = "<group>"; };
 		70627CF31B0BFA236799CD9E /* libPods-shaurmApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-shaurmApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB3D1E3B1C95F6EE00A07526 /* Instabug.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Instabug.bundle; path = Pods/Instabug/Instabug.bundle; sourceTree = "<group>"; };
+		DBF4A11E1C96DED9009442CD /* SHMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHMViewController.h; sourceTree = "<group>"; };
+		DBF4A11F1C96DED9009442CD /* SHMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHMViewController.m; sourceTree = "<group>"; };
+		DBF4A1261C96E3B3009442CD /* SHMChildViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHMChildViewController.h; sourceTree = "<group>"; };
+		DBF4A1271C96E3B3009442CD /* SHMChildViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHMChildViewController.m; sourceTree = "<group>"; };
+		DBF4A1281C96E3B3009442CD /* SHMChildViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHMChildViewController.xib; sourceTree = "<group>"; };
+		DBF4A12E1C96FFD4009442CD /* SHMTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHMTabViewController.h; sourceTree = "<group>"; };
+		DBF4A12F1C96FFD4009442CD /* SHMTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHMTabViewController.m; sourceTree = "<group>"; };
+		DBF4A1311C970438009442CD /* tutorialDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tutorialDelegate.h; sourceTree = "<group>"; };
 		E7245EAC1BA190D400F7D035 /* newTempleVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = newTempleVC.swift; sourceTree = "<group>"; };
 		E7245EAE1BA1BA6A00F7D035 /* menuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = menuCell.swift; sourceTree = "<group>"; };
 		E7245EB01BA1BA7600F7D035 /* starCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = starCell.swift; sourceTree = "<group>"; };
@@ -270,9 +279,16 @@
 			children = (
 				42664C8B1B90BA2A0098CA5A /* Review */,
 				428B40C71B8F96AE00A8EF74 /* Map */,
-				42664C8C1B90BA340098CA5A /* AddSpot */,
 				422F5A791B8F26AB005421C8 /* AppDelegate.h */,
 				422F5A7A1B8F26AB005421C8 /* AppDelegate.m */,
+				DBF4A11E1C96DED9009442CD /* SHMViewController.h */,
+				DBF4A11F1C96DED9009442CD /* SHMViewController.m */,
+				DBF4A1261C96E3B3009442CD /* SHMChildViewController.h */,
+				DBF4A1271C96E3B3009442CD /* SHMChildViewController.m */,
+				DBF4A1281C96E3B3009442CD /* SHMChildViewController.xib */,
+				DBF4A12E1C96FFD4009442CD /* SHMTabViewController.h */,
+				DBF4A12F1C96FFD4009442CD /* SHMTabViewController.m */,
+				DBF4A1311C970438009442CD /* tutorialDelegate.h */,
 				422F5A821B8F26AB005421C8 /* Main.storyboard */,
 				424DA4A21C41C81800E3597C /* metroJSON.json */,
 				422F5A851B8F26AB005421C8 /* Images.xcassets */,
@@ -329,15 +345,6 @@
 				E72A9CD61B906CA70013275F /* cells */,
 			);
 			name = Review;
-			sourceTree = "<group>";
-		};
-		42664C8C1B90BA340098CA5A /* AddSpot */ = {
-			isa = PBXGroup;
-			children = (
-				422F5A9E1B8F297E005421C8 /* addSpotVC.h */,
-				422F5A9F1B8F297E005421C8 /* addSpotVC.m */,
-			);
-			name = AddSpot;
 			sourceTree = "<group>";
 		};
 		426675CB1C3F0BB500135FFD /* Infrastructure */ = {
@@ -521,6 +528,7 @@
 				E745D2881B95AC4F00CB5138 /* shawarma.jpg in Resources */,
 				424DA4A31C41C81800E3597C /* metroJSON.json in Resources */,
 				422F5A841B8F26AB005421C8 /* Main.storyboard in Resources */,
+				DBF4A12A1C96E3B3009442CD /* SHMChildViewController.xib in Resources */,
 				422F5A891B8F26AB005421C8 /* LaunchScreen.xib in Resources */,
 				59D3FBD11C4885E400FFCCE7 /* commentCell.xib in Resources */,
 				5962FEF31C506894000D4C94 /* addCommentCell.xib in Resources */,
@@ -572,13 +580,14 @@
 				424097B01C4149C4005F39DB /* SHMManager.m in Sources */,
 				E74BFDF11C59CF050036B6A7 /* templeMapVC.swift in Sources */,
 				E72A9CCB1B8F775A0013275F /* reviewVC.swift in Sources */,
+				DBF4A1201C96DED9009442CD /* SHMViewController.m in Sources */,
 				E72A9CD11B8FC0210013275F /* categoryVC.swift in Sources */,
 				426675CA1C3F0BAD00135FFD /* SHMDownloader.m in Sources */,
 				E76179401B97281700674739 /* commentCell.swift in Sources */,
 				E7245EAF1BA1BA6A00F7D035 /* menuCell.swift in Sources */,
 				422F5A811B8F26AB005421C8 /* mapVC.m in Sources */,
 				E72A9CD51B906C9E0013275F /* templeCell.swift in Sources */,
-				422F5AA01B8F297E005421C8 /* addSpotVC.m in Sources */,
+				DBF4A1301C96FFD4009442CD /* SHMTabViewController.m in Sources */,
 				422F5A7B1B8F26AB005421C8 /* AppDelegate.m in Sources */,
 				E77FC3031C3A8619002FD36D /* commentsVC.swift in Sources */,
 				59D1EA201C52F5AD00144972 /* AddCommentDelegate.swift in Sources */,
@@ -590,6 +599,7 @@
 				E75E14E71BFACEE4001C73CB /* addCommentCell.swift in Sources */,
 				59D1EA1E1C52ED1700144972 /* addCommentVC.swift in Sources */,
 				E74BFDF31C59D1290036B6A7 /* locationCell.swift in Sources */,
+				DBF4A1291C96E3B3009442CD /* SHMChildViewController.m in Sources */,
 				E7245EAD1BA190D400F7D035 /* newTempleVC.swift in Sources */,
 				E76333631B9CC442007D2520 /* ShawarmaSpinnerView.swift in Sources */,
 				4248AFE11B9E30F2006FEE7E /* mapContainer.m in Sources */,
