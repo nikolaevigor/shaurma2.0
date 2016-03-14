@@ -18,6 +18,7 @@
 @property (strong, nonatomic) UITableView *table;
 @property (strong, nonatomic) NSArray *nearestTemples;
 @property (weak, nonatomic) id <containerDelegate> containerDelegate;
+@property (strong, nonatomic) NSMutableDictionary *nearestTemplesIcons;
 
 @end
 
@@ -97,7 +98,14 @@
     [(sliderCell *)cell ratingLabel].text = [temple[@"ratingNumber"] stringValue];
     [(sliderCell *)cell metroLabel].text = temple[@"subway"];
     [(sliderCell *)cell metroLabel].textColor = [SHMManager colorForStation:temple[@"subway"]];
-    //[(sliderCell *)cell templePic].image = [UIImage imageWithData:[temple[@"picture"] getDataInBackground]];
+    if ([self.nearestTemplesIcons objectForKey:temple[@"title"]])
+    {
+        [(sliderCell *)cell templePic].image = [self image:[self.nearestTemplesIcons objectForKey:temple[@"title"]] scaledToSize:CGSizeMake(30.0f, 40.0f)];
+    }
+    else
+    {
+        [(sliderCell *)cell templePic].image = [UIImage imageNamed:@"small-placeholder"];
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -142,11 +150,36 @@
 
 - (void)setTableViewWith:(NSArray *)temples
 {
+    self.nearestTemplesIcons = [[NSMutableDictionary alloc] init];
     self.nearestTemples = temples;
+    for (int i=0; i<temples.count; i++) {
+        [temples[i][@"picture"] getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+            if (!error) {
+                [self.nearestTemplesIcons setObject:[UIImage imageWithData:data] forKey:temples[i][@"title"]];
+                [self.table reloadData];
+            }
+        }];
+    }
     [self.table reloadData];
 }
 
 #pragma mark - Nice snippets
 
+- (UIImage *)image:(UIImage*)originalImage scaledToSize:(CGSize)size
+{
+    if (CGSizeEqualToSize(originalImage.size, size))
+    {
+        return originalImage;
+    }
+    
+    UIGraphicsBeginImageContextWithOptions(size, NO, 0.0f);
+    
+    [originalImage drawInRect:CGRectMake(0.0f, 0.0f, size.width, size.height)];
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
+}
 
 @end
