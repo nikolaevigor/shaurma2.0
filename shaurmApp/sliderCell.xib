@@ -57,7 +57,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="150 Р" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oFo-Hv-xs3">
-                        <rect key="frame" x="262" y="53" width="50" height="21"/>
+                        <rect key="frame" x="262" y="60" width="50" height="21"/>
                         <animations/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="XVm-LN-seU"/>
@@ -71,6 +71,7 @@
                 <animations/>
                 <constraints>
                     <constraint firstItem="vPe-aH-Ldk" firstAttribute="top" secondItem="hq0-g9-vQE" secondAttribute="bottom" constant="11" id="C8K-4a-7e8"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="oFo-Hv-xs3" secondAttribute="bottom" id="FRb-bd-e6d"/>
                     <constraint firstAttribute="topMargin" secondItem="hq0-g9-vQE" secondAttribute="top" id="Fmo-aS-5Sg"/>
                     <constraint firstAttribute="bottomMargin" secondItem="8RT-nA-XL3" secondAttribute="bottom" multiplier="3:1" constant="-44" id="Fte-M0-5qb"/>
                     <constraint firstItem="vPe-aH-Ldk" firstAttribute="leading" secondItem="4F1-w9-gw8" secondAttribute="trailing" constant="14" id="KWQ-e6-bCL"/>
@@ -82,6 +83,11 @@
                     <constraint firstAttribute="trailingMargin" secondItem="oFo-Hv-xs3" secondAttribute="trailing" id="vaN-c9-EVh"/>
                     <constraint firstAttribute="trailingMargin" secondItem="8RT-nA-XL3" secondAttribute="trailing" id="zAV-pS-8Fa"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="Y1S-cv-LS8"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <animations/>
             <connections>
