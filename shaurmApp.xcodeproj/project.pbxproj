@@ -281,6 +281,7 @@
 				428B40C71B8F96AE00A8EF74 /* Map */,
 				DBF4A1321C970647009442CD /* Tutorial */,
 				422F5A791B8F26AB005421C8 /* AppDelegate.h */,
+				422F5A821B8F26AB005421C8 /* Main.storyboard */,
 				422F5A7A1B8F26AB005421C8 /* AppDelegate.m */,
 				424DA4A21C41C81800E3597C /* metroJSON.json */,
 				422F5A851B8F26AB005421C8 /* Images.xcassets */,
@@ -382,7 +383,6 @@
 				DBF4A12E1C96FFD4009442CD /* SHMTabViewController.h */,
 				DBF4A12F1C96FFD4009442CD /* SHMTabViewController.m */,
 				DBF4A1311C970438009442CD /* tutorialDelegate.h */,
-				422F5A821B8F26AB005421C8 /* Main.storyboard */,
 			);
 			name = Tutorial;
 			sourceTree = "<group>";

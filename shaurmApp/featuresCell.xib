@@ -77,9 +77,11 @@
                             </mask>
                         </variation>
                     </view>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptyIcon" translatesAutoresizingMaskIntoConstraints="NO" id="bfP-Jf-nSK">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bfP-Jf-nSK">
                         <rect key="frame" x="99" y="8" width="30" height="30"/>
                         <animations/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="70" id="7yG-hM-tjd"/>
                             <constraint firstAttribute="height" constant="70" id="93g-xV-Cw2"/>
@@ -112,7 +114,7 @@
                             </mask>
                         </variation>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptyIcon" translatesAutoresizingMaskIntoConstraints="NO" id="iNs-or-XDi">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iNs-or-XDi">
                         <rect key="frame" x="362" y="8" width="30" height="30"/>
                         <animations/>
                         <constraints>
@@ -141,7 +143,7 @@
                             </mask>
                         </variation>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptyIcon" translatesAutoresizingMaskIntoConstraints="NO" id="RXF-oS-dVe">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RXF-oS-dVe">
                         <rect key="frame" x="230" y="8" width="30" height="30"/>
                         <animations/>
                         <constraints>
@@ -278,7 +280,4 @@
             <point key="canvasLocation" x="555.5" y="312.5"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="emptyIcon" width="50" height="50"/>
-    </resources>
 </document>

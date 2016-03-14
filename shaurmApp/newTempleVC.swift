@@ -9,7 +9,7 @@
 import UIKit
 
 class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate,AddCommentDelegate, StarViewDelegate {
-    let tableHeaderHeight: CGFloat = 300.0
+    let tableHeaderHeight: CGFloat = UIScreen.mainScreen().bounds.width + 20
     var activeCellIndexPath = 0
     
     @IBOutlet weak var subwayLabelWrapper: UIView!
@@ -115,7 +115,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         totalLabel.textColor = UIColor.blackColor()
         totalLabel.sizeToFit()
         
-        recentLabel.text = "Моя оценка: "
+        recentLabel.text = "Моя оценка: нет"
         recentLabel.textColor = UIColor.blackColor()
         recentLabel.sizeToFit()
         
@@ -194,7 +194,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 
                 if let priceValue = object!.valueForKey("price") {
                     self.priceLabel.text = String(format: "%@ ₽", String(priceValue))
-                     self.priceLabel.sizeToFit()
+                    self.priceLabel.sizeToFit()
                 }
                 
                 if let size = object!.valueForKey("size"), hot = object!.valueForKey("hot"), gloves = object!.valueForKey("gloves") {
@@ -216,8 +216,12 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                         }
                     }
                 }
+                else{
+                    self.templeTitleLabel.textColor = UIColor.darkGrayColor()
+                    self.priceLabel.textColor = UIColor.darkGrayColor()
+                }
                 
-
+                
                 
                 self.subwayLabel.text = self.subway
                 self.subwayLabel.textColor = SHMManager.colorForStation(self.subwayLabel.text)
@@ -567,7 +571,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             self.mainTableView.beginUpdates()
             self.mainTableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 2, inSection: 0)], withRowAnimation: UITableViewRowAnimation.None)
             self.mainTableView.endUpdates()
-            }
+        }
     }
     
     
@@ -641,14 +645,14 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         userDefaults.setValue(ratingNumber, forKey: self.id)
         userDefaults.synchronize()
         
-    
+        
         PFQuery(className: "Temples2").getObjectInBackgroundWithId(self.id) {
             (object: PFObject?, error: NSError?) -> Void in
             
             if firstTime {
-            object?.setValue(self.ratingAmount + 1, forKey: "ratingAmount")
+                object?.setValue(self.ratingAmount + 1, forKey: "ratingAmount")
             }
-
+            
             object?.setValue(Int(averageRating), forKey: "ratingNumber")
             object?.setValue("\(Int(averageRating))/10", forKey: "ratingString")
             object?.saveInBackground()
@@ -672,6 +676,6 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         
     }
     
-        
+    
     
 }
