@@ -96,8 +96,22 @@
     [(sliderCell *)cell templeTitle].text = temple[@"title"];
     [(sliderCell *)cell price].text = [NSString stringWithFormat:@"%@ ₽", temple[@"price"]];
     [(sliderCell *)cell ratingLabel].text = [temple[@"ratingNumber"] stringValue];
-    [(sliderCell *)cell metroLabel].text = temple[@"subway"];
+    
+    
+    
+    if([temple[@"subway"] isEqualToString:@"N/A"] || [temple[@"subway"] isEqualToString:@"Subway_Name"])
+    {
+        [(sliderCell *)cell metroLabel].text = @"Нет метро";
+    }
+    else if([SHMManager isStation:temple[@"subway"]]){
+        [(sliderCell *)cell metroLabel].text = temple[@"subway"];
+    }
+    else{
+        [(sliderCell *)cell metroLabel].text = [NSString stringWithFormat:@"ст. %@", temple[@"subway"]];
+    }
+    
     [(sliderCell *)cell metroLabel].textColor = [SHMManager colorForStation:temple[@"subway"]];
+    
     if ([self.nearestTemplesIcons objectForKey:temple[@"title"]])
     {
         [(sliderCell *)cell templePic].image = [self image:[self.nearestTemplesIcons objectForKey:temple[@"title"]] scaledToSize:CGSizeMake(30.0f, 40.0f)];

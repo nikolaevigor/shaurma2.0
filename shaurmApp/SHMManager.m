@@ -99,6 +99,25 @@
     return [self colorFromHexString:[self hexColorOfStation:station]];
 }
 
++ (BOOL)isStation:(NSString *)station
+{
+    NSBundle *mainBundle = [NSBundle mainBundle];
+    NSString *path = [mainBundle pathForResource: @"metroJSON" ofType: @"json"];
+    NSData *data = [[NSFileManager defaultManager] contentsAtPath:path];
+    
+    NSArray* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+    for (int i = 0; i < json.count; i++)
+    {
+        NSArray *stations = [json[i] allValues][0];
+        for (int i = 0; i < stations.count; i++) {
+            if ([stations[i] isEqual:station]) {
+                return YES;
+            }
+        }
+    }
+    return NO;
+}
+
 + (NSString *)hexColorOfStation:(NSString *)station
 {
     NSBundle *mainBundle = [NSBundle mainBundle];
@@ -122,7 +141,7 @@
 
 + (UIColor *)colorFromHexString:(NSString *)hexString {
     if (!hexString) {
-        return [UIColor greenColor];
+        return [UIColor blackColor];
     }
     unsigned rgbValue = 0;
     NSScanner *scanner = [NSScanner scannerWithString:hexString];

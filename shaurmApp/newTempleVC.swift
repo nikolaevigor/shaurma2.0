@@ -170,6 +170,10 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             
             if (object != nil) {
                 self.subway = (object!.valueForKey("subway") as? String)!
+                if self.subway == "Subway_Name" {
+                    self.subway = "Нет метро"
+                }
+                
                 
                 self.templeTitleLabel.text = object!.valueForKey("title") as? String
                 

@@ -23,7 +23,7 @@ class categoryVC: UIViewController, UIScrollViewDelegate {
     var templesArray = []
     var templeTitlesArray = [String]()
     var templePicturesArray = [UIImage]()
-
+    
     
     var resultCellId = String()
     var resultCellTitle = String()
@@ -78,21 +78,21 @@ class categoryVC: UIViewController, UIScrollViewDelegate {
                     (objects: [PFObject]?, error: NSError?) -> Void in
                     
                     if let objects = objects {
-
+                        
                         for o in objects {
                             self.templeTitlesArray.append(o.valueForKey("title") as! String)
                             self.templePicturesArray.append(UIImage(named: "small-placeholder")!)
-
+                            
                             if let obj = o.valueForKey("picture") {
                                 
-                            obj.getDataInBackgroundWithBlock {
-                                (imageData:NSData?, error: NSError?) -> Void in
-
-                                if error == nil {
-                                    let image = UIImage(data: imageData!)
-                                    self.templePicturesArray[objects.indexOf(o)!] = image!
-                                }
-                                self.tableView.reloadData()
+                                obj.getDataInBackgroundWithBlock {
+                                    (imageData:NSData?, error: NSError?) -> Void in
+                                    
+                                    if error == nil {
+                                        let image = UIImage(data: imageData!)
+                                        self.templePicturesArray[objects.indexOf(o)!] = image!
+                                    }
+                                    self.tableView.reloadData()
                                 }
                             }
                         }
@@ -125,7 +125,7 @@ class categoryVC: UIViewController, UIScrollViewDelegate {
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 70
+        return 90
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath){
@@ -136,10 +136,19 @@ class categoryVC: UIViewController, UIScrollViewDelegate {
             }
             
             
-            if let subwayValue = self.templesArray[indexPath.row].valueForKey("subway") {
-                (cell as! sliderCell).metroLabel?.text = subwayValue as? String
-                (cell as! sliderCell).metroLabel?.textColor = SHMManager.colorForStation(subwayValue as? String)
+            if let subwayValue = self.templesArray[indexPath.row].valueForKey("subway") as? String{
+                if(subwayValue == "N/A" || subwayValue == "Subway_Name")
+                {
+                    (cell as! sliderCell).metroLabel?.text = "Нет метро"
+                }
+                else if SHMManager.isStation(subwayValue){
+                    (cell as! sliderCell).metroLabel?.text = subwayValue
+                }
+                else{
+                    (cell as! sliderCell).metroLabel?.text = "ст. \(subwayValue)"
+                }
                 
+                (cell as! sliderCell).metroLabel?.textColor = SHMManager.colorForStation(subwayValue)
             }
             
             if let ratingValue = self.templesArray[indexPath.row].valueForKey("ratingNumber") {
@@ -195,7 +204,7 @@ class categoryVC: UIViewController, UIScrollViewDelegate {
     
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    
+        
         resultCellId = (templesArray[indexPath.row] as! PFObject).objectId!
         resultCellTitle = self.templeTitlesArray[indexPath.row]
         

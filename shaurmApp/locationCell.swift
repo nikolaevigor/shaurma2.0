@@ -18,8 +18,15 @@ class locationCell: UITableViewCell {
     }
     
     func setLabels(subway: String, address: String){
-        self.subwayLabel.text = "м. \(subway)"
+        if subway == "Нет метро"{
+            self.subwayLabel.text = subway
+        }
+        else if !SHMManager.isStation(subway) {
+            self.subwayLabel.text = "ст. \(subway)"
+        }
+        else{
+            self.subwayLabel.text = "м. \(subway)"
+        }
         self.addressLabel.text = address
-        
     }
 }

@@ -15,5 +15,6 @@
 + (PFObject *)getNearestTempleFor:(CLLocationCoordinate2D)point from:(NSArray *)temples;
 + (NSArray *)getNearestTemplesFor:(CLLocationCoordinate2D)point from:(NSArray *)temples numberOfPointsToFind:(NSInteger)number;
 + (UIColor *)colorForStation:(NSString *)station;
++ (BOOL)isStation:(NSString *)station;
 
 @end
