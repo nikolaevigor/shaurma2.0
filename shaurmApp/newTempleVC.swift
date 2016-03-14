@@ -489,6 +489,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                     }
                 }
             }
+            
             if let userNumber = userNumber {
                 
                 let review = PFObject(className:"Review")

@@ -123,9 +123,6 @@ class commentsVC: UITableViewController {
             cell.commentTextLabel?.text = commentTextArray[indexPath.row]
             
             cell.commentTextLabel.sizeToFit()
-            
-            print("height2 \(cell.commentTextLabel.frame.height)")
-            
             self.heightsArray.insertObject(cell.commentTextLabel.frame.height, atIndex: indexPath.row)
             
             cell.dateLabel.sizeToFit()
@@ -150,8 +147,6 @@ class commentsVC: UITableViewController {
     }
 
     func heightForView(text:String, font:UIFont, width:CGFloat) -> CGFloat{
-        
-        print(width)
         
         let newWidth = width - 40
         
