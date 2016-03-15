@@ -20,6 +20,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"])
     {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
