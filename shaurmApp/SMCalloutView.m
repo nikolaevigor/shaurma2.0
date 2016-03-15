@@ -606,13 +606,9 @@ static UIImage *blackArrowImage = nil, *whiteArrowImage = nil, *grayArrowImage =
         self.containerView = [UIView new];
         self.containerView.backgroundColor = [UIColor whiteColor];
         self.containerView.alpha = 0.96;
-        self.containerView.layer.shadowRadius = 30;
-        self.containerView.layer.shadowOpacity = 0.1;
         
         self.containerBorderView = [UIView new];
         self.containerBorderView.layer.borderColor = [UIColor colorWithWhite:0 alpha:0.1].CGColor;
-        self.containerBorderView.layer.borderWidth = 0.5;
-        self.containerBorderView.layer.cornerRadius = 8.5;
         
         if (!blackArrowImage) {
             
