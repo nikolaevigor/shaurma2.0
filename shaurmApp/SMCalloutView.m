@@ -606,7 +606,6 @@ static UIImage *blackArrowImage = nil, *whiteArrowImage = nil, *grayArrowImage =
         self.containerView = [UIView new];
         self.containerView.backgroundColor = [UIColor whiteColor];
         self.containerView.alpha = 0.96;
-        self.containerView.layer.cornerRadius = 8;
         self.containerView.layer.shadowRadius = 30;
         self.containerView.layer.shadowOpacity = 0.1;
         
@@ -616,6 +615,8 @@ static UIImage *blackArrowImage = nil, *whiteArrowImage = nil, *grayArrowImage =
         self.containerBorderView.layer.cornerRadius = 8.5;
         
         if (!blackArrowImage) {
+            
+            
             blackArrowImage = [SMCalloutBackgroundView embeddedImageNamed:@"CalloutArrow"];
             whiteArrowImage = [self image:blackArrowImage withColor:[UIColor whiteColor]];
             grayArrowImage = [self image:blackArrowImage withColor:[UIColor colorWithWhite:0.85 alpha:1]];
