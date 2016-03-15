@@ -31,9 +31,9 @@ NSArray *imgArray = nil;
     
 }
 
-- (void)viewDidLoad {
+- (void)viewDidAppear:(BOOL)animated {
     
-    [super viewDidLoad];
+    [super viewDidAppear:animated];
     if (self.index != 4) {
         [self.dismissButton setHidden:YES];
     }
