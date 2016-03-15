@@ -2,12 +2,20 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="montserrat-light.ttf">
+            <string>Montserrat-Light</string>
+            <string>Montserrat-Light</string>
+        </mutableArray>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHMChildViewController">
             <connections>
                 <outlet property="dismissButton" destination="Ul9-na-ujp" id="BKQ-PX-h30"/>
                 <outlet property="screenNumber" destination="Rtz-8y-IAY" id="LGM-6E-0Jb"/>
+                <outlet property="tutImage" destination="O2O-13-9aK" id="CLk-n0-mIG"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -16,30 +24,81 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ul9-na-ujp">
-                    <rect key="frame" x="277" y="562" width="46" height="30"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Лучшая шаурма в городе" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rtz-8y-IAY">
+                    <rect key="frame" x="168" y="55" width="265" height="28"/>
                     <animations/>
-                    <state key="normal" title="Button"/>
+                    <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="23"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tut1" translatesAutoresizingMaskIntoConstraints="NO" id="O2O-13-9aK">
+                    <rect key="frame" x="165" y="122" width="270" height="540"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="O2O-13-9aK" secondAttribute="height" multiplier="61:91" id="6pm-Gm-5Zt"/>
+                        <constraint firstAttribute="width" constant="270" id="NnW-F2-2sh"/>
+                        <constraint firstAttribute="height" constant="1763" id="RRg-wA-B28"/>
+                        <constraint firstAttribute="height" constant="540" id="TA9-di-gI7"/>
+                        <constraint firstAttribute="width" constant="863" id="kzp-Qv-gJK"/>
+                        <constraint firstAttribute="width" secondItem="O2O-13-9aK" secondAttribute="height" multiplier="44:88" id="trw-eb-o7E"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="6pm-Gm-5Zt"/>
+                            <exclude reference="NnW-F2-2sh"/>
+                            <exclude reference="RRg-wA-B28"/>
+                            <exclude reference="kzp-Qv-gJK"/>
+                        </mask>
+                    </variation>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ul9-na-ujp">
+                    <rect key="frame" x="260" y="133" width="80" height="40"/>
+                    <animations/>
+                    <color key="backgroundColor" red="1" green="0.99125431929999996" blue="0.96398289670000004" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="Ul9-na-ujp" secondAttribute="height" multiplier="2:1" id="MfM-YB-Tzn"/>
+                        <constraint firstAttribute="height" constant="40" id="OvH-ud-Rhl"/>
+                        <constraint firstAttribute="width" constant="80" id="out-eO-2lw"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
+                    <state key="normal" title="Начать">
+                        <color key="titleColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
                     <connections>
                         <action selector="buttonPressed:" destination="-1" eventType="touchUpInside" id="0OJ-pW-JC0"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rtz-8y-IAY">
-                    <rect key="frame" x="279" y="289" width="42" height="21"/>
-                    <animations/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
             <animations/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.16078431372549018" green="0.16078431372549018" blue="0.16078431372549018" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="tintColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
+                <constraint firstItem="Rtz-8y-IAY" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="55" id="AFR-Yd-LMo"/>
                 <constraint firstItem="Rtz-8y-IAY" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="EEJ-vm-XN1"/>
                 <constraint firstAttribute="bottom" secondItem="Ul9-na-ujp" secondAttribute="bottom" constant="8" id="H3j-31-XAe"/>
+                <constraint firstItem="Ul9-na-ujp" firstAttribute="top" secondItem="Rtz-8y-IAY" secondAttribute="bottom" constant="10" id="LCV-kw-diP"/>
                 <constraint firstItem="Rtz-8y-IAY" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="O6z-Zg-BO5"/>
+                <constraint firstAttribute="bottom" secondItem="Ul9-na-ujp" secondAttribute="bottom" constant="477" id="cR5-xa-5MQ"/>
+                <constraint firstAttribute="bottom" secondItem="O2O-13-9aK" secondAttribute="bottom" id="jHc-SO-7D8"/>
+                <constraint firstAttribute="bottom" secondItem="O2O-13-9aK" secondAttribute="bottom" constant="-62" id="oHH-Qc-IVh"/>
+                <constraint firstItem="O2O-13-9aK" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="osm-VY-mDs"/>
+                <constraint firstItem="Ul9-na-ujp" firstAttribute="top" secondItem="Rtz-8y-IAY" secondAttribute="bottom" id="qte-MK-y2p"/>
+                <constraint firstItem="Ul9-na-ujp" firstAttribute="top" secondItem="Rtz-8y-IAY" secondAttribute="bottom" constant="50" id="wu8-Md-8Fh"/>
                 <constraint firstItem="Ul9-na-ujp" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="x56-1W-ssn"/>
             </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="EEJ-vm-XN1"/>
+                    <exclude reference="jHc-SO-7D8"/>
+                    <exclude reference="H3j-31-XAe"/>
+                    <exclude reference="LCV-kw-diP"/>
+                    <exclude reference="cR5-xa-5MQ"/>
+                    <exclude reference="qte-MK-y2p"/>
+                </mask>
+            </variation>
         </view>
     </objects>
+    <resources>
+        <image name="tut1" width="863" height="1763"/>
+    </resources>
 </document>

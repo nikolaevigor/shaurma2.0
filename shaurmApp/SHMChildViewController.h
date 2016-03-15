@@ -11,6 +11,8 @@
 
 @interface SHMChildViewController : UIViewController
 
+@property (weak, nonatomic) NSArray *textArray;
+@property (weak, nonatomic) NSArray *imgArray;
 @property (assign, nonatomic) NSInteger index;
 @property (weak, nonatomic) IBOutlet UILabel *screenNumber;
 @property (weak, nonatomic) IBOutlet UIButton *dismissButton;
