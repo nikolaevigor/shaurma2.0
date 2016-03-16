@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -21,17 +21,12 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <rect key="frame" x="0.0" y="0.0" width="620" height="823"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Лучшая шаурма в городе" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rtz-8y-IAY">
-                    <rect key="frame" x="168" y="55" width="265" height="28"/>
-                    <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="23"/>
-                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tut1" translatesAutoresizingMaskIntoConstraints="NO" id="O2O-13-9aK">
-                    <rect key="frame" x="165" y="122" width="270" height="540"/>
+                    <rect key="frame" x="175" y="345" width="270" height="540"/>
+                    <animations/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="O2O-13-9aK" secondAttribute="height" multiplier="61:91" id="6pm-Gm-5Zt"/>
                         <constraint firstAttribute="width" constant="270" id="NnW-F2-2sh"/>
@@ -49,8 +44,35 @@
                         </mask>
                     </variation>
                 </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E5O-qL-2Px">
+                    <rect key="frame" x="190" y="83" width="240" height="100"/>
+                    <animations/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="240" id="3Bt-yr-0po"/>
+                        <constraint firstAttribute="height" constant="100" id="4um-GF-T3o"/>
+                        <constraint firstAttribute="height" constant="6" id="BP6-Jw-fAc"/>
+                        <constraint firstAttribute="height" constant="100" id="Bsv-TV-Wg3"/>
+                        <constraint firstAttribute="width" constant="240" id="Hb3-bs-Tyu"/>
+                        <constraint firstAttribute="width" constant="240" id="QQ9-At-nnX"/>
+                        <constraint firstAttribute="width" constant="240" id="ivd-fR-gmT"/>
+                        <constraint firstAttribute="height" constant="6" id="ylK-65-Pqs"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="3Bt-yr-0po"/>
+                            <exclude reference="4um-GF-T3o"/>
+                            <exclude reference="BP6-Jw-fAc"/>
+                            <exclude reference="Bsv-TV-Wg3"/>
+                            <exclude reference="Hb3-bs-Tyu"/>
+                            <exclude reference="ivd-fR-gmT"/>
+                            <exclude reference="ylK-65-Pqs"/>
+                        </mask>
+                    </variation>
+                </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ul9-na-ujp">
-                    <rect key="frame" x="260" y="133" width="80" height="40"/>
+                    <rect key="frame" x="270" y="187" width="80" height="40"/>
+                    <animations/>
                     <color key="backgroundColor" red="1" green="0.99125431929999996" blue="0.96398289670000004" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="Ul9-na-ujp" secondAttribute="height" multiplier="2:1" id="MfM-YB-Tzn"/>
@@ -65,33 +87,87 @@
                         <action selector="buttonPressed:" destination="-1" eventType="touchUpInside" id="0OJ-pW-JC0"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Лучшая шаурма в городе" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rtz-8y-IAY">
+                    <rect key="frame" x="177" y="55" width="265" height="28"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="23"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TNQ-IH-CbV">
+                    <rect key="frame" x="190" y="235" width="240" height="100"/>
+                    <animations/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="240" id="Xfo-5V-Cka"/>
+                        <constraint firstAttribute="height" constant="6" id="f33-Xy-yb4"/>
+                        <constraint firstAttribute="width" constant="240" id="i9N-XI-slC"/>
+                        <constraint firstAttribute="height" constant="6" id="iuQ-Xg-Gh8"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="Xfo-5V-Cka"/>
+                            <exclude reference="f33-Xy-yb4"/>
+                            <exclude reference="i9N-XI-slC"/>
+                            <exclude reference="iuQ-Xg-Gh8"/>
+                        </mask>
+                    </variation>
+                </view>
             </subviews>
-            <color key="backgroundColor" red="0.16078431372549018" green="0.16078431372549018" blue="0.16078431372549018" alpha="1" colorSpace="calibratedRGB"/>
+            <animations/>
+            <color key="backgroundColor" red="0.21176470588235294" green="0.21176470588235294" blue="0.21176470588235294" alpha="1" colorSpace="deviceRGB"/>
             <color key="tintColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
+                <constraint firstItem="TNQ-IH-CbV" firstAttribute="top" secondItem="Ul9-na-ujp" secondAttribute="bottom" constant="8" id="13m-eo-pJe"/>
+                <constraint firstAttribute="trailing" secondItem="TNQ-IH-CbV" secondAttribute="trailing" constant="190" id="4nJ-I2-lXk"/>
+                <constraint firstItem="E5O-qL-2Px" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="61K-jc-DTm"/>
                 <constraint firstItem="Rtz-8y-IAY" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="55" id="AFR-Yd-LMo"/>
+                <constraint firstItem="TNQ-IH-CbV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="190" id="BUp-7O-8Wa"/>
                 <constraint firstItem="Rtz-8y-IAY" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="EEJ-vm-XN1"/>
                 <constraint firstAttribute="bottom" secondItem="Ul9-na-ujp" secondAttribute="bottom" constant="8" id="H3j-31-XAe"/>
+                <constraint firstItem="E5O-qL-2Px" firstAttribute="top" secondItem="Rtz-8y-IAY" secondAttribute="bottom" id="Ig8-Su-v0U"/>
                 <constraint firstItem="Ul9-na-ujp" firstAttribute="top" secondItem="Rtz-8y-IAY" secondAttribute="bottom" constant="10" id="LCV-kw-diP"/>
+                <constraint firstItem="Ul9-na-ujp" firstAttribute="top" secondItem="E5O-qL-2Px" secondAttribute="bottom" id="LMz-72-U6t"/>
                 <constraint firstItem="Rtz-8y-IAY" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="O6z-Zg-BO5"/>
+                <constraint firstAttribute="trailing" secondItem="E5O-qL-2Px" secondAttribute="trailing" constant="190" id="Tfq-7l-KTG"/>
+                <constraint firstItem="TNQ-IH-CbV" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="a5t-oz-pmu"/>
+                <constraint firstItem="E5O-qL-2Px" firstAttribute="top" secondItem="Rtz-8y-IAY" secondAttribute="bottom" id="bf3-cb-5Ky"/>
+                <constraint firstItem="Ul9-na-ujp" firstAttribute="top" secondItem="E5O-qL-2Px" secondAttribute="bottom" constant="4" id="bj9-vJ-6Aj"/>
                 <constraint firstAttribute="bottom" secondItem="Ul9-na-ujp" secondAttribute="bottom" constant="477" id="cR5-xa-5MQ"/>
+                <constraint firstItem="O2O-13-9aK" firstAttribute="top" secondItem="TNQ-IH-CbV" secondAttribute="bottom" constant="10" id="hcZ-QR-S3S"/>
                 <constraint firstAttribute="bottom" secondItem="O2O-13-9aK" secondAttribute="bottom" id="jHc-SO-7D8"/>
+                <constraint firstItem="E5O-qL-2Px" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="jcR-pE-6fs"/>
+                <constraint firstItem="TNQ-IH-CbV" firstAttribute="height" secondItem="E5O-qL-2Px" secondAttribute="height" id="mCG-Es-v29"/>
+                <constraint firstItem="Ul9-na-ujp" firstAttribute="top" secondItem="E5O-qL-2Px" secondAttribute="bottom" constant="2" id="nVc-r4-Ydu"/>
                 <constraint firstAttribute="bottom" secondItem="O2O-13-9aK" secondAttribute="bottom" constant="-62" id="oHH-Qc-IVh"/>
                 <constraint firstItem="O2O-13-9aK" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="osm-VY-mDs"/>
+                <constraint firstItem="E5O-qL-2Px" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="190" id="qtW-tX-Ppr"/>
                 <constraint firstItem="Ul9-na-ujp" firstAttribute="top" secondItem="Rtz-8y-IAY" secondAttribute="bottom" id="qte-MK-y2p"/>
                 <constraint firstItem="Ul9-na-ujp" firstAttribute="top" secondItem="Rtz-8y-IAY" secondAttribute="bottom" constant="50" id="wu8-Md-8Fh"/>
                 <constraint firstItem="Ul9-na-ujp" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="x56-1W-ssn"/>
+                <constraint firstItem="TNQ-IH-CbV" firstAttribute="width" secondItem="E5O-qL-2Px" secondAttribute="width" id="x5Y-o8-hOS"/>
             </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <variation key="default">
                 <mask key="constraints">
                     <exclude reference="EEJ-vm-XN1"/>
-                    <exclude reference="jHc-SO-7D8"/>
+                    <exclude reference="61K-jc-DTm"/>
+                    <exclude reference="Tfq-7l-KTG"/>
+                    <exclude reference="bf3-cb-5Ky"/>
+                    <exclude reference="qtW-tX-Ppr"/>
+                    <exclude reference="4nJ-I2-lXk"/>
+                    <exclude reference="BUp-7O-8Wa"/>
                     <exclude reference="H3j-31-XAe"/>
                     <exclude reference="LCV-kw-diP"/>
+                    <exclude reference="LMz-72-U6t"/>
                     <exclude reference="cR5-xa-5MQ"/>
+                    <exclude reference="nVc-r4-Ydu"/>
                     <exclude reference="qte-MK-y2p"/>
+                    <exclude reference="wu8-Md-8Fh"/>
+                    <exclude reference="jHc-SO-7D8"/>
                 </mask>
             </variation>
+            <point key="canvasLocation" x="364" y="193.5"/>
         </view>
     </objects>
     <resources>

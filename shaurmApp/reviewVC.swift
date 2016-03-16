@@ -36,6 +36,7 @@ class reviewVC: UIViewController {
         
         
         resultsTable.backgroundColor = UIColor(red: CGFloat(240.0/255.0), green: CGFloat(240.0/255.0), blue: CGFloat(240.0/255.0), alpha: 1.0)
+        
         resultsTable.alpha = 0
         resultsTable.separatorColor = UIColor.blackColor()
         

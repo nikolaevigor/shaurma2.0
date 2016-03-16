@@ -56,6 +56,7 @@ static const CGFloat CalloutYOffset = 10.0f;
     self.emptyCalloutView = [[UIView alloc] initWithFrame:CGRectZero];
     self.calloutView = [[SMCalloutView alloc] init];
     self.calloutView.hidden = YES;
+    
     UIButton *button = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     [button addTarget:self
                action:@selector(calloutAccessoryButtonTapped:)

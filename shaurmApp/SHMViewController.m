@@ -12,14 +12,16 @@
 @interface SHMViewController ()
 
 @end
-
 @implementation SHMViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.view.backgroundColor = [UIColor colorWithRed:41.0f/255.0f green:41.0f/255.0f blue:41.0f/255.0f alpha:1];
+
     self.pageController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
     
+    
+
     self.pageController.dataSource = self;
     [[self.pageController view] setFrame:[[self view] bounds]];
     
@@ -36,6 +38,8 @@
 }
 
 - (SHMChildViewController *)viewControllerAtIndex:(NSUInteger)index {
+    
+
     
     SHMChildViewController *childViewController = [[SHMChildViewController alloc] initWithNibName:@"SHMChildViewController" bundle:nil];
     childViewController.index = index;

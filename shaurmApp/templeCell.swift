@@ -15,26 +15,13 @@ class templeCell: UITableViewCell {
     @IBOutlet weak var templeTitleLabel: UILabel!
     
     var templeId = String()
-    
-    
-    
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         self.separatorInset = UIEdgeInsetsZero
-
-        
         let width = UIScreen.mainScreen().bounds.width
         
         contentView.frame = CGRectMake(0, 0, width, 120)
-        
-        
-        //[SHMManager colorForStation:temple[@"subway"]];
-        
-        
-
-        
     }
     
     override func setSelected(selected: Bool, animated: Bool) {

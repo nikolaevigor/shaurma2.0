@@ -20,12 +20,10 @@ NSArray *imgArray = nil;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    [self.dismissButton setHidden:YES];
     textArray = [NSArray arrayWithObjects:@"Лучшая шаурма в городе",@"Лучшая шаурма поблизости",@"Лучшая шаурма поблизости", nil];
-    
-    
-    imgArray = [NSArray arrayWithObjects:[UIImage imageNamed:@"tut0"],[UIImage imageNamed:@"tut1"],[UIImage imageNamed:@"tut3"], nil];
+    imgArray = [NSArray arrayWithObjects:[UIImage imageNamed:@"tut0"],[UIImage imageNamed:@"tut1"],[UIImage imageNamed:@"tut2"],[UIImage imageNamed:@"tut3"], nil];
 
     return self;
     
@@ -34,11 +32,11 @@ NSArray *imgArray = nil;
 - (void)viewDidAppear:(BOOL)animated {
     
     [super viewDidAppear:animated];
-    if (self.index != 4) {
-        [self.dismissButton setHidden:YES];
+    if (self.index == 4) {
+        [self.dismissButton setHidden:NO];
     }
     
-    if (self.index < 3) {
+    if (self.index < 4) {
     
     self.screenNumber.text = textArray[(long)self.index];
     self.tutImage.image = imgArray[(long)self.index];
