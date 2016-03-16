@@ -22,26 +22,23 @@ NSArray *imgArray = nil;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     [self.dismissButton setHidden:YES];
-    textArray = [NSArray arrayWithObjects:@"Лучшая шаурма в городе",@"Лучшая шаурма поблизости",@"Лучшая шаурма поблизости", nil];
+    textArray = [NSArray arrayWithObjects:@"Лучшая шаурма в городе",@"Лучшая шаурма поблизости",@"Ставь оценки и оставляй рецензии",@"Ставь оценки и оставляй рецензии", nil];
     imgArray = [NSArray arrayWithObjects:[UIImage imageNamed:@"tut0"],[UIImage imageNamed:@"tut1"],[UIImage imageNamed:@"tut2"],[UIImage imageNamed:@"tut3"], nil];
 
     return self;
     
 }
-
-- (void)viewDidAppear:(BOOL)animated {
-    
-    [super viewDidAppear:animated];
-    if (self.index == 4) {
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if (self.index == 3) {
         [self.dismissButton setHidden:NO];
     }
     
     if (self.index < 4) {
-    
-    self.screenNumber.text = textArray[(long)self.index];
-    self.tutImage.image = imgArray[(long)self.index];
-
+        self.screenNumber.text = textArray[(long)self.index];
+        self.tutImage.image = imgArray[(long)self.index];
     }
+
 }
 - (IBAction)buttonPressed:(id)sender {
     [self.delegate finishTutorial];

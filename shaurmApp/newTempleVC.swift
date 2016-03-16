@@ -208,6 +208,8 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 
                 self.templeTitleLabel.sizeToFit()
                 self.templeTitleLabel.numberOfLines = 0
+                self.templeTitleLabel.layer.zPosition = 100
+
                 
                 if let obj = object!.valueForKey("picture") {
                     
@@ -226,7 +228,8 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 }
                 
                 
-                
+                self.priceLabel.layer.zPosition = 100
+
                 self.subwayLabel.text = self.subway
                 self.subwayLabel.textColor = SHMManager.colorForStation(self.subwayLabel.text)
                 self.subwayLabel.sizeToFit()

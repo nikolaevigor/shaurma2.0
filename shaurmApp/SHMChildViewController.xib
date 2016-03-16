@@ -70,7 +70,7 @@
                         </mask>
                     </variation>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ul9-na-ujp">
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ul9-na-ujp">
                     <rect key="frame" x="270" y="187" width="80" height="40"/>
                     <animations/>
                     <color key="backgroundColor" red="1" green="0.99125431929999996" blue="0.96398289670000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -87,13 +87,6 @@
                         <action selector="buttonPressed:" destination="-1" eventType="touchUpInside" id="0OJ-pW-JC0"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Лучшая шаурма в городе" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rtz-8y-IAY">
-                    <rect key="frame" x="177" y="55" width="265" height="28"/>
-                    <animations/>
-                    <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="23"/>
-                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TNQ-IH-CbV">
                     <rect key="frame" x="190" y="235" width="240" height="100"/>
                     <animations/>
@@ -113,6 +106,13 @@
                         </mask>
                     </variation>
                 </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Лучшая шаурма в городе" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rtz-8y-IAY">
+                    <rect key="frame" x="50" y="55" width="520" height="28"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="23"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <animations/>
             <color key="backgroundColor" red="0.21176470588235294" green="0.21176470588235294" blue="0.21176470588235294" alpha="1" colorSpace="deviceRGB"/>
@@ -124,12 +124,14 @@
                 <constraint firstItem="Rtz-8y-IAY" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="55" id="AFR-Yd-LMo"/>
                 <constraint firstItem="TNQ-IH-CbV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="190" id="BUp-7O-8Wa"/>
                 <constraint firstItem="Rtz-8y-IAY" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="EEJ-vm-XN1"/>
+                <constraint firstItem="E5O-qL-2Px" firstAttribute="top" secondItem="Rtz-8y-IAY" secondAttribute="bottom" id="GdP-jV-Nzi"/>
                 <constraint firstAttribute="bottom" secondItem="Ul9-na-ujp" secondAttribute="bottom" constant="8" id="H3j-31-XAe"/>
                 <constraint firstItem="E5O-qL-2Px" firstAttribute="top" secondItem="Rtz-8y-IAY" secondAttribute="bottom" id="Ig8-Su-v0U"/>
                 <constraint firstItem="Ul9-na-ujp" firstAttribute="top" secondItem="Rtz-8y-IAY" secondAttribute="bottom" constant="10" id="LCV-kw-diP"/>
                 <constraint firstItem="Ul9-na-ujp" firstAttribute="top" secondItem="E5O-qL-2Px" secondAttribute="bottom" id="LMz-72-U6t"/>
                 <constraint firstItem="Rtz-8y-IAY" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="O6z-Zg-BO5"/>
                 <constraint firstAttribute="trailing" secondItem="E5O-qL-2Px" secondAttribute="trailing" constant="190" id="Tfq-7l-KTG"/>
+                <constraint firstAttribute="trailing" secondItem="Rtz-8y-IAY" secondAttribute="trailing" constant="50" id="Y63-Nr-ThH"/>
                 <constraint firstItem="TNQ-IH-CbV" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="a5t-oz-pmu"/>
                 <constraint firstItem="E5O-qL-2Px" firstAttribute="top" secondItem="Rtz-8y-IAY" secondAttribute="bottom" id="bf3-cb-5Ky"/>
                 <constraint firstItem="Ul9-na-ujp" firstAttribute="top" secondItem="E5O-qL-2Px" secondAttribute="bottom" constant="4" id="bj9-vJ-6Aj"/>
@@ -137,6 +139,7 @@
                 <constraint firstItem="O2O-13-9aK" firstAttribute="top" secondItem="TNQ-IH-CbV" secondAttribute="bottom" constant="10" id="hcZ-QR-S3S"/>
                 <constraint firstAttribute="bottom" secondItem="O2O-13-9aK" secondAttribute="bottom" id="jHc-SO-7D8"/>
                 <constraint firstItem="E5O-qL-2Px" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="jcR-pE-6fs"/>
+                <constraint firstItem="Rtz-8y-IAY" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="50" id="kRs-Q1-Y1w"/>
                 <constraint firstItem="TNQ-IH-CbV" firstAttribute="height" secondItem="E5O-qL-2Px" secondAttribute="height" id="mCG-Es-v29"/>
                 <constraint firstItem="Ul9-na-ujp" firstAttribute="top" secondItem="E5O-qL-2Px" secondAttribute="bottom" constant="2" id="nVc-r4-Ydu"/>
                 <constraint firstAttribute="bottom" secondItem="O2O-13-9aK" secondAttribute="bottom" constant="-62" id="oHH-Qc-IVh"/>
@@ -152,6 +155,7 @@
                 <mask key="constraints">
                     <exclude reference="EEJ-vm-XN1"/>
                     <exclude reference="61K-jc-DTm"/>
+                    <exclude reference="Ig8-Su-v0U"/>
                     <exclude reference="Tfq-7l-KTG"/>
                     <exclude reference="bf3-cb-5Ky"/>
                     <exclude reference="qtW-tX-Ppr"/>

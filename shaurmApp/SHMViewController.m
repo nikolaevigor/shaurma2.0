@@ -70,7 +70,7 @@
     
     index++;
     
-    if (index == 5) {
+    if (index == 4) {
         return nil;
     }
     
