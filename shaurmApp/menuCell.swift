@@ -88,6 +88,10 @@ class menuCell: UITableViewCell {
 
     
     func getCellHeight() -> CGFloat{
+        
+        if UIScreen.mainScreen().bounds.width == 320 {
+            return(self.rowOneLabel.frame.height + 128)
+        }
         return(self.rowOneLabel.frame.height + 108)
     }
     
