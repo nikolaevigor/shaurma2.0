@@ -26,30 +26,29 @@
 
 - (void)viewDidLoad {
     CGRect screenRect = [[UIScreen mainScreen] bounds];
-    self.view.backgroundColor = [UIColor colorWithRed:240.0f/255.0f
-                                                green:240.0f/255.0f
-                                                 blue:240.0f/255.0f
-                                                alpha:1.0f];
-    
-    
     
     UITabBarController *mainTabBar = (UITabBarController *)[[[UIApplication sharedApplication] keyWindow] rootViewController];
     UINavigationController *localNavController = (UINavigationController *)[mainTabBar viewControllers][1];
     mapContainer *container = [localNavController viewControllers][0];
     self.containerDelegate = container;
+    self.view.backgroundColor = [UIColor clearColor];
     
     UILabel *welcomeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenRect.size.width, 64)];
     welcomeLabel.text = @"Рядом со мной";
     welcomeLabel.textAlignment = NSTextAlignmentCenter;
-    welcomeLabel.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:1.0f];
+    welcomeLabel.backgroundColor = [UIColor colorWithRed:0.0f/255.0f green:0.0f/255.0f blue:0.0f/255.0f alpha:0.55f];
     welcomeLabel.textColor = [UIColor whiteColor];
     [self.view addSubview:welcomeLabel];
     
+    UIVisualEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+    UIVisualEffectView *blurEffectView = [[UIVisualEffectView alloc] initWithEffect:effect];
+    blurEffectView.frame = self.view.frame;
+    [blurEffectView addSubview:welcomeLabel];
+    [self.view addSubview:blurEffectView];
+    
     UIButton *welcomeButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 64, screenRect.size.width, 50)];
-    //[welcomeButton setTitle:@"Рядом со мной" forState:UIControlStateNormal];
-    //[welcomeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [welcomeButton setImage:[UIImage imageNamed:@"Expand"] forState:UIControlStateNormal];
-    [welcomeButton setBackgroundColor:[UIColor blackColor]];
+    [welcomeButton setBackgroundColor:[UIColor colorWithRed:21.0f/255.0f green:21.0f/255.0f blue:21.0f/255.0f alpha:1.0f]];
     
     [welcomeButton addTarget:self action:@selector(getBack) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:welcomeButton];
@@ -60,10 +59,7 @@
     self.table.scrollEnabled = YES;
     self.table.rowHeight = UITableViewAutomaticDimension;
     self.table.estimatedRowHeight = 70.0;
-    self.table.backgroundColor = [UIColor colorWithRed:240.0f/255.0f
-                                                 green:240.0f/255.0f
-                                                  blue:240.0f/255.0f
-                                                 alpha:1.0f];
+    self.table.backgroundColor = [UIColor clearColor];
     [self.table registerNib:[UINib nibWithNibName:@"sliderCell" bundle:nil] forCellReuseIdentifier:@"cellID"];
     [self.view addSubview:self.table];
     
