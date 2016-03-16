@@ -93,17 +93,39 @@ class commentsVC: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if indexPath.row == 0{
-            if self.heightsArray.count > 0 {
-            return max(125, self.heightsArray[indexPath.row] as! CGFloat + 120.0)
-            }
-            else{return 125}
-        }
         
-        if self.heightsArray.count > indexPath.row {
-        return max(110, self.heightsArray[indexPath.row] as! CGFloat + 100.0)
+        
+        if screenWidth == 320 {
+            if indexPath.row == 0{
+                
+                if self.heightsArray.count > 0 {
+                    return max(125, heightForView(commentTextArray[indexPath.row], font: UIFont(name: "Montserrat", size: CGFloat(15))!, width: CGFloat(320)) + 140.0)
+                }
+                else{return 125}
+                
+            }else{
+                
+                if self.heightsArray.count > indexPath.row {
+                    return max(110, 1.1*(self.heightsArray[indexPath.row] as! CGFloat) + 100.0)
+                }
+                else{ return 110}
+                
+            }
+        }else{
+            if indexPath.row == 0{
+                
+                if self.heightsArray.count > 0 {
+                    return max(125, self.heightsArray[indexPath.row] as! CGFloat + 143.0)
+                }
+                else{return 125}
+                
+            }else
+                
+                if self.heightsArray.count > indexPath.row {
+                    return max(110, self.heightsArray[indexPath.row] as! CGFloat + 100.0)
+                }
+                else{ return 110}
         }
-        else{ return 110}
     }
     
     
@@ -111,7 +133,6 @@ class commentsVC: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell:commentCell = mainTableView.dequeueReusableCellWithIdentifier("commentCellID") as! commentCell
-        cell.sizeToFit()
         cell.userInteractionEnabled = false
         if commentsArray.count != 0 {
             if(indexPath.row != 0){
@@ -145,7 +166,7 @@ class commentsVC: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
     func heightForView(text:String, font:UIFont, width:CGFloat) -> CGFloat{
         
         let newWidth = width - 40
@@ -162,7 +183,7 @@ class commentsVC: UITableViewController {
         return label.frame.height
         
     }
-
+    
     
     
 }
