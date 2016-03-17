@@ -24,19 +24,7 @@
 
 - (void)viewDidLoad {
     CGRect screenRect = [[UIScreen mainScreen] bounds];
-    
-//    UITabBarController *mainTabBar = (UITabBarController *)[[[UIApplication sharedApplication] keyWindow] rootViewController];
-//    UINavigationController *localNavController = (UINavigationController *)[mainTabBar viewControllers][1];
-//    mapContainer *container = [localNavController viewControllers][0];
-//    self.containerDelegate = container;
     self.view.backgroundColor = [UIColor clearColor];
-    
-//    UILabel *welcomeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenRect.size.width, 64)];
-//    welcomeLabel.text = @"Рядом со мной";
-//    welcomeLabel.textAlignment = NSTextAlignmentCenter;
-//    welcomeLabel.backgroundColor = [UIColor colorWithRed:0.0f/255.0f green:0.0f/255.0f blue:0.0f/255.0f alpha:0.55f];
-//    welcomeLabel.textColor = [UIColor whiteColor];
-//    [self.view addSubview:welcomeLabel];
     
     UIButton *expandButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, screenRect.size.width, 64)];
     [expandButton setTitle:@"Рядом со мной" forState:UIControlStateNormal];

@@ -42,6 +42,10 @@
     swipeDown.direction = UISwipeGestureRecognizerDirectionDown;
     [self.slider.view addGestureRecognizer:swipeDown];
     
+    UISwipeGestureRecognizer *swipeUp = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(showSlider)];
+    swipeDown.direction = UISwipeGestureRecognizerDirectionUp;
+    [self.slider.view addGestureRecognizer:swipeUp];
+    
     [self.view addSubview:self.container.view];
     
     [super viewDidLoad];
