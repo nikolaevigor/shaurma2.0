@@ -90,36 +90,11 @@
                     <connections>
                         <segue destination="XhV-le-acU" kind="relationship" relationship="viewControllers" id="yU0-pi-uST"/>
                         <segue destination="iV1-LX-5WQ" kind="relationship" relationship="viewControllers" id="VRL-l6-WdW"/>
-                        <segue destination="ZOF-0G-d99" kind="presentation" identifier="startTutorial" id="LYB-wD-rdg"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-787.5" y="-446.5"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="2Zt-WV-h2v">
-            <objects>
-                <viewController storyboardIdentifier="SHMViewController" id="ZOF-0G-d99" customClass="SHMViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="w1X-78-CuP"/>
-                        <viewControllerLayoutGuide type="bottom" id="SZH-TS-Z5p"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="x4o-D9-yQY">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="667"/>
-                    <connections>
-                        <segue destination="49e-Tb-3d3" kind="presentation" identifier="finishTutorial" animates="NO" id="Ikk-tk-6OJ"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Q5s-Rz-qZA" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-787.5" y="-1333.5"/>
         </scene>
         <!--Обзор-->
         <scene sceneID="U62-zH-qfd">
@@ -662,24 +637,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r89-aN-EG8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1857" y="482"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="rWk-ZO-zwP">
-            <objects>
-                <viewController id="2jB-pl-nSg" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Eyw-yU-h0I"/>
-                        <viewControllerLayoutGuide type="bottom" id="ERZ-Xj-Hka"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="rcF-BV-zJN">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dCn-90-Izg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
         </scene>
     </scenes>
     <resources>

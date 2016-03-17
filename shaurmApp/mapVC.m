@@ -57,7 +57,7 @@ static const CGFloat CalloutYOffset = 10.0f;
     self.calloutView = [[SMCalloutView alloc] init];
     self.calloutView.hidden = YES;
     UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
-    [button setImage:[UIImage imageNamed:@"small-placeholder"] forState:UIControlStateNormal];
+    [button setImage:[UIImage imageNamed:@"callout2"] forState:UIControlStateNormal];
     [button addTarget:self action:@selector(calloutAccessoryButtonTapped:)
      forControlEvents:UIControlEventTouchUpInside];
     self.calloutView.rightAccessoryView = button;
