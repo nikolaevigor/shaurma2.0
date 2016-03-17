@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 
 #import "sliderDelegate.h"
+#import "containerDelegate.h"
 
 @interface sliderVC : UIViewController <UITableViewDataSource, UITableViewDelegate, sliderDelegate>
+
+@property (weak, nonatomic) id <containerDelegate> containerDelegate;
 
 @end

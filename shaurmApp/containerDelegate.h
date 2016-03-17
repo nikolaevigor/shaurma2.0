@@ -12,5 +12,6 @@
 - (void)refreshSlider;
 - (void)openTempleVC:(NSString *)id_;
 - (void)pop;
+- (void)showSlider;
 
 @end
