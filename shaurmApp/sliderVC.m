@@ -10,14 +10,12 @@
 #import "sliderCell.h"
 #import "Parse.h"
 #import "SHMManager.h"
-#import "containerDelegate.h"
 #import "mapContainer.h"
 
 @interface sliderVC ()
 
 @property (strong, nonatomic) UITableView *table;
 @property (strong, nonatomic) NSArray *nearestTemples;
-@property (weak, nonatomic) id <containerDelegate> containerDelegate;
 @property (strong, nonatomic) NSMutableDictionary *nearestTemplesIcons;
 
 @end
@@ -27,31 +25,38 @@
 - (void)viewDidLoad {
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     
-    UITabBarController *mainTabBar = (UITabBarController *)[[[UIApplication sharedApplication] keyWindow] rootViewController];
-    UINavigationController *localNavController = (UINavigationController *)[mainTabBar viewControllers][1];
-    mapContainer *container = [localNavController viewControllers][0];
-    self.containerDelegate = container;
+//    UITabBarController *mainTabBar = (UITabBarController *)[[[UIApplication sharedApplication] keyWindow] rootViewController];
+//    UINavigationController *localNavController = (UINavigationController *)[mainTabBar viewControllers][1];
+//    mapContainer *container = [localNavController viewControllers][0];
+//    self.containerDelegate = container;
     self.view.backgroundColor = [UIColor clearColor];
     
-    UILabel *welcomeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenRect.size.width, 64)];
-    welcomeLabel.text = @"Рядом со мной";
-    welcomeLabel.textAlignment = NSTextAlignmentCenter;
-    welcomeLabel.backgroundColor = [UIColor colorWithRed:0.0f/255.0f green:0.0f/255.0f blue:0.0f/255.0f alpha:0.55f];
-    welcomeLabel.textColor = [UIColor whiteColor];
-    [self.view addSubview:welcomeLabel];
+//    UILabel *welcomeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenRect.size.width, 64)];
+//    welcomeLabel.text = @"Рядом со мной";
+//    welcomeLabel.textAlignment = NSTextAlignmentCenter;
+//    welcomeLabel.backgroundColor = [UIColor colorWithRed:0.0f/255.0f green:0.0f/255.0f blue:0.0f/255.0f alpha:0.55f];
+//    welcomeLabel.textColor = [UIColor whiteColor];
+//    [self.view addSubview:welcomeLabel];
+    
+    UIButton *expandButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, screenRect.size.width, 64)];
+    [expandButton setTitle:@"Рядом со мной" forState:UIControlStateNormal];
+    [expandButton setBackgroundColor:[UIColor colorWithRed:0.0f/255.0f green:0.0f/255.0f blue:0.0f/255.0f alpha:0.55f]];
+    
+    [expandButton addTarget:self action:@selector(showSlider) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:expandButton];
     
     UIVisualEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
     UIVisualEffectView *blurEffectView = [[UIVisualEffectView alloc] initWithEffect:effect];
     blurEffectView.frame = self.view.frame;
-    [blurEffectView addSubview:welcomeLabel];
+    [blurEffectView addSubview:expandButton];
     [self.view addSubview:blurEffectView];
     
-    UIButton *welcomeButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 64, screenRect.size.width, 50)];
-    [welcomeButton setImage:[UIImage imageNamed:@"Expand"] forState:UIControlStateNormal];
-    [welcomeButton setBackgroundColor:[UIColor colorWithRed:21.0f/255.0f green:21.0f/255.0f blue:21.0f/255.0f alpha:1.0f]];
+    UIButton *collapseButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 64, screenRect.size.width, 50)];
+    [collapseButton setImage:[UIImage imageNamed:@"Expand2"] forState:UIControlStateNormal];
+    [collapseButton setBackgroundColor:[UIColor colorWithRed:21.0f/255.0f green:21.0f/255.0f blue:21.0f/255.0f alpha:1.0f]];
     
-    [welcomeButton addTarget:self action:@selector(getBack) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:welcomeButton];
+    [collapseButton addTarget:self action:@selector(getBack) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:collapseButton];
     
     self.table = [[UITableView alloc] initWithFrame:CGRectMake(0, 114, screenRect.size.width, screenRect.size.height - 114 - 49)];
     self.table.delegate = self;
@@ -62,6 +67,7 @@
     self.table.backgroundColor = [UIColor clearColor];
     [self.table registerNib:[UINib nibWithNibName:@"sliderCell" bundle:nil] forCellReuseIdentifier:@"cellID"];
     [self.view addSubview:self.table];
+    [self.table reloadData];
     
     [super viewDidLoad];
 }
@@ -69,6 +75,11 @@
 - (void)getBack
 {
     [self.containerDelegate pop];
+}
+
+- (void)showSlider
+{
+    [self.containerDelegate showSlider];
 }
 
 #pragma mark - Table View methods

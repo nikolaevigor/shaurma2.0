@@ -87,9 +87,6 @@ static const CGFloat CalloutYOffset = 10.0f;
         [SHMDownloader getTemplesInBackgroundWithBlock:^void (NSArray * temples_) {
             self.temples = temples_;
             
-            [self.containerDelegate templesIsDownloaded];
-            
-            
             if (self.markers == nil){
                 self.markers = [NSMutableArray array];
             }
