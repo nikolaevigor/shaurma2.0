@@ -11,5 +11,6 @@
 @protocol sliderDelegate
 
 - (void)setTableViewWith:(NSArray *)temples;
+- (void)setUserInteractions:(BOOL)isAvailable;
 
 @end

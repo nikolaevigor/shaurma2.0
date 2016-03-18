@@ -13,12 +13,12 @@
 
 @interface mapContainer ()
 
-@property (strong, nonatomic) PPRevealSideViewController *container;
 @property (strong, nonatomic) mapVC *map;
 @property (strong, nonatomic) sliderVC *slider;
 @property (strong, nonatomic) newTempleVC *openedTemple;
 @property (weak, nonatomic) id <mapDelegate> delegateMap;
 @property (weak, nonatomic) id <sliderDelegate> delegateSlider;
+@property (strong, nonatomic) PPRevealSideViewController *container;
 
 @end
 
@@ -36,6 +36,8 @@
     
     [self.container setOption:PPRevealSideOptionsiOS7StatusBarMoving];
     [self.container pushViewController:self.map onDirection:PPRevealSideDirectionTop withOffset:90 animated:NO];
+    self.slider.view.userInteractionEnabled = NO;
+    
     self.container.options = PPRevealSideOptionsShowShadows << 1; //shadows: off
     
     UISwipeGestureRecognizer *swipeDown = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(pop)];
@@ -51,6 +53,11 @@
     [super viewDidLoad];
 }
 
+- (void)setSliderInteractions:(BOOL)isAvailable
+{
+    [self.delegateSlider setUserInteractions:isAvailable];
+}
+
 - (void)sliderSwiped:(UISwipeGestureRecognizer *)swipe
 {
     [self.delegateSlider setTableViewWith:[self.delegateMap getNearest]]; //refresh table on swipe
@@ -61,24 +68,26 @@
 
 - (void)pop
 {
-    [self.delegateSlider setTableViewWith:[self.delegateMap getNearest]]; //refresh table on swipe
-    [self.container pushViewController:self.map onDirection:PPRevealSideDirectionTop withOffset:90 animated:YES];
-}
-
-- (void)templesIsDownloaded
-{
-    [self.delegateSlider setTableViewWith:[self.delegateMap getNearest]];
+    if (self.map.isDownloaded) {
+        [self.delegateSlider setTableViewWith:[self.delegateMap getNearest]]; //refresh table on swipe
+        [self.container pushViewController:self.map onDirection:PPRevealSideDirectionTop withOffset:90 animated:YES];
+    }
 }
 
 - (void)refreshSlider
 {
-    [self.delegateSlider setTableViewWith:[self.delegateMap getNearest]];
+    if (self.map.isDownloaded) {
+        [self.delegateSlider setTableViewWith:[self.delegateMap getNearest]];
+    }
 }
 
 - (void)showSlider
 {
-    [self.delegateSlider setTableViewWith:[self.delegateMap getNearest]];
-    [self.container popViewControllerAnimated:YES completion:nil];
+    if (self.map.isDownloaded)
+    {
+        [self.delegateSlider setTableViewWith:[self.delegateMap getNearest]];
+        [self.container popViewControllerAnimated:YES completion:nil];
+    }
 }
 
 - (void)openTempleVC:(NSString *)id_

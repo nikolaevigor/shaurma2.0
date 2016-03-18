@@ -15,6 +15,7 @@
 @interface mapVC : UIViewController <GMSMapViewDelegate, CLLocationManagerDelegate, mapDelegate>
 
 @property (nonatomic) BOOL setNearest;
+@property (nonatomic) BOOL isDownloaded;
 
 -(void)setTempleById:(NSString *)templeId;
 
