@@ -500,7 +500,7 @@
 				TargetAttributes = {
 					422F5A711B8F26AB005421C8 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = KWT862S93C;
+						DevelopmentTeam = 2H654K823K;
 					};
 					422F5A8D1B8F26AB005421C8 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -748,11 +748,12 @@
 				INFOPLIST_FILE = shaurmApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				New_Setting = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.SHM.shaurmApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.HCOCB.Shaurmapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/$(PROJECT_NAME)-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -768,10 +769,11 @@
 				INFOPLIST_FILE = shaurmApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				New_Setting = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.SHM.shaurmApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.HCOCB.Shaurmapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/$(PROJECT_NAME)-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
