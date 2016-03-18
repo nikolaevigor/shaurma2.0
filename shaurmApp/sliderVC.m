@@ -23,6 +23,8 @@
 @implementation sliderVC
 
 - (void)viewDidLoad {
+    self.view.userInteractionEnabled = NO;
+    
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     self.view.backgroundColor = [UIColor clearColor];
     
@@ -68,6 +70,11 @@
 - (void)showSlider
 {
     [self.containerDelegate showSlider];
+}
+
+- (void)setUserInteractions:(BOOL)isAvailable
+{
+    self.view.userInteractionEnabled = YES;
 }
 
 #pragma mark - Table View methods

@@ -39,6 +39,9 @@ static const CGFloat CalloutYOffset = 10.0f;
 - (void)viewDidLoad
 {
     self.containerDelegate = [self getContainer];
+    self.isDownloaded = NO;
+    self.view.userInteractionEnabled = NO;
+    [self.containerDelegate setSliderInteractions:NO];
     
     mapView_ = [[GMSMapView alloc] initWithFrame:CGRectZero];
     mapView_.settings.compassButton = YES;
@@ -109,6 +112,9 @@ static const CGFloat CalloutYOffset = 10.0f;
             
             [spinner setHidden:YES];
             [spinner stop];
+            self.isDownloaded = YES;
+            self.view.userInteractionEnabled = YES;
+            [self.containerDelegate setSliderInteractions:YES];
             
         }];
     }

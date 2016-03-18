@@ -8,10 +8,10 @@
 
 @protocol containerDelegate
 
-- (void)templesIsDownloaded;
 - (void)refreshSlider;
 - (void)openTempleVC:(NSString *)id_;
 - (void)pop;
 - (void)showSlider;
+- (void)setSliderInteractions:(BOOL)isAvailable;
 
 @end
