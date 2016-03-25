@@ -11,4 +11,6 @@
 
 @interface SHMMapViewController : UIViewController
 
+- (instancetype)initWithDelegate:(id)delegate;
+
 @end

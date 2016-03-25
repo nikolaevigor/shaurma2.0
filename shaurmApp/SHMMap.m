@@ -9,8 +9,9 @@
 #import "SHMMap.h"
 #import "SHMMapViewController.h"
 #import "SHMSliderViewController.h"
+#import "SHMMapDelegate.h"
 
-@interface SHMMap ()
+@interface SHMMap () <SHMMapDelegate>
 
 @property (strong, nonatomic) SHMSliderViewController *slider;
 @property (strong, nonatomic) SHMMapViewController *map;
@@ -21,14 +22,12 @@
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
-    self.map = [[SHMMapViewController alloc] init];
-    self.slider = [[SHMSliderViewController alloc] init];
+    self.map = [[SHMMapViewController alloc] initWithDelegate:self];
+    self.slider = [[SHMSliderViewController alloc] initWithDelegate:self];
     
     [GMSServices provideAPIKey:@"AIzaSyDKgrM3pG0lO2a9r9dxA-srnsEgCuWsJWs"];
     
     self = [super initWithRootViewController:self.slider];
-    
-    [self pushViewController:self.map onDirection:PPRevealSideDirectionTop withOffset:90.f animated:YES];
     
     return self;
 }
@@ -37,7 +36,7 @@
 {
     [super viewDidLoad];
     
-    UISwipeGestureRecognizer *sliderSwipeDown = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(sliderSwipedDown)];
+    UISwipeGestureRecognizer *sliderSwipeDown = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(showMap)];
     sliderSwipeDown.direction = UISwipeGestureRecognizerDirectionDown;
     [self.slider.view addGestureRecognizer:sliderSwipeDown];
 }
@@ -45,11 +44,18 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [self pushViewController:self.map onDirection:PPRevealSideDirectionTop withOffset:113 animated:NO];
 }
 
-- (void)sliderSwipedDown
+- (void)showSlider
 {
-    [self pushViewController:self.map onDirection:PPRevealSideDirectionTop withOffset:90.0f animated:YES];
+    [self popViewControllerAnimated:YES completion:nil];
+}
+
+- (void)showMap
+{
+    [self pushViewController:self.map onDirection:PPRevealSideDirectionTop withOffset:113 animated:YES];
 }
 
 @end

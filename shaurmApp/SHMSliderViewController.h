@@ -10,4 +10,6 @@
 
 @interface SHMSliderViewController : UIViewController
 
+- (instancetype)initWithDelegate:(id)delegate;
+
 @end

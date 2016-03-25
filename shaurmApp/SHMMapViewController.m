@@ -7,18 +7,28 @@
 //
 
 #import "SHMMapViewController.h"
+#import "SHMMapDelegate.h"
 
 @interface SHMMapViewController ()
+
+@property (weak, nonatomic) id <SHMMapDelegate> delegate;
 
 @end
 
 @implementation SHMMapViewController
 
+- (instancetype)initWithDelegate:(id)delegate
+{
+    if (self = [super init]) {
+        self.delegate = delegate;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor redColor];
+    
     self.view = [[GMSMapView alloc] initWithFrame:CGRectZero];
-
 }
 
 @end
