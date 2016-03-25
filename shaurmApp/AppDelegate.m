@@ -18,7 +18,19 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-
+    [Parse enableLocalDatastore];
+    
+    // Initialize Parse.
+    [Parse setApplicationId:@"oHOJc3IsQPgu6f4EYRrZkqIBnJIOli9aq6p9Z5oa"
+                  clientKey:@"dVkdomAkZbsvyEchpe1fa948tHdfwVTfOA84FklH"];
+    
+    // [Optional] Track statistics around application opens.
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
+    //Instabug
+    [Instabug startWithToken:@"8a178394030694a57b1bf87c93a14a77" invocationEvent:IBGInvocationEventShake];
+    
+    return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

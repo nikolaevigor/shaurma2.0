@@ -394,8 +394,8 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         }
         if indexPath.row == 6{
             let ccell:addCommentCell = tableView.dequeueReusableCellWithIdentifier("addCommentCell") as! addCommentCell
-            ccell.seeAllButton.addTarget(self, action: "expandButtonAction", forControlEvents: UIControlEvents.TouchUpInside)
-            ccell.expandButton.addTarget(self, action: "addButtonAction", forControlEvents: UIControlEvents.TouchUpInside)
+            ccell.seeAllButton.addTarget(self, action: #selector(newTempleVC.expandButtonAction), forControlEvents: UIControlEvents.TouchUpInside)
+            ccell.expandButton.addTarget(self, action: #selector(newTempleVC.addButtonAction), forControlEvents: UIControlEvents.TouchUpInside)
             ccell.delegate = self
             cell = ccell
         }

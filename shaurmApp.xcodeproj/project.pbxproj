@@ -41,7 +41,10 @@
 		59D1EA1E1C52ED1700144972 /* addCommentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D1EA1D1C52ED1600144972 /* addCommentVC.swift */; };
 		59D1EA201C52F5AD00144972 /* AddCommentDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D1EA1F1C52F5AC00144972 /* AddCommentDelegate.swift */; };
 		59D3FBD11C4885E400FFCCE7 /* commentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59D3FBD01C4885E400FFCCE7 /* commentCell.xib */; };
+		DB2DBA341C9EDC7100AE7DA3 /* SHMMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2DBA331C9EDC7100AE7DA3 /* SHMMapViewController.m */; };
+		DB2DBA371C9EDD0300AE7DA3 /* SHMSliderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2DBA361C9EDD0300AE7DA3 /* SHMSliderViewController.m */; };
 		DB3D1E3C1C95F6EE00A07526 /* Instabug.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DB3D1E3B1C95F6EE00A07526 /* Instabug.bundle */; };
+		DB42CA941C9E16A200D3C299 /* SHMMap.m in Sources */ = {isa = PBXBuildFile; fileRef = DB42CA931C9E16A200D3C299 /* SHMMap.m */; };
 		DBF4A1201C96DED9009442CD /* SHMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF4A11F1C96DED9009442CD /* SHMViewController.m */; };
 		DBF4A1291C96E3B3009442CD /* SHMChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF4A1271C96E3B3009442CD /* SHMChildViewController.m */; };
 		DBF4A12A1C96E3B3009442CD /* SHMChildViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBF4A1281C96E3B3009442CD /* SHMChildViewController.xib */; };
@@ -144,7 +147,13 @@
 		59D1EA1F1C52F5AC00144972 /* AddCommentDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCommentDelegate.swift; sourceTree = "<group>"; };
 		59D3FBD01C4885E400FFCCE7 /* commentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = commentCell.xib; sourceTree = "<group>"; };
 		70627CF31B0BFA236799CD9E /* libPods-shaurmApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-shaurmApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB2DBA321C9EDC7100AE7DA3 /* SHMMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHMMapViewController.h; sourceTree = "<group>"; };
+		DB2DBA331C9EDC7100AE7DA3 /* SHMMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHMMapViewController.m; sourceTree = "<group>"; };
+		DB2DBA351C9EDD0300AE7DA3 /* SHMSliderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHMSliderViewController.h; sourceTree = "<group>"; };
+		DB2DBA361C9EDD0300AE7DA3 /* SHMSliderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHMSliderViewController.m; sourceTree = "<group>"; };
 		DB3D1E3B1C95F6EE00A07526 /* Instabug.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Instabug.bundle; path = Pods/Instabug/Instabug.bundle; sourceTree = "<group>"; };
+		DB42CA921C9E16A200D3C299 /* SHMMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHMMap.h; sourceTree = "<group>"; };
+		DB42CA931C9E16A200D3C299 /* SHMMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHMMap.m; sourceTree = "<group>"; };
 		DBF4A11E1C96DED9009442CD /* SHMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHMViewController.h; sourceTree = "<group>"; };
 		DBF4A11F1C96DED9009442CD /* SHMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHMViewController.m; sourceTree = "<group>"; };
 		DBF4A1261C96E3B3009442CD /* SHMChildViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHMChildViewController.h; sourceTree = "<group>"; };
@@ -277,12 +286,12 @@
 		422F5A741B8F26AB005421C8 /* shaurmApp */ = {
 			isa = PBXGroup;
 			children = (
+				DBF4A1321C970647009442CD /* Tutorial */,
 				42664C8B1B90BA2A0098CA5A /* Review */,
 				428B40C71B8F96AE00A8EF74 /* Map */,
-				DBF4A1321C970647009442CD /* Tutorial */,
 				422F5A791B8F26AB005421C8 /* AppDelegate.h */,
-				422F5A821B8F26AB005421C8 /* Main.storyboard */,
 				422F5A7A1B8F26AB005421C8 /* AppDelegate.m */,
+				422F5A821B8F26AB005421C8 /* Main.storyboard */,
 				424DA4A21C41C81800E3597C /* metroJSON.json */,
 				422F5A851B8F26AB005421C8 /* Images.xcassets */,
 				422F5A871B8F26AB005421C8 /* LaunchScreen.xib */,
@@ -347,14 +356,28 @@
 				426675C91C3F0BAD00135FFD /* SHMDownloader.m */,
 				424097AE1C4149C4005F39DB /* SHMManager.h */,
 				424097AF1C4149C4005F39DB /* SHMManager.m */,
-				424097B11C415160005F39DB /* mapDelegate.h */,
-				424097B21C415169005F39DB /* sliderDelegate.h */,
-				424097B31C4152A6005F39DB /* containerDelegate.h */,
 			);
 			name = Infrastructure;
 			sourceTree = "<group>";
 		};
 		428B40C71B8F96AE00A8EF74 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				DB2DBA381C9EDD1800AE7DA3 /* old fashioned */,
+				DB42CA921C9E16A200D3C299 /* SHMMap.h */,
+				DB42CA931C9E16A200D3C299 /* SHMMap.m */,
+				DB2DBA321C9EDC7100AE7DA3 /* SHMMapViewController.h */,
+				DB2DBA331C9EDC7100AE7DA3 /* SHMMapViewController.m */,
+				DB2DBA351C9EDD0300AE7DA3 /* SHMSliderViewController.h */,
+				DB2DBA361C9EDD0300AE7DA3 /* SHMSliderViewController.m */,
+				DB42CA8C1C9E148B00D3C299 /* SliderCell */,
+				426675CB1C3F0BB500135FFD /* Infrastructure */,
+				42077CA81BAB486800880246 /* SMCalloutView */,
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
+		DB2DBA381C9EDD1800AE7DA3 /* old fashioned */ = {
 			isa = PBXGroup;
 			children = (
 				4248AFDF1B9E30F2006FEE7E /* mapContainer.h */,
@@ -363,13 +386,21 @@
 				422F5A801B8F26AB005421C8 /* mapVC.m */,
 				4248AFE21B9E316F006FEE7E /* sliderVC.h */,
 				4248AFE31B9E316F006FEE7E /* sliderVC.m */,
+				424097B11C415160005F39DB /* mapDelegate.h */,
+				424097B21C415169005F39DB /* sliderDelegate.h */,
+				424097B31C4152A6005F39DB /* containerDelegate.h */,
+			);
+			name = "old fashioned";
+			sourceTree = "<group>";
+		};
+		DB42CA8C1C9E148B00D3C299 /* SliderCell */ = {
+			isa = PBXGroup;
+			children = (
 				426E61171B9F8307003336D1 /* sliderCell.h */,
 				426E61181B9F8307003336D1 /* sliderCell.m */,
 				426E61191B9F8307003336D1 /* sliderCell.xib */,
-				426675CB1C3F0BB500135FFD /* Infrastructure */,
-				42077CA81BAB486800880246 /* SMCalloutView */,
 			);
-			name = Map;
+			name = SliderCell;
 			sourceTree = "<group>";
 		};
 		DBF4A1321C970647009442CD /* Tutorial */ = {
@@ -596,6 +627,7 @@
 				422F5A811B8F26AB005421C8 /* mapVC.m in Sources */,
 				E72A9CD51B906C9E0013275F /* templeCell.swift in Sources */,
 				DBF4A1301C96FFD4009442CD /* SHMTabViewController.m in Sources */,
+				DB2DBA341C9EDC7100AE7DA3 /* SHMMapViewController.m in Sources */,
 				422F5A7B1B8F26AB005421C8 /* AppDelegate.m in Sources */,
 				E77FC3031C3A8619002FD36D /* commentsVC.swift in Sources */,
 				59D1EA201C52F5AD00144972 /* AddCommentDelegate.swift in Sources */,
@@ -613,6 +645,8 @@
 				4248AFE11B9E30F2006FEE7E /* mapContainer.m in Sources */,
 				E7245EB11BA1BA7600F7D035 /* starCell.swift in Sources */,
 				E7ECE2AF1BECE97900DA2202 /* featuresCell.swift in Sources */,
+				DB2DBA371C9EDD0300AE7DA3 /* SHMSliderViewController.m in Sources */,
+				DB42CA941C9E16A200D3C299 /* SHMMap.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

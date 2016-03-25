@@ -24,7 +24,7 @@ class ShawarmaSpinnerView: UIView {
         self.layer.cornerRadius = self.frame.size.width/2
         self.addSubview(spinnerImageView)
         
-        spinnerTimer = NSTimer(timeInterval: 15.0, target: self, selector: "throwWarning", userInfo: nil, repeats: false)
+        spinnerTimer = NSTimer(timeInterval: 15.0, target: self, selector: #selector(ShawarmaSpinnerView.throwWarning), userInfo: nil, repeats: false)
         NSRunLoop.currentRunLoop().addTimer(spinnerTimer, forMode: NSRunLoopCommonModes)
         
     }
