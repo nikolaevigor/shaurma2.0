@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 @import GoogleMaps;
+#import "SHMTemple.h"
 
 @interface SHMMapViewController : UIViewController
 
 - (instancetype)initWithDelegate:(id)delegate;
 - (void)setPinsForTemples:(NSArray *)temples;
+- (void)setPinForTemple:(SHMTemple *)temple;
 
 @end

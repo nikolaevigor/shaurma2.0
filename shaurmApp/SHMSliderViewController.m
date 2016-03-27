@@ -136,7 +136,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    SHMTemple *temple = self.temples[indexPath.row];
+    [self.delegate openTempleViewControllerWithID:[temple templeID]];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

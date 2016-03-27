@@ -8,7 +8,6 @@
 
 #import "SHMDownloader.h"
 #import "Parse.h"
-#import "SHMTemple.h"
 
 @implementation SHMDownloader
 
@@ -30,7 +29,7 @@
                                                               Photos:nil
                                                                 Menu:nil//set
                                                              Reviews:nil//set
-                                                            TempleID:rawObject[@"objectId"]
+                                                            TempleID:rawObject.objectId
                                                          LowestPrice:[rawObject[@"price"] integerValue]
                                                               Rating:[rawObject[@"ratingNumber"] integerValue]
                                                                  Cap:rawObject[@"cap"]
@@ -53,6 +52,29 @@
         {
             NSLog(@"Error occured in getting temples: %@", error.localizedDescription);
         }
+    }];
+}
+
++ (void)getTempleByID:(NSString *)templeID WithBlock:(void (^)(SHMTemple *))completeion
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"Temples2"];
+    [query getObjectInBackgroundWithId:templeID block:^(PFObject *rawObject, NSError *error) {
+        PFGeoPoint *geoPoint = rawObject[@"location"];
+        
+        SHMTemple *temple = [[SHMTemple alloc] initWithTitle:rawObject[@"title"]
+                                                      Subway:rawObject[@"subway"]
+                                                      Photos:nil
+                                                        Menu:nil//set
+                                                     Reviews:nil//set
+                                                    TempleID:rawObject.objectId
+                                                 LowestPrice:[rawObject[@"price"] integerValue]
+                                                      Rating:[rawObject[@"ratingNumber"] integerValue]
+                                                         Cap:rawObject[@"cap"]
+                                                      Gloves:rawObject[@"gloves"]
+                                                    Latitude:geoPoint.latitude
+                                                  Longtitude:geoPoint.longitude
+                             ];
+        completeion([temple copy]);
     }];
 }
 

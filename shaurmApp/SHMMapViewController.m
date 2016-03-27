@@ -9,7 +9,6 @@
 #import "SHMMapViewController.h"
 #import "SHMMapDelegate.h"
 #import "SMCalloutView.h"
-#import "SHMTemple.h"
 
 @interface SHMMapViewController () <GMSMapViewDelegate>
 
@@ -93,6 +92,22 @@
         mark.icon = customIconsArray[(unsigned long)[currentTemple rating]];
         mark.userData = [currentTemple templeID];
     }
+}
+
+- (void)setPinForTemple:(SHMTemple *)temple
+{
+    GMSMarker *mark = [[GMSMarker alloc] init];
+    
+    mark.position = CLLocationCoordinate2DMake([temple latitude], [temple longitude]);
+    mark.map = (GMSMapView *)self.view;
+    mark.title = [temple title];
+    mark.snippet = [NSString stringWithFormat:@"%lu/10", (unsigned long)[temple rating]];
+    mark.icon = [self image:[UIImage imageNamed:[NSString stringWithFormat:@"pin%lu", (unsigned long)[temple rating]]] scaledToSize:CGSizeMake(30.0f, 60.0f)];
+    mark.userData = [temple templeID];
+    
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:temple.latitude longitude:temple.longitude zoom:13];
+    [(GMSMapView *)self.view setCamera:camera];
+    [(GMSMapView *)self.view setSelectedMarker:mark];
 }
 
 #pragma mark - Callout window methods

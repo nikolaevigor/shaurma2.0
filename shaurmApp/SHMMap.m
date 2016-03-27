@@ -12,6 +12,7 @@
 #import "SHMMapDelegate.h"
 #import "SHMDownloader.h"
 #import "SHMManager.h"
+#import "shaurmApp-Swift.h"
 
 @interface SHMMap () <SHMMapDelegate>
 
@@ -20,6 +21,7 @@
 
 @property NSArray *temples;
 @property CLLocationCoordinate2D locationCoordinate;
+@property newTempleVC *openedTemple;
 
 @end
 
@@ -27,12 +29,14 @@
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
-    self.map = [[SHMMapViewController alloc] initWithDelegate:self];
-    self.slider = [[SHMSliderViewController alloc] initWithDelegate:self];
-    
-    [GMSServices provideAPIKey:@"AIzaSyDKgrM3pG0lO2a9r9dxA-srnsEgCuWsJWs"];
-    
-    self = [super initWithRootViewController:self.slider];
+    if (self = [super initWithCoder:aDecoder]) {
+        self.map = [[SHMMapViewController alloc] initWithDelegate:self];
+        self.slider = [[SHMSliderViewController alloc] initWithDelegate:self];
+        
+        [GMSServices provideAPIKey:@"AIzaSyDKgrM3pG0lO2a9r9dxA-srnsEgCuWsJWs"];
+        
+        self = [super initWithRootViewController:self.slider];
+    }
     
     return self;
 }
@@ -49,6 +53,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault]; // prevent tab bar to disappear after returning from newTempleVC
     
     if (!self.temples) {
         [self pushViewController:self.map onDirection:PPRevealSideDirectionTop withOffset:113 animated:NO];
@@ -83,6 +89,15 @@
             [self.slider setTableWithTemples:[SHMManager getNearestTemplesFor:self.locationCoordinate from:temples numberOfPointsToFind:10]];
         }
     }];
+}
+
+- (void)openTempleViewControllerWithID:(NSString *)templeID
+{
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    self.openedTemple = [storyBoard instantiateViewControllerWithIdentifier:@"newTempleVC"];
+    self.openedTemple.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [self.openedTemple setId:templeID];
+    [self.navigationController pushViewController:self.openedTemple animated:YES];
 }
 
 @end

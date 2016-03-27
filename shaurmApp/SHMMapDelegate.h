@@ -11,5 +11,6 @@
 - (void)showSlider;
 - (void)showMap;
 - (void)setCurrentLocationWithLatitude:(float)latitude Longitude:(float)longitude;
+- (void)openTempleViewControllerWithID:(NSString *)templeID;
 
 @end
