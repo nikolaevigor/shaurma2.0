@@ -8,14 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-@class SHMUser;
-
 @interface SHMReview : NSObject
 
 @property (nonnull, strong, nonatomic) NSString *author;
 @property (nonnull, strong, nonatomic) NSDate *date;
 @property (nonnull, strong, nonatomic) NSString *text;
 @property (nullable, strong, nonatomic) NSArray *photos;
+@property (nonnull, strong, nonatomic) NSString *reviewID;
 @property NSUInteger rating;
 
 // Prohibited
@@ -23,6 +22,11 @@
 + (nonnull instancetype)new __unavailable;
 
 // designated intializer
-- (nonnull instancetype)initWithAuthor:(nonnull NSString *)authorName Date:(nonnull NSDate *)date Text:(nonnull NSString *)text;
+- (nonnull instancetype)initWithAuthor:(nonnull NSString *)author
+                                  Date:(nonnull NSDate *)date
+                                  Text:(nonnull NSString *)text
+                                Photos:(nullable NSArray *)photos
+                              ReviewID:(nonnull NSString *)reviewID
+                                Rating:(NSUInteger)rating;
 
 @end
