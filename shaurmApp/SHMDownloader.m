@@ -8,6 +8,7 @@
 
 #import "SHMDownloader.h"
 #import "Parse.h"
+#import "SHMTemple.h"
 
 @implementation SHMDownloader
 
@@ -18,7 +19,35 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if (!error)
         {
-            completeion(objects);
+            NSMutableArray *temples = [[NSMutableArray alloc] init];
+            for (int i = 0; i < objects.count; i++)
+            {
+                PFObject *rawObject = objects[i];
+                PFGeoPoint *geoPoint = rawObject[@"location"];
+                
+                SHMTemple *temple = [[SHMTemple alloc] initWithTitle:rawObject[@"title"]
+                                                              Subway:rawObject[@"subway"]
+                                                              Photos:nil
+                                                                Menu:nil//set
+                                                             Reviews:nil//set
+                                                            TempleID:rawObject[@"objectId"]
+                                                         LowestPrice:[rawObject[@"price"] integerValue]
+                                                              Rating:[rawObject[@"ratingNumber"] integerValue]
+                                                                 Cap:rawObject[@"cap"]
+                                                              Gloves:rawObject[@"gloves"]
+                                                            Latitude:geoPoint.latitude
+                                                          Longtitude:geoPoint.longitude
+                                     ];
+                [rawObject[@"picture"] getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                    if (!error) {
+                        NSArray *photosArray = [NSArray arrayWithObject:[UIImage imageWithData:data]];
+                        [temple setPhotos:photosArray];
+                    }
+                }];
+                [temples addObject:temple];
+                
+            }
+            completeion([temples copy]);
         }
         else
         {

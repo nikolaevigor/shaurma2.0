@@ -9,10 +9,11 @@
 #import <Foundation/Foundation.h>
 @import CoreLocation;
 #import "Parse.h"
+#import "SHMTemple.h"
 
 @interface SHMManager : NSObject
 
-+ (PFObject *)getNearestTempleFor:(CLLocationCoordinate2D)point from:(NSArray *)temples;
++ (SHMTemple *)getNearestTempleFor:(CLLocationCoordinate2D)point from:(NSArray *)temples;
 + (NSArray *)getNearestTemplesFor:(CLLocationCoordinate2D)point from:(NSArray *)temples numberOfPointsToFind:(NSInteger)number;
 + (UIColor *)colorForStation:(NSString *)station;
 + (BOOL)isStation:(NSString *)station;

@@ -10,11 +10,16 @@
 #import "SHMMapViewController.h"
 #import "SHMSliderViewController.h"
 #import "SHMMapDelegate.h"
+#import "SHMDownloader.h"
+#import "SHMManager.h"
 
 @interface SHMMap () <SHMMapDelegate>
 
 @property (strong, nonatomic) SHMSliderViewController *slider;
 @property (strong, nonatomic) SHMMapViewController *map;
+
+@property NSArray *temples;
+@property CLLocationCoordinate2D locationCoordinate;
 
 @end
 
@@ -45,7 +50,10 @@
 {
     [super viewWillAppear:animated];
     
-    [self pushViewController:self.map onDirection:PPRevealSideDirectionTop withOffset:113 animated:NO];
+    if (!self.temples) {
+        [self pushViewController:self.map onDirection:PPRevealSideDirectionTop withOffset:113 animated:NO];
+        [self downloadTemples];
+    }
 }
 
 - (void)showSlider
@@ -56,6 +64,25 @@
 - (void)showMap
 {
     [self pushViewController:self.map onDirection:PPRevealSideDirectionTop withOffset:113 animated:YES];
+}
+
+- (void)setCurrentLocationWithLatitude:(float)latitude Longitude:(float)longitude
+{
+    self.locationCoordinate = CLLocationCoordinate2DMake(latitude, longitude);
+    if (self.temples) {
+        [self.slider setTableWithTemples:[SHMManager getNearestTemplesFor:self.locationCoordinate from:self.temples numberOfPointsToFind:10]];
+    }
+}
+
+- (void)downloadTemples
+{
+    [SHMDownloader getTemplesInBackgroundWithBlock:^void (NSArray *temples){
+        self.temples = temples;
+        [self.map setPinsForTemples:temples];
+        if (self.locationCoordinate.latitude != 0 && self.locationCoordinate.longitude != 0) {
+            [self.slider setTableWithTemples:[SHMManager getNearestTemplesFor:self.locationCoordinate from:temples numberOfPointsToFind:10]];
+        }
+    }];
 }
 
 @end

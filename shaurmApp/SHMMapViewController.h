@@ -12,5 +12,6 @@
 @interface SHMMapViewController : UIViewController
 
 - (instancetype)initWithDelegate:(id)delegate;
+- (void)setPinsForTemples:(NSArray *)temples;
 
 @end

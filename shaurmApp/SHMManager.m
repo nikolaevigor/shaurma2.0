@@ -22,19 +22,16 @@
     return [distance integerValue];
 }
 
-+ (PFObject *)getNearestTempleFor:(CLLocationCoordinate2D)point from:(NSArray *)temples
++ (SHMTemple *)getNearestTempleFor:(CLLocationCoordinate2D)point from:(NSArray *)temples
 {
-    PFObject *nearestObject = temples[0];
-    PFGeoPoint *nearestGeoPoint = nearestObject[@"location"];
-    CLLocationCoordinate2D nearestCoords = CLLocationCoordinate2DMake(nearestGeoPoint.latitude, nearestGeoPoint.longitude);
+    SHMTemple *nearestObject = temples[0];
+    CLLocationCoordinate2D nearestGeoPoint = CLLocationCoordinate2DMake(nearestObject.latitude, nearestObject.longitude);
     
     for (int i = 1; i < temples.count; i++) {
-        PFGeoPoint *geoPoint = temples[i][@"location"];
-        CLLocationCoordinate2D temporaryCoordinates = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
-        if ([self metersfromPlace:point andToPlace:temporaryCoordinates] < [self metersfromPlace:point andToPlace:nearestCoords]) {
+        CLLocationCoordinate2D geoPoint = CLLocationCoordinate2DMake([(SHMTemple *)temples[i] latitude], [(SHMTemple *)temples[i] longitude]);
+        if ([self metersfromPlace:point andToPlace:geoPoint] < [self metersfromPlace:point andToPlace:nearestGeoPoint]) {
             nearestObject = temples[i];
             nearestGeoPoint = geoPoint;
-            nearestCoords = temporaryCoordinates;
         }
     }
     return nearestObject;
@@ -46,7 +43,7 @@
     NSMutableArray *temples_ = [temples mutableCopy];
     
     for (int i = 0; i < number; i++) {
-        PFObject *nearestObject = [self getNearestTempleFor:point from:temples_];
+        SHMTemple *nearestObject = [self getNearestTempleFor:point from:temples_];
         [outputArray addObject:nearestObject];
         [temples_ removeObject:nearestObject];
     }
@@ -56,22 +53,19 @@
 
 #pragma mark - Find temples with threshold
 
-+ (PFObject *)getNearestTempleFor:(CLLocationCoordinate2D)point from:(NSArray *)temples withThreshold:(NSInteger)threshold
++ (SHMTemple *)getNearestTempleFor:(CLLocationCoordinate2D)point from:(NSArray *)temples withThreshold:(NSInteger)threshold
 {
-    PFObject *nearestObject = temples[0];
-    PFGeoPoint *nearestGeoPoint = nearestObject[@"location"];
-    CLLocationCoordinate2D nearestCoords = CLLocationCoordinate2DMake(nearestGeoPoint.latitude, nearestGeoPoint.longitude);
+    SHMTemple *nearestObject = temples[0];
+    CLLocationCoordinate2D nearestGeoPoint = CLLocationCoordinate2DMake(nearestObject.latitude, nearestObject.longitude);
     
     for (int i = 1; i < temples.count; i++) {
-        PFGeoPoint *geoPoint = temples[i][@"location"];
-        CLLocationCoordinate2D temporaryCoordinates = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
-        if ([self metersfromPlace:point andToPlace:temporaryCoordinates] < [self metersfromPlace:point andToPlace:nearestCoords])
+        CLLocationCoordinate2D geoPoint = CLLocationCoordinate2DMake([(SHMTemple *)temples[i] latitude], [(SHMTemple *)temples[i] longitude]);
+        if ([self metersfromPlace:point andToPlace:geoPoint] < [self metersfromPlace:point andToPlace:nearestGeoPoint])
         {
-            if ([self metersfromPlace:point andToPlace:temporaryCoordinates] < threshold)
+            if ([self metersfromPlace:point andToPlace:geoPoint] < threshold)
             {
                 nearestObject = temples[i];
                 nearestGeoPoint = geoPoint;
-                nearestCoords = temporaryCoordinates;
             }
         }
     }
@@ -84,7 +78,7 @@
     NSMutableArray *temples_ = [temples mutableCopy];
     
     for (int i = 0; i < number; i++) {
-        PFObject *nearestObject = [self getNearestTempleFor:point from:temples_ withThreshold:threshold];
+        SHMTemple *nearestObject = [self getNearestTempleFor:point from:temples_ withThreshold:threshold];
         [outputArray addObject:nearestObject];
         [temples_ removeObject:nearestObject];
     }

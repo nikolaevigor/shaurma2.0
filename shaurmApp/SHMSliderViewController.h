@@ -11,5 +11,6 @@
 @interface SHMSliderViewController : UIViewController
 
 - (instancetype)initWithDelegate:(id)delegate;
+- (void)setTableWithTemples:(NSArray *)temples;
 
 @end

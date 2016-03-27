@@ -9,11 +9,14 @@
 #import "SHMSliderViewController.h"
 #import "SHMMapDelegate.h"
 #import "sliderCell.h"
+#import "SHMTemple.h"
+#import "SHMManager.h"
 
 @interface SHMSliderViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) id <SHMMapDelegate> delegate;
 @property (strong, nonatomic) UITableView *table;
+@property NSArray *temples;
 
 @end
 
@@ -63,7 +66,6 @@
         self.table.backgroundColor = [UIColor clearColor];
         [self.table registerNib:[UINib nibWithNibName:@"sliderCell" bundle:nil] forCellReuseIdentifier:@"cellID"];
         [self.view addSubview:self.table];
-        [self.table reloadData];
     }
     return self;
 }
@@ -83,12 +85,39 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    SHMTemple *temple = self.temples[indexPath.row];
+    [(sliderCell *)cell templeTitle].text = [temple title];
+    [(sliderCell *)cell price].text = [NSString stringWithFormat:@"%lu", (unsigned long)[temple lowestPrice]];
+    [(sliderCell *)cell ratingLabel].text = [NSString stringWithFormat:@"%lu", (unsigned long)[temple rating]];
     
+    
+    
+    if([[temple subway] isEqualToString:@"N/A"] || [[temple subway] isEqualToString:@"Subway_Name"])
+    {
+        [(sliderCell *)cell metroLabel].text = @"Нет метро";
+    }
+    else if([SHMManager isStation:[temple subway]]){
+        [(sliderCell *)cell metroLabel].text = [temple subway];
+    }
+    else{
+        [(sliderCell *)cell metroLabel].text = [NSString stringWithFormat:@"ст. %@", [temple subway]];
+    }
+    
+    [(sliderCell *)cell metroLabel].textColor = [SHMManager colorForStation:[temple subway]];
+    
+    if ([temple photos])
+    {
+        [(sliderCell *)cell templePic].image = [self image:temple.photos[0] scaledToSize:CGSizeMake(30.0f, 40.0f)];
+    }
+    else
+    {
+        [(sliderCell *)cell templePic].image = [UIImage imageNamed:@"small-placeholder"];
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    
+    return [self.temples count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -96,11 +125,11 @@
     static sliderCell *cell = nil;
     
     cell = [tableView dequeueReusableCellWithIdentifier:@"cellID"];
-    PFObject *temple = self.nearestTemples[indexPath.row];
-    [cell templeTitle].text = temple[@"title"];
-    [cell price].text = [NSString stringWithFormat:@"%@ ₽", temple[@"price"]];
-    [cell ratingLabel].text = [temple[@"ratingNumber"] stringValue];
-    [cell metroLabel].text = temple[@"subway"];
+    SHMTemple *temple = self.temples[indexPath.row];
+    [cell templeTitle].text = [temple title];
+    [cell price].text = [NSString stringWithFormat:@"%lu", (unsigned long)[temple lowestPrice]];
+    [cell ratingLabel].text = [NSString stringWithFormat:@"%lu", (unsigned long)[temple rating]];
+    [cell metroLabel].text = [temple subway];
     
     return [self calculateHeightForConfiguredSizingCell:cell];
 }
@@ -129,6 +158,39 @@
 - (void)collapseSlider
 {
     [self.delegate showMap];
+}
+
+- (void)setTableWithTemples:(NSArray *)temples
+{
+    self.temples = temples;
+    [self.table reloadData];
+}
+
+#pragma mark - Nice snippets
+
+//method for resizing image
+- (UIImage *)image:(UIImage*)originalImage scaledToSize:(CGSize)size
+{
+    if (CGSizeEqualToSize(originalImage.size, size))
+    {
+        return originalImage;
+    }
+    
+    UIGraphicsBeginImageContextWithOptions(size, NO, 0.0f);
+    
+    [originalImage drawInRect:CGRectMake(0.0f, 0.0f, size.width, size.height)];
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
+}
+
+- (CGFloat)calculateHeightForConfiguredSizingCell:(UITableViewCell *)sizingCell {
+    [sizingCell layoutIfNeeded];
+    
+    CGSize size = [sizingCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    return size.height + 10; //this is not good i assume
 }
 
 @end
