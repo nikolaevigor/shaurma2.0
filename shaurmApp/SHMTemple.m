@@ -21,7 +21,7 @@
                                   Cap:(BOOL)cap
                                Gloves:(BOOL)gloves
                              Latitude:(float)latitude
-                           Longtitude:(float)longitude
+                           Longitude:(float)longitude
 {
     if (self = [super init]) {
         _title = [title copy];
@@ -63,7 +63,7 @@
                            Cap:NO
                         Gloves:NO
                       Latitude:latitude
-                    Longtitude:longitude];
+                    Longitude:longitude];
 }
 
 @end

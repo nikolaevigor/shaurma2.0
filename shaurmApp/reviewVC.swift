@@ -8,7 +8,7 @@
 
 import UIKit
 
-class reviewVC: UIViewController {
+class reviewVC: BaseViewController {
     
     var resultsCategoryTitleArray = [String]()
     var resultsCategoryImageFiles = [PFFile]()
@@ -28,6 +28,9 @@ class reviewVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.addSlideMenuButton()
+
         
         self.navigationController?.navigationBar.barStyle = UIBarStyle.BlackTranslucent
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
@@ -123,17 +126,15 @@ class reviewVC: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "goToCategoryVC") {
-            
             let viewController:categoryVC = segue.destinationViewController as! categoryVC
             viewController.categoryId = resultCellCatId
             viewController.catImage = resultCellCatImage
-            //print("we")
-            
         }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+        self.swipeLeft()
+
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! reviewCell
         
         resultCellCatTitle = cell.categoryTitleLabel.text!
@@ -142,7 +143,6 @@ class reviewVC: UIViewController {
         
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        
         self.performSegueWithIdentifier("goToCategoryVC", sender: self)
     }
     

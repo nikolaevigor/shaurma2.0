@@ -39,7 +39,7 @@
                                   Cap:(BOOL)cap
                                Gloves:(BOOL)gloves
                              Latitude:(float)latitude
-                           Longtitude:(float)longitude;
+                           Longitude:(float)longitude;
 
 - (nonnull instancetype)initWithTitle:(nonnull NSString *)title
                                Subway:(nonnull NSString *)subway

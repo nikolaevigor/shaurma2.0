@@ -50,7 +50,6 @@
         <!--Карта-->
         <scene sceneID="W4B-QC-c41">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6gw-fT-1gN" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="iV1-LX-5WQ" colorLabel="IBBuiltInLabel-Red" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Карта" image="map.png" id="hu9-1O-yaT"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -68,6 +67,7 @@
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="rootViewController" id="68H-kB-nzO"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6gw-fT-1gN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-787.5" y="481.5"/>
         </scene>
@@ -139,6 +139,76 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="npq-k2-WOO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-291.5" y="-1090.5"/>
+        </scene>
+        <!--Menu View Controller-->
+        <scene sceneID="Ufl-dW-11B">
+            <objects>
+                <viewController storyboardIdentifier="MenuViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jlz-jK-phb" customClass="MenuViewController" customModule="ShaurmApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SJB-wu-dDk"/>
+                        <viewControllerLayoutGuide type="bottom" id="u4H-TC-pEz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="IBr-9e-XyB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BMa-h2-FFX">
+                                <rect key="frame" x="-4" y="0.0" width="383" height="667"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.33333333329999998" green="0.2784313725" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="sectionIndexBackgroundColor" red="0.33333333329999998" green="0.2784313725" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="sectionIndexTrackingBackgroundColor" red="0.33333333329999998" green="0.2784313725" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellMenu" id="JYd-K6-mb8">
+                                        <rect key="frame" x="0.0" y="28" width="383" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="cellMenu" tableViewCell="JYd-K6-mb8" id="I4j-wv-EN3">
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="99"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ULx-EU-id3">
+                                                    <rect key="frame" x="123" y="14" width="42" height="21"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <animations/>
+                                            <color key="backgroundColor" red="0.1176470588" green="0.50980392159999999" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="jlz-jK-phb" id="X5h-S5-kls"/>
+                                    <outlet property="delegate" destination="jlz-jK-phb" id="Gxm-uk-r1e"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="BMa-h2-FFX" secondAttribute="trailing" constant="-20" id="Oz3-Il-yZ6"/>
+                            <constraint firstItem="BMa-h2-FFX" firstAttribute="leading" secondItem="IBr-9e-XyB" secondAttribute="leadingMargin" constant="-20" id="hg8-Zm-Qqf"/>
+                            <constraint firstItem="BMa-h2-FFX" firstAttribute="bottom" secondItem="u4H-TC-pEz" secondAttribute="top" id="jmJ-eg-PzU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BMa-h2-FFX" secondAttribute="trailing" constant="-20" id="oU7-z7-NDR"/>
+                            <constraint firstItem="BMa-h2-FFX" firstAttribute="top" secondItem="IBr-9e-XyB" secondAttribute="top" id="vsj-Mc-Y63"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Oz3-Il-yZ6"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="tblMenuOptions" destination="BMa-h2-FFX" id="09f-z1-Pfl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ist-Wc-AoM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-60.5" y="-1932.5"/>
         </scene>
         <!--Обзор-->
         <scene sceneID="ma9-E1-wMf">
@@ -568,10 +638,10 @@
             </objects>
             <point key="canvasLocation" x="786" y="482"/>
         </scene>
-        <!--MapVC-->
+        <!--Map View Controller-->
         <scene sceneID="DRk-m9-wH6">
             <objects>
-                <viewController id="3HY-bx-229" customClass="mapVC" sceneMemberID="viewController">
+                <viewController id="3HY-bx-229" customClass="SHMMapViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0nV-iU-kDx"/>
                         <viewControllerLayoutGuide type="bottom" id="Jaa-lh-pYe"/>
@@ -666,7 +736,7 @@
         <image name="Align" width="25" height="25"/>
         <image name="Align.png" width="25" height="25"/>
         <image name="half-star" width="64" height="64"/>
-        <image name="map.png" width="863" height="1763"/>
+        <image name="map.png" width="1024" height="1024"/>
         <image name="shawarma-placeholder" width="1200" height="700"/>
         <image name="yellow-star" width="64" height="64"/>
         <image name="yellow-star-filled" width="64" height="64"/>

@@ -35,7 +35,7 @@
                                                                  Cap:rawObject[@"cap"]
                                                               Gloves:rawObject[@"gloves"]
                                                             Latitude:geoPoint.latitude
-                                                          Longtitude:geoPoint.longitude
+                                                          Longitude:geoPoint.longitude
                                      ];
                 [rawObject[@"picture"] getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
                     if (!error) {
@@ -72,7 +72,7 @@
                                                          Cap:rawObject[@"cap"]
                                                       Gloves:rawObject[@"gloves"]
                                                     Latitude:geoPoint.latitude
-                                                  Longtitude:geoPoint.longitude
+                                                  Longitude:geoPoint.longitude
                              ];
         completeion([temple copy]);
     }];
