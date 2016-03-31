@@ -13,7 +13,7 @@
 @interface SHMMapViewController () <GMSMapViewDelegate>
 
 @property (weak, nonatomic) id <SHMMapDelegate> delegate;
-
+@property (strong, nonatomic) GMSMapView *mapView;
 @property (strong, nonatomic) SMCalloutView *calloutView;
 @property (strong, nonatomic) UIView *emptyCalloutView;
 
@@ -33,21 +33,23 @@
 }
 
 - (void)viewDidLoad
+
+
 {
     [super viewDidLoad];
     
-    GMSMapView *mapView = [[GMSMapView alloc] initWithFrame:CGRectZero];
-    mapView.settings.compassButton = YES;
-    mapView.settings.myLocationButton = YES;
-    mapView.myLocationEnabled = YES;
-    mapView.padding = UIEdgeInsetsMake(60.0, 0.0, 113.0, 0.0); //first: impacts on compass; second: impacts on location button
-    mapView.delegate = self;
-    [mapView addObserver:self forKeyPath:@"myLocation" options:NSKeyValueObservingOptionNew context: NULL];
+    _mapView = [[GMSMapView alloc] initWithFrame:CGRectZero];
+   _mapView.settings.compassButton = YES;
+    _mapView.settings.myLocationButton = YES;
+    _mapView.myLocationEnabled = YES;
+   _mapView.padding = UIEdgeInsetsMake(60.0, 0.0, 113.0, 0.0); //first: impacts on compass; second: impacts on location button
+    _mapView.delegate = self;
+    [_mapView addObserver:self forKeyPath:@"myLocation" options:NSKeyValueObservingOptionNew context: NULL];
     dispatch_async(dispatch_get_main_queue(), ^{
-        mapView.myLocationEnabled = YES;
+        _mapView.myLocationEnabled = YES;
     });
     
-    self.view = mapView;
+    self.view = _mapView;
     
     self.emptyCalloutView = [[UIView alloc] initWithFrame:CGRectZero];
     self.calloutView = [[SMCalloutView alloc] init];
@@ -99,7 +101,8 @@
     GMSMarker *mark = [[GMSMarker alloc] init];
     
     mark.position = CLLocationCoordinate2DMake([temple latitude], [temple longitude]);
-    mark.map = (GMSMapView *)self.view;
+//    mark.map = (GMSMapView *)self.view;
+    mark.map = _mapView;
     mark.title = [temple title];
     mark.snippet = [NSString stringWithFormat:@"%lu/10", (unsigned long)[temple rating]];
     mark.icon = [self image:[UIImage imageNamed:[NSString stringWithFormat:@"pin%lu", (unsigned long)[temple rating]]] scaledToSize:CGSizeMake(30.0f, 60.0f)];
