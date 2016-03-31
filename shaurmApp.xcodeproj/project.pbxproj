@@ -70,7 +70,6 @@
 		E72A9CD51B906C9E0013275F /* templeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72A9CD41B906C9E0013275F /* templeCell.swift */; };
 		E745D2831B946E9B00CB5138 /* reviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72A9CCE1B8FB7350013275F /* reviewCell.swift */; };
 		E745D2861B95A5BC00CB5138 /* HCSStarRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = E745D2851B95A5BC00CB5138 /* HCSStarRatingView.m */; };
-		E745D2881B95AC4F00CB5138 /* shawarma.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E745D2871B95AC4F00CB5138 /* shawarma.jpg */; };
 		E74BFDF11C59CF050036B6A7 /* templeMapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74BFDF01C59CF050036B6A7 /* templeMapVC.swift */; };
 		E74BFDF31C59D1290036B6A7 /* locationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74BFDF21C59D1290036B6A7 /* locationCell.swift */; };
 		E74BFDF51C59D1370036B6A7 /* locationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E74BFDF41C59D1370036B6A7 /* locationCell.xib */; };
@@ -79,8 +78,8 @@
 		E76179401B97281700674739 /* commentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E761793F1B97281700674739 /* commentCell.swift */; };
 		E76333631B9CC442007D2520 /* ShawarmaSpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76333621B9CC442007D2520 /* ShawarmaSpinnerView.swift */; };
 		E77FC3031C3A8619002FD36D /* commentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77FC3021C3A8619002FD36D /* commentsVC.swift */; };
-		E79A31B31CAD5B0600E90155 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79A31B21CAD5B0600E90155 /* MenuViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		E79A31B51CAD5F2E00E90155 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79A31B41CAD5F2E00E90155 /* BaseViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		E79A31B31CAD5B0600E90155 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79A31B21CAD5B0600E90155 /* MenuViewController.swift */; };
+		E79A31B51CAD5F2E00E90155 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79A31B41CAD5F2E00E90155 /* BaseViewController.swift */; };
 		E7ECE2AF1BECE97900DA2202 /* featuresCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7ECE2AE1BECE97900DA2202 /* featuresCell.swift */; };
 		E7EDADF21C54265400341628 /* Montserrat-Reg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E7EDADF11C5422D800341628 /* Montserrat-Reg.ttf */; };
 		E7EDADF31C54265900341628 /* montserrat-light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E7EDADEF1C54215400341628 /* montserrat-light.ttf */; };
@@ -198,7 +197,6 @@
 		E72A9CDD1B91CD060013275F /* SMCalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCalloutView.h; sourceTree = "<group>"; };
 		E745D2841B95A5BC00CB5138 /* HCSStarRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCSStarRatingView.h; sourceTree = "<group>"; };
 		E745D2851B95A5BC00CB5138 /* HCSStarRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCSStarRatingView.m; sourceTree = "<group>"; };
-		E745D2871B95AC4F00CB5138 /* shawarma.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = shawarma.jpg; sourceTree = "<group>"; };
 		E74BFDF01C59CF050036B6A7 /* templeMapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = templeMapVC.swift; sourceTree = "<group>"; };
 		E74BFDF21C59D1290036B6A7 /* locationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = locationCell.swift; sourceTree = "<group>"; };
 		E74BFDF41C59D1370036B6A7 /* locationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = locationCell.xib; sourceTree = "<group>"; };
@@ -348,7 +346,6 @@
 		42664C8B1B90BA2A0098CA5A /* Review */ = {
 			isa = PBXGroup;
 			children = (
-				E745D2871B95AC4F00CB5138 /* shawarma.jpg */,
 				E72A9CCA1B8F775A0013275F /* reviewVC.swift */,
 				E79A31B21CAD5B0600E90155 /* MenuViewController.swift */,
 				E79A31B41CAD5F2E00E90155 /* BaseViewController.swift */,
@@ -597,7 +594,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7EDADF31C54265900341628 /* montserrat-light.ttf in Resources */,
-				E745D2881B95AC4F00CB5138 /* shawarma.jpg in Resources */,
 				424DA4A31C41C81800E3597C /* metroJSON.json in Resources */,
 				422F5A841B8F26AB005421C8 /* Main.storyboard in Resources */,
 				DBF4A12A1C96E3B3009442CD /* SHMChildViewController.xib in Resources */,
