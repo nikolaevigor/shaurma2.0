@@ -41,6 +41,11 @@
     return self;
 }
 
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
+    return NO;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -82,12 +87,17 @@
 
 - (void)downloadTemples
 {
+    ShawarmaSpinnerView *spinner = [[ShawarmaSpinnerView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
+    [self.view addSubview:spinner];
+    [spinner start];
     [SHMDownloader getTemplesInBackgroundWithBlock:^void (NSArray *temples){
         self.temples = temples;
         [self.map setPinsForTemples:temples];
         if (self.locationCoordinate.latitude != 0 && self.locationCoordinate.longitude != 0) {
             [self.slider setTableWithTemples:[SHMManager getNearestTemplesFor:self.locationCoordinate from:temples numberOfPointsToFind:10]];
         }
+        [spinner setHidden:YES];
+        [spinner stop];
     }];
 }
 
