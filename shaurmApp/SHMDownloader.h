@@ -7,9 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SHMTemple.h"
 
 @interface SHMDownloader : NSObject
 
 + (void)getTemplesInBackgroundWithBlock:(void (^)(NSArray *))completeion;
++ (void)getTempleByID:(NSString *)templeID WithBlock:(void (^)(SHMTemple *))completeion;
 
 @end

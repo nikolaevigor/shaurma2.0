@@ -24,7 +24,7 @@
         <!--Map-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController storyboardIdentifier="mapContainer" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8rJ-Kc-sve" userLabel="Map" customClass="mapContainer" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Map" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8rJ-Kc-sve" userLabel="Map" customClass="SHMMap" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
@@ -40,7 +40,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
                     <connections>
-                        <segue destination="nRi-pR-1BF" kind="show" identifier="mapToTemple" id="6CV-hJ-qoj"/>
+                        <segue destination="nRi-pR-1BF" kind="show" identifier="segueFromMapToTemple" id="1IZ-V4-Nge"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
@@ -50,7 +50,8 @@
         <!--Карта-->
         <scene sceneID="W4B-QC-c41">
             <objects>
-                <navigationController id="iV1-LX-5WQ" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6gw-fT-1gN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="iV1-LX-5WQ" colorLabel="IBBuiltInLabel-Red" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Карта" image="map.png" id="hu9-1O-yaT"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
@@ -64,10 +65,9 @@
                         </textAttributes>
                     </navigationBar>
                     <connections>
-                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="rootViewController" id="FAK-3y-Y1K"/>
+                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="rootViewController" id="68H-kB-nzO"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6gw-fT-1gN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-787.5" y="481.5"/>
         </scene>
@@ -672,6 +672,6 @@
         <image name="yellow-star-filled" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="suH-da-vH3"/>
+        <segue reference="1IZ-V4-Nge"/>
     </inferredMetricsTieBreakers>
 </document>
