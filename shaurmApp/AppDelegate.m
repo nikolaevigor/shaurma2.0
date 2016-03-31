@@ -8,8 +8,10 @@
 
 #import "AppDelegate.h"
 #import <Instabug/Instabug.h>
+#import "VKSdk.h"
 
-@interface AppDelegate ()
+
+@interface AppDelegate () <VKSdkDelegate>
 
 @end
 
@@ -29,6 +31,9 @@
     
     //Instabug
     [Instabug startWithToken:@"8a178394030694a57b1bf87c93a14a77" invocationEvent:IBGInvocationEventShake];
+    
+    [[VKSdk initializeWithAppId:@"5389135"] registerDelegate:self];
+    
     
     return YES;
 }
@@ -60,6 +65,44 @@
     return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
 }
 
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options {
+    [VKSdk processOpenURL:url fromApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]];
+    return YES;
+}
+
+- (void)vkSdkShouldPresentViewController:(UIViewController *)controller
+{
+    NSLog(@"vkSdkShouldPresentViewController Method Called!");
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    [window.rootViewController presentViewController:controller animated:YES completion:nil];
+}
+
+- (void)vkSdkNeedCaptchaEnter:(VKError *)captchaError
+{
+    NSLog(@"Need captcha enter");
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    VKCaptchaViewController * vc = [VKCaptchaViewController captchaControllerWithError:captchaError];
+    [vc presentIn:window.rootViewController];
+}
+
+- (void)vkSdkUserDeniedAccess:(VKError *)authorizationError
+{
+    NSLog(@"User denied access");
+}
+
+- (void)vkSdkTokenHasExpired:(VKAccessToken *)expiredToken
+{
+    NSLog(@"Token expired");
+//    VKAccessToken *token = [VKSdk getAccessToken];
+//    [VKSdk setAccessToken:token];
+//    [token saveTokenToDefaults:@"token"];
+}
+
+- (void)vkSdkReceivedNewToken:(VKAccessToken *)newToken
+{
+    NSLog(@"Received new token");
+    [newToken saveTokenToDefaults:@"token"];
+}
 
 @end
 

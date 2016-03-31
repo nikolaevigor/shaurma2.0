@@ -4,6 +4,7 @@ import UIKit
 
 class BaseViewController: UIViewController, SlideMenuDelegate {
     
+    var sideMenuWidth = UIScreen.mainScreen().bounds.size.width/2
     var toggleOn = false
     
     override func viewDidLoad() {
@@ -93,7 +94,7 @@ class BaseViewController: UIViewController, SlideMenuDelegate {
             
             UIView.animateWithDuration(0.3, animations: { () -> Void in
                 var frameMenu : CGRect = viewMenuBack.frame
-                frameMenu.origin.x = -1 * UIScreen.mainScreen().bounds.size.width
+                frameMenu.origin.x = -1 * self.sideMenuWidth
                 viewMenuBack.frame = frameMenu
                 viewMenuBack.layoutIfNeeded()
                 viewMenuBack.backgroundColor = UIColor.clearColor()
@@ -108,16 +109,17 @@ class BaseViewController: UIViewController, SlideMenuDelegate {
             self.toggleOn = true
             let menuVC : MenuViewController = self.storyboard!.instantiateViewControllerWithIdentifier("MenuViewController") as! MenuViewController
             
+            menuVC.view.frame=CGRectMake(0 - self.sideMenuWidth, 0, self.sideMenuWidth, UIScreen.mainScreen().bounds.size.height);
+
             menuVC.delegate = self
             self.view.addSubview(menuVC.view)
             self.addChildViewController(menuVC)
             menuVC.view.layoutIfNeeded()
             
             
-            menuVC.view.frame=CGRectMake(0 - UIScreen.mainScreen().bounds.size.width, 0, UIScreen.mainScreen().bounds.size.width/3, UIScreen.mainScreen().bounds.size.height);
             
             UIView.animateWithDuration(0.3, animations: { () -> Void in
-                menuVC.view.frame=CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width/2, UIScreen.mainScreen().bounds.size.height);
+                menuVC.view.frame=CGRectMake(0, 0, self.sideMenuWidth, UIScreen.mainScreen().bounds.size.height);
                 }, completion:nil)
         }
     }

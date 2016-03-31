@@ -166,8 +166,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="383" height="99"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ULx-EU-id3">
-                                                    <rect key="frame" x="123" y="14" width="42" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ULx-EU-id3">
+                                                    <rect key="frame" x="170" y="39" width="42" height="21"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -176,6 +176,15 @@
                                             </subviews>
                                             <animations/>
                                             <color key="backgroundColor" red="0.1176470588" green="0.50980392159999999" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="ULx-EU-id3" firstAttribute="centerX" secondItem="I4j-wv-EN3" secondAttribute="centerX" id="dPh-L1-udt"/>
+                                                <constraint firstItem="ULx-EU-id3" firstAttribute="centerY" secondItem="I4j-wv-EN3" secondAttribute="centerY" id="wH0-YS-IEo"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="subviews">
+                                                    <exclude reference="ULx-EU-id3"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <animations/>
                                     </tableViewCell>
@@ -189,15 +198,21 @@
                         <animations/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="BMa-h2-FFX" firstAttribute="leading" secondItem="IBr-9e-XyB" secondAttribute="leadingMargin" constant="-20" id="5AJ-aN-Hie"/>
                             <constraint firstAttribute="trailingMargin" secondItem="BMa-h2-FFX" secondAttribute="trailing" constant="-20" id="Oz3-Il-yZ6"/>
+                            <constraint firstItem="u4H-TC-pEz" firstAttribute="top" secondItem="BMa-h2-FFX" secondAttribute="bottom" id="YLG-Yr-eEu"/>
                             <constraint firstItem="BMa-h2-FFX" firstAttribute="leading" secondItem="IBr-9e-XyB" secondAttribute="leadingMargin" constant="-20" id="hg8-Zm-Qqf"/>
                             <constraint firstItem="BMa-h2-FFX" firstAttribute="bottom" secondItem="u4H-TC-pEz" secondAttribute="top" id="jmJ-eg-PzU"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="BMa-h2-FFX" secondAttribute="trailing" constant="-20" id="oU7-z7-NDR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BMa-h2-FFX" secondAttribute="trailing" constant="-20" id="qfP-Wb-Za2"/>
                             <constraint firstItem="BMa-h2-FFX" firstAttribute="top" secondItem="IBr-9e-XyB" secondAttribute="top" id="vsj-Mc-Y63"/>
+                            <constraint firstItem="BMa-h2-FFX" firstAttribute="top" secondItem="IBr-9e-XyB" secondAttribute="topMargin" id="wfs-7C-0cN"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="Oz3-Il-yZ6"/>
+                                <exclude reference="hg8-Zm-Qqf"/>
+                                <exclude reference="jmJ-eg-PzU"/>
+                                <exclude reference="vsj-Mc-Y63"/>
                             </mask>
                         </variation>
                     </view>
@@ -429,10 +444,10 @@
                                                 </mask>
                                             </variation>
                                         </imageView>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bMj-ID-0Rn">
+                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bMj-ID-0Rn">
                                             <rect key="frame" x="16" y="308" width="69" height="26"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69D-fE-agj">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69D-fE-agj">
                                                     <rect key="frame" x="12" y="2" width="45" height="21"/>
                                                     <animations/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -468,7 +483,7 @@
                                                 </mask>
                                             </variation>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" minimumFontSize="17" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="oW4-om-0kv">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" minimumFontSize="17" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="oW4-om-0kv">
                                             <rect key="frame" x="260" y="131" width="81" height="36"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="30"/>
@@ -478,14 +493,14 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rzd-Nn-oQu">
                                             <rect key="frame" x="0.0" y="350" width="600" height="100"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Все отзывы: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uG7-e7-aj1">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Все отзывы: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uG7-e7-aj1">
                                                     <rect key="frame" x="8" y="71" width="111" height="21"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="71L-lF-2F2">
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="71L-lF-2F2">
                                                     <rect key="frame" x="274" y="55" width="52" height="30"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
@@ -494,7 +509,7 @@
                                                         <action selector="markButtonPressed:" destination="nRi-pR-1BF" eventType="touchUpInside" id="fsm-so-rs3"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RECENT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EO6-YX-u3P">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="RECENT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EO6-YX-u3P">
                                                     <rect key="frame" x="522" y="71" width="70" height="21"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
@@ -742,6 +757,6 @@
         <image name="yellow-star-filled" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1IZ-V4-Nge"/>
+        <segue reference="suH-da-vH3"/>
     </inferredMetricsTieBreakers>
 </document>

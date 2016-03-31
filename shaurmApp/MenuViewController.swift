@@ -29,7 +29,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     */
     var arrayMenuOptions = [Dictionary<String,String>]()
     
-
+    
     
     /**
     *  Delegate of the MenuVC
@@ -37,7 +37,6 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var delegate : SlideMenuDelegate?
     
     override func viewDidLoad() {
-        self.view.frame = CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.width/3, height: UIScreen.mainScreen().bounds.width)
         super.viewDidLoad()
         tblMenuOptions.tableFooterView = UIView()
     }
@@ -62,21 +61,10 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func onCloseMenuClick(index: Int){
         
         if (self.delegate != nil) {
-            var index = Int32(index)
-
+            let index = Int32(index)
+            
             delegate?.slideMenuItemSelectedAtIndex(index)
         }
-        
-
-//        
-//        UIView.animateWithDuration(0.3, animations: { () -> Void in
-//            self.view.frame = CGRectMake(-UIScreen.mainScreen().bounds.size.width, 0, UIScreen.mainScreen().bounds.size.width/3,UIScreen.mainScreen().bounds.size.height)
-//            self.view.layoutIfNeeded()
-//            self.view.backgroundColor = UIColor.clearColor()
-//            }, completion: { (finished) -> Void in
-//                self.view.removeFromSuperview()
-//                self.removeFromParentViewController()
-//        })
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -87,10 +75,21 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.preservesSuperviewLayoutMargins = false
         cell.backgroundColor = UIColor.clearColor()
         
-        let lblTitle : UILabel = cell.contentView.viewWithTag(101) as! UILabel
-//        let imgIcon : UIImageView = cell.contentView.viewWithTag(100) as! UIImageView
-//        imgIcon.image = UIImage(named: arrayMenuOptions[indexPath.row]["icon"]!)
-        lblTitle.text = arrayMenuOptions[indexPath.row]["title"]!
+        cell.frame = CGRect(x: 0, y: 0, width: tblMenuOptions.frame.width, height: cell.frame.height)
+        
+//        let lblTitle : UILabel = cell.contentView.viewWithTag(101) as! UILabel
+//        lblTitle.text = arrayMenuOptions[indexPath.row]["title"]!
+        
+        if(indexPath.row == 2){
+            let width = tblMenuOptions.frame.width*0.8
+            let height = cell.frame.height*0.5
+            
+            
+            let FacebookButton = UIButton(frame: CGRect(x: tblMenuOptions.frame.midX - width/2, y: cell.frame.height/2 - height/2, width: width, height: height))
+            
+            FacebookButton.backgroundColor = UIColor.blueColor()
+            cell.addSubview(FacebookButton)
+        }
         
         return cell
     }
