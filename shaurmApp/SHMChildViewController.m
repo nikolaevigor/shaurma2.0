@@ -31,10 +31,16 @@ NSArray *imgArray = nil;
     [super viewWillAppear:animated];
     
     if( [[UIScreen mainScreen] bounds].size.width == 320) {
+        if( [[UIScreen mainScreen] bounds].size.height == 480){
+            self.imgHeight.constant = 390;
+            self.imgBottomConstr.constant = -32;
+            self.appetiteTopConstr.constant = -10;
+        }
+        else{
         self.imgHeight.constant = 440;
         self.imgBottomConstr.constant = -52;
         self.appetiteTopConstr.constant = 30;
-
+        }
     }
     
     if (self.index == 3) {

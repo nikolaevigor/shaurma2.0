@@ -29,14 +29,12 @@
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
-    if (self = [super initWithCoder:aDecoder]) {
         self.map = [[SHMMapViewController alloc] initWithDelegate:self];
         self.slider = [[SHMSliderViewController alloc] initWithDelegate:self];
         
         [GMSServices provideAPIKey:@"AIzaSyDKgrM3pG0lO2a9r9dxA-srnsEgCuWsJWs"];
         
         self = [super initWithRootViewController:self.slider];
-    }
     
     return self;
 }

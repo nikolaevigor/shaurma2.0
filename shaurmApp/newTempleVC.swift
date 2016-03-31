@@ -63,6 +63,8 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     var templeLocation = CLLocationCoordinate2D()
     var ratingAmount = Int(1)
     var features = ["", 2, 2]
+    var price = UInt()
+    var geoPoint = PFGeoPoint()
     
     
     @IBOutlet weak var headerContainerView: UIView!
@@ -184,6 +186,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 }
                 
                 if let geoPoint:PFGeoPoint = object!.valueForKey("location") as? PFGeoPoint {
+                    self.geoPoint = geoPoint
                     self.templeLocation = CLLocationCoordinate2D(latitude: geoPoint.latitude, longitude: geoPoint.longitude)
                 }
                 
@@ -197,6 +200,7 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                 }
                 
                 if let priceValue = object!.valueForKey("price") {
+                    self.price = UInt(String(priceValue))!
                     self.priceLabel.text = String(format: "%@ ₽", String(priceValue))
                     self.priceLabel.sizeToFit()
                 }
@@ -394,8 +398,8 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         }
         if indexPath.row == 6{
             let ccell:addCommentCell = tableView.dequeueReusableCellWithIdentifier("addCommentCell") as! addCommentCell
-            ccell.seeAllButton.addTarget(self, action: #selector(newTempleVC.expandButtonAction), forControlEvents: UIControlEvents.TouchUpInside)
-            ccell.expandButton.addTarget(self, action: #selector(newTempleVC.addButtonAction), forControlEvents: UIControlEvents.TouchUpInside)
+            ccell.seeAllButton.addTarget(self, action: "expandButtonAction", forControlEvents: UIControlEvents.TouchUpInside)
+            ccell.expandButton.addTarget(self, action: "addButtonAction", forControlEvents: UIControlEvents.TouchUpInside)
             ccell.delegate = self
             cell = ccell
         }
@@ -552,9 +556,14 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             
             
         else if (segue.identifier == "templeToMap") {
+    
             
-            let viewController:mapVC = segue.destinationViewController as! mapVC
-            viewController.setTempleById(self.id)
+            let viewController:SHMMapViewController = segue.destinationViewController as! SHMMapViewController
+//            let temple = SHMTemple.init(title: self.templeTitle, subway: self.subway, photos: nil, menu: nil, reviews: nil, templeID: self.id, lowestPrice: UInt(self.price), rating: UInt(self.templeRating), cap: true, gloves: true, latitude: self.geoPoint.latitude, longitude: self.geoPoint.latitude)
+            
+                let temple = SHMTemple(title: self.templeTitle, subway: self.subway, templeID: self.id, latitude: Float(self.geoPoint.latitude), longitude: Float(self.geoPoint.longitude))
+
+            viewController.setPinForTemple(temple)
             //viewController.setCameraPosition(self.templeLocation.latitude, longitude: self.templeLocation.longitude)
             
         }

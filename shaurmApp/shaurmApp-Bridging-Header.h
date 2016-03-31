@@ -8,4 +8,5 @@
 //#import <Parse/Parse.h>
 #import <Bolts/BFTask.h>
 #import "SHMManager.h"
+#import "SHMMapViewController.h"
 #import "mapVC.h"

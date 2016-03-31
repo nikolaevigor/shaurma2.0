@@ -38,7 +38,7 @@ class starCell: UITableViewCell {
         
         starView.value = self.value
         starView.frame = CGRect(x: 0,y: 0, width: width, height: 50)
-        starView.addTarget(self, action: #selector(starCell.changeValue(_:)), forControlEvents: UIControlEvents.AllTouchEvents)
+        starView.addTarget(self, action: "changeValue", forControlEvents: UIControlEvents.AllTouchEvents)
         
         
         self.separatorInset = UIEdgeInsetsZero
