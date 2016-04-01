@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		422F5A781B8F26AB005421C8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 422F5A771B8F26AB005421C8 /* main.m */; };
 		422F5A7B1B8F26AB005421C8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 422F5A7A1B8F26AB005421C8 /* AppDelegate.m */; };
-		422F5A811B8F26AB005421C8 /* mapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 422F5A801B8F26AB005421C8 /* mapVC.m */; };
 		422F5A841B8F26AB005421C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 422F5A821B8F26AB005421C8 /* Main.storyboard */; };
 		422F5A861B8F26AB005421C8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 422F5A851B8F26AB005421C8 /* Images.xcassets */; };
 		422F5A891B8F26AB005421C8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 422F5A871B8F26AB005421C8 /* LaunchScreen.xib */; };
@@ -17,8 +16,6 @@
 		42375B6D1C10D67D003CBB1F /* libParse.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 42375B6C1C10D67D003CBB1F /* libParse.a */; };
 		42375B6F1C10D6D9003CBB1F /* libBolts.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 42375B6E1C10D6D9003CBB1F /* libBolts.a */; };
 		424097B01C4149C4005F39DB /* SHMManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 424097AF1C4149C4005F39DB /* SHMManager.m */; };
-		4248AFE11B9E30F2006FEE7E /* mapContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4248AFE01B9E30F2006FEE7E /* mapContainer.m */; };
-		4248AFE41B9E316F006FEE7E /* sliderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4248AFE31B9E316F006FEE7E /* sliderVC.m */; };
 		424DA4A31C41C81800E3597C /* metroJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = 424DA4A21C41C81800E3597C /* metroJSON.json */; };
 		426675CA1C3F0BAD00135FFD /* SHMDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 426675C91C3F0BAD00135FFD /* SHMDownloader.m */; };
 		426CC3571C0DE8A80002EC4B /* libPPHelpMe.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 426CC3531C0DE8A80002EC4B /* libPPHelpMe.a */; };
@@ -105,8 +102,6 @@
 		422F5A771B8F26AB005421C8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		422F5A791B8F26AB005421C8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		422F5A7A1B8F26AB005421C8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		422F5A7F1B8F26AB005421C8 /* mapVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mapVC.h; sourceTree = "<group>"; };
-		422F5A801B8F26AB005421C8 /* mapVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mapVC.m; sourceTree = "<group>"; };
 		422F5A831B8F26AB005421C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		422F5A851B8F26AB005421C8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		422F5A881B8F26AB005421C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -117,13 +112,6 @@
 		42375B6E1C10D6D9003CBB1F /* libBolts.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libBolts.a; path = "Pods/../build/Debug-iphoneos/libBolts.a"; sourceTree = "<group>"; };
 		424097AE1C4149C4005F39DB /* SHMManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHMManager.h; sourceTree = "<group>"; };
 		424097AF1C4149C4005F39DB /* SHMManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHMManager.m; sourceTree = "<group>"; };
-		424097B11C415160005F39DB /* mapDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mapDelegate.h; sourceTree = "<group>"; };
-		424097B21C415169005F39DB /* sliderDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = sliderDelegate.h; sourceTree = "<group>"; };
-		424097B31C4152A6005F39DB /* containerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = containerDelegate.h; sourceTree = "<group>"; };
-		4248AFDF1B9E30F2006FEE7E /* mapContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mapContainer.h; sourceTree = "<group>"; };
-		4248AFE01B9E30F2006FEE7E /* mapContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mapContainer.m; sourceTree = "<group>"; };
-		4248AFE21B9E316F006FEE7E /* sliderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sliderVC.h; sourceTree = "<group>"; };
-		4248AFE31B9E316F006FEE7E /* sliderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = sliderVC.m; sourceTree = "<group>"; };
 		424DA4A21C41C81800E3597C /* metroJSON.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = metroJSON.json; sourceTree = "<group>"; };
 		426675C81C3F0BAD00135FFD /* SHMDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHMDownloader.h; sourceTree = "<group>"; };
 		426675C91C3F0BAD00135FFD /* SHMDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHMDownloader.m; sourceTree = "<group>"; };
@@ -377,7 +365,6 @@
 		428B40C71B8F96AE00A8EF74 /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				DB2DBA381C9EDD1800AE7DA3 /* old fashioned */,
 				DB42CA921C9E16A200D3C299 /* SHMMap.h */,
 				DB42CA931C9E16A200D3C299 /* SHMMap.m */,
 				DB2DBA321C9EDC7100AE7DA3 /* SHMMapViewController.h */,
@@ -390,22 +377,6 @@
 				42077CA81BAB486800880246 /* SMCalloutView */,
 			);
 			name = Map;
-			sourceTree = "<group>";
-		};
-		DB2DBA381C9EDD1800AE7DA3 /* old fashioned */ = {
-			isa = PBXGroup;
-			children = (
-				4248AFDF1B9E30F2006FEE7E /* mapContainer.h */,
-				4248AFE01B9E30F2006FEE7E /* mapContainer.m */,
-				422F5A7F1B8F26AB005421C8 /* mapVC.h */,
-				422F5A801B8F26AB005421C8 /* mapVC.m */,
-				4248AFE21B9E316F006FEE7E /* sliderVC.h */,
-				4248AFE31B9E316F006FEE7E /* sliderVC.m */,
-				424097B11C415160005F39DB /* mapDelegate.h */,
-				424097B21C415169005F39DB /* sliderDelegate.h */,
-				424097B31C4152A6005F39DB /* containerDelegate.h */,
-			);
-			name = "old fashioned";
 			sourceTree = "<group>";
 		};
 		DB42CA8C1C9E148B00D3C299 /* SliderCell */ = {
@@ -683,7 +654,6 @@
 				426675CA1C3F0BAD00135FFD /* SHMDownloader.m in Sources */,
 				E76179401B97281700674739 /* commentCell.swift in Sources */,
 				E7245EAF1BA1BA6A00F7D035 /* menuCell.swift in Sources */,
-				422F5A811B8F26AB005421C8 /* mapVC.m in Sources */,
 				E72A9CD51B906C9E0013275F /* templeCell.swift in Sources */,
 				E79A31B51CAD5F2E00E90155 /* BaseViewController.swift in Sources */,
 				DBF4A1301C96FFD4009442CD /* SHMTabViewController.m in Sources */,
@@ -696,7 +666,6 @@
 				E745D2831B946E9B00CB5138 /* reviewCell.swift in Sources */,
 				422F5A781B8F26AB005421C8 /* main.m in Sources */,
 				426E611A1B9F8307003336D1 /* sliderCell.m in Sources */,
-				4248AFE41B9E316F006FEE7E /* sliderVC.m in Sources */,
 				E745D2861B95A5BC00CB5138 /* HCSStarRatingView.m in Sources */,
 				E75E14E71BFACEE4001C73CB /* addCommentCell.swift in Sources */,
 				59D1EA1E1C52ED1700144972 /* addCommentVC.swift in Sources */,
@@ -705,7 +674,6 @@
 				DBF4A1291C96E3B3009442CD /* SHMChildViewController.m in Sources */,
 				E7245EAD1BA190D400F7D035 /* newTempleVC.swift in Sources */,
 				E76333631B9CC442007D2520 /* ShawarmaSpinnerView.swift in Sources */,
-				4248AFE11B9E30F2006FEE7E /* mapContainer.m in Sources */,
 				DB85B1081CA5E690009FE791 /* SHMUser.m in Sources */,
 				E7245EB11BA1BA7600F7D035 /* starCell.swift in Sources */,
 				E7ECE2AF1BECE97900DA2202 /* featuresCell.swift in Sources */,
