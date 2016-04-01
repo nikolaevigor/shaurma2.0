@@ -556,13 +556,14 @@ class newTempleVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             
             
         else if (segue.identifier == "templeToMap") {
-    
+            
             
             let viewController:SHMMapViewController = segue.destinationViewController as! SHMMapViewController
-//            let temple = SHMTemple.init(title: self.templeTitle, subway: self.subway, photos: nil, menu: nil, reviews: nil, templeID: self.id, lowestPrice: UInt(self.price), rating: UInt(self.templeRating), cap: true, gloves: true, latitude: self.geoPoint.latitude, longitude: self.geoPoint.latitude)
+            //            let temple = SHMTemple.init(title: self.templeTitle, subway: self.subway, photos: nil, menu: nil, reviews: nil, templeID: self.id, lowestPrice: UInt(self.price), rating: UInt(self.templeRating), cap: true, gloves: true, latitude: self.geoPoint.latitude, longitude: self.geoPoint.latitude)
             
-                let temple = SHMTemple(title: self.templeTitle, subway: self.subway, templeID: self.id, latitude: Float(self.geoPoint.latitude), longitude: Float(self.geoPoint.longitude))
-
+            let temple = SHMTemple(title: self.templeTitle, subway: self.subway, templeID: self.id, latitude: Float(self.geoPoint.latitude), longitude: Float(self.geoPoint.longitude))
+            temple.rating = UInt(self.templeRating)
+            
             viewController.setPinForTemple(temple)
             //viewController.setCameraPosition(self.templeLocation.latitude, longitude: self.templeLocation.longitude)
             

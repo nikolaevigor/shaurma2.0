@@ -36,7 +36,7 @@
 {
     [super viewDidLoad];
     
-    GMSMapView *mapView = [[GMSMapView alloc] initWithFrame:CGRectZero];
+    GMSMapView *mapView = [[GMSMapView alloc] initWithFrame:self.view.frame];
     mapView.settings.compassButton = YES;
     mapView.settings.myLocationButton = YES;
     mapView.myLocationEnabled = YES;
@@ -96,6 +96,8 @@
 
 - (void)setPinForTemple:(SHMTemple *)temple
 {
+    firstLocationUpdate = YES;
+    
     GMSMarker *mark = [[GMSMarker alloc] init];
     
     mark.position = CLLocationCoordinate2DMake([temple latitude], [temple longitude]);
@@ -107,7 +109,7 @@
     
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:temple.latitude longitude:temple.longitude zoom:13];
     [(GMSMapView *)self.view setCamera:camera];
-    [(GMSMapView *)self.view setSelectedMarker:mark];
+    //[(GMSMapView *)self.view setSelectedMarker:mark];
 }
 
 #pragma mark - Callout window methods
