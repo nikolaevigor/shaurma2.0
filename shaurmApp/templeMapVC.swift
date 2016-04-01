@@ -11,12 +11,12 @@ import Foundation
 
 class templeMapVC: UIViewController {
     
-    var map:mapVC!
+    var map:SHMMapViewController!
     
 
     override func viewDidLoad(){
         super.viewDidLoad()
-        self.map = mapVC.init()
+        self.map = SHMMapViewController.init()
     
     }
     override func viewWillAppear(animated: Bool) {

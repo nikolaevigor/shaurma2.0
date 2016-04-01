@@ -22,6 +22,7 @@
 @implementation SHMMapViewController
 {
     BOOL firstLocationUpdate;
+    BOOL openedFromTemple;
 }
 
 - (instancetype)initWithDelegate:(id)delegate
@@ -97,6 +98,7 @@
 - (void)setPinForTemple:(SHMTemple *)temple
 {
     firstLocationUpdate = YES;
+    openedFromTemple = YES;
     
     GMSMarker *mark = [[GMSMarker alloc] init];
     
@@ -116,6 +118,10 @@
 
 - (UIView *)mapView:(GMSMapView *)mapView markerInfoWindow:(GMSMarker *)marker
 {
+    if (openedFromTemple) {
+        return _emptyCalloutView;
+    }
+    
     CLLocationCoordinate2D anchor = marker.position;
     
     CGPoint point = [mapView.projection pointForCoordinate:anchor];
@@ -169,13 +175,13 @@
 
 - (void)calloutAccessoryButtonTapped:(id)sender
 {
-//    if (self.openedFromTemple) {
-//        return;
-//    }
-//    if (mapView_.selectedMarker)
-//    {
-//        [self.containerDelegate openTempleVC:(NSString *)mapView_.selectedMarker.userData];
-//    }
+    if (openedFromTemple) {
+        return;
+    }
+    if ([(GMSMapView *)self.view selectedMarker])
+    {
+        [self.delegate openTempleViewControllerWithID:[(GMSMapView *)self.view selectedMarker].userData];
+    }
 }
 
 #pragma mark - KVO update methods
